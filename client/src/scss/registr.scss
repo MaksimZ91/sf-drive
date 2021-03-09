@@ -1,0 +1,504 @@
+@import "mixins";
+@import "header";
+@import "footer";
+@import "fonts";
+@import "calendarb";
+
+.registr_main{
+  display: flex;
+  justify-content: center;
+  &_servermessage{
+    height: 58px;
+    width: 100vw;
+    background: #EB5757;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #FFFFFF;
+    z-index: 1;
+    position: absolute;
+
+  }
+}
+
+input:hover{
+  border: 1px solid #61A199;
+  box-sizing: border-box;
+  border-radius: 6px;
+} 
+
+input:focus {
+  border: 1px solid #61A199;
+  outline-color:#61A199;
+  
+  
+}
+ 
+
+
+  .registr_about{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 150px;
+  &_titel{ 
+    align-self:center;
+    >p:first-child{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 147.3%;
+    text-align: center;
+    color: #828282;
+    margin:0;
+  }
+  >p{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 120%;
+    text-align: center;
+    color: #1B1B1B;
+    margin-top: 14px;
+    margin-bottom: 52px;
+  }
+    @include mobile{
+    >p:first-child{
+      font-size: 12px;
+    }
+    >p{
+      font-weight: 500;
+      font-size: 32px;
+    }
+  }
+}  
+  &_form{
+    width: 679px;
+    height: 403px;    
+    >p:first-child{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 36px;
+      line-height: 147.3%;
+      color: #1B1B1B;
+      margin-left: 0px;
+      margin-bottom: 30px;      
+    }
+    
+    >P{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      color: #1B1B1B;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }    
+    &_text{
+      width: 416px;
+      height: 44px;
+      background: #FFFFFF;
+      border: 1px solid #E0E0E0;
+      box-sizing: border-box;
+      border-radius: 6px;
+      margin-left: 229px;
+      padding-left: 12px;
+    }
+    
+    &_date{
+      width: 155px;
+      height: 44px;
+      background: #FFFFFF;
+      border: 1px solid #E0E0E0;
+      box-sizing: border-box;
+      border-radius: 6px;
+      margin-left: 158px;
+      padding-left: 12px;
+      background:url(../img/calendar.svg) no-repeat center right 15px;
+
+    }
+    &_email{
+      width: 416px;
+      height: 44px;
+      background: #FFFFFF;
+      border: 1px solid #E0E0E0;
+      box-sizing: border-box;
+      border-radius: 6px;
+      margin-left: 132px;
+      padding-left: 12px;
+    }
+    &_warn{
+      display: block;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      color: #EB5757;
+      margin-left: 260px;
+      margin-bottom: 20px;
+      &.active{
+        display: block;
+      }
+    }    
+     &_password{
+      width: 416px;
+      height: 44px;
+      background: #FFFFFF;
+      border: 1px solid #E0E0E0;
+      box-sizing: border-box;
+      border-radius: 6px;
+      margin-left: 210px;
+      padding-left: 12px;
+     }
+    &_phone{      
+      width: 155px;
+      height: 44px;
+      background: #FFFFFF;
+      border: 1px solid #E0E0E0;
+      box-sizing: border-box;
+      border-radius: 6px;
+      margin-left: 203px;
+      padding-left: 12px;
+    }
+   
+   
+    @include mobile{
+      width: 335px;
+      >p:first-child{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 120%;
+        color: #1B1B1B;
+      }
+      >p{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px;
+        color: #1B1B1B;
+      }
+      &_text {
+        width: 335px;
+        height: 44px;
+        background: #FFFFFF;
+        border: 1px solid #E0E0E0;
+        box-sizing: border-box;
+        border-radius: 6px;        
+        margin-left: 0px;
+      }
+      &_date{
+        width: 335px;
+        height: 44px;
+        background: #FFFFFF;
+        border: 1px solid #E0E0E0;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-left: 0px;
+        background:url(../img/calendar.svg) no-repeat center right 15px;
+      }
+      &_email{
+        width: 335px;
+        height: 44px;
+        background: #FFFFFF;
+        border: 1px solid #E0E0E0;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-left: 0px;
+      }
+      &_password{
+        width: 335px;
+        height: 44px;
+        background: #FFFFFF;
+        border: 1px solid #E0E0E0;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-left: 0px;
+       }
+       &_phone{      
+        width: 335px;
+        height: 44px;
+        background: #FFFFFF;
+        border: 1px solid #E0E0E0;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-left: 0px;
+      }
+    } 
+  }
+  &_data{
+    width: 679px;
+    height: 319px;  
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 40px;
+    >p:first-child{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 36px;
+      line-height: 147.3%;
+      color: #1B1B1B;
+      margin-left: 0px;
+      margin-bottom: 30px;
+    }
+    >P{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      color: #1B1B1B;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+    &_number{
+      width: 155px;
+      height: 44px;background: #FFFFFF;
+      border: 1px solid #E0E0E0;
+      box-sizing: border-box;
+      border-radius: 6px;
+      margin-left: 163px; 
+      padding-left: 12px;
+    }
+    &_date{
+      width: 155px;
+      height: 44px;
+      background: #FFFFFF;
+      border: 1px solid #E0E0E0;
+      box-sizing: border-box;
+      border-radius: 6px;
+      margin-left: 173px;
+      padding-left: 12px; 
+      background:url(../img/calendar.svg) no-repeat center right 15px;
+    }
+    &_about{
+      width: 416px;
+      height: 44px;
+      background: #FFFFFF;
+      border: 1px solid #E0E0E0;
+      box-sizing: border-box;
+      border-radius: 6px;
+      margin-left: 186px; 
+      padding-left: 12px;
+    }
+    &_cod{
+      width: 155px;
+      height: 44px;
+      background: #FFFFFF;
+      border: 1px solid #E0E0E0;
+      box-sizing: border-box;
+      border-radius: 6px;
+      margin-left: 129px;
+      padding-left: 12px; 
+    }
+    @include mobile {
+      width: 335px;
+      >p:first-child{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 120%;
+        color: #1B1B1B;
+      }
+      >p{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px;
+        color: #1B1B1B;
+      }
+      &_number{
+        width: 335px;
+        height: 44px;background: #FFFFFF;
+        border: 1px solid #E0E0E0;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-left: 0px; 
+      }
+      &_date{
+        width: 335px;
+        height: 44px;
+        background: #FFFFFF;
+        border: 1px solid #E0E0E0;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-left: 0px; 
+      }
+      &_about{
+        width: 335px;
+        height: 44px;
+        background: #FFFFFF;
+        border: 1px solid #E0E0E0;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-left: 0px; 
+      }
+      &_cod{
+        width: 335px;
+        height: 44px;
+        background: #FFFFFF;
+        border: 1px solid #E0E0E0;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-left: 0px; 
+      }
+    }
+  }
+  &_info{
+    width: 500px;
+    height: 191px;  
+    margin-top: 40px;
+    margin-bottom: 174px;
+    >p:first-child{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 36px;
+      line-height: 147.3%;
+      color: #1B1B1B;
+      margin-left: 0px;
+      margin-bottom: 30px;
+    }
+    >P{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      color: #1B1B1B;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+    &_number{
+      width: 155px;
+      height: 44px;
+      background: #FFFFFF;
+      border: 1px solid #E0E0E0;
+      box-sizing: border-box;
+      border-radius: 6px;
+      margin-left:163px;
+      padding-left: 12px;
+      }
+    &_date{
+      width: 155px;
+      height: 44px;
+      background: #FFFFFF;
+      border: 1px solid #E0E0E0;
+      box-sizing: border-box;
+      border-radius: 6px;
+      margin-left:173px;
+      padding-left: 12px;
+      background:url(../img/calendar.svg) no-repeat center right 15px;
+
+    }
+    @include mobile{
+      width: 335px;
+      >p:first-child{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 120%;
+        color: #1B1B1B;
+      }
+      >p{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px;
+        color: #1B1B1B;
+      }
+      &_number{
+        width: 335px;
+        height: 44px;
+        background: #FFFFFF;
+        border: 1px solid #E0E0E0;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-left:0px;
+        }
+        &_date{
+          width: 335px;
+          height: 44px;
+          background: #FFFFFF;
+          border: 1px solid #E0E0E0;
+          box-sizing: border-box;
+          border-radius: 6px;
+          margin-left:0px;    
+        }
+    }
+  }
+  @include mobile {
+    align-items: center;
+    justify-content: center;
+  }
+}
+.continue{
+  height: 84px;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  background: #FFFFFF;
+  box-shadow: 0px -1px 0px #DEE2E4;
+    &_button{
+    margin:17px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px 40px;
+    width: 176px;
+    height: 51px;
+    background: #E6E6E6;
+    border-radius: 6px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #B4B5BD;
+    border-style: none; 
+  }
+  @include mobile{
+    width: 375px;
+    height: 84px;
+  }
+  &_button{
+    margin:17px auto;
+    display: block;
+    align-items: center;
+    padding: 16px 40px;
+    width: 335px;
+    height: 51px;
+    background: #61A199;
+    border-radius: 6px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color:#FFFFFF;
+    border-style: none; 
+    text-align: center;
+    
+  
+  }
+  &_button:disabled{
+    background: #E6E6E6;
+    color: #B4B5BD;
+  }   
+}  

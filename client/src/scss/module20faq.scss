@@ -1,0 +1,122 @@
+@import "fonts";
+@import "mixins";
+@import "header";
+@import "footer";
+
+
+.titel_faq{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+    @include mobile{
+      &-imgfaq{
+        display: none;
+      }
+  }
+
+  &-imgfaq-mobile{
+  display: none;
+  @include mobile{
+    display: block;
+  }
+  }
+  > p{
+    margin:30px 0 0 0;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 147.3%;
+    text-align: center;
+    @include mobile{
+      font-size: 16px;
+    }
+  }
+}
+
+.question{
+  display: grid;
+  margin-top: 60px;
+  margin-bottom: 120px;
+  grid-template-columns:minmax(auto, 71vw);
+  grid-template-rows: minmax(auto, auto);
+  justify-content: center;
+  grid-gap: 14px;
+  padding:0 5%;
+  @include mobile {
+    grid-template-columns:minmax(auto, 1fr);
+  }
+  &_quest{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F7F7F8;
+    border-radius: 6px;
+    &:hover{
+      background: rgba(97, 161, 153, 0.1);
+      }
+    > p {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 147.3%;
+      margin-left: 22px;
+        @include mobile {
+          font-size: 12px;
+        }
+    }
+    > img{
+      margin-right: 28px;
+    }
+    &_arrow-answer{
+      display:none
+    }
+    &.active {
+      background: rgba(97, 161, 153, 0.15);
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 147.3%;
+        > p{
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 147.3%;
+          color: #61A199;
+            @include mobile{
+              font-size: 12px;
+            }
+        }
+        &> .question_quest-arrow{
+          display: none;
+        }
+        &> .question_quest_arrow-answer{
+      display: block;
+        }
+      }
+    }
+  &_answer{
+    display:none;
+    &.active{
+      display:block;
+      >p {
+        width: 53vw;
+        font-family: Roboto;
+        font-style: nor mal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 147.3%;
+        margin-left: 22px;
+          @include mobile {
+            font-size: 14px;
+            width: 75vw;
+          }
+
+      }  
+        
+      } 
+  }
+}
+

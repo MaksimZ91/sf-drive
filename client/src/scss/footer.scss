@@ -1,0 +1,22 @@
+@import "mixins";
+footer{
+  height: 124px;
+  background-color: #3F3D56;
+  display: flex;
+  align-items: center;
+  .footer__wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 3vw 0 3vw;
+    align-items: center;
+    height: 27px;
+    width: 100%;
+    @include mobile{
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+      }
+
+  }
+  
+}

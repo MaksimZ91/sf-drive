@@ -1,0 +1,245 @@
+.registr_about_form_calendarb{
+  width: 367px;
+  height: 385px;
+  display: flex;
+  position: absolute;
+  margin: -20px 0 0 260px;
+  flex-direction: column;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+   &_date {
+    margin-top: 33px;
+    height: 29px;
+    width: 367px;
+    display: flex;
+    
+  &_mons{
+    margin: 0 0 0 30px;
+    width: 183px;
+    height: 29px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 147.3%;
+    text-align: center;
+
+color: #000000;
+          }
+  &_year{
+    margin: 0 30px 0 0;
+    width: 109px;
+    height: 29px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 147.3%;
+    color: #000000;
+  }
+}
+  &_table{
+    margin: 30px auto 0 auto;
+    align-self: flex-end;
+    width: 307px;
+    height: 269px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 147.3%;
+    text-align: center;
+    color: #000000;
+    >tbody{
+    >tr{
+      >td{           
+        width: 20px;
+        >input{
+          border: none;
+          text-align: center;
+          width: 20px;
+          background: none;
+        }
+        >input:focus {
+          border: none;
+          outline-color:white 
+
+        }
+      }
+    }
+  }
+}
+}
+
+
+
+
+
+.registr_about_data_calendarb{
+  width: 367px;
+  height: 385px;
+  display: flex;
+  position: relative;
+  margin: -20px 0 0 260px;
+  flex-direction: column;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+   &_date {
+    margin-top: 33px;
+    height: 29px;
+    width: 367px;
+    display: flex;
+    
+  &_mons{
+    margin: 0 0 0 30px;
+    width: 183px;
+    height: 29px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 147.3%;
+    text-align: center;
+
+color: #000000;
+          }
+  &_year{
+    margin: 0 30px 0 0;
+    width: 109px;
+    height: 29px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 147.3%;
+    color: #000000;
+  }
+}
+  &_table{
+    margin: 30px auto 0 auto;
+    align-self: flex-end;
+    width: 307px;
+    height: 269px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 147.3%;
+    text-align: center;
+    color: #000000;
+    >tbody{
+    >tr{
+      >td{           
+        width: 20px;
+        >input{
+          border: none;
+          text-align: center;
+          width: 20px;
+          background: none;
+        }
+        >input:focus {
+          border: none;
+          outline-color:white 
+
+        }
+      }
+    }
+  }
+}
+}
+
+
+.registr_about_info_calendarb{
+  width: 367px;
+  height: 385px;
+  display: flex;
+  position: relative;
+  margin: -20px 0 0 260px;
+  flex-direction: column;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  z-index: 1;
+   &_date {
+    margin-top: 33px;
+    height: 29px;
+    width: 367px;
+    display: flex;
+    
+  &_mons{
+    margin: 0 0 0 30px;
+    width: 183px;
+    height: 29px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 147.3%;
+    text-align: center;
+
+color: #000000;
+          }
+  &_year{
+    margin: 0 30px 0 0;
+    width: 109px;
+    height: 29px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 147.3%;
+    color: #000000;
+  }
+}
+  &_table{
+    margin: 30px auto 0 auto;
+    align-self: flex-end;
+    width: 307px;
+    height: 269px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 147.3%;
+    text-align: center;
+    color: #000000;
+    >tbody{
+    >tr{
+      >td{           
+        width: 20px;
+        >input{
+          border: none;
+          text-align: center;
+          width: 20px;
+          background: none;
+        }
+        >input:focus {
+          border: none;
+          outline-color:white 
+
+        }
+      }
+    }
+  }
+}
+}

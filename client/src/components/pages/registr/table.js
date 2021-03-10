@@ -1,5 +1,5 @@
 import React, {useContext} from "react"
-import { monthDay, areEqual } from './calc'
+import { monthDay, areEqual } from '../js/calc'
 import { FormContex } from './formContex'
 
 

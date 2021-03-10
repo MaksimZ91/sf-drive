@@ -4,6 +4,7 @@
 @import "fonts";
 @import "calendarb";
 
+
 .registr_main{
   display: flex;
   justify-content: center;
@@ -23,7 +24,6 @@
 
   }
 }
-
 input:hover{
   border: 1px solid #61A199;
   box-sizing: border-box;
@@ -74,7 +74,9 @@ input:focus {
 }  
   &_form{
     width: 679px;
-    height: 319px;    
+    height: 319px; 
+    height:auto;
+    margin-top: 0px;   
     >p:first-child{
       font-family: Roboto;
       font-style: normal;
@@ -104,7 +106,7 @@ input:focus {
       box-sizing: border-box;
       border-radius: 6px;
       margin-left: 229px;
-      padding-left: 12px;
+      padding-left: 12px;     
     }
     
     &_date{
@@ -163,6 +165,9 @@ input:focus {
    
     @include mobile{
       width: 335px;
+      margin-bottom: 40px;
+      height:auto;
+      margin-top: 0px;   
       >p:first-child{
         font-family: Roboto;
         font-style: normal;
@@ -187,6 +192,7 @@ input:focus {
         box-sizing: border-box;
         border-radius: 6px;        
         margin-left: 0px;
+        margin-top: 12px;
       }
       &_date{
         width: 335px;
@@ -197,6 +203,7 @@ input:focus {
         border-radius: 6px;
         margin-left: 0px;
         background:url(../img/calendar.svg) no-repeat center right 15px;
+        margin-top: 12px;
       }
       &_email{
         width: 335px;
@@ -206,6 +213,7 @@ input:focus {
         box-sizing: border-box;
         border-radius: 6px;
         margin-left: 0px;
+        margin-top: 12px;
       }
       &_phone{      
         width: 335px;
@@ -215,6 +223,7 @@ input:focus {
         box-sizing: border-box;
         border-radius: 6px;
         margin-left: 0px;
+        margin-top: 12px;
       }
     } 
   }
@@ -287,6 +296,9 @@ input:focus {
     }
     @include mobile {
       width: 335px;
+      margin-bottom: 40px;
+      height:auto;
+      margin-top: 0px;   
       >p:first-child{
         font-family: Roboto;
         font-style: normal;
@@ -309,7 +321,8 @@ input:focus {
         border: 1px solid #E0E0E0;
         box-sizing: border-box;
         border-radius: 6px;
-        margin-left: 0px; 
+        margin-left: 0px;
+        margin-top: 12px; 
       }
       &_date{
         width: 335px;
@@ -319,6 +332,8 @@ input:focus {
         box-sizing: border-box;
         border-radius: 6px;
         margin-left: 0px; 
+        margin-top: 12px;
+        background:url(../img/calendar.svg) no-repeat center right 15px;
       }
       &_about{
         width: 335px;
@@ -327,7 +342,8 @@ input:focus {
         border: 1px solid #E0E0E0;
         box-sizing: border-box;
         border-radius: 6px;
-        margin-left: 0px; 
+        margin-left: 0px;
+        margin-top: 12px; 
       }
       &_cod{
         width: 335px;
@@ -337,6 +353,7 @@ input:focus {
         box-sizing: border-box;
         border-radius: 6px;
         margin-left: 0px; 
+        margin-top: 12px;
       }
     }
   }
@@ -389,6 +406,9 @@ input:focus {
     }
     @include mobile{
       width: 335px;
+      margin-bottom: 40px;
+      height:auto;
+      margin-top: 0px;   
       >p:first-child{
         font-family: Roboto;
         font-style: normal;
@@ -413,6 +433,7 @@ input:focus {
         box-sizing: border-box;
         border-radius: 6px;
         margin-left:0px;
+        margin-top: 12px;
         }
         &_date{
           width: 335px;
@@ -421,7 +442,9 @@ input:focus {
           border: 1px solid #E0E0E0;
           box-sizing: border-box;
           border-radius: 6px;
-          margin-left:0px;    
+          margin-left:0px;
+          margin-top: 12px; 
+          background:url(../img/calendar.svg) no-repeat center right 15px;   
         }
     }
   }
@@ -433,6 +456,7 @@ input:focus {
     width: 679px;
     height: 191px;    
     margin-bottom: 174px;
+    margin-top: 0px;   
    >p:first-child{
       font-family: Roboto;
       font-style: normal;
@@ -493,7 +517,51 @@ input:focus {
       color: #EB5757;
       margin-left: 260px;
       margin-bottom: 20px;
-    }    
+    } 
+    @include mobile{
+      width: 335px;
+      height:auto;
+      margin-top: 0px;   
+      >p:first-child{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 120%;
+        color: #1B1B1B;
+        
+      }
+      >p{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px;
+        color: #1B1B1B;
+      }
+      &_curr{
+        width: 335px;
+        height: 44px;
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-left: 0;
+        background:url(../img/password.svg) no-repeat center right 15px;
+        margin-top: 12px;
+      }
+      &_conf{
+        width: 335px;
+        height: 44px;
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-left: 0;
+        background:url(../img/password.svg) no-repeat center right 15px;
+        margin-top: 12px;
+      } 
+    }   
   }
 }
 .continue{

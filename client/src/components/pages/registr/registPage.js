@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState} from 'react'
 import Registabout from './RegistAbout'
 import Continue from './continue'
 import {FormProvider} from './formContex'

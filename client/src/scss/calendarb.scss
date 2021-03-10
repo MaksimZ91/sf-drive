@@ -1,3 +1,4 @@
+
 .registr_about_form_calendarb{
   width: 367px;
   height: 385px;
@@ -58,25 +59,84 @@ color: #000000;
     text-align: center;
     color: #000000;
     >tbody{
+    >tr:first-child{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 147.3%;
+      text-align: center;
+      color: #B1B1B1;
+
+    }  
     >tr{
+      >td:nth-child(6)>input, >td:nth-child(7)>input {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 147.3%;
+        text-align: center;
+        color: #868686;
+       
+      }
+      >td:nth-child(6)>input:hover, >td:nth-child(7)>input:hover {
+       background: #61A199;
+       opacity: 0.5;
+       border-radius: 50%;
+       color: #000000;
+    
+      }
       >td{           
-        width: 20px;
+        width: 36px;
+        height: 36px;
+        .registr_about_form_calendarb_table_curentDay{  
+          background: #61A199;
+          border-radius: 50%;    
+          color: #FFFFFF;
+          border: none;
+          text-align: center;
+          width: 36px;
+          height: 36px;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 147.3%;
+          text-align: center;
+        }
         >input{
           border: none;
           text-align: center;
-          width: 20px;
+          width: 36px;
+          height: 36px;
           background: none;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 147.3%;
+          text-align: center;
+          color: #000000;
         }
         >input:focus {
           border: none;
           outline-color:white 
-
         }
-      }
+        >input:hover{
+        background: #61A199;
+        opacity: 0.5;
+        border-radius: 50%; 
+        color: #000000;   
+              
+        }            
+      }     
     }
   }
 }
+
 }
+
 
 
 

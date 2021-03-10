@@ -32,13 +32,8 @@ input:hover{
 
 input:focus {
   border: 1px solid #61A199;
-  outline-color:#61A199;
-  
-  
+  outline-color:#61A199;   
 }
- 
-
-
   .registr_about{
   display: flex;
   flex-direction: column;
@@ -79,7 +74,7 @@ input:focus {
 }  
   &_form{
     width: 679px;
-    height: 403px;    
+    height: 319px;    
     >p:first-child{
       font-family: Roboto;
       font-style: normal;
@@ -133,7 +128,13 @@ input:focus {
       border-radius: 6px;
       margin-left: 132px;
       padding-left: 12px;
+      &.active{
+        border: 2px solid #EB5757;
+        outline-color: #EB5757;       
+      }      
     }
+    
+
     &_warn{
       display: block;
       font-family: Roboto;
@@ -148,16 +149,6 @@ input:focus {
         display: block;
       }
     }    
-     &_password{
-      width: 416px;
-      height: 44px;
-      background: #FFFFFF;
-      border: 1px solid #E0E0E0;
-      box-sizing: border-box;
-      border-radius: 6px;
-      margin-left: 210px;
-      padding-left: 12px;
-     }
     &_phone{      
       width: 155px;
       height: 44px;
@@ -216,16 +207,7 @@ input:focus {
         border-radius: 6px;
         margin-left: 0px;
       }
-      &_password{
-        width: 335px;
-        height: 44px;
-        background: #FFFFFF;
-        border: 1px solid #E0E0E0;
-        box-sizing: border-box;
-        border-radius: 6px;
-        margin-left: 0px;
-       }
-       &_phone{      
+      &_phone{      
         width: 335px;
         height: 44px;
         background: #FFFFFF;
@@ -362,7 +344,7 @@ input:focus {
     width: 500px;
     height: 191px;  
     margin-top: 40px;
-    margin-bottom: 174px;
+    margin-bottom: 60px;
     >p:first-child{
       font-family: Roboto;
       font-style: normal;
@@ -446,6 +428,72 @@ input:focus {
   @include mobile {
     align-items: center;
     justify-content: center;
+  }
+  &_password{
+    width: 679px;
+    height: 191px;    
+    margin-bottom: 174px;
+   >p:first-child{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 36px;
+      line-height: 147.3%;
+      color: #1B1B1B;
+      margin-left: 0px;
+      margin-bottom: 30px;
+    }
+    >P{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      color: #1B1B1B;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+    &_curr{
+        width: 416px;
+        height: 44px;
+        background: #FFFFFF;
+        border: 1px solid #E0E0E0;
+        box-sizing: border-box;
+        border-radius: 6px;
+        margin-left: 128px;
+        padding-left: 12px;
+        background:url(../img/password.svg) no-repeat center right 15px;
+        &.active{        
+          border: 2px solid #EB5757;
+          outline-color: #EB5757;
+        }
+    }
+    &_conf{
+      width: 416px;
+      height: 44px;
+      background: #FFFFFF;
+      border: 1px solid #E0E0E0;
+      box-sizing: border-box;
+      border-radius: 6px;
+      margin-left: 139px;
+      padding-left: 12px;
+      background:url(../img/password.svg) no-repeat center right 15px;
+      &.active{        
+        border: 2px solid #EB5757;
+        outline-color: #EB5757;
+      }
+    }
+    &_warning{
+      display: block;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      color: #EB5757;
+      margin-left: 260px;
+      margin-bottom: 20px;
+    }    
   }
 }
 .continue{

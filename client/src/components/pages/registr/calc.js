@@ -17,6 +17,16 @@ let dayInMons =[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
  
 let week = [6, 0, 1, 2, 3, 4, 5];
 
+export function areEqual(date, currentDate) {
+  if (!date || !currentDate) return false;
+
+  return (
+    date.getFullYear() === currentDate.getFullYear() &&
+    date.getMonth() === currentDate.getMonth() &&
+    date.getDate() === currentDate.getDate()
+  );
+}
+
 
 
 export  function getDayOfWeek(date) {

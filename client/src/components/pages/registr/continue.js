@@ -6,7 +6,7 @@ const fetch = require("node-fetch");
 
 function Continue (props){
   const {form, formValidation} = useContext(FormContex)
- 
+ console.log(form)
 const request = () => {
 
     fetch('http://localhost:5000/api/registr', {

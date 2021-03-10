@@ -1,11 +1,13 @@
 import React from 'react'
 import Formfio from "./formFio"
-import Passport from "./formPassport"
+import Passport from './formPassport'
 import License from './formLicense'
+import Password from './formPassword'
 
 
 
 function Registabout (props){
+  
   return(
     <>
     <section className="registr_about">
@@ -15,7 +17,8 @@ function Registabout (props){
     </div>
     <Formfio/>
     <Passport/>
-    <License/>  
+    <License/> 
+    <Password/> 
     </section>    
     </> 
   )

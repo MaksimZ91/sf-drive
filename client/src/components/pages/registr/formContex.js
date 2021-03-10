@@ -32,7 +32,7 @@ export const FormProvider = ({ children }) => {
 
 
 return (
-  <FormContex.Provider value={{form, onChangeInput,fixDate,formValidation }}>
+  <FormContex.Provider value={{form, onChangeInput,fixDate,formValidation, setForm }}>
     {children}
   </FormContex.Provider>
   )

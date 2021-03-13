@@ -1,0 +1,275 @@
+@import "mixins";
+@import "header";
+@import "footer";
+@import "fonts";
+
+.main{
+    display: flex;
+    justify-content: center;
+    background: #E5E5E5;
+    
+}
+
+.recovery{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 504px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    z-index: 1;
+    position: fixed;
+    top: 116px;
+    left: 50%;
+    margin-left: -202px;
+    @include mobile {
+        width: 100vw;              
+      }
+      &_control_wrapper{
+        margin-top:25px;
+        display: flex;
+        justify-content: space-between;
+        width: 504px;
+      &_close{  
+          margin-right: 25px;;
+        }
+      &_backArrow{
+          margin-left: 25px;;
+          }
+          @include mobile {
+            width: 100vw;              
+          }
+        }      
+    &_img{
+        margin: 22px 0 38px 0;
+        &_mobile{
+            display: none;
+        }
+    }
+    @include mobile {
+        &_img{
+            display: none;
+            &_mobile{
+                display: block;
+            }
+        }
+      }
+    &_form{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        &_titel{
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 32px;
+            line-height: 120%;
+            text-align: center;
+            color: #1B1B1B;
+            margin-top: 0;
+            margin-bottom: 10px;
+          
+        }
+        &_info{
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 16px;
+          text-align: center;
+          color: #1B1B1B;
+          margin: 0 0 30px 0;
+        }        
+        &_email{ 
+            margin-bottom:20px;
+            width: 350px;
+            height: 44px;  
+            display: inline-block;
+            vertical-align: top;
+            position: relative;            
+            border-radius: 6px;   
+            border: 1px solid #D0CDE1;
+             >input{
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 16px;
+                color: #1B1B1B;
+                outline-offset:0px;
+                width: 350px;
+                height: 44px;
+                padding: 0;   
+                padding: 21px 0 7px 12px;
+                box-sizing: border-box;
+                border: none;
+                border-radius: 6px
+             }  
+            >label{
+                margin: 0 0 2px 0;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 16px;
+                color: #A3A0B1;
+                width: 350px;
+                position: absolute;
+                pointer-events: none;
+                left: 15px;
+                right: 15px;
+                top: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                line-height: 44px;
+                transition: .3s;
+               
+            }           
+            >input:focus~label,
+            >input:not(:focus):valid~label{
+                font-size: 9px;
+                 top: -10px;               
+            }
+            >input:focus{
+                outline: none;
+            }
+
+        }
+       
+        &_newPassword{
+          margin-bottom:20px;
+          width: 350px;
+          height: 44px;  
+          display: inline-block;
+          vertical-align: top;
+          position: relative;            
+          border-radius: 6px;   
+          border: 1px solid #D0CDE1;
+            >input{
+              font-family: Roboto;
+              font-style: normal;
+              font-weight: normal;
+              font-size: 14px;
+              line-height: 16px;
+              color: #1B1B1B;
+              outline-offset:0px;
+              width: 350px;
+              height: 44px;
+              padding: 0;   
+              padding: 21px 0 7px 12px;
+              box-sizing: border-box;
+              border: none;
+              border-radius: 6px
+            } 
+            >input:focus{
+                outline: none;
+            } 
+            >label{
+              margin: 0 0 2px 0;
+              font-family: Roboto;
+              font-style: normal;
+              font-weight: normal;
+              font-size: 14px;
+              line-height: 16px;
+              color: #A3A0B1;
+              width: 350px;
+              position: absolute;
+              pointer-events: none;
+              left: 15px;
+              right: 15px;
+              top: 0;
+              white-space: nowrap;
+              overflow: hidden;
+              line-height: 44px;
+              transition: .3s;
+            }
+           
+            >input:focus~label,
+            >input:not(:focus):valid~label{
+                font-size: 9px;
+                 top: -10px;               
+            }
+          }
+
+          &_secondNewPassword{
+            margin-bottom:20px;
+            width: 350px;
+            height: 44px;  
+            display: inline-block;
+            vertical-align: top;
+            position: relative;            
+            border-radius: 6px;   
+            border: 1px solid #D0CDE1;
+              >input{
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 16px;
+                color: #1B1B1B;
+                outline-offset:0px;
+                width: 350px;
+                height: 44px;
+                padding: 0;   
+                padding: 21px 0 7px 12px;
+                box-sizing: border-box;
+                border: none;
+                border-radius: 6px
+              } 
+              >input:focus{
+                  outline: none;
+              } 
+              >label{
+                margin: 0 0 2px 0;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 16px;
+                color: #A3A0B1;
+                width: 350px;
+                position: absolute;
+                pointer-events: none;
+                left: 15px;
+                right: 15px;
+                top: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                line-height: 44px;
+                transition: .3s;
+              }
+             
+              >input:focus~label,
+              >input:not(:focus):valid~label{
+                  font-size: 9px;
+                   top: -10px;               
+              }
+          }
+       
+       
+       
+        >input{
+            width: 126px;
+            height: 51px;
+            margin-bottom: 51px;
+            background: #61A199;
+            border-radius: 6px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            color: #FFFFFF;
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+            border-style: none;
+        }
+        >input:disabled{
+            background: #E6E6E6;
+            color: #B4B5BD;
+          }
+        } 
+}

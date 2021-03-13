@@ -6,17 +6,23 @@ import Faq from "./pages/faq/Faq"
 import Registpage from "./pages/registr/registPage"
 import {Route, BrowserRouter, Switch} from "react-router-dom"
 
+import {FormProvider} from './contextApp'
+
 function App () {
-  return (
+  
+  return (  
+    <FormProvider>
     <BrowserRouter>
     <Header/>
     <Switch>
     <Route path="/" component={Mainpage} exact/>
     <Route path="/about" component={Aboutpage} exact/>
     <Route path="/registr" component={Registpage}/>
-    <Route path="/faq" component={Faq}/>    
-    </Switch>    
+    <Route path="/faq" component={Faq}/>  
+    </Switch> 
     </BrowserRouter>  
+    </FormProvider>   
+    
   ) 
           
     

@@ -8,6 +8,9 @@
 .registr_main{
   display: flex;
   justify-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   &_servermessage{
     height: 58px;
     width: 100vw;
@@ -21,6 +24,7 @@
     color: #FFFFFF;
     z-index: 1;
     position: absolute;
+    top:0;
 
   }
 }
@@ -571,6 +575,9 @@ input:focus {
   bottom: 0;
   background: #FFFFFF;
   box-shadow: 0px -1px 0px #DEE2E4;
+  &.active{
+    position: static;
+  }
     &_button{
     margin:17px auto;
     display: flex;

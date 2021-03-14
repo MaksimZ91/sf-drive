@@ -1,8 +1,40 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import {validation} from '../js/validationForm.js'
 
 
 
 function Recovery (props) {
+  const [passHide, setPassHide]=useState(false)
+  const [newPass, setNewPasse]=useState(false)
+  const [formRecov, setFormRecov]=useState({ email:'', password:'', newPassword:''})
+  const [validRecov, setValidRecov]=useState(false)
+  const [warning, setWarning]=useState (false)
+  
+      const onChangeInput = event => {
+        setFormRecov({ ...formRecov, [event.target.name]: event.target.value })   
+    }  
+
+     useEffect(()=>{setValidRecov((validation(formRecov)))},[formRecov])
+
+
+     const confirmPassHandler = () =>{
+      if (formRecov.password==formRecov.newPassword){
+        setFormRecov({...formRecov, password:formRecov.newPassword})
+        setWarning(false)
+      }else{
+        setWarning(true)
+      }
+    
+    }   
+ 
+    const handelHidePass = () =>{
+      setPassHide(!passHide)  
+    }
+    const handelHideNewPass = () =>{
+      setNewPasse(!newPass)  
+    }
+   
+
   const handelClick =()=>{
     props.value.recov(false) 
 
@@ -13,7 +45,7 @@ function Recovery (props) {
   }
 
 
-    const diss=true
+    
     return(
         <>
         
@@ -29,20 +61,21 @@ function Recovery (props) {
                 <p className="recovery_form_info">Мы отправим ссылку для восстановления пароля<br/>
                 на вашу электронную почту</p>
                 <div className="recovery_form_email">
-                    <input tupe='text' className='email_author' required/>
+                    <input tupe='text' className='email_author' name="email" value={formRecov.email} onChange={onChangeInput}  required/>
                     <label className="email_author">Электронная почта</label>
                 </div>
-                <div className="recovery_form_newPassword">
-                    <input tupe='password' className='password_author' required />
-                    <label className="password_author ">Новый пароль</label>                  
+                <div className={warning?"recovery_form_newPassword active":'recovery_form_newPassword'}>
+                    <input  className='password_author' name="password" value={formRecov.password}  type={passHide?'password':'text'} onClick={handelHidePass} onChange={onChangeInput} onBlur={confirmPassHandler} required />
+                    <label className={warning?"password_author active ":'password_author'}>Новый пароль</label>                  
                 </div>
-                <div className="recovery_form_secondNewPassword">
-                    <input tupe='password' className='password_second' required />
-                    <label className="password_second">Повторите ввод нового пароля</label>                  
+                <div className={warning?"recovery_form_secondNewPassword active":'recovery_form_secondNewPassword'}>
+                    <input tupe='password' className='password_second' name="newPassword" value={formRecov.newPassword}  type={newPass?'password':'text'}onClick={handelHideNewPass} onChange={onChangeInput} onBlur={confirmPassHandler} required />
+                    <label className={warning?"password_second active":'"password_second'}>Повторите ввод нового пароля</label>                  
                 </div>
-                <input className="recovery_form_button" type="submit" value='Отправить' disabled={diss}/>                
+                    {warning?<p className="recovery_form_warn">Пароли не совпадают</p>:''}
+                <input className="recovery_form_button" type="submit" value='Отправить' disabled={validRecov}/>                
             </form>            
-        </div>
+        </div>+
         
 
         </>

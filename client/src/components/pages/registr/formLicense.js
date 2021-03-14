@@ -20,7 +20,7 @@ function License () {
     <p>Водительское удостоверение</p>
     <p>Серия и номер<input className="registr_about_info_number" name="numberLicense" defaultValue={form.numberLicense} onChange={onChangeInput}  type='text' placeholder="0000 000000"/></p>
     <p>Дата выдачи<input className="registr_about_info_date" defaultValue={form.dateLicense} onClick={handelCalen}  onChange={onChangeInput}  type="text" placeholder="00.00.0000"/></p>
-    {hide?<Calendarb value={{name,calendName }}/>:''}
+    {hide?<Calendarb value={{name,calendName}}/>:''}
     </form> 
 
     </>

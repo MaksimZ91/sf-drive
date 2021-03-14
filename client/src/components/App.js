@@ -5,7 +5,6 @@ import Mainpage from "./pages/main/mainPage"
 import Faq from "./pages/faq/Faq"
 import Registpage from "./pages/registr/registPage"
 import {Route, BrowserRouter, Switch} from "react-router-dom"
-
 import {FormProvider} from './contextApp'
 
 function App () {

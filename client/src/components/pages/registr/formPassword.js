@@ -11,7 +11,7 @@ function Password (){
   const {form} = useContext(FormContex)
   const {setForm} =useContext(FormContex)
 
-const cofirmPassHandler = () =>{
+const confirmPassHandler = () =>{
   if (password.pass==password.secondPassword){
     setForm({...form, password:password.pass})
     setWarning(false)
@@ -23,7 +23,7 @@ const cofirmPassHandler = () =>{
   const hadelConfirm = event =>{
     setPassword({...password, [event.target.name]:event.target.value})
   }
-  console.log(password)
+  
   const handelHidePass = () =>{
     setHide(!hide)  
   }
@@ -37,8 +37,8 @@ const cofirmPassHandler = () =>{
         <>
      <form className="registr_about_password" >
      <p>Пароль</p>
-     <p>Придумайте пароль<input className={(warning)?"registr_about_password_curr active":"registr_about_password_curr"} type={hide?'password':'text'} name='pass' value={password.pass} onClick={handelHidePass} onChange={hadelConfirm}  onBlur={cofirmPassHandler}  placeholder="•••••••••••••••••••" /></p>
-     <p>Повторите пароль<input className={(warning)?"registr_about_password_conf active":"registr_about_password_conf"} type={confirmHide?'password':'text'} name='secondPassword'value={password.secondPassword} onClick={handelHideConf} onChange={hadelConfirm}  onBlur={cofirmPassHandler} placeholder="•••••••••••••••••••" /></p>
+     <p>Придумайте пароль<input className={(warning)?"registr_about_password_curr active":"registr_about_password_curr"} type={hide?'password':'text'} name='pass' value={password.pass} onClick={handelHidePass} onChange={hadelConfirm}     onBlur={confirmPassHandler} placeholder="•••••••••••••••••••" /></p>
+     <p>Повторите пароль<input className={(warning)?"registr_about_password_conf active":"registr_about_password_conf"} type={confirmHide?'password':'text'} name='secondPassword'value={password.secondPassword} onClick={handelHideConf} onChange={hadelConfirm}  onBlur={confirmPassHandler} placeholder="•••••••••••••••••••" /></p>
      {(warning)?<span className="registr_about_password_warning">Пароли не совпадают</span>:''}
     </form>
         </>

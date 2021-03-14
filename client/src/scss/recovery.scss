@@ -24,7 +24,13 @@
     left: 50%;
     margin-left: -202px;
     @include mobile {
-        width: 100vw;              
+      width: 100vw; 
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      margin: 0;
+      justify-content: space-between;                   
       }
       &_control_wrapper{
         margin-top:25px;
@@ -106,6 +112,8 @@
                 box-sizing: border-box;
                 border: none;
                 border-radius: 6px
+                
+                
              }  
             >label{
                 margin: 0 0 2px 0;
@@ -125,6 +133,9 @@
                 overflow: hidden;
                 line-height: 44px;
                 transition: .3s;
+                &.active{
+                  color: #EB5757
+              }
                
             }           
             >input:focus~label,
@@ -147,6 +158,9 @@
           position: relative;            
           border-radius: 6px;   
           border: 1px solid #D0CDE1;
+          &.active{
+            border: 1px solid #EB5757
+        }
             >input{
               font-family: Roboto;
               font-style: normal;
@@ -161,7 +175,8 @@
               padding: 21px 0 7px 12px;
               box-sizing: border-box;
               border: none;
-              border-radius: 6px
+              border-radius: 6px;
+              background:url(../img/password.svg) no-repeat center right 15px;
             } 
             >input:focus{
                 outline: none;
@@ -184,6 +199,9 @@
               overflow: hidden;
               line-height: 44px;
               transition: .3s;
+              &.active{
+                color: #EB5757
+            }
             }
            
             >input:focus~label,
@@ -202,6 +220,9 @@
             position: relative;            
             border-radius: 6px;   
             border: 1px solid #D0CDE1;
+            &.active{
+              border: 1px solid #EB5757
+          }
               >input{
                 font-family: Roboto;
                 font-style: normal;
@@ -216,7 +237,8 @@
                 padding: 21px 0 7px 12px;
                 box-sizing: border-box;
                 border: none;
-                border-radius: 6px
+                border-radius: 6px;
+                background:url(../img/password.svg) no-repeat center right 15px;
               } 
               >input:focus{
                   outline: none;
@@ -239,6 +261,9 @@
                 overflow: hidden;
                 line-height: 44px;
                 transition: .3s;
+                &.active{
+                  color: #EB5757
+              }
               }
              
               >input:focus~label,
@@ -247,6 +272,17 @@
                    top: -10px;               
               }
           }
+        &_warn{
+            display:block;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            text-align: center;
+            color: #EB5757;
+            margin:0   0 30px 0
+        }  
        
        
        

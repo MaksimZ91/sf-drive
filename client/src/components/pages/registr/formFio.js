@@ -34,7 +34,7 @@ const isValidated = event =>{
      <p className="registr_about_form_info">Информация о вас</p>
      <p>ФИО<input  className="registr_about_form_text" name='fio' defaultValue={form.fio}  onChange={onChangeInput}  type="text" placeholder="ФИО полностью"/></p>
      <p>Дата рождения<input className="registr_about_form_date" type="text"  defaultValue={form.date}  onClick={()=>setHied(!hide)}   placeholder="00.00.0000"/></p>
-     {hide?<Calendarb value={{name,calendName, setHied }}/>:''}
+     {hide?<Calendarb value={{name,calendName}}/>:''}
      <p>Электронная почта<input  className={(empty&&!valid)?"registr_about_form_email active":"registr_about_form_email"} type="email" onChange={onChangeInput} onBlur={isValidated}  name='email' defaultValue={form.email}  placeholder="mail@example.com"/></p>
      {(empty&&!valid)?<span className="registr_about_form_warn">Не верная почта</span>:''}
      <p>Телефон<input className="registr_about_form_phone" type="tel" name='phone'   onChange={onChangeInput} defaultValue={form.phone}  placeholder="+7 900 000-00-00"/></p>

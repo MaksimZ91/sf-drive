@@ -32,9 +32,9 @@ router.post( '/author',
           }
 
           const token =jwt.sign(
-              {userId: person.id},
+              {name: person.fio, userId:person.id},
               config.get("JwtSecret"),
-              { expiresIn: '1h' }
+              { expiresIn: 1200 }
           )
           
 

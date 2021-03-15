@@ -30,7 +30,7 @@ function Authorpage (props) {
         method: 'POST',
         body: JSON.stringify(formAuth),
         headers: {"Content-Type": "application/json;charset=UTF-8"}})    
-        .then(res=>res.json())        
+        .then(res=>{if(res.ok)return res.json()})        
         .then(data => localStorage.setItem("token", JSON.stringify(data)))
         .then(()=>Close())        
       }

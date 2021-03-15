@@ -1,4 +1,6 @@
 {
   "urlDb":"mongodb+srv://MaximZ:v3j5i6@cluster0.o59mn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-  "JwtSecret": "Secret"
+  "JwtAccessSecret": "AccessSecret",
+  "JwtRefreshSecret": "RefreshSecret"
+
 }

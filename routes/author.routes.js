@@ -31,14 +31,21 @@ router.post( '/author',
             return res.status(400).json({ message: 'Не верная почта или пароль' })
           }
 
-          const token =jwt.sign(
+          const accessToken =jwt.sign(
               {name: person.fio, userId:person.id},
-              config.get("JwtSecret"),
+              config.get("JwtAccessSecret"),
               { expiresIn: 1200 }
           )
           
+          const refreshToken =jwt.sign(
+            {},
+            config.get("JwtRefreshSecret"),
+            { expiresIn: 86400 }
+        )
 
-          res.json({ token, userId: person.id, message:"Ok" })
+   
+
+          res.json({ accessToken,refreshToken,userId: person.id, message:"Ok" })
        
 
   } catch (e){

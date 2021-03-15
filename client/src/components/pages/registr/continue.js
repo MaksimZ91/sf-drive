@@ -18,7 +18,7 @@ const request =  () => {
         props.value.message(false)
       }
       return res.json()})
-    .then(json => console.log(json.message)) 
+    .then(json => console.log(json)) 
     
   }
 

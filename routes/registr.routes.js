@@ -3,6 +3,8 @@ const { body, validationResult } = require('express-validator');
 const { Router } = require('express');
 const User = require('../models/User')
 const router = Router()
+const jwt = require('jsonwebtoken')
+const config = require('config')
 
 
 router.post( '/registr',
@@ -23,9 +25,22 @@ router.post( '/registr',
         }
         const hashPassword = await bcrypt.hash(password, 10)      
         const user = new User ({...req.body, password:hashPassword})
-      
+        
+        const accessToken =  jwt.sign(
+          {name: user.fio, userId:user.id},
+          config.get("JwtAccessSecret"),
+          { expiresIn: 1200 }
+                )
+                
+      const refreshToken =  jwt.sign(
+        {},
+        config.get("JwtRefreshSecret"),
+        { expiresIn: 86400 }
+            )
+
         user.save()
-        res.status(201).json({message:"Ok"})
+        
+        res.status(201).json({accessToken, refreshToken,  message:"Ok"})
 
   } catch (e){
         res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })

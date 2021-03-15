@@ -1,13 +1,12 @@
 import React, { useContext} from "react"
 import { FormContex } from './formContex'
-
 const fetch = require("node-fetch");
 
 
 function Continue (props){
   const {form, formValidation} = useContext(FormContex)
  
-const request = () => {
+const request =  () => {
     fetch('http://localhost:5000/api/registr', {
     method: 'POST',
     body: JSON.stringify(form),
@@ -19,7 +18,7 @@ const request = () => {
         props.value.message(false)
       }
       return res.json()})
-    .then(json => console.log(json)) 
+    .then(json => console.log(json.message)) 
     
   }
 

@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
 import {validation} from '../js/validationForm.js'
+const fetch = require("node-fetch");
 
 
 function Authorpage (props) {
     const [formAuth, setFormAuth]=useState({ email:'', password:''})
     const [validAuth, setValidAuth]=useState(false)
+    
+    
   
       const onChangeInput = event => {
         setFormAuth({ ...formAuth, [event.target.name]: event.target.value })   
@@ -21,13 +24,23 @@ function Authorpage (props) {
     const Close = ()=>{
         props.value.closeAuthor(false)
     }
+
+    const request = async () => {
+        await fetch('http://localhost:5000/api/author', {
+        method: 'POST',
+        body: JSON.stringify(formAuth),
+        headers: {"Content-Type": "application/json;charset=UTF-8"}})    
+        .then(res=>res.json())        
+        .then(data => localStorage.setItem("token", JSON.stringify(data)))
+        .then(()=>Close())        
+      }
    
     return(
         <>
      
         <div className="authorization">
             <img className="authorization_close" src='../src/img/close.svg' onClick={Close}/>
-            <img className="authorization_img" src='../src/img/undraw_sign_in.svg'/>
+            <img className="authorization_img" src='../src/img/undraw_sign_in.svg'    />
             <img className="authorization_img_mobile" src="../src/img/undraw_sign_in_mobile.svg"/>
             <form className="authorization_form">
                 <p className="authorization_form_titel ">Авторизация</p>
@@ -41,7 +54,7 @@ function Authorpage (props) {
                     <label className="password_author ">Пароль</label>
                    <span className="authorization_form_password_recov"  onClick={handelClick}>Забыли?</span>
                 </div>
-                <input className="authorization_form_button" type="submit" value='Войти' disabled={validAuth}/>                
+                <input className="authorization_form_button" type="button" value='Войти'  onClick={request}  disabled={validAuth}/>                
             </form>
             <div className="authorization_registr" onClick={Close}>
                     <NavLink to="/registr">Зарегистрироваться</NavLink>

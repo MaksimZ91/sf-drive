@@ -19,21 +19,21 @@
     background: #FFFFFF;
     border-radius: 10px;
     z-index: 1;
-    position: fixed;
-    top: 116px;
+    top:50%;
     left: 50%;
-    margin-left: -202px;
+    position: fixed;  
+    transform: translate(-50%, -50%);
     @include mobile {
-      width: 100vw; 
-      width: 100vw;
+      width: 100vw;      
       height: 100vh;
       top: 0;
       left: 0;
       margin: 0;
-      justify-content: space-between;                   
+      justify-content: space-between; 
+      transform: none;                   
       }
       &_control_wrapper{
-        margin-top:25px;
+        margin-top:2.7vh;
         display: flex;
         justify-content: space-between;
         width: 504px;
@@ -48,7 +48,7 @@
           }
         }      
     &_img{
-        margin: 22px 0 38px 0;
+        margin: 2.4vh 0 4.2vh 0;
         &_mobile{
             display: none;
         }
@@ -75,7 +75,7 @@
             text-align: center;
             color: #1B1B1B;
             margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 1.1vh;
           
         }
         &_info{
@@ -86,10 +86,10 @@
           line-height: 16px;
           text-align: center;
           color: #1B1B1B;
-          margin: 0 0 30px 0;
+          margin: 0 0 3.3vh 0;
         }        
         &_email{ 
-            margin-bottom:20px;
+            margin-bottom:2.2vh;
             width: 350px;
             height: 44px;  
             display: inline-block;
@@ -150,7 +150,7 @@
         }
        
         &_newPassword{
-          margin-bottom:20px;
+          margin-bottom:2.2vh;
           width: 350px;
           height: 44px;  
           display: inline-block;
@@ -212,7 +212,7 @@
           }
 
           &_secondNewPassword{
-            margin-bottom:20px;
+            margin-bottom:2.2vh;
             width: 350px;
             height: 44px;  
             display: inline-block;
@@ -281,7 +281,7 @@
             line-height: 16px;
             text-align: center;
             color: #EB5757;
-            margin:0   0 30px 0
+            margin:0   0 3.3vh 0
         }  
        
        
@@ -289,7 +289,7 @@
         >input{
             width: 126px;
             height: 51px;
-            margin-bottom: 51px;
+            margin-bottom:5.6vh;
             background: #61A199;
             border-radius: 6px;
             font-family: Roboto;

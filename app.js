@@ -2,14 +2,15 @@ const express = require('express')
 const mongoose = require('mongoose')
 const config = require('config')
 const cors = require('cors')
-const bodyParser = require('body-parser');
+
 
 
 
 
 const app = express();
 app.use(express.json({ extended: true }))
-app.use('/api',cors(), require('./routes/auth.routes') )
+app.use('/api',cors(), require('./routes/registr.routes') )
+app.use('/api',cors(),require('./routes/author.routes') )
 
 mongoose.connect(config.get("urlDb"), {
   useNewUrlParser: true,

@@ -15,15 +15,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 504px;
+    width: 504px;    
     background: #FFFFFF;
     border-radius: 10px;
     z-index: 1;
-    top: 116px;
+    top:50%;
     left: 50%;
-    margin-left: -100px;
-    position: fixed;
-    margin-left: -202px;
+    position: fixed;  
+    transform: translate(-50%, -50%);
     @include mobile {
         width: 100vw; 
         width: 100vw;
@@ -31,16 +30,17 @@
         top: 0;
         left: 0;
         margin: 0;
-        justify-content: space-between;             
+        justify-content: space-between; 
+        transform: none;            
       }
    
     &_close{
         align-self: flex-end;
-        margin-top: 25px;
+        margin-top: 2.7vh;
         margin-right: 25px;
     }
     &_img{
-        margin: 22px 101px 38px 101px;
+        margin: 2.4vh 101px 4.2vh 101px;
         &_mobile{
             display: none;
         }
@@ -67,7 +67,7 @@
             text-align: center;
             color: #1B1B1B;
             margin-top: 0;
-            margin-bottom: 40px;
+            margin-bottom: 5,6vh;
             &.active{
                 margin-bottom: 10px;
             }
@@ -81,10 +81,10 @@
             line-height: 16px;
             text-align: center;
             color: #EB5757;
-            margin:10px 0 34px 0;
+            margin:0 0 3.7vh 0;
         }
         &_email{ 
-            margin-bottom:20px;
+            margin-bottom:2.2vh;
             width: 350px;
             height: 44px;  
             display: inline-block;
@@ -147,7 +147,7 @@
         }
        
         &_password{
-            margin-bottom:20px;
+            margin-bottom:2.2vh;
             width: 350px;
             height: 44px;  
             display: inline-block;
@@ -221,7 +221,7 @@
         >input{
             width: 126px;
             height: 51px;
-            margin-bottom: 40px;
+            margin-bottom: 4.4vh;
             background: #61A199;
             border-radius: 6px;
             font-family: Roboto;
@@ -242,7 +242,7 @@
     }
     &_registr{
         width: 350px;
-        height: 80px;
+        height: 8.8vh;
         border-top: 1px, solid #DEDBF1;
         display: flex;
         justify-content: center;

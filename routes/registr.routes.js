@@ -7,12 +7,14 @@ const jwt = require('jsonwebtoken')
 const config = require('config')
 
 
+
 router.post( '/registr',
   [
     body('email', 'Некорректный email').isEmail(),
     body('password', 'Минимальная длина пароля 6 символов').isLength({ min: 6 })
   ],
   async (req, res)  =>{
+    
   try {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {

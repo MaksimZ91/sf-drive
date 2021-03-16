@@ -1,12 +1,16 @@
 import React, {useState, useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
 import {validation} from '../js/validationForm.js'
-const fetch = require("node-fetch");
+import {useHttp} from '../../../hooks/http.hook'
+import {useAuth} from '../../../hooks/autn.hook'
+
 
 
 function Authorpage (props) {
     const [formAuth, setFormAuth]=useState({ email:'', password:''})
     const [validAuth, setValidAuth]=useState(false)
+    const {request, error} = useHttp()
+    const {login}=useAuth()
     
     
   
@@ -25,16 +29,18 @@ function Authorpage (props) {
         props.value.closeAuthor(false)
     }
 
-    const request = async () => {
-        await fetch('http://localhost:5000/api/author', {
-        method: 'POST',
-        body: JSON.stringify(formAuth),
-        headers: {"Content-Type": "application/json;charset=UTF-8"}})    
-        .then(res=>{if(res.ok)return res.json()})        
-        .then(data => localStorage.setItem("token", JSON.stringify(data)))
-        .then(()=>Close())        
-      }
-   
+    const authorHandler = async () => {
+        try {
+            const data = await request('http://localhost:5000/api/author','POST',{...formAuth})
+            console.log(data.accessToken,data.refreshToken)
+            login(data.accessToken,data.refreshToken)
+            
+        } catch (e) {
+            console.log(e)            
+        }
+        Close()
+    }
+
     return(
         <>
      
@@ -54,7 +60,7 @@ function Authorpage (props) {
                     <label className="password_author ">Пароль</label>
                    <span className="authorization_form_password_recov"  onClick={handelClick}>Забыли?</span>
                 </div>
-                <input className="authorization_form_button" type="button" value='Войти'  onClick={request}  disabled={validAuth}/>                
+                <input className="authorization_form_button" type="button" value='Войти'  onClick={authorHandler}  disabled={validAuth}/>                
             </form>
             <div className="authorization_registr" onClick={Close}>
                     <NavLink to="/registr">Зарегистрироваться</NavLink>

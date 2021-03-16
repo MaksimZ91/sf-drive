@@ -1,39 +1,40 @@
 import React, {useState, useEffect} from 'react'
 import {validation} from '../js/validationForm.js'
+import {useHttp} from '../../../hooks/http.hook'
 
 
 
 function Recovery (props) {
   const [passHide, setPassHide]=useState(false)
   const [newPass, setNewPasse]=useState(false)
-  const [formRecov, setFormRecov]=useState({ email:'', password:'', newPassword:''})
+  const [formRecov, setFormRecov]=useState({ email:"", password:"", newPassword:""})
   const [validRecov, setValidRecov]=useState(false)
   const [warning, setWarning]=useState (false)
-  
-      const onChangeInput = event => {
-        setFormRecov({ ...formRecov, [event.target.name]: event.target.value })   
-    }  
-
-     useEffect(()=>{setValidRecov((validation(formRecov)))},[formRecov])
+  const {request, error} = useHttp()
 
 
-     const confirmPassHandler = () =>{
+      const onChangeInput = event => {           
+        setFormRecov({ ...formRecov, [event.target.name]: event.target.value })             
+    } 
+    
+    const confirmPassHandler = () =>{
       if (formRecov.password==formRecov.newPassword){
         setFormRecov({...formRecov, password:formRecov.newPassword})
         setWarning(false)
       }else{
         setWarning(true)
-      }
-    
-    }   
+      }    
+    } 
+
+     useEffect(()=>{setValidRecov((validation(formRecov)))},[formRecov])
+  
  
     const handelHidePass = () =>{
       setPassHide(!passHide)  
     }
     const handelHideNewPass = () =>{
       setNewPasse(!newPass)  
-    }
-   
+    }   
 
   const handelClick =()=>{
     props.value.recov(false) 
@@ -44,8 +45,15 @@ function Recovery (props) {
     props.value.recov(false) 
   }
 
-
-    
+  const authorHandler = async () => {
+    try {
+        const data = await request('http://localhost:5000/api/recov','POST',{...formRecov})
+        console.log(data)      
+    } catch (e) {
+        console.log(e)            
+    }
+    handelClick()
+}
     return(
         <>
         
@@ -65,15 +73,15 @@ function Recovery (props) {
                     <label className="email_author">Электронная почта</label>
                 </div>
                 <div className={warning?"recovery_form_newPassword active":'recovery_form_newPassword'}>
-                    <input  className='password_author' name="password" value={formRecov.password}  type={passHide?'password':'text'} onClick={handelHidePass} onChange={onChangeInput} onBlur={confirmPassHandler} required />
+                    <input  className='password_author' name="password" value={formRecov.password}  type={passHide?'password':'text'} onClick={handelHidePass}   onBlur={confirmPassHandler} onChange={onChangeInput} required />
                     <label className={warning?"password_author active ":'password_author'}>Новый пароль</label>                  
                 </div>
                 <div className={warning?"recovery_form_secondNewPassword active":'recovery_form_secondNewPassword'}>
-                    <input tupe='password' className='password_second' name="newPassword" value={formRecov.newPassword}  type={newPass?'password':'text'}onClick={handelHideNewPass} onChange={onChangeInput} onBlur={confirmPassHandler} required />
+                    <input tupe='password' className='password_second' name="newPassword" value={formRecov.newPassword}  type={newPass?'password':'text'}onClick={handelHideNewPass}  onBlur={confirmPassHandler} onChange={onChangeInput}  required />
                     <label className={warning?"password_second active":'"password_second'}>Повторите ввод нового пароля</label>                  
                 </div>
                     {warning?<p className="recovery_form_warn">Пароли не совпадают</p>:''}
-                <input className="recovery_form_button" type="submit" value='Отправить' disabled={validRecov}/>                
+                <input className="recovery_form_button" type="button" value='Отправить' onClick={authorHandler} disabled={(validRecov||warning)}/>                
             </form>            
         </div>+
         

@@ -34,16 +34,16 @@ router.post( '/author',
           const accessToken =jwt.sign(
               {name: person.fio, userId:person.id},
               config.get("JwtAccessSecret"),
-              { expiresIn: 1200 }
+              { expiresIn:0}
           )
           
           const refreshToken =jwt.sign(
             {},
             config.get("JwtRefreshSecret"),
-            { expiresIn: 86400 }
+            { expiresIn: 86400 }                     
         )
-
-   
+        person.token=refreshToken
+        person.save()  
 
           res.json({ accessToken,refreshToken, userId:person.id, message:"Ok" })
        
@@ -52,6 +52,12 @@ router.post( '/author',
         res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
   }
 })
+
+
+
+
+//Обновление токенов
+
 
 module.exports = router
 

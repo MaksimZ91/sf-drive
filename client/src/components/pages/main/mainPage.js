@@ -8,8 +8,8 @@ import Slider from './sliderSection'
 import Try from './TrySection'
 import Garantee from './guranteeSection'
 import Info from './infoSection'
-import Authorpage from './authorPgae'
-import Recovery from "./recoveryPage";
+import Authorpage from '../autn/authorPgae'
+import Recovery from "../autn/recoveryPage";
 import { FormContex } from '../../contextApp'
 
 

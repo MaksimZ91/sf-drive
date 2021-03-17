@@ -1,8 +1,8 @@
 import React, {useContext, useState} from 'react'
 import Registabout from './RegistAbout'
 import Continue from './continue'
-import Authorpage from '../main/authorPgae'
-import Recovery from "../main/recoveryPage";
+import Authorpage from '../autn/authorPgae'
+import Recovery from "../autn/recoveryPage";
 import { FormContex } from '../../contextApp'
 import {FormProvider} from './formContex'
 

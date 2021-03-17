@@ -5,9 +5,13 @@ const cors = require('cors')
 
 const app = express();
 app.use(express.json({ extended: true }))
-app.use('/api',cors(), require('./routes/registr.routes') )
+app.use('/api',cors(),require('./routes/refresh.routes'))
+app.use('/api',cors(),require('./routes/registr.routes') )
 app.use('/api',cors(),require('./routes/author.routes'))
 app.use('/api',cors(),require('./routes/recov.routes'))
+
+
+
 
 const Startserver = () => {
 mongoose.connect(config.get("urlDb"), {

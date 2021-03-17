@@ -2,8 +2,8 @@ import  React, {useContext} from "react";
 import Titelfaq from "./titelFaq"
 import Question from "./question"
 import Footer from "../../footer/footer"
-import Authorpage from '../main/authorPgae'
-import Recovery from "../main/recoveryPage";
+import Authorpage from '../autn/authorPgae'
+import Recovery from "../autn/recoveryPage";
 import { FormContex } from '../../contextApp'
 
 

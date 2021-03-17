@@ -11,7 +11,8 @@ const schema = new Schema({
   about:{type: String},
   cod:{type:String},
   numberLicense:{type:String, required: true },
-  dateLicense:{type:String}  
+  dateLicense:{type:String},  
+  token:{type:String}
 })
 
 module.exports = model('User', schema)

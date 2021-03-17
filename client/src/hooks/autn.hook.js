@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react'
 
 export const useAuth = ()=>{
-    const [accessToken, setAccessToken]=useState(null)
-    const [refreshToken, setRefreshToken]=useState(null)
-    const [userId, setUserId]=useState(null)
+    const [accessToken, setAccessToken]=useState("")
+    const [refreshToken, setRefreshToken]=useState("")
+    const [userId, setUserId]=useState("")
     
-    const login = useCallback  ((acsToken,refToken, id)=>{
+    const login = useCallback  ( (acsToken,refToken, id)=>{
         setAccessToken(acsToken)
         setRefreshToken(refToken)
         setUserId(id)

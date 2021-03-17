@@ -1,11 +1,14 @@
 import React, {useContext} from "react"
 import {NavLink} from "react-router-dom"
 import { FormContex } from '../contextApp'
+import {useHttp} from '../../hooks/http.hook'
+
 
 
 
 function Navbar (props){
-  const {isAuthen, setAccessToken} = useContext(FormContex)
+  const {request} = useHttp()
+  const {isAuthen, setAccessToken} = useContext(FormContex) 
   
  const handelClick = () =>{
     props.value.openAuth(true)
@@ -16,12 +19,15 @@ function Navbar (props){
     setAccessToken(null)                 //временно для теста
   }
 
+  const requ = () => request('http://localhost:5000/api/test',"GET", null)
+
   return (
     <div className="nav_wrapper">
       <nav className="header__nav">
         <ul className="header__list">
-        <li className="header__link">{(isAuthen)?<NavLink to="/">Бронирования</NavLink>:<NavLink to="/about">О нас</NavLink>}</li>
-        <li className="header__link">{(isAuthen)?<NavLink to="/">Мои автомобили</NavLink>:<NavLink to="/recovery">Условия</NavLink>}</li>
+          <bytton onClick={requ }>fsdfsdfsdf</bytton>
+        <li className="header__link" >{(isAuthen)?<NavLink  to="/" >Бронирования</NavLink>:<NavLink to="/about">О нас</NavLink>}</li>
+        <li className="header__link" >{(isAuthen)?<NavLink to="/" >Мои автомобили</NavLink>:<NavLink to="/recovery"  >Условия</NavLink>}</li>
         <li className="header__link">{(isAuthen)?<NavLink to="/">Сообщения</NavLink>:<NavLink to="/faq">Частые вопросы</NavLink>}</li>
         </ul>
       </nav>

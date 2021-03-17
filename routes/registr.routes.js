@@ -39,6 +39,8 @@ router.post( '/registr',
         { expiresIn: 86400 }
             )
 
+        user.token=refreshToken
+
         user.save()
         
         res.status(201).json({accessToken, refreshToken, userId:user.id,  message:"Ok"})

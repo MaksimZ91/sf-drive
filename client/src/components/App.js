@@ -14,7 +14,7 @@ function App () {
     <FormProvider>
     <BrowserRouter>
     <Header/>
-    <Switch>
+    <Switch>    
     <Route path="/" component={Mainpage} exact/>
     <Route path="/about" component={Aboutpage} exact/>
     <Route path="/registr" component={Registpage}/>

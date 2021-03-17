@@ -7,11 +7,13 @@ import { FormContex } from '../../contextApp'
 
 
 
+
 function Authorpage (props) {
     const {login} = useContext(FormContex)
     const [formAuth, setFormAuth]=useState({ email:'', password:''})
     const [validAuth, setValidAuth]=useState(false)
-    const {request, error} = useHttp()
+    const [error,setError]=useState(null)
+    const {request} = useHttp()
     
     
     
@@ -35,14 +37,13 @@ function Authorpage (props) {
         try {
             const data = await request('http://localhost:5000/api/author','POST',{...formAuth})
             console.log(data.userId)
-            login(data.accessToken,data.refreshToken, data.userId)
-            
+            login(data.accessToken,data.refreshToken, data.userId)            
+            Close()            
         } catch (e) {
-            console.log(e)            
+            setError(e)  
         }
-        Close()
     }
-
+    
     return(
         <>
      
@@ -52,7 +53,7 @@ function Authorpage (props) {
             <img className="authorization_img_mobile" src="../src/img/undraw_sign_in_mobile.svg"/>
             <form className="authorization_form">
                 <p className="authorization_form_titel ">Авторизация</p>
-                <p className="authorization_form_warn">Не верная почта или пароль</p>
+                {(error)?<p className="authorization_form_warn">Не верная почта или пароль</p>:""}
                 <div className="authorization_form_email ">
                     <input tupe='text' name='email' className='email_author ' value={formAuth.email} onChange={onChangeInput} required/>
                     <label className="email_author">Электронная почта</label>

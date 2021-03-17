@@ -14,8 +14,7 @@ router.post( '/registr',
     body('password', 'Минимальная длина пароля 6 символов').isLength({ min: 6 })
   ],
   async (req, res)  =>{
-    
-  try {
+      try {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
           return res.status(400).json({ errors: errors.array(),massge:'Некорректный данные при регистрации' });
@@ -42,7 +41,7 @@ router.post( '/registr',
 
         user.save()
         
-        res.status(201).json({accessToken, refreshToken,  message:"Ok"})
+        res.status(201).json({accessToken, refreshToken, userId:user.id,  message:"Ok"})
 
   } catch (e){
         res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })

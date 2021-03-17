@@ -27,8 +27,8 @@ async (req, res) => {
     person.password =  await bcrypt.hash(password, 10)    
     person.save() 
     res.status(201).json({  message:"Ok"})      
-   } else{
-    res.status(400).json({message:'Ввденные пароли не совпадают!'})
+   }else{
+    res.status(400).json({message:'Введенные пароли не совпадают!'})
    }  
    
   } catch (e) {

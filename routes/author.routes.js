@@ -29,7 +29,7 @@ router.post( '/author',
         const isMatch = await bcrypt.compare(password, person.password)
         if (!isMatch) {
             return res.status(400).json({ message: 'Не верная почта или пароль' })
-          }
+          }        
 
           const accessToken =jwt.sign(
               {name: person.fio, userId:person.id},
@@ -45,7 +45,7 @@ router.post( '/author',
 
    
 
-          res.json({ accessToken,refreshToken,userId: person.id, message:"Ok" })
+          res.json({ accessToken,refreshToken, userId:person.id, message:"Ok" })
        
 
   } catch (e){

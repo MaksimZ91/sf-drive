@@ -1,16 +1,18 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import { NavLink } from 'react-router-dom'
 import {validation} from '../js/validationForm.js'
 import {useHttp} from '../../../hooks/http.hook'
-import {useAuth} from '../../../hooks/autn.hook'
+import { FormContex } from '../../contextApp'
+
 
 
 
 function Authorpage (props) {
+    const {login} = useContext(FormContex)
     const [formAuth, setFormAuth]=useState({ email:'', password:''})
     const [validAuth, setValidAuth]=useState(false)
     const {request, error} = useHttp()
-    const {login}=useAuth()
+    
     
     
   
@@ -32,8 +34,8 @@ function Authorpage (props) {
     const authorHandler = async () => {
         try {
             const data = await request('http://localhost:5000/api/author','POST',{...formAuth})
-            console.log(data.accessToken,data.refreshToken)
-            login(data.accessToken,data.refreshToken)
+            console.log(data.userId)
+            login(data.accessToken,data.refreshToken, data.userId)
             
         } catch (e) {
             console.log(e)            
@@ -56,7 +58,7 @@ function Authorpage (props) {
                     <label className="email_author">Электронная почта</label>
                 </div>
                 <div className="authorization_form_password ">
-                    <input tupe='password' className='password_author ' name='password' value={formAuth.password} onChange={onChangeInput}  required />
+                    <input tupe='password' className='password_author ' name='password' type="password" value={formAuth.password} onChange={onChangeInput}  required />
                     <label className="password_author ">Пароль</label>
                    <span className="authorization_form_password_recov"  onClick={handelClick}>Забыли?</span>
                 </div>

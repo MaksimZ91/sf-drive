@@ -1,14 +1,23 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 export const useAuth = ()=>{
     const [accessToken, setAccessToken]=useState(null)
     const [refreshToken, setRefreshToken]=useState(null)
+    const [userId, setUserId]=useState(null)
     
-    const login = useCallback  ((acsToken,refToken)=>{
+    const login = useCallback  ((acsToken,refToken, id)=>{
         setAccessToken(acsToken)
         setRefreshToken(refToken)
-        localStorage.setItem("tokens", JSON.stringify({accessToken:acsToken, refreshToken:refToken}))
+        setUserId(id)
+        localStorage.setItem("tokens", JSON.stringify({accessToken:acsToken, refreshToken:refToken,userId:id }))
     },[])
 
-    return {login}
+
+    useEffect(()=>{
+        const  userData = JSON.parse(localStorage.getItem("tokens"))
+        if(userData&&userData.accessToken){
+        login(userData.accessToken, userData.refreshToken, userData.userId)}
+    },[login])
+
+    return {login,accessToken, refreshToken, userId, setAccessToken, setRefreshToken}
 }

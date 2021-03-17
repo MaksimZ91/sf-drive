@@ -1,10 +1,11 @@
-import React, { useContext, useEffect} from "react"
+import React, { useContext} from "react"
 import { FormContex } from './formContex'
 import {useHttp} from '../../../hooks/http.hook'
-
+import {useAuth} from '../../../hooks/autn.hook'
 
 function Continue (props){
   const {form, formValidation} = useContext(FormContex)
+  const {login}=useAuth()
   const {request} = useHttp()
 
 
@@ -12,7 +13,8 @@ function Continue (props){
     try {
         const data = await request('http://localhost:5000/api/registr','POST',{...form})
         console.log(data) 
-        props.value.message(false)              
+        props.value.message(false)
+        login(data.accessToken,data.refreshToken, data.userId)
     } catch (e) {
       console.log(e)
       props.value.message(true)                 

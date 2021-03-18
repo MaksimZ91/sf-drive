@@ -33,7 +33,7 @@ function Header (){
          {openMenu?"":<Logo/>}
          <Navbar value={{openAuth:open, diss:openAuthor, rec:recovery, openMobileMenu:openMenu}} />
          {openMenu?<Navbarmobile  value={{openAuth:open, diss:openAuthor, rec:recovery, openMobileMenu:handelClick}}/>:""}
-         {openMenu?"":<img className="header__mobile_menu" src="../src/img/mobile_menu.svg" alt="mobile_menu" onClick={handelClick}/>}
+         {openMenu?"":<img className="header_mobile_menu" src="../src/img/mobile_menu.svg" alt="mobile_menu" onClick={handelClick}/>}
         </header>
       </>
     );  

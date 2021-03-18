@@ -11,12 +11,6 @@ import {FormProvider} from './formContex'
 function Registpage (){
   const [message, setMessage]=useState(false)
   const {openAuthor, setOpenAuthor, recovery, setRevocery} = useContext(FormContex)
- 
- 
-
- 
-
- 
   
   return(
     <FormProvider>

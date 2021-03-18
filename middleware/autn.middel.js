@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken')
 const config = require('config')
-const cors = require('cors')
 
 module.exports =  (req, res, next)  =>  {
   
@@ -9,18 +8,24 @@ module.exports =  (req, res, next)  =>  {
   }
 
   try {
+    
 
-    const token = req.headers.authorization.split(' ')[1] // "Bearer TOKEN"
+    const token = req.headers.authorization.split(' ')[1]
+  
 
     if (!token) {
       return res.status(401).json({ message: 'Нет авторизации' })
     }
 
-    const decoded = jwt.verify(token, config.get('JwtAccessSecret'))
-    req.user = decoded
-    next()
+    jwt.verify(token, config.get('JwtAccessSecret'), {}, (error, payload)=>{
+      if (error){
+        return res.staus(403).json({meassge:error})
+      }
+      req.payload=payload
+      next()
+    })
 
   } catch (e) {
-    res.status(500).json({ message: 'dsd' })
+    res.status(500).json({ message: 'Ошибка  доступа!' })
   }
 }

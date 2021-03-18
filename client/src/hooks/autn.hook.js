@@ -1,5 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react'
 
+
+const TOKENS_KEY="tokens"
+
 export const useAuth = ()=>{
     const [accessToken, setAccessToken]=useState("")
     const [refreshToken, setRefreshToken]=useState("")
@@ -9,12 +12,12 @@ export const useAuth = ()=>{
         setAccessToken(acsToken)
         setRefreshToken(refToken)
         setUserId(id)
-        localStorage.setItem("tokens", JSON.stringify({accessToken:acsToken, refreshToken:refToken,userId:id }))
+        localStorage.setItem(TOKENS_KEY, JSON.stringify({accessToken:acsToken, refreshToken:refToken,userId:id }))
     },[])
 
 
     useEffect(()=>{
-        const  userData = JSON.parse(localStorage.getItem("tokens"))
+        const  userData = JSON.parse(localStorage.getItem(TOKENS_KEY))
         if(userData&&userData.accessToken){
         login(userData.accessToken, userData.refreshToken, userData.userId)}
     },[login])

@@ -47,7 +47,7 @@ const selectCurentMonthDown = () => handelMonthDown(month, year)
       <div className={`${props.value.calendName}_date_mons`}><img  src="./src/img/chevron-left.svg" onClick={selectCurentMonthDown}/><span>{months[dateMon.getMonth()]}</span><img src="./src/img/chevron-right.svg" onClick={selectCurentMonthUp}/></div>
        <div className={`${props.value.calendName}_date_year`}><img src="./src/img/chevron-left.svg" onClick={selectCurentYearDown}/><span>{dateMon.getFullYear()}</span><img  src="./src/img/chevron-right.svg"onClick={selectCurentYearUp}/></div>
       </div>
-      <Table value={{month:dateMon.getMonth(), year:dateMon.getFullYear(), name:props.value.name, tableName:props.value.calendName}}/>
+      <Table value={{month:dateMon.getMonth(), year:dateMon.getFullYear(), name:props.value.name, tableName:props.value.calendName, isHide:props.value.setHied}}/>
       </div>
   )
 }

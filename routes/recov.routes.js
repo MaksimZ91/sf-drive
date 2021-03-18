@@ -10,6 +10,7 @@ router.post('/recov',
   body('password').isLength({ min: 6 })
 ],
 async (req, res) => {
+   
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

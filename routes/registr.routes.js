@@ -30,16 +30,15 @@ router.post( '/registr',
         const accessToken =  jwt.sign(
           {name: user.fio, userId:user.id},
           config.get("JwtAccessSecret"),
-          { expiresIn: 1200 }
-                )
-                
+          { expiresIn: config.get("ACCESS_TOKEN_LIFE")}
+                )                
       const refreshToken =  jwt.sign(
         {},
         config.get("JwtRefreshSecret"),
-        { expiresIn: 86400 }
+        { expiresIn: config.get("REFRESH_TOKEN_LIFE") }
             )
 
-        user.token=refreshToken
+        user.refToken=refreshToken
 
         user.save()
         

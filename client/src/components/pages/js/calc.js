@@ -13,6 +13,8 @@ let months = {
   December: 11
 }
 
+const DAYS_IN_WEEK = 7
+
 let dayInMons =[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
  
 let week = [6, 0, 1, 2, 3, 4, 5];
@@ -56,9 +58,9 @@ export function getDayInMonth (date){
   let day=1
    let daysInMonth = getDayInMonth(date)
    let startDay=getDayOfWeek(date)  
-   for (let i = 0; i < (daysInMonth+startDay)/7; i++) {
+   for (let i = 0; i < (daysInMonth+startDay)/DAYS_IN_WEEK; i++) {
     result[i] = [];
-        for (let j = 0; j < 7; j++) {
+        for (let j = 0; j < DAYS_IN_WEEK; j++) {
         if ((i === 0 && j < startDay) || day > daysInMonth) {
             result[i][j] = undefined;
         } else {

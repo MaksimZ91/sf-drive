@@ -9,6 +9,7 @@ app.use('/api',cors(),require('./routes/refresh.routes'))
 app.use('/api',cors(),require('./routes/registr.routes') )
 app.use('/api',cors(),require('./routes/author.routes'))
 app.use('/api',cors(),require('./routes/recov.routes'))
+app.use('/api',cors(),require('./routes/test.refresh.routes'))
 
 
 

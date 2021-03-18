@@ -36,7 +36,6 @@ function Authorpage (props) {
     const authorHandler = async () => {
         try {
             const data = await request('http://localhost:5000/api/author','POST',{...formAuth})
-            console.log(data.userId)
             login(data.accessToken,data.refreshToken, data.userId)            
             Close()            
         } catch (e) {
@@ -54,11 +53,11 @@ function Authorpage (props) {
             <form className="authorization_form">
                 <p className="authorization_form_titel ">Авторизация</p>
                 {(error)?<p className="authorization_form_warn">Не верная почта или пароль</p>:""}
-                <div className="authorization_form_email ">
+                <div className={(error)?"authorization_form_email active":"authorization_form_email"}>
                     <input tupe='text' name='email' className='email_author ' value={formAuth.email} onChange={onChangeInput} required/>
                     <label className="email_author">Электронная почта</label>
                 </div>
-                <div className="authorization_form_password ">
+                <div className={(error)?"authorization_form_password active":"authorization_form_password"}>
                     <input tupe='password' className='password_author ' name='password' type="password" value={formAuth.password} onChange={onChangeInput}  required />
                     <label className="password_author ">Пароль</label>
                    <span className="authorization_form_password_recov"  onClick={handelClick}>Забыли?</span>

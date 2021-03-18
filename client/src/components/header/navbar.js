@@ -3,6 +3,7 @@ import {NavLink} from "react-router-dom"
 import { FormContex } from '../contextApp'
 import {useHttp} from '../../hooks/http.hook'
 
+const TOKENS_KEY='tokens'
 
 
 
@@ -15,17 +16,19 @@ function Navbar (props){
   }
 
   const onClear = () =>{
-    localStorage.removeItem('tokens')
+    localStorage.removeItem(TOKENS_KEY)
     setAccessToken(null)                 //временно для теста
   }
 
-  const requ = () => request('http://localhost:5000/api/test',"GET", null)
+  const requ = async () => {const data =  await request('http://localhost:5000/api/test')
+                        console.log(data)}
+                     
 
   return (
     <div className="nav_wrapper">
       <nav className="header__nav">
         <ul className="header__list">
-          <bytton onClick={requ }>fsdfsdfsdf</bytton>
+        <button onClick={requ}>Тест</button>
         <li className="header__link" >{(isAuthen)?<NavLink  to="/" >Бронирования</NavLink>:<NavLink to="/about">О нас</NavLink>}</li>
         <li className="header__link" >{(isAuthen)?<NavLink to="/" >Мои автомобили</NavLink>:<NavLink to="/recovery"  >Условия</NavLink>}</li>
         <li className="header__link">{(isAuthen)?<NavLink to="/">Сообщения</NavLink>:<NavLink to="/faq">Частые вопросы</NavLink>}</li>

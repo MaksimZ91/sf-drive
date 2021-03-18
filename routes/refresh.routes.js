@@ -4,36 +4,36 @@ const config = require('config')
 const jwt = require('jsonwebtoken')
 const router = Router()
 
-
-router.post('/refresh'), async (req,res) =>{  
+router.post('/refresh', async (req,res) =>{ 
   try{
-  const {refreshToken}=req.body
-  console.log(req.body)
-  const data = jwt.verify(refreshToken, config.get("JwtRefreshSecret"))
-  if(!data){
+  const {refToken}=req.body 
+  const data = jwt.verify(refToken, config.get("JwtRefreshSecret"))
+    if(!data){
     res.status(404).json({message:"Токин не валиден!"})}
-    const person= await User.findOne({refreshToken})
+    const person= await User.findOne({refToken})
 
-    const neWaccessToken =jwt.sign(
+    const accessToken =jwt.sign(
       {name: person.fio, userId:person.id},
       config.get("JwtAccessSecret"),
-      { expiresIn: 1200 })
+      { expiresIn: config.get("ACCESS_TOKEN_LIFE")})
   
-  const neWrefreshToken =jwt.sign(
+  const refreshToken =jwt.sign(
     {},
     config.get("JwtRefreshSecret"),
-    { expiresIn: 86400 })
+    { expiresIn: config.get("REFRESH_TOKEN_LIFE")})
 
-    person.token=neWrefreshToken
+    person.refToken=refreshToken
+    
 
     person.save()
-    res.json({neWaccessToken, neWrefreshToken, Id:person.id })
+
+    res.json({accessToken, refreshToken, userId:person.id })
 
   }catch(e){
-
+    res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
   }
-  res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
-}
+
+})
 
 
 

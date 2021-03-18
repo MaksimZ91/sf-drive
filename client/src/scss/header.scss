@@ -119,7 +119,7 @@ h2{
     display: none;
     }
   }
-.header__mobile_menu{
+.header_mobile_menu{
   display:none;
   @include mobile{
     display:inline-block;

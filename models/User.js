@@ -12,7 +12,7 @@ const schema = new Schema({
   cod:{type:String},
   numberLicense:{type:String, required: true },
   dateLicense:{type:String},  
-  token:{type:String}
+  refToken:{type:String}
 })
 
 module.exports = model('User', schema)

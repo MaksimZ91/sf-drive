@@ -8,14 +8,14 @@ import Recovery from "../autn/recoveryPage";
 import { FormContex } from '../../contextApp'
 
 function Aboutpage (){ 
-  const {openAuthor, setOpenAuthor, recovery, setRevocery} = useContext(FormContex)
+  const {openAuthor, setOpenAuthor, recovery, setRecovery} = useContext(FormContex)
 
   
   return(
     <>
     <main className={(recovery||openAuthor)?'activeMain':''}>
-    {openAuthor?<Authorpage value={{recov:setRevocery,closeAuthor:setOpenAuthor}}/>:""}
-    {recovery?<Recovery value={{recov:setRevocery,backStep:setOpenAuthor}}/>:""} 
+    {openAuthor?<Authorpage value={{recov:setRecovery,closeAuthor:setOpenAuthor}}/>:""}
+    {recovery?<Recovery value={{recov:setRecovery,backStep:setOpenAuthor}}/>:""} 
     <About/>
     <Contact/>
     <Team/>

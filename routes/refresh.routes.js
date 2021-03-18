@@ -24,7 +24,6 @@ router.post('/refresh', async (req,res) =>{
 
     person.refToken=refreshToken
     
-
     person.save()
 
     res.json({accessToken, refreshToken, userId:person.id })

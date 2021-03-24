@@ -11,10 +11,9 @@ function Continue (props){
 
   const authorRequest = async () => {
     try {
-        const data = await request('http://localhost:5000/api/registr','POST',{...form})
+        const data = await request('http://localhost:5000/registr','POST',{...form})
         console.log(data) 
-        props.value.message(false)
-        login(data.accessToken,data.refreshToken, data.userId)
+        props.value.message(false)        
     } catch (e) {
       console.log(e)
       props.value.message(true)                 

@@ -29,7 +29,7 @@ export const useHttp = () =>{
                 const isValidAcceessToken = diff > SECONDS
                 if (!isValidAcceessToken){
                     const refToken =tokens.refreshToken
-                    const response = await fetch('http://localhost:5000/api/refresh', 
+                    const response = await fetch('http://localhost:5000/author/refresh', 
                     {
                         method:'POST',
                         body:JSON.stringify({refToken}),
@@ -42,9 +42,10 @@ export const useHttp = () =>{
                     localStorage.setItem(TOKENS_KYES, JSON.stringify(dataToken))
                      access= dataToken.accessToken
                     }
-                if (body){
+                    if (body){
                     body = JSON.stringify(body)}
-                    headers={'Content-Type':'application/json', Authorization: `Bearer ${access}`}
+                    if(Object.keys(headers).length==0){
+                    headers={'Content-Type':'application/json', Authorization: `Bearer ${access}`}}
                     const response = await fetch(url,{method,body,headers})
                     const data =  await response.json()
                     if(!response.ok){

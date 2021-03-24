@@ -47,7 +47,7 @@ function Recovery (props) {
 
   const authorHandler = async () => {
     try {
-        const data = await request('http://localhost:5000/api/recov','POST',{...formRecov})
+        const data = await request('http://localhost:5000/author/recov','POST',{...formRecov})
         console.log(data)      
     } catch (e) {
         console.log(e)            

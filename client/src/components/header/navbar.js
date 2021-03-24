@@ -20,7 +20,7 @@ function Navbar (props){
     setAccessToken(null)                 //временно для теста
   }
 
-  const requ = async () => {const data =  await request('http://localhost:5000/api/test')
+  const requ = async () => {const data =  await request('http://localhost:5000/author/test')
                         console.log(data)}
                      
 

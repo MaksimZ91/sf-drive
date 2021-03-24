@@ -35,7 +35,7 @@ function Authorpage (props) {
 
     const authorHandler = async () => {
         try {
-            const data = await request('http://localhost:5000/api/author','POST',{...formAuth})
+            const data = await request('http://localhost:5000/author/login','POST',{...formAuth})
             login(data.accessToken,data.refreshToken, data.userId)            
             Close()            
         } catch (e) {

@@ -1,13 +1,11 @@
 import  React, {useContext} from "react";
-import Header from "./header/header"
 import Aboutpage from "./pages/about/aboutPage"
 import Mainpage from "./pages/main/mainPage"
 import Faq from "./pages/faq/Faq"
 import Registpage from "./pages/registr/registPage"
-import Newpage from './pages/new/newPage'
-import {Route, BrowserRouter, Switch} from "react-router-dom"
-import {FormProvider} from './contextApp'
+import {Route} from "react-router-dom"
 import { FormContex } from './contextApp'
+import Newpage from './pages/new/newPage'
 
 
 

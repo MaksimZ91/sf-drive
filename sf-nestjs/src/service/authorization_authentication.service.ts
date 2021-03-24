@@ -84,7 +84,6 @@ export class AuthorizationAuthenService {
             { expiresIn: 86400})
             
             person.refToken=refreshToken
-
             person.save()
             
             return {accessToken, refreshToken, userId:person.id }

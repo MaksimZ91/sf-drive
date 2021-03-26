@@ -7,6 +7,8 @@ import "./src/scss/main.scss";
 import './src/scss/authorization.scss'
 import './src/scss/recovery.scss'
 import './src/scss/navbarMobile.scss'
+import './src/scss/autolisttitel.scss'
+import './src/scss/auto.scss'
 
 
 

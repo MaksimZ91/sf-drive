@@ -1,0 +1,44 @@
+@import "mixins";
+@import "header";
+@import "fonts";
+
+.autoList{
+    margin:170px auto 40px auto;
+    &_img{
+        display: block;
+        margin: 0 auto;
+    }
+    &_mobile{
+        display: none;
+    }
+    &_titel{
+        margin-top: 61px;
+        padding: 0;        
+    }
+    &_info{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 147.3%;
+        text-align: center;
+        color: #1B1B1B;
+        margin: 25px 0 102px 0;        
+    }
+    &_button{
+        display: block  ;
+        margin: 0 auto;
+        width: 250px;
+        height: 51px;
+        background: #61A199;
+        border-radius: 6px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: #FFFFFF;
+        border-style: none;
+
+    }
+}

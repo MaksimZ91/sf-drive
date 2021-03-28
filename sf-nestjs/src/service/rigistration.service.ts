@@ -1,4 +1,4 @@
-import {  HttpException, HttpStatus, Injectable, Post } from "@nestjs/common";
+import {  HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { InjectModel } from '@nestjs/mongoose'
 import { User, UserDocument } from '../../Shemas/UserShema';
 import { Model } from 'mongoose';

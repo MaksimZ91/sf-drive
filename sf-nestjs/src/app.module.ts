@@ -1,14 +1,16 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { MongooseModule } from '@nestjs/mongoose';
-import { AuthorizationModul } from './modules/authorization_authentication.modul'
-import { RegistrModul } from './modules/rigistration.modul'
+import { AuthorizationModul } from './modules/authorization_authentication.module'
+import { RegistrModul } from './modules/rigistration.module'
+import { AutoModule } from './modules/auto.module'
+import { TypeOrmModule } from '@nestjs/typeorm'
 
 
 @Module({ 
    
   imports: [MongooseModule.forRootAsync({
-            imports:[ConfigModule],
+            imports:[ConfigModule],            
             useFactory:async (configService:ConfigService)=>({
               uri:configService.get("DATABASE_USER")}),
             inject:[ConfigService]
@@ -17,7 +19,22 @@ import { RegistrModul } from './modules/rigistration.modul'
               isGlobal: true,                                      
             }),
             AuthorizationModul,
-            RegistrModul,],
+            RegistrModul,
+            AutoModule,
+            TypeOrmModule.forRoot({
+              name: 'default',
+              type:'mongodb',
+              host:'localhosat',
+              url: process.env.DATABASE_USER,
+              port:27017,
+              database:"sf_db",
+              useNewUrlParser:true,
+              useUnifiedTopology:true,
+              entities:[
+                `${__dirname}/**/*.entity.{ts,js}`
+              ]
+            })
+          ],
   controllers: [],
   providers: [],
 })

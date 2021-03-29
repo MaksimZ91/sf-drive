@@ -1,30 +1,42 @@
-import {  HttpException, HttpStatus, Injectable } from "@nestjs/common";
-import { InjectModel } from '@nestjs/mongoose'
-import { User, UserDocument } from '../../Shemas/UserShema';
-import { Model } from 'mongoose';
+import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { RegistrUserDto } from "src/dto/registration-user.dto";
 import { ConfigService } from "@nestjs/config";
+import { getMongoManager } from "typeorm";
+import { Users } from '../entites/user.entity';
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 @Injectable()
 export class RegistrationService {  
-    constructor(@InjectModel(User.name) private userModel: Model<UserDocument>,
-                                        private configService:ConfigService) {}
+    constructor(private configService:ConfigService) {}
 
     
        async Registration(registrationDTO:RegistrUserDto){
-       
-            const {email, password}=registrationDTO
-            const person = await this.userModel.findOne({email})
+           const manager = getMongoManager() 
+           const {email, password}=registrationDTO
+           const newUser = new Users()
+           newUser.email=email
+           newUser.fio=registrationDTO.fio
+           newUser.phone=registrationDTO.phone
+           newUser.date=registrationDTO.date
+           newUser.number=registrationDTO.number
+           newUser.passDate=registrationDTO.passDate
+           newUser.about=registrationDTO.about
+           newUser.cod=registrationDTO.cod
+           newUser.numberLicense=registrationDTO.numberLicense
+           newUser.dateLicense=registrationDTO.dateLicense
+                         
+            const person = await manager.findOne(Users,{email:email});
+            console.log(person)
             if(person){
                 throw new HttpException('Такой пользователь уже сушествует', HttpStatus.BAD_REQUEST)}
 
-            const hashPassword = await bcrypt.hash(password, 10)      
-            const user = new this.userModel({...registrationDTO, password:hashPassword})
+            const hashPassword = await bcrypt.hash(password, 10)
+            newUser.password=hashPassword
+                    
                         
             const accessToken =  jwt.sign(
-                 {name: user.fio, userId:user.id},
+                 {name: newUser.fio, userId:newUser.id},
                  this.configService.get("JWT_ACCESS_SECRET"),
                  { expiresIn: this.configService.get("ACCESS_TOKEN_LIFE")})
 
@@ -32,11 +44,11 @@ export class RegistrationService {
                 {},
                 this.configService.get("JWT_REFRESH_SECRET"),
                 { expiresIn: this.configService.get("REFRESH_TOKEN_LIFE") })                        
-                user.refToken=refreshToken
+                newUser.refToken=refreshToken
                 
-                user.save()         
+                await manager.save(newUser)         
          
            
-           return {accessToken, refreshToken, userId:user.id, message:"Ok"}      
+           return {accessToken, refreshToken, userId:newUser.id, message:"Ok"}      
         }
 }

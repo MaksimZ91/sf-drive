@@ -1,22 +1,21 @@
 import {  HttpException, HttpStatus, Injectable, } from "@nestjs/common";
-import { InjectModel } from '@nestjs/mongoose'
-import { User, UserDocument } from '../../Shemas/UserShema';
-import { Model } from 'mongoose';
 import { AuthorizationUserDto }from '../dto/authorization-user.dto'
 import { RecoveryPasswordDto } from '../dto/recoveryPassword.dto'
 import { RefreshTokenUserDto  } from '../dto/refreshTokenUser.dto'
 import { ConfigService } from "@nestjs/config";
+import { getMongoManager } from "typeorm";
+import { Users } from '../entites/user.entity'
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 @Injectable()
 export class AuthorizationAuthenService {
-    constructor(@InjectModel(User.name) private userModel: Model<UserDocument>,
-                                        private configService:ConfigService) {}
+    constructor(private configService:ConfigService) {}
 
     async Authorization(authorizationUser:AuthorizationUserDto){
+        const manager= getMongoManager()        
         const {email, password} = authorizationUser
-        const person = await this.userModel.findOne({email})
+        const person = await manager.findOne(Users, {email:email})
 
          if (!person){
           throw new HttpException('Пользователь c таким email не найден!', HttpStatus.NOT_FOUND)
@@ -39,7 +38,7 @@ export class AuthorizationAuthenService {
               { expiresIn: this.configService.get("REFRESH_TOKEN_LIFE") })
               
               person.refToken=refreshToken
-              person.save()
+              manager.save(person)
 
               return{ accessToken,refreshToken, userId:person.id, message:"Ok" }
             }
@@ -48,7 +47,8 @@ export class AuthorizationAuthenService {
 
     async Recovery(recoveryPasswordUser:RecoveryPasswordDto ){
         const {email, password, newPassword}=recoveryPasswordUser
-        const person = await this.userModel.findOne({email})
+        const manager= getMongoManager()  
+        const person = await manager.findOne(Users, {email})
 
         if (!person){
             throw new HttpException('Пользователь c таким email не найден!', HttpStatus.NOT_FOUND)
@@ -56,7 +56,7 @@ export class AuthorizationAuthenService {
             
             if(password==newPassword){
                 person.password =  await bcrypt.hash(password, 10)    
-                person.save() 
+                manager.save(person) 
                 return({  message:"Ok"})
             }else{
                 throw new HttpException('Введенные пароли не совпадают!', HttpStatus.BAD_REQUEST)
@@ -65,13 +65,14 @@ export class AuthorizationAuthenService {
         
         async Refresh(refreshTokenUser:RefreshTokenUserDto){
             const {refToken}=refreshTokenUser
+            const manager = getMongoManager()  
             const data = jwt.verify(refToken, "RefreshSecret")
             
             if(!data){
                 throw new HttpException("Токин не валиден!", HttpStatus.BAD_REQUEST)
             }
             
-            const person= await this.userModel.findOne({refToken})
+            const person= await manager.findOne(Users, {refToken})
 
             const accessToken =jwt.sign(
             {name: person.fio, userId:person.id},
@@ -84,7 +85,7 @@ export class AuthorizationAuthenService {
             { expiresIn: 86400})
             
             person.refToken=refreshToken
-            person.save()
+            manager.save(person)
             
             return {accessToken, refreshToken, userId:person.id }
         }

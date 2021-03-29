@@ -2,7 +2,7 @@ import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { RegistrUserDto } from "src/dto/registration-user.dto";
 import { ConfigService } from "@nestjs/config";
 import { getMongoManager } from "typeorm";
-import { Users } from '../entites/user.entity';
+import { Users } from '../entites/user.entity'
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 

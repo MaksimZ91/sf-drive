@@ -1,4 +1,6 @@
 import { Injectable } from "@nestjs/common";
+import { getMongoManager, ObjectID } from "typeorm";
+import { Autos } from '../entites/auto.entity'
 
 
 
@@ -8,11 +10,13 @@ export class AutoService{
 
 
   async getAll(){
-
+    const manager = getMongoManager()
+    return manager.find(Autos)
   }
 
-  async getOne(id:string){
-    
+  async getOne(id){
+    const manager = getMongoManager()
+    return manager.findOne(Autos, {})
   }
 
 }

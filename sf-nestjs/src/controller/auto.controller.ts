@@ -14,4 +14,10 @@ export class AutoController {
     getOne(@Param('id') id: string){
       return this.autoService.getOne(id)
     }
+
+
+    
+
+
+
     }

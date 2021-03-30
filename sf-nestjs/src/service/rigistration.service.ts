@@ -1,18 +1,17 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { RegistrUserDto } from "src/dto/registration-user.dto";
 import { ConfigService } from "@nestjs/config";
-import { getMongoManager } from "typeorm";
 import { Users } from '../entites/user.entity'
+import { UserRepository } from "../repo/user.repository";
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 @Injectable()
 export class RegistrationService {  
-    constructor(private configService:ConfigService) {}
-
+    constructor(private configService:ConfigService,
+                private userRepository:UserRepository) {}
     
        async Registration(registrationDTO:RegistrUserDto){
-           const manager = getMongoManager() 
            const {email, password}=registrationDTO
            const newUser = new Users()
            newUser.email=email
@@ -26,8 +25,7 @@ export class RegistrationService {
            newUser.numberLicense=registrationDTO.numberLicense
            newUser.dateLicense=registrationDTO.dateLicense
                          
-            const person = await manager.findOne(Users,{email:email});
-            console.log(person)
+            const person = await this.userRepository.FindeOneByEmail(email);
             if(person){
                 throw new HttpException('Такой пользователь уже сушествует', HttpStatus.BAD_REQUEST)}
 
@@ -36,7 +34,7 @@ export class RegistrationService {
                     
                         
             const accessToken =  jwt.sign(
-                 {name: newUser.fio, userId:newUser.id},
+                 {name: newUser.fio, userId:newUser._id},
                  this.configService.get("JWT_ACCESS_SECRET"),
                  { expiresIn: this.configService.get("ACCESS_TOKEN_LIFE")})
 
@@ -46,9 +44,9 @@ export class RegistrationService {
                 { expiresIn: this.configService.get("REFRESH_TOKEN_LIFE") })                        
                 newUser.refToken=refreshToken
                 
-                await manager.save(newUser)         
+                await this.userRepository.SaveUser(newUser)      
          
            
-           return {accessToken, refreshToken, userId:newUser.id, message:"Ok"}      
+           return {accessToken, refreshToken, userId:newUser._id, message:"Ok"}      
         }
 }

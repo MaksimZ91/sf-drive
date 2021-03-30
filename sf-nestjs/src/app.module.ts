@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config'
+import { ConfigModule } from '@nestjs/config'
 import { AuthorizationModul } from './modules/authorization_authentication.module'
 import { RegistrModul } from './modules/rigistration.module'
 import { AutoModule } from './modules/auto.module'

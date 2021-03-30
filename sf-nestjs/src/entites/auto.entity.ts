@@ -1,12 +1,12 @@
-import { ObjectId } from "mongoose";
-import { Column, Entity, ObjectIdColumn } from "typeorm";
+import { Column, Entity, ManyToOne, ObjectIdColumn,ObjectID } from "typeorm";
+import { Users } from './user.entity'
 
 
 @Entity()
 export class Autos {
 
 @ObjectIdColumn()
-  id:ObjectId; 
+  _id:ObjectID; 
 
   @Column()
   mark:string;
@@ -56,37 +56,10 @@ export class Autos {
   @Column()
   kasko:string;
 
+  @ManyToOne(()=>Users, user=>user.autos)
+  user:Users
 
-  @Column()
-  isofix:boolean;
 
-  @Column()
-  srs:boolean;
-
-  
-  @Column()
-  heater:boolean;  
-
-  @Column()
-  bluetooth:boolean;
-
-  @Column()
-  cruis:boolean;
-
-  @Column()
-  condi:boolean;
-
-  @Column()
-  media:boolean;
-
-  @Column()
-  navigation:boolean;
-
-  @Column()
-  ventiSeat:boolean;
-
-  @Column()
-  HeaterSeat:boolean;
 
 
 }

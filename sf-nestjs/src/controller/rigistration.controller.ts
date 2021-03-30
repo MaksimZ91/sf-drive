@@ -6,7 +6,7 @@ import { RegistrationService } from "src/service/rigistration.service";
 export class RegistrController {
     constructor (private registrationService:RegistrationService){}
 
-    @HttpCode(201)    
+     
     @Post()
         Registration(@Body() registrationUser:RegistrUserDto) {            
         return this.registrationService.Registration(registrationUser)

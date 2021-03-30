@@ -1,12 +1,13 @@
-import { ObjectId } from "mongoose";
-import { Column, Entity, ObjectIdColumn } from "typeorm";
+;
+import { Column, Entity, ObjectIdColumn, OneToMany, ObjectID  } from "typeorm";
+import { Autos } from './auto.entity'
 
 
 @Entity()
 export class Users {
 
 @ObjectIdColumn()
-  id:ObjectId; 
+  _id:ObjectID ; 
 
   @Column()
   fio:string;
@@ -43,5 +44,8 @@ export class Users {
   
   @Column()
   refToken:string;
+
+  @OneToMany(()=>Autos, autos=>autos.user)
+  autos:Autos
 
 }

@@ -13,9 +13,9 @@ export class AutoController {
 
   
 
-    @Get()
-    getAll(){
-        return this.autoService.getAll()
+    @Post('test')
+    getAll(@Body() addAuto:AddAutoDto){
+        return this.autoService.getAll(addAuto)
     }
      
     @Get(':id')

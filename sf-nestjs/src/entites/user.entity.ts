@@ -1,5 +1,5 @@
 ;
-import { Column, Entity, ObjectIdColumn, OneToMany, ObjectID  } from "typeorm";
+import { Column, Entity, ObjectIdColumn, OneToMany, ObjectID, JoinTable  } from "typeorm";
 import { Autos } from './auto.entity'
 
 
@@ -46,6 +46,6 @@ export class Users {
   refToken:string;
 
   @OneToMany(()=>Autos, autos=>autos.user)
-  autos:Autos
+  autos:Autos[]
 
 }

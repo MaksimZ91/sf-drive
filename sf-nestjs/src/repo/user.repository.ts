@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { getMongoRepository } from "typeorm";
 import { Users } from '../entites/user.entity'
+import { ObjectID } from 'mongodb'
 
 @Injectable()
 export class UserRepository {
@@ -10,14 +11,20 @@ export class UserRepository {
         return await repository.save(user)
     }
 
-    async FindeOneByEmail(param:string){
+    async FindOneByEmail(param:string){
         const repository = getMongoRepository(Users)
         return await repository.findOne({email:param})
     }
 
-    async FindeOneByRefToken(param:string){
+    async FindOneByRefToken(param:string){
         const repository = getMongoRepository(Users)
         return await repository.findOne({refToken:param})
+    }
+
+    async FindOneByID(param:string){
+        const repository = getMongoRepository(Users)
+        return await repository.findOne({where:{['_id']:new ObjectID(param)}})
+       
     }
 
     

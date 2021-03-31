@@ -5,16 +5,14 @@ const TOKENS_KYES='tokens'
 
 function Autolist (){
     const {request} = useHttp()
-    const data = JSON.parse(localStorage.getItem(TOKENS_KYES))
-    const form={ userId:data.userId, mark:'toyota', model:'filder',year:'1991', number:'Y234as', vin:'fdfdfdfdf',
-    collor:"white", volume:'3', power:'230', transmission:'auto', millege:'234000',numberPTS:'sdsdsd',
-
-
-    }
+   
 
 
     const authorRequest = async () => {
         try {
+            const auto = await JSON.parse(localStorage.getItem(TOKENS_KYES))
+            const form={ userId:auto.userId, mark:'nissan', model:'calaris',year:'1991', number:'Y33as', vin:'fdfdfdfdf',
+            collor:"white", volume:'3', power:'230', transmission:'auto', millege:'23422000',numberPTS:'sdsdsd'}
             const data = await request('http://localhost:5000/auto/add','POST',{...form})
             console.log(data) 
                 
@@ -22,12 +20,26 @@ function Autolist (){
           console.log(e)
                        
         } 
-    }   
+    } 
+    
+    const test = async () =>{
+        try {
+            const auto = await JSON.parse(localStorage.getItem(TOKENS_KYES))
+            const form={ userId:auto.userId }
+            const data = await request('http://localhost:5000/auto/606419705cb47232289b76ba','GET')
+            console.log(data) 
+                
+        } catch (e) {
+          console.log(e)
+                       
+        } 
+
+    }
 
     return(
         <>
         <section className='myAuto'>
-        <h1 className='myAuto_titel'>Мои автомобили</h1>
+        <h1 className='myAuto_titel' onClick={test}>Мои автомобили</h1>
         
         <Auto/>  
         <Auto/>  

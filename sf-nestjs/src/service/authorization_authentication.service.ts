@@ -15,7 +15,7 @@ export class AuthorizationAuthenService {
     async Authorization(authorizationUser:AuthorizationUserDto){
        
         const {email, password} = authorizationUser
-        const person = await this.userRepository.FindeOneByEmail(email)
+        const person = await this.userRepository.FindOneByEmail(email)
         
          if (!person){
           throw new HttpException('Пользователь c таким email не найден!', HttpStatus.NOT_FOUND)
@@ -48,7 +48,7 @@ export class AuthorizationAuthenService {
     async Recovery(recoveryPasswordUser:RecoveryPasswordDto ){
         const {email, password, newPassword}=recoveryPasswordUser
        
-        const person = await this.userRepository.FindeOneByEmail(email)
+        const person = await this.userRepository.FindOneByEmail(email)
 
         if (!person){
             throw new HttpException('Пользователь c таким email не найден!', HttpStatus.NOT_FOUND)
@@ -71,7 +71,7 @@ export class AuthorizationAuthenService {
                 throw new HttpException("Токин не валиден!", HttpStatus.BAD_REQUEST)
             }
             
-            const person= await this.userRepository.FindeOneByRefToken(refToken)
+            const person= await this.userRepository.FindOneByRefToken(refToken)
 
             const accessToken =jwt.sign(
             {name: person.fio, userId:person._id},

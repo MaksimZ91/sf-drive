@@ -1,40 +1,52 @@
 import { Injectable } from "@nestjs/common";
 import { getMongoManager} from "typeorm";
-import { ObjectID } from 'mongodb'
+import { AddAutoDto } from '../dto/add-auto.dto'
+import { AutoRepository } from "src/repo/auto.repository";
+import { UserRepository } from "src/repo/user.repository";
 import { Autos } from '../entites/auto.entity'
-import {AddAutoDto} from '../dto/add-auto.dto'
-import { Users } from "src/entites/user.entity";
+
+
 
 
 
 @Injectable()
 export class AutoService{
+  constructor(private autoRepository:AutoRepository,
+              private userRepository:UserRepository){}
   
   async createAuto(addAuto:AddAutoDto){
-    const manager = getMongoManager()   
     const newAuto = new Autos
-    const currentUser = await manager.findOne(Users,{_id:new ObjectID(addAuto.userId) })
+    const currentUser = await this.userRepository.FindOneByID(addAuto.userId)
     newAuto.mark=addAuto.mark
     newAuto.model=addAuto.model
     newAuto.number=addAuto.number
-    newAuto.user=currentUser
-    currentUser.autos=newAuto
-    await manager.save(currentUser)
-    await manager.save(newAuto)
+    newAuto.year=addAuto.year
+    newAuto.vin=addAuto.vin
+    newAuto.collor=addAuto.collor
+    newAuto.volume=addAuto.volume
+    newAuto.power=addAuto.power
+    newAuto.transmission=addAuto.transmission
+    newAuto.millege=addAuto.millege
+    newAuto.numberPTS=addAuto.numberPTS
+    newAuto.price=addAuto.price
+    newAuto.priceThreeDays=addAuto.priceThreeDays
+    newAuto.priceFiveDays=addAuto.priceFiveDays
+    newAuto.osago=addAuto.osago
+    newAuto.kasko=addAuto.kasko
+    newAuto.user=currentUser   
+    await this.autoRepository.SaveAuto(newAuto)
     return { message:"Ok"} 
 
   }
 
 
-
-  async getAll(){
-    const manager = getMongoManager()
-    return manager.find(Autos)
+  async getAll(addAuto:AddAutoDto){    
+    const data = this.autoRepository.FindAllByUserID(addAuto.userId)      
+    return data
   }
-
-  async getOne(id){
-    const manager = getMongoManager()
-    return manager.findOne(Autos, {})
+  
+  async getOne(id:string){
+   return this.autoRepository.FindOneByID(id)
   }
 
 }

@@ -25,7 +25,7 @@ export class RegistrationService {
            newUser.numberLicense=registrationDTO.numberLicense
            newUser.dateLicense=registrationDTO.dateLicense
                          
-            const person = await this.userRepository.FindeOneByEmail(email);
+            const person = await this.userRepository.FindOneByEmail(email);
             if(person){
                 throw new HttpException('Такой пользователь уже сушествует', HttpStatus.BAD_REQUEST)}
 

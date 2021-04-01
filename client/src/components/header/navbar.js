@@ -30,7 +30,7 @@ function Navbar (props){
         <ul className="header__list">
         <button onClick={requ}>Тест</button>
         <li className="header__link" >{(isAuthen)?<NavLink  to="/" >Бронирования</NavLink>:<NavLink to="/about">О нас</NavLink>}</li>
-        <li className="header__link" >{(isAuthen)?<NavLink to="/" >Мои автомобили</NavLink>:<NavLink to="/recovery"  >Условия</NavLink>}</li>
+        <li className="header__link" >{(isAuthen)?<NavLink to="/myAuto" >Мои автомобили</NavLink>:<NavLink to="/recovery"  >Условия</NavLink>}</li>
         <li className="header__link">{(isAuthen)?<NavLink to="/">Сообщения</NavLink>:<NavLink to="/faq">Частые вопросы</NavLink>}</li>
         </ul>
       </nav>

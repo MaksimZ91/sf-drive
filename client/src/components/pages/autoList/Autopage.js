@@ -6,34 +6,26 @@ import { fetchAutoList } from '../../../../redux/actions/actions'
 
 
 function  Autopage  ()  {
-const dispatch = useDispatch()
-const auto =useSelector((state)=>{
-    return state.auto
-})
 
-    useEffect( async ()=>{
-      await dispatch(fetchAutoList())
-    },[])
-    console.log(auto)
-    if(!Object.keys(auto).length==0){
+    const dispatch = useDispatch()
+    const auto =useSelector((state)=>{
+        return state.auto
+    })
+
+    useEffect(  ()=>{
+         dispatch(fetchAutoList())
+      },[])
+  
+
         
         return(
             <>
         <main>
-        <Autolist/>
+        {(!Object.keys(auto).length==0)?<Autolist/>:<Autoinfo/>}
         </main>
         </>
         )
-    }else{
-        return(
-        <>
-        <main>
-        <Autoinfo/>
-        </main>
-        </>
-        
-            )
-    }
+  
  
 
     

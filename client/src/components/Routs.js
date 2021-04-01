@@ -6,6 +6,8 @@ import Registpage from "./pages/registr/registPage"
 import {Route} from "react-router-dom"
 import { FormContex } from './contextApp'
 import Autopage from './pages/autoList/Autopage'
+import Newpage from './pages/autoList/autoListPage'
+
 
 
 
@@ -21,9 +23,11 @@ function Routs (){
         </>
         )
     }else{
+      
         return(
         <>           
-        <Route path="/" component={Autopage} exact/>
+        <Route path="/" component={Newpage} exact/>
+        <Route path="/myAuto" component={Autopage} exact/>
         </>
         )
     }

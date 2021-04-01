@@ -1,108 +1,291 @@
 @import "mixins";
 @import "header";
+@import "footer";
 @import "fonts";
 
-.myAuto{
-    margin-bottom: 127px;
-    margin-top: 150px;  
-    >h1{
-        margin-top: 0;
-        margin-bottom: 80px;
+
+.auto_list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    width: 71.3vw;
+    margin: 0 auto;
+}
+
+.filter{
+    width: 71.3vw;
+    height: 152px;
+    margin: 190px auto 0;
+    >h2{
+
+        font-family: Roboto Bold;
+        font-weight:500;
+        color: #1B1B1B;
+        padding: 0%;
     }
-    &_auto{
-        display:flex;
-        align-items: center;
-        margin:30px 0 30px 207px;
-        &_wrapper{
-            margin-left: 15px;
-            &_status{
-                width: 70px;
-                height: 16px;
-                margin-bottom: 10px;
+    &_wrapper{
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        &_city{
+            width: 22.8vw;
+            max-width: 329px;
+            height: 44px;  
+            display: inline-block;
+            vertical-align: top;
+            position: relative;            
+            border-radius: 6px;   
+            border: 1px solid #D0CDE1;
+            >input{
                 font-family: Roboto;
                 font-style: normal;
                 font-weight: normal;
                 font-size: 14px;
                 line-height: 16px;
                 color: #1B1B1B;
-            }
-            &_name{
-                margin: 0 0 7px 0;
+                outline-offset:0px;
+                width: 22.8vw;
+                max-width: 329px;
+                height: 44px;
+                padding: 0;   
+                padding: 21px 0 7px 12px;
+                box-sizing: border-box;
+                border: none;
+                border-radius: 6px;
+                background: none;
+             }  
+            >label{
+                margin: 0 0 2px 0;
                 font-family: Roboto;
                 font-style: normal;
                 font-weight: normal;
-                font-size: 24px;
-                line-height: 28px;
-                color: #1B1B1B;
-
+                font-size: 14px;
+                line-height: 16px;
+                color: #A3A0B1;
+                width: 22.8vw;
+                max-width: 329px;
+                position: absolute;
+                pointer-events: none;
+                left: 15px;
+                right: 15px;
+                top: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                line-height: 44px;
+                transition: .3s;
+                &.active{
+                    color: #EB5757
+                }
+            }           
+            >input:focus~label,
+            >input:not(:focus):valid~label{
+                font-size: 9px;
+                 top: -10px;               
             }
-            &_tech{
-                display: flex;
-                margin-bottom: 22px;               
-                &_motor{
-                    display: flex;
-                    margin-right: 29px;                    
-                    >img{
-                        margin-right: 11px;
-                    }
-                    >p{
-                        margin: 7px auto ;
-                        font-family: Roboto;
-                        font-style: normal;
-                        font-weight: normal;
-                        font-size: 14px;
-                        line-height: 16px;
-                        color: #8D8B99;
-                        
-                    }
-                }
-                &_kpp{
-                    display: flex; 
-                    >img{
-                        margin-right: 15px;
-                    }                   
-                    >p{
-                        margin:7px auto;
-                        font-family: Roboto;
-                        font-style: normal;
-                        font-weight: normal;
-                        font-size: 14px;
-                        line-height: 16px;
-                        color: #8D8B99;                      
-                    }
-                }
-            }          
-            &_price{
-                margin: 0;
+            >input:focus{
+                outline: none;
+            }
+        }
+        &_date{
+            margin-bottom:2.2vh;
+            width: 15vw;            
+            max-width: 217px;
+            height: 44px;  
+            display: inline-block;
+            vertical-align: top;
+            position: relative;            
+            border-radius: 6px;   
+            border: 1px solid #D0CDE1;
+            >input{
                 font-family: Roboto;
                 font-style: normal;
                 font-weight: normal;
-                font-size: 18px;
-                line-height: 21px;
+                font-size: 14px;
+                line-height: 16px;
                 color: #1B1B1B;
+                outline-offset:0px;
+                width: 15vw;            
+                max-width: 217px;
+                height: 44px;
+                padding: 0;   
+                padding: 21px 0 7px 12px;
+                box-sizing: border-box;
+                border: none;
+                border-radius: 6px;
+                background: none;
+             }  
+            >label{
+                margin: 0 0 2px 0;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 16px;
+                color: #A3A0B1;
+                width: 15vw;            
+                max-width: 217px;
+                position: absolute;
+                pointer-events: none;
+                left: 15px;
+                right: 15px;
+                top: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                line-height: 44px;
+                transition: .3s;
+                &.active{
+                    color: #EB5757
+                }
+            }           
+            >input:focus~label,
+            >input:not(:focus):valid~label{
+                font-size: 9px;
+                 top: -10px;               
             }
-        }        
+            >input:focus{
+                outline: none;
+            }
+        }
+        &_category{
+            margin-bottom:2.2vh;
+            max-width: 308px;
+            width: 21.3vw;
+            height: 44px;  
+            display: inline-block;
+            vertical-align: top;
+            position: relative;            
+            border-radius: 6px;   
+            border: 1px solid #D0CDE1;
+            >input{
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 16px;
+                color: #1B1B1B;
+                outline-offset:0px;
+                max-width: 308px;
+                width: 21.3vw;
+                height: 44px;
+                padding: 0;   
+                padding: 21px 0 7px 12px;
+                box-sizing: border-box;
+                border: none;
+                border-radius: 6px;
+                background: none;
+             }  
+            >label{
+                margin: 0 0 2px 0;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 16px;
+                color: #A3A0B1;
+                max-width: 308px;
+                width: 21.3vw;                    
+                position: absolute;
+                pointer-events: none;
+                left: 15px;
+                right: 15px;
+                top: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                line-height: 44px;
+                transition: .3s;
+                &.active{
+                    color: #EB5757
+                }
+            }           
+            >input:focus~label,
+            >input:not(:focus):valid~label{
+                font-size: 9px;
+                 top: -10px;               
+            }
+            >input:focus{
+                outline: none;
+            }           
+        }
+        &_button{
+            width: 158px;
+            height: 44px;
+            background: #61A199;
+            border-radius: 6px;
+            margin-left: 18px;
+            border-style:none;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            text-align: center;
+            color: #FFFFFF;
+        }
     }
 }
 
-.add_auto{  
-    height: 84px;
-    border-top: 1px solid  #DEE2E4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &_button{
-        width: 250px;
-        height: 51px;
-        background: #61A199;
-        border-radius: 6px;
+.list{
+    margin:100px auto 0;
+    width: 71.3vw;   
+    &_titel{
         font-family: Roboto;
         font-style: normal;
         font-weight: 500;
-        font-size: 16px;
-        line-height: 19px;
-        color: #FFFFFF;
-        border-style: none;
+        font-size: 36px;
+        line-height: 120%;
+        text-align: center;
+        color: #1B1B1B;
+        margin:0 0 50px 0;
+    }
+    &_wrapper{
+        margin-bottom: 100px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(auto, 328px));
+        grid-template-rows: auto;
+        grid-column-gap: 1.4vw;
+        grid-row-gap:30px;
+        justify-content: center;
+        &_auto{
+            width: 328px;           
+            min-height: 242px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.14) 0%, rgba(0, 0, 0, 0.7) 100%);
+            border-radius: 10px;
+            grid-row-gap:30px;
+            position: relative;
+            &_img{
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                right: 0;
+                margin: 15px 15px 0 0;
+                position: absolute;
+            }
+            &_info{
+                width: 180px;
+                height: 46px;
+                position: absolute;
+                bottom: 0;
+                margin:0 0 23px 20px;
+                &_name{
+                    font-family: Roboto;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 20px;
+                    line-height: 120%;
+                    color: #FFFFFF;
+                    margin: 0 0 5px 0
+                }
+                &_price{
+                    font-family: Roboto;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 14px;
+                    line-height: 120%;
+                    color: #FFFFFF;
+                    margin: 0;
+                }
+            }
+        }
     }
 }
-

@@ -7,7 +7,8 @@ export function fetchAutoList (){
     
     return async dispatch => {
         const auto = await JSON.parse(localStorage.getItem(TOKENS_KYES)) 
-        const data = await fetchHttp('http://localhost:5000/auto/test','post', {userId:auto.userId})
+        console.log(auto)
+        const data = fetchHttp('http://localhost:5000/auto/test','post', {userId:auto.userId})
         dispatch({type:FETCH_AUTO_LIST, payload:data})
     }
 }

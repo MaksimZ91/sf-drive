@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {validation} from '../js/validationForm.js'
+import {validation} from '../../../js/validationForm'
 import {useHttp} from '../../../hooks/http.hook'
 
 

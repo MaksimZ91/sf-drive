@@ -1,0 +1,1 @@
+export const FETCH_AUTO_LIST='AUTO/FETHCH_AUTO_LIST'

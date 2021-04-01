@@ -1,5 +1,5 @@
-import React, { useState}  from 'react'
-import {useAuth} from '../hooks/autn.hook'
+import React, { useState }  from 'react'
+import { useAuth } from '../hooks/autn.hook'
 
 
 export const FormContex = React.createContext()

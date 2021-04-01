@@ -1,11 +1,13 @@
 import React from 'react'
 import Auto from '../autoList/Auto'
 import {useHttp} from '../../../hooks/http.hook'
+import { useDispatch } from 'react-redux'
+import { fetchAutoList } from '../../../../redux/actions/actions'
 const TOKENS_KYES='tokens'
 
 function Autolist (){
     const {request} = useHttp()
-   
+   const dispatch = useDispatch()
 
 
     const authorRequest = async () => {
@@ -22,24 +24,11 @@ function Autolist (){
         } 
     } 
     
-    const test = async () =>{
-        try {
-            const auto = await JSON.parse(localStorage.getItem(TOKENS_KYES))
-            const form={ userId:auto.userId }
-            const data = await request('http://localhost:5000/auto/606419705cb47232289b76ba','GET')
-            console.log(data) 
-                
-        } catch (e) {
-          console.log(e)
-                       
-        } 
-
-    }
-
+   
     return(
         <>
         <section className='myAuto'>
-        <h1 className='myAuto_titel' onClick={test}>Мои автомобили</h1>
+        <h1 className='myAuto_titel' onClick={()=>dispatch(fetchAutoList())}>Мои автомобили</h1>
         
         <Auto/>  
         <Auto/>  

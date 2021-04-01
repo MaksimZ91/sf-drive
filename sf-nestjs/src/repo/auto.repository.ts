@@ -22,4 +22,9 @@ export class AutoRepository {
         return await repository.findOne({where:{['_id']:new ObjectID(id)}})
     }
 
+    async FindAll (){
+        const repository=getMongoRepository(Autos)
+        return await repository.find({ relations: ["user"] })
+    }
+
 }

@@ -1,8 +1,10 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, UseGuards } from "@nestjs/common";
+import { JwtAuthGuard } from "src/guard/autn.guard";
 import { AutoService } from "src/service/auto.service";
 import { AddAutoDto } from '../dto/add-auto.dto'
 
 @Controller('auto')
+
 export class AutoController {
     constructor (private autoService:AutoService){}
 
@@ -12,7 +14,7 @@ export class AutoController {
     }
 
   
-
+    @UseGuards(JwtAuthGuard)
     @Post('test')
     getAll(@Body() addAuto:AddAutoDto){
         return this.autoService.getAll(addAuto)
@@ -21,6 +23,12 @@ export class AutoController {
     @Get(':id')
     getOne(@Param('id') id: string){
       return this.autoService.getOne(id)
+    }
+
+  
+    @Get('testauto')
+    getAllAutos(){
+        return this.autoService.getAllAutos()
     }
 
 

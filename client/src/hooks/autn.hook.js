@@ -8,18 +8,18 @@ export const useAuth = ()=>{
     const [refreshToken, setRefreshToken]=useState("")
     const [userId, setUserId]=useState("")
     
-    const login = useCallback  ( (acsToken,refToken, id)=>{
+    const login = useCallback ( async (acsToken,refToken, id)=>{
         setAccessToken(acsToken)
         setRefreshToken(refToken)
         setUserId(id)
-        localStorage.setItem(TOKENS_KEY, JSON.stringify({accessToken:acsToken, refreshToken:refToken,userId:id }))
+        await localStorage.setItem(TOKENS_KEY, JSON.stringify({accessToken:acsToken, refreshToken:refToken,userId:id }))
     },[])
 
 
-    useEffect(()=>{
-        const  userData = JSON.parse(localStorage.getItem(TOKENS_KEY))
+    useEffect(async ()=>{
+        const  userData = await JSON.parse(localStorage.getItem(TOKENS_KEY))
         if(userData&&userData.accessToken){
-        login(userData.accessToken, userData.refreshToken, userData.userId)}
+       await login(userData.accessToken, userData.refreshToken, userData.userId)}
     },[login])
 
     return {login,accessToken, refreshToken, userId, setAccessToken, setRefreshToken}

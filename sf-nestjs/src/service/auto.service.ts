@@ -41,12 +41,18 @@ export class AutoService{
 
 
   async getAll(addAuto:AddAutoDto){    
-    const data = this.autoRepository.FindAllByUserID(addAuto.userId)      
+     const data = await this.autoRepository.FindAllByUserID(addAuto.userId)      
     return data
   }
   
   async getOne(id:string){
-   return this.autoRepository.FindOneByID(id)
+   return await  this.autoRepository.FindOneByID(id)
+  }
+
+  async getAllAutos(){
+    const data = await  this.autoRepository.FindAll()
+    console.log(data)
+    return data
   }
 
 }

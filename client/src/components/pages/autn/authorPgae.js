@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react'
 import { NavLink } from 'react-router-dom'
-import {validation} from '../js/validationForm.js'
+import {validation} from '../../../js/validationForm'
 import {useHttp} from '../../../hooks/http.hook'
 import { FormContex } from '../../contextApp'
 
@@ -36,7 +36,7 @@ function Authorpage (props) {
     const authorHandler = async () => {
         try {
             const data = await request('http://localhost:5000/author/login','POST',{...formAuth})
-            login(data.accessToken,data.refreshToken, data.userId)            
+            await login(data.accessToken,data.refreshToken, data.userId)            
             Close()            
         } catch (e) {
             setError(e)  

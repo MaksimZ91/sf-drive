@@ -15,7 +15,7 @@ export class AutoController {
 
   
     @UseGuards(JwtAuthGuard)
-    @Post('test')
+    @Post('onuser')
     getAll(@Body() addAuto:AddAutoDto){
         return this.autoService.getAll(addAuto)
     }
@@ -26,7 +26,7 @@ export class AutoController {
     }
 
   
-    @Get('testauto')
+    @Get('all/autos')
     getAllAutos(){
         return this.autoService.getAllAutos()
     }

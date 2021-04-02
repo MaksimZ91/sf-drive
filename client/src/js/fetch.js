@@ -13,6 +13,7 @@ export const fetchHttp =  async (url, method='GET', body=null, headers={}) =>{
                 headers['Content-Type'] = 'application/json'} 
                 const response = await fetch(url,{method,body,headers})
                 const data =  await response.json()
+                console.log(data)
                 if(!response.ok){
                 throw new Error(data.message)
             }
@@ -42,10 +43,9 @@ export const fetchHttp =  async (url, method='GET', body=null, headers={}) =>{
                 if (body){
                 body = JSON.stringify(body)}
                 if(Object.keys(headers).length==0){
-                headers={'Content-Type':'application/json', Authorization: `Bearer ${access}`}}
-                console.log(body)
+                headers={'Content-Type':'application/json', Authorization: `Bearer ${access}`}}                
                 const response = await fetch(url,{method,body,headers})
-                const data =  await response.json()
+                const data =  await response.json()                
                 if(!response.ok){
                     throw new Error(data.message)
                 }

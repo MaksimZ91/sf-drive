@@ -1,13 +1,17 @@
 import React from 'react'
 import Auto from '../autoList/Auto'
 import {useHttp} from '../../../hooks/http.hook'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { fetchAutoList } from '../../../../redux/actions/actions'
 const TOKENS_KYES='tokens'
 
 function Autolist (){
     const {request} = useHttp()
    const dispatch = useDispatch()
+
+   const auto =useSelector((state)=>{
+    return state.auto.userAuto
+})
 
 
     const authorRequest = async () => {
@@ -29,10 +33,7 @@ function Autolist (){
         <>
         <section className='myAuto'>
         <h1 className='myAuto_titel' onClick={()=>dispatch(fetchAutoList())}>Мои автомобили</h1>
-        
-        <Auto/>  
-        <Auto/>  
-                
+        {auto.map(el => <Auto key={el._id} value={el}/>)}                
         </section>
         <section className='add_auto' >
             <button className='add_auto_button' onClick={authorRequest} >Добавить автомобиль</button> 

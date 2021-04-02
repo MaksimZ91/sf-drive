@@ -2,6 +2,9 @@ import React from 'react'
 
 
 function Auto (){
+
+
+    
     return(
         <>
         <div className='list_wrapper_auto'>

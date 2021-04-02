@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react'
 import Autoinfo from './Autoinfo'
 import Autolist from './Autollist'
-import { connect, useDispatch , useSelector} from 'react-redux'
+import { useDispatch , useSelector} from 'react-redux'
 import { fetchAutoList } from '../../../../redux/actions/actions'
 
 
 function  Autopage  ()  {
 
     const dispatch = useDispatch()
+
     const auto =useSelector((state)=>{
-        return state.auto
+        return state.auto.userAuto
     })
+   
 
     useEffect(  ()=>{
          dispatch(fetchAutoList())

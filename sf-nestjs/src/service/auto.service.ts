@@ -41,8 +41,8 @@ export class AutoService{
 
 
   async getAll(addAuto:AddAutoDto){    
-     const data = await this.autoRepository.FindAllByUserID(addAuto.userId)      
-    return data
+   return await this.autoRepository.FindAllByUserID(addAuto.userId)      
+     
   }
   
   async getOne(id:string){
@@ -50,9 +50,8 @@ export class AutoService{
   }
 
   async getAllAutos(){
-    const data = await  this.autoRepository.FindAll()
-    console.log(data)
-    return data
+    return  await  this.autoRepository.FindAll()
+    
   }
 
 }

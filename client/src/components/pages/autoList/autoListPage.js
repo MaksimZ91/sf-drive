@@ -1,12 +1,21 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import List from './List'
 import Footer from '../../footer/footer'
 import {useHttp} from '../../../hooks/http.hook'
+import { useDispatch , useSelector} from 'react-redux'
+import { fetchAutoListAll } from '../../../../redux/actions/actions'
 
 
 function Newpage (){
   const {request}=useHttp()
   const [value, setValue] = useState();
+  const dispatch = useDispatch()
+
+ 
+
+  useEffect(  ()=>{
+       dispatch(fetchAutoListAll())
+    },[])
 
   const callApi =(event)=>{
     setValue(event.target.value)
@@ -46,7 +55,7 @@ function Newpage (){
           <button className='filter_wrapper_button'>Найти</button>
         </div>
       </section>
-      <List/>
+      <List/> 
     </main>
     <Footer/>
     </>

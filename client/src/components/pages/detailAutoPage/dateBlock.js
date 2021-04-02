@@ -6,11 +6,13 @@ function DateBlock (){
         <>
         <section className='dateblock'>
         <p>Доступность</p>
-        <div className='dateblock_currnetmonth'>
+            <div className='dateblock_wrapper'>
+                <div className='dateblock_wrapper_currnetmonth'>
 
-        </div>
-        <div className='dateblock_secondmonth'>
+            </div>
+                <div className='dateblock_wrapper_secondmonth'>
 
+            </div>
         </div>
         </section>
         </>

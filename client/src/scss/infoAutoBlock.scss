@@ -29,6 +29,7 @@
     display: flex;  
     flex-direction: column; 
     flex-wrap: wrap;
+    
 
     &_mainfoto{
         margin-right: 21px;
@@ -47,8 +48,7 @@
             position: absolute;
             top:50%;
             left:50%;
-            transform:translate(-50%, -50%);
-            z-index: 1;
+            transform:translate(-50%, -50%);           
             background: rgba(0, 0, 0, 0.7);
             width: 134px;
             height: 34px;
@@ -67,7 +67,7 @@
 }
 
 .infoAutoBlock{
-    margin:60px auto; 
+    margin:60px auto 0; 
     width: 1026px;
     display: flex;
     flex-direction: column; 
@@ -90,7 +90,7 @@
             display: flex;
             width: 520px;
             align-items: center;
-            justify-content: space-between;            
+            justify-content: space-between;
             &_price{
                 >p:first-child{
                     text-align: left;
@@ -113,54 +113,159 @@
                     color: #8D8B99;
                     margin: 0;
                 }
-            }           
+            }
         }
     }
-
     &_user{
-    position: absolute;
-    top: 0;
-    right: 0;  
-    width: 328px;
-    height: 286px;
-    background: #F7F7F8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &_wrapper{
-        &_img{
-            display: block;
-            margin:0 auto;
+        position: absolute;
+        top: 0;
+        right: 0;  
+        width: 328px;
+        height: 286px;
+        background: #F7F7F8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &_wrapper{
+            &_img{
+                display: block;
+                margin:0 auto;
+            }
+            &_name{
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 24px;
+                line-height: 147.3%;
+                text-align: center;
+                color: #000000;
+                margin:10px 0 2px 0;
+            }
+            &_owner{
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 147.3%;
+                text-align: center;
+                color: #8D8B99;
+                margin: 0 0 32px 0;
+            }
+            &_profile{
+                font-family: Rubik;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 147.3%;
+                color: #61A199;
+                cursor: pointer;
+            }
         }
-        &_name{
+    }    
+    &_specification{
+        width: 437px;
+        margin-bottom: 37px;
+        >p{
             font-family: Roboto;
             font-style: normal;
             font-weight: 500;
-            font-size: 24px;
-            line-height: 147.3%;
-            text-align: center;
-            color: #000000;
-            margin:10px 0 2px 0;
+            font-size: 28px;
+            color: #1B1B1B;
+            margin: 60px 0 40px;
         }
-        &_owner{
+        &_elem{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 23px;
+            >p:first-child{
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 147.3%;
+                color: #8D8B99;
+                margin:0
+            }
+            >p{
+                width: 175px;
+                text-align: left;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 147.3%;
+                color: #000000;
+                margin:0;
+            }
+        }
+    }
+    &_options{
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid #E0E0E0;        
+        margin-bottom: 37px;
+        >p{
             font-family: Roboto;
             font-style: normal;
-            font-weight: normal;
-            font-size: 14px;
-            line-height: 147.3%;
-            text-align: center;
-            color: #8D8B99;
-            margin: 0 0 32px 0;
+            font-weight: 500;
+            font-size: 28px;
+            line-height: 120%;
+            color: #1B1B1B;
+            margin: 61px 0 39px 0;
         }
-        &_profile{
-            font-family: Rubik;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 16px;
-            line-height: 147.3%;
-            color: #61A199; 
+        &_block{
+            display: flex;
+           justify-content: space-between;                      
+            &_wrapper{
+                width: 258px;  
+                &_elem{
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 23px;
+                    >p{
+                        width: 214px;
+                        text-align: left;
+                        font-family: Roboto;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 147.3%;
+                        color: #000000;
+                        margin: 0;
+                    }
+                }
+            }
         }
-
-    }
+    }   
 }
+
+.dateblock{
+    margin:0 auto; 
+    width: 1026px;
+    border-top: 1px solid #E0E0E0;
+    >p{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 120%;
+        color: #1B1B1B; 
+        margin: 60px 0 40px 0;           
+    }
+    &_wrapper{
+        display: flex;
+        justify-content: space-between;
+        &_currnetmonth{
+            width: 404px;
+            height: 274px;
+            background-color: yellow;
+
+        }
+        &_secondmonth{
+            width: 404px;
+            height: 274px;
+            background-color: yellow;
+
+        }
+    }
 }

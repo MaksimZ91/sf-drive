@@ -31,75 +31,77 @@ function InfoAutoBlock (){
             </div>
             <div className='infoAutoBlock_specification'>
                 <p>Характеристики</p>
-                <div className='infoAutoBlock_specification_year'>
+                <div className='infoAutoBlock_specification_elem'>
                     <p>Год выпуска</p>
                     <p>2018 год</p>
                 </div>
-                <div className='infoAutoBlock_specification_body'>
+                <div className='infoAutoBlock_specification_elem'>
                     <p>Кузов</p>
                     <p>Седана</p>
                 </div>
-                <div className='infoAutoBlock_specification_motor'>
+                <div className='infoAutoBlock_specification_elem'>
                     <p>Двигатель</p>
                     <p>1.6 л / 123 л.с. / бензин</p>
                 </div>
-                <div className='infoAutoBlock_specification_transsmisson'>
+                <div className='infoAutoBlock_specification_elem'>
                     <p>Трансмиссия</p>
                     <p>Автоматическая</p>
                 </div>
-                <div className='infoAutoBlock_specification_privod'>
+                <div className='infoAutoBlock_specification_elem'>
                     <p>Привод</p>
                     <p>Передний</p>
                 </div>
-                <div className='infoAutoBlock_specification_millage'>
+                <div className='infoAutoBlock_specification_elem'>
                     <p>Пробег</p>
                     <p>125 000 км</p>
                 </div>
             </div>           
             <div className='infoAutoBlock_options'>
             <p>Опции</p>
-                <div className='infoAutoBlock_options_wrpapper' >
-                    <div className='infoAutoBlock_options_wrpapper_isofix'>
+            <div className='infoAutoBlock_options_block'>
+                <div className='infoAutoBlock_options_block_wrapper' >
+                    <div className='infoAutoBlock_options_block_wrapper_elem'>
                         <img src='../src/img/isofix.svg'/> 
                         <p>Крепления Isofix</p>
                     </div>
-                    <div className='infoAutoBlock_options_wrpapper_srs'>
+                    <div className='infoAutoBlock_options_block_wrapper_elem'>
                         <img  src='../src/img/srs.svg'/>
                         <p>Подушки безопасности</p>
                     </div>
-                    <div className='infoAutoBlock_options_wrpapper_heater'>
+                    <div className='infoAutoBlock_options_block_wrapper_elem'>
                         <img  src='../src/img/heater.svg'/>
                         <p>Автономный подогреватель</p>
                     </div>
                 </div>
-                <div className='infoAutoBlock_options_wrapper' >
-                    <div className='infoAutoBlock_options_wrapper_aux'>
+                <div className='infoAutoBlock_options_block_wrapper' >
+                    <div className='infoAutoBlock_options_block_wrapper_elem'>
                         <img src='../src/img/auxx.svg'/>
                         <p>AUX-кабель</p>
                     </div>
-                    <div className='infoAutoBlock_options_wrapper_bluetooth'>
+                    <div className='infoAutoBlock_options_block_wrapper_elem'>
                         <img src='../src/img/bluetooth.svg' />
                         <p>Поддержкаа Bluetooth</p>
                     </div>
-                    <div className='infoAutoBlock_options_wrapper_cruis'>
-                        <img src='../src/img/cruis.svg'/>
+                    <div className='infoAutoBlock_options_block_wrapper_elem'>
+                        <img src='../src/img/cruiz.svg'/>
                         <p>Круиз-контроль</p>
                     </div>
                 </div>
-                <div className='infoAutoBlock_options_wrapper' >
-                    <div className='infoAutoBlock_options_condition'>
+                <div className='infoAutoBlock_options_block_wrapper' >
+                    <div className='infoAutoBlock_options_block_wrapper_elem'>
                         <img src='../src/img/condi.svg' />
                         <p>Кондиционер</p>
                     </div>
-                    <div className='infoAutoBlock_options_wrapper'>
+                    <div className='infoAutoBlock_options_block_wrapper_elem'>
                         <img src='../src/img/media.svg'  />
                         <p>Мультимедия</p>
                     </div>
-                    <div className='infoAutoBlock_options_navigation'>
+                    <div className='infoAutoBlock_options_block_wrapper_elem'>
                         <img src='../src/img/navi.svg' />
                         <p>Навигация</p>
                     </div>
                 </div>
+                </div> 
             </div>
         </section>
         </>

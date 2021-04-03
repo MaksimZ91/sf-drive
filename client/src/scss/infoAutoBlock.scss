@@ -3,12 +3,13 @@
 @import "header";
 
 .back_wrapper{
-    margin-top: 155px;
-    margin-left: 207px;
+    margin: 155px auto 0; 
+    width: 1026px;  
     display: flex;
     align-items: center;
+    cursor: pointer;
     &_arrow{
-        margin-right: 14px;
+        margin-right: 14px;        
     }
     &_text{
         margin:0;
@@ -33,17 +34,20 @@
 
     &_mainfoto{
         margin-right: 21px;
+        cursor: pointer;
         
     }
     &_secondfoto{
         height: 222px;
         width: 328px;       
         margin-bottom: 20px;
+        cursor: pointer;
     }
     &_wrapper{
         position: relative;
         height: 222px;
         width: 328px;
+        cursor: pointer;
         &_text{
             position: absolute;
             top:50%;
@@ -240,9 +244,10 @@
 }
 
 .dateblock{
-    margin:0 auto; 
+    margin:0 auto 60px; 
     width: 1026px;
     border-top: 1px solid #E0E0E0;
+
     >p{
         font-family: Roboto;
         font-style: normal;
@@ -267,5 +272,97 @@
             background-color: yellow;
 
         }
+    }
+}
+.comentblock{
+    margin:0 auto 100px; 
+    width: 1026px;
+    border-top: 1px solid #E0E0E0;
+    >p{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 120%;
+        color: #1B1B1B;
+        margin: 60px 0 15px 0;
+    }
+    &_raiting{
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+
+    }
+    &_wrapper{
+        display: grid;
+        width: 1026px;
+        grid-template-columns: repeat(2, minmax(502px, 1fr));
+        grid-template-rows: auto;   
+        justify-content: center;     
+        grid-column-gap: 1.4vw;
+        grid-row-gap:30px;        
+        &_content{
+            height: 195px;
+            width: 502px;
+            &_person{
+                display: flex;
+                &_wrapper{
+                    margin-left: 16px;
+                    >p:first-child{
+                        font-family: Roboto;
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 18px;
+                        line-height: 147.3%;
+                        color: #000000;
+                        opacity: 1;
+                        margin: 0;
+                    }
+                    >p{
+                        font-family: Roboto;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 14px;
+                        line-height: 147.3%;
+                        color: #000000;
+                        opacity: 0.4;
+                        margin: 0;
+                    }
+                }
+            }
+            >p{
+                height: 120px;
+                width: 502px;
+                margin-top: 20px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 147.3%;
+                color: #000000;
+            }
+        }
+    }    
+}
+
+.arendablok{
+    height: 84px;
+    border-top: 1px solid #DEE2E4;
+    >button{
+        display: block;
+        margin:17px auto;
+        width: 171px;
+        height: 51px;
+        background: #61A199;
+        border-radius: 6px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        color: #FFFFFF;
+        border-style: none;
+        cursor: pointer;
     }
 }

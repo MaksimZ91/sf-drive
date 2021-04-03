@@ -5,7 +5,7 @@ function ArendaBlock (){
     return(
         <>
         <section className="arendablok">
-            <button className='arendablock_bottom'>Арендовать</button>
+            <button className='arendablock_button'>Арендовать</button>
         </section>
         </>
     )

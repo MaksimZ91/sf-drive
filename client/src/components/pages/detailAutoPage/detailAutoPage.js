@@ -1,11 +1,22 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import FotoBlock from './fotoBlock'
 import InfoAutoBlock from './infoAutoBlock'
 import DateBlock from './dateBlock'
 import ComentBlock from './comentBlock'
 import ArendaBlock from './arendaBlock'
+import { useSelector, useDispatch } from 'react-redux'
+import {fetchAuto } from '../../../../redux/actions/actions'
 
-function DetailAutoPage (){
+function DetailAutoPage (props){
+   
+
+
+    const auto =useSelector((state)=>{
+        return state.auto.currentAuto
+    })
+
+   
+
     return(
         <>
         <main>

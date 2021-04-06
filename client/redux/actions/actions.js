@@ -1,5 +1,5 @@
 import { fetchHttp } from '../../src/js/fetch'
-import { FETCH_AUTO_ALL, FETCH_AUTO_LIST } from '../type'
+import { FETCH_AUTO_ALL, FETCH_AUTO_LIST, FETCH_AUTO } from '../type'
 const TOKENS_KYES='tokens'
 
 
@@ -17,6 +17,13 @@ export function fetchAutoListAll (){
         const data = await fetchHttp('http://localhost:5000/auto/all/autos')
         dispatch({type:FETCH_AUTO_ALL, payload:data})
     }    
+}
+
+export function fetchAuto(id){return async dispatch => {        
+    const data = await fetchHttp(`http://localhost:5000/auto/${id}`)
+    dispatch({type:FETCH_AUTO, payload:data})
+}    
+
 }
 
  

@@ -27,7 +27,8 @@ function Routs (){
       
         return(
         <>           
-        <Route path="/" component={DetailAutoPage} exact/>
+        <Route path="/" component={Newpage} exact/>
+        <Route path="/auto" component={DetailAutoPage} exact/>
         <Route path="/myAuto" component={Autopage} exact/>
         </>
         )

@@ -12,7 +12,6 @@ export class AutoController {
     CreateAuto(@Body() addAuto:AddAutoDto){
       return this.autoService.createAuto(addAuto)
     }
-
   
     @UseGuards(JwtAuthGuard)
     @Post('onuser')

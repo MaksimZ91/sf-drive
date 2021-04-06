@@ -2,7 +2,8 @@ import React from 'react'
 import Auto from '../autoList/Auto'
 import {useHttp} from '../../../hooks/http.hook'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAutoList } from '../../../../redux/actions/actions'
+import { NavLink } from 'react-router-dom'
+import { fetchAuto }from '../../../../redux/actions/actions'
 const TOKENS_KYES='tokens'
 
 function Autolist (){
@@ -33,7 +34,7 @@ function Autolist (){
         <>
         <section className='myAuto'>
         <h1 className='myAuto_titel' onClick={()=>dispatch(fetchAutoList())}>Мои автомобили</h1>
-        {auto.map(el => <Auto key={el._id} value={el}/>)}                
+        {auto.map(el => <NavLink to="/auto"  onClick={()=>dispatch(fetchAuto(el._id))}  key={el._id} ><Auto value={el}/></NavLink>)}                
         </section>
         <section className='add_auto' >
             <button className='add_auto_button' onClick={authorRequest} >Добавить автомобиль</button> 

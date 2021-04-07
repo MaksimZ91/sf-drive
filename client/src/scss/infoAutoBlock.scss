@@ -247,7 +247,6 @@
     margin:0 auto 60px; 
     width: 1026px;
     border-top: 1px solid #E0E0E0;
-
     >p{
         font-family: Roboto;
         font-style: normal;
@@ -263,18 +262,14 @@
         &_currnetmonth{         
           display: flex;          
           margin: 40px 0 0 0 0;
-          flex-direction: column;      
-         
+          flex-direction: column; 
             &_date {
-            margin-top: 33px;
+            margin: 33px auto 0;
             height: 29px;
             width: 367px;
-            display: flex;
-            
+            display: flex;            
           &_mons{
-            margin: 0 0 0 30px;
-            width: 183px;
-            height: 29px;
+            margin-right:5px;           
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -285,11 +280,12 @@
             line-height: 147.3%;
             text-align: center;        
             color: #000000;
+            >img{
+                display: none;
+            }
                   }
           &_year{
-            margin: 0 30px 0 0;
-            width: 109px;
-            height: 29px;
+            margin: 0; 
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -299,10 +295,13 @@
             font-size: 20px;
             line-height: 147.3%;
             color: #000000;
+            >img{
+                display: none;
+            }
           }
         }
           &_table{
-            margin: 30px auto 0 auto;
+            margin: 0 auto ;
             align-self: flex-end;
             width: 307px;
             height: 269px;
@@ -390,7 +389,7 @@
                   color: #000000;
                   border: none;
                   text-align: center;
-                  width: 36px;;
+                  width: 36px;
                   height: 36px;
                   font-family: Roboto;
                   font-style: normal;
@@ -402,8 +401,7 @@
               >td{           
                 width: 36px;
                 height: 36px;
-                padding: 0;
-                
+                padding: 0;                
                 >input{
                   border: none;
                   text-align: center;

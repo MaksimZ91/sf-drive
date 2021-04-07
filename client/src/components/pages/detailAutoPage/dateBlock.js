@@ -17,13 +17,12 @@ function DateBlock (){
         <>
         <section className='dateblock'>
             <p>Доступность</p>
-            <div className='dateblock_wrapper'>
-                <div className='dateblock_wrapper_currnetmonth'>
+            <div className='dateblock_wrapper'>               
                 <Calendarb value={{calendName, month:currentMonth}}/>
                
                
                     
-                </div>
+               
                 <div className='dateblock_wrapper_secondmonth'>
                 <Calendarb value={{calendName, month:month}}/>
                

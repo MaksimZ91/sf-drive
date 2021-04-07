@@ -7,10 +7,7 @@ import ArendaBlock from './arendaBlock'
 import { useSelector, useDispatch } from 'react-redux'
 import {fetchAuto } from '../../../../redux/actions/actions'
 
-function DetailAutoPage (props){
-   
-
-
+function DetailAutoPage (props){ 
     const auto =useSelector((state)=>{
         return state.auto.currentAuto
     })

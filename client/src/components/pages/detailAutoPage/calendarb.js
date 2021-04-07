@@ -5,11 +5,10 @@ import Table from "./table"
 
 function Calendarb (props) {
 const curentDate = new Date()
-const months = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь']    
+const months = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь']    
 const [dateMon, setDateMon]=useState(curentDate)
 const month = dateMon.getMonth()
 const year = dateMon.getFullYear()
-console.log(props)
 
 
   function handelMonthDown  (month, year){
@@ -44,8 +43,8 @@ const selectCurentMonthDown = () => handelMonthDown(month, year)
    return(   
      <div className={`${props.value.calendName}`}>
        <div className={`${props.value.calendName}_date`}>
-      <div className={`${props.value.calendName}_date_mons`}><img  src="./src/img/chevron-left.svg" onClick={selectCurentMonthDown}/><span>{months[props.value.month]}</span><img src="./src/img/chevron-right.svg" onClick={selectCurentMonthUp}/></div>
-       <div className={`${props.value.calendName}_date_year`}><img src="./src/img/chevron-left.svg" onClick={selectCurentYearDown}/><span>{dateMon.getFullYear()}</span><img  src="./src/img/chevron-right.svg"onClick={selectCurentYearUp}/></div>
+      <div className={`${props.value.calendName}_date_mons`} ><img  src="./src/img/chevron-left.svg" onClick={selectCurentMonthDown}/><span>{months[props.value.month]}</span><img src="./src/img/chevron-right.svg" onClick={selectCurentMonthUp}/></div>
+       <div className={`${props.value.calendName}_date_year`}><img  src="./src/img/chevron-left.svg" onClick={selectCurentYearDown}/><span>{dateMon.getFullYear()}</span><img  src="./src/img/chevron-right.svg"onClick={selectCurentYearUp}/></div>
       </div>
       <Table value={{month:props.value.month, year:dateMon.getFullYear(), name:props.value.name, tableName:props.value.calendName, isHide:props.value.setHied}}/>
       </div>

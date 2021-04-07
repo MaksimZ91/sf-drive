@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Auto (props){
-    console.log(props)
+   
     return(
        <div className='myAuto_auto'>
            <img className='myAuto_img' src='../src/img/hend_auto.svg'/>

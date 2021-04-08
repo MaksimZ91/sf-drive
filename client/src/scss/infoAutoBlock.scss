@@ -260,11 +260,10 @@
         display: flex;
         justify-content: space-between;
         &_currnetmonth{         
-          display: flex;          
-          margin: 40px 0 0 0 0;
+          display: flex; 
           flex-direction: column; 
             &_date {
-            margin: 33px auto 0;
+            margin: 0 auto ;
             height: 29px;
             width: 367px;
             display: flex;            
@@ -300,11 +299,9 @@
             }
           }
         }
-          &_table{
-            margin: 0 auto ;
-            align-self: flex-end;
-            width: 307px;
-            height: 269px;
+          &_table{  
+            align-self: flex-start;
+            width: 420px;                       
             font-family: Roboto;
             font-style: normal;
             font-weight: normal;
@@ -324,6 +321,7 @@
         
             }  
             >tr{
+                height: 60px;
               >td:nth-child(6)>input, >td:nth-child(7)>input {
                 font-family: Roboto;
                 font-style: normal;
@@ -332,6 +330,7 @@
                 line-height: 147.3%;
                 text-align: center;
                 color: #868686;
+                
                
               }
               >td:nth-child(6)>input:hover, >td:nth-child(7)>input:hover {
@@ -341,14 +340,20 @@
                color: #000000;
             
               }
+              .dateblock_wrapper_currnetmonth_table_startday:nth-child(6)>input,  .dateblock_wrapper_currnetmonth_table_startday:nth-child(7)>input{
+                color: white;             
+               }
+
+               .dateblock_wrapper_currnetmonth_table_endday:nth-child(6)>input, .dateblock_wrapper_currnetmonth_table_endday:nth-child(7)>input{
+                color: white;             
+               }
+
               .dateblock_wrapper_currnetmonth_table_startday{                    
                 background: #61A199;
                 padding: 0;
                 border-radius: 50%;    
                 color: #FFFFFF;
                 border: none;
-                width: 36px;
-                height: 36px; 
                 text-align: center; 
                 font-family: Roboto;
                 font-style: normal;
@@ -359,7 +364,8 @@
                 >input{
                     background: rgba(97, 161, 153, 0.15);  
                     border-top-left-radius: 50%;
-                    border-bottom-left-radius: 50%;                   
+                    border-bottom-left-radius: 50%;
+                    color:white;                   
                   }
               }
               .dateblock_wrapper_currnetmonth_table_endday{  
@@ -368,9 +374,7 @@
                   border-radius: 50%;    
                   color: #FFFFFF;
                   border: none;
-                  text-align: center;
-                  width: 36px;
-                  height: 36px;                
+                  text-align: center;        
                   font-family: Roboto;
                   font-style: normal;
                   font-weight: normal;
@@ -381,6 +385,7 @@
                     background: rgba(97, 161, 153, 0.15);  
                     border-top-right-radius: 50%;
                     border-bottom-right-radius: 50%;
+                    color:white;    
                   }
                 }
                 .dateblock_wrapper_currnetmonth_table_inrangeday{  
@@ -400,13 +405,12 @@
                 }
               >td{           
                 width: 36px;
-                height: 36px;
-                padding: 0;                
+                height: 36px;            
                 >input{
                   border: none;
                   text-align: center;
                   padding: 0;
-                  width: 100%;
+                  width: 100%;  
                   height: 100%;
                   background: none;
                   font-family: Roboto;

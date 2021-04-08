@@ -34,6 +34,8 @@ export class AutoService{
     newAuto.osago=addAuto.osago
     newAuto.kasko=addAuto.kasko
     newAuto.privod=addAuto.privod
+    newAuto.fuel=addAuto.fuel
+    newAuto.body=addAuto.body
     newAuto.user=currentUser   
     await this.autoRepository.SaveAuto(newAuto)
     return { message:"Ok"} 

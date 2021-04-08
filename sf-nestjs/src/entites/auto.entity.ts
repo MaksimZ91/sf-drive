@@ -59,6 +59,12 @@ export class Autos {
   @Column()
   privod:string;
 
+  @Column()
+  fuel:string;
+
+  @Column()
+  body:string;
+
   @ManyToOne(()=>Users, user=>user.autos)
   user:Users
 

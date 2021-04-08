@@ -37,4 +37,8 @@ export class AddAutoDto{
 
   readonly privod:string;
 
+  readonly fuel:string;
+
+  readonly body:string;
+
 }

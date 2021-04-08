@@ -1,22 +1,26 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 function InfoAutoBlock (){
+    const auto = useSelector((state)=>{
+        return state.auto.currentAuto
+    })
     return(
         <>
         <section className='infoAutoBlock'>
             <div className='infoAutoBlock_name'>
-                <h2>Hyundai Solaris, 2018</h2>
+                <h2>{auto.mark} {auto.model}, {auto.year}</h2>
                 <div className='infoAutoBlock_name_wrapper'>
                     <div className='infoAutoBlock_name_wrapper_price'>
-                        <p>1 800 ₽/сут.</p>
+                        <p>{auto.price} ₽/сут.</p>
                         <p>обычная аренда</p>
                     </div>
                     <div className='infoAutoBlock_name_wrapper_price'>
-                        <p>1 600 ₽/сут.</p>
+                        <p>{auto.priceThreeDays} ₽/сут.</p>
                         <p>при аренде на 3 дня</p>
                     </div>
                     <div className='infoAutoBlock_name_wrapper_price'>
-                        <p>1 400 ₽/сут.</p>
+                        <p>{auto.priceFiveDays} ₽/сут.</p>
                         <p>при аренде более 5 дней</p>
                     </div>
                 </div>
@@ -33,7 +37,7 @@ function InfoAutoBlock (){
                 <p>Характеристики</p>
                 <div className='infoAutoBlock_specification_elem'>
                     <p>Год выпуска</p>
-                    <p>2018 год</p>
+                    <p>{auto.year} год</p>
                 </div>
                 <div className='infoAutoBlock_specification_elem'>
                     <p>Кузов</p>
@@ -41,19 +45,19 @@ function InfoAutoBlock (){
                 </div>
                 <div className='infoAutoBlock_specification_elem'>
                     <p>Двигатель</p>
-                    <p>1.6 л / 123 л.с. / бензин</p>
+                    <p>{auto.volume} л / {auto.power} л.с. / бензин</p>
                 </div>
                 <div className='infoAutoBlock_specification_elem'>
                     <p>Трансмиссия</p>
-                    <p>Автоматическая</p>
+                    <p>{auto.transmission}</p>
                 </div>
                 <div className='infoAutoBlock_specification_elem'>
                     <p>Привод</p>
-                    <p>Передний</p>
+                    <p>{auto.privod}</p>
                 </div>
                 <div className='infoAutoBlock_specification_elem'>
                     <p>Пробег</p>
-                    <p>125 000 км</p>
+                    <p>{auto.millege} км</p>
                 </div>
             </div>           
             <div className='infoAutoBlock_options'>

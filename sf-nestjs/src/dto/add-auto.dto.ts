@@ -35,4 +35,6 @@ export class AddAutoDto{
   
   readonly kasko:string;
 
+  readonly privod:string;
+
 }

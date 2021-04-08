@@ -13,13 +13,15 @@ function Autolist (){
    const auto = useSelector((state)=>{
     return state.auto.userAuto
 })
+console.log(auto)
 
 
     const authorRequest = async () => {
         try {
             const auto = await JSON.parse(localStorage.getItem(TOKENS_KYES))
-            const form={ userId:auto.userId, mark:'nissan', model:'calaris',year:'1991', number:'Y33as', vin:'fdfdfdfdf',
-            collor:"white", volume:'3', power:'230', transmission:'auto', millege:'23422000',numberPTS:'sdsdsd'}
+            const form={ userId:auto.userId, mark:'Toyota', model:'Camry',year:'2019', number:'R997SA', vin:'CD12-ASAS1212',
+            collor:"черный", volume:'2.5', power:'200', transmission:'Автоматичекая', millege:'210000',numberPTS:'089 1234', price:'1600', priceThreeDays:'1400',
+            priceFiveDays:'1200', osago:'GG44444',kasko:'none', privod:'передний'}
             const data = await request('http://localhost:5000/auto/add','POST',{...form})
             console.log(data) 
                 
@@ -37,7 +39,7 @@ function Autolist (){
         {auto.map(el => <NavLink to="/auto"  onClick={()=>dispatch(fetchAuto(el._id))}  key={el._id} ><Auto value={el}/></NavLink>)}                
         </section>
         <section className='add_auto' >
-            <button className='add_auto_button' onClick={authorRequest} >Добавить автомобиль</button> 
+            <button className='add_auto_button'onClick={authorRequest} >Добавить автомобиль</button> 
         </section>
         </>
     )

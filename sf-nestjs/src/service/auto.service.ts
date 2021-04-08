@@ -33,6 +33,7 @@ export class AutoService{
     newAuto.priceFiveDays=addAuto.priceFiveDays
     newAuto.osago=addAuto.osago
     newAuto.kasko=addAuto.kasko
+    newAuto.privod=addAuto.privod
     newAuto.user=currentUser   
     await this.autoRepository.SaveAuto(newAuto)
     return { message:"Ok"} 

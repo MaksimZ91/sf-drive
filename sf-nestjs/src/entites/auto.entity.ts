@@ -56,6 +56,9 @@ export class Autos {
   @Column()
   kasko:string;
 
+  @Column()
+  privod:string;
+
   @ManyToOne(()=>Users, user=>user.autos)
   user:Users
 

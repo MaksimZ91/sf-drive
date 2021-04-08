@@ -1,6 +1,8 @@
+import { validationResult } from 'express-validator'
 import React from 'react'
 
 function Auto (props){
+    console.log(props)
    
     return(
        <div className='myAuto_auto'>
@@ -10,18 +12,18 @@ function Auto (props){
                    <img src='../src/img/golden_star.svg'/>
                    <span>4,5 (12)</span>
                </div>
-               <p className='myAuto_auto_wrapper_name'>Hyundai Solaris, 2018</p>
+               <p className='myAuto_auto_wrapper_name'>{props.value.mark} {props.value.model}, {props.value.year}</p>
                <div className='myAuto_auto_wrapper_tech'>
                     <div className='myAuto_auto_wrapper_tech_motor'>
                         <img src='../src/img/motor.svg'/>
-                        <p>1.6 л / 122 л.с. / Бензин</p>
+                        <p>{props.value.volume} л / {props.value.power} л.с. / Бензин</p>
                     </div>
                     <div  className='myAuto_auto_wrapper_tech_kpp'>
                         <img src='../src/img/kpp.svg'/>
-                        <p>Автомат /  Передний привод</p>
+                        <p>{props.value.transmission} / {props.value.privod} привод</p>
                     </div>
                </div>
-               <p className='myAuto_auto_wrapper_price'>1 800 ₽ в сутки</p>
+               <p className='myAuto_auto_wrapper_price'>{props.value.price} ₽ в сутки</p>
            </div>
 
        </div>

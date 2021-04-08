@@ -17,11 +17,11 @@ function Newpage (){
        dispatch(fetchAutoListAll())
     },[])
 
-  const callApi =(event)=>{
+  const  callApi = async (event) => {
     setValue(event.target.value)
     const token = "f05072e0afe10172227f57debd27fa6412b661ab"
     console.log(event.target.value)
-    const data = request('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address', 
+    const data = await request('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address', 
     'POST',{query:event.target.value}, {
       "Content-Type": "application/json",
       "Accept": "application/json",

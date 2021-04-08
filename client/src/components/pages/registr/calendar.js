@@ -39,7 +39,6 @@ const selectCurentMonthDown = () => handelMonthDown(month, year)
     }
 
       const selectCurentYearUp = () => handelYearUp(year, curentDate)
-
   
    return(   
      <div className={`${props.value.calendName}`}>

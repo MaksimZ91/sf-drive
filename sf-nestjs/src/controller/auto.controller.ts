@@ -18,7 +18,7 @@ export class AutoController {
     getAll(@Body() addAuto:AddAutoDto){
         return this.autoService.getAll(addAuto)
     }
-     
+         
     @Get(':id')
     getOne(@Param('id') id: string){
       return this.autoService.getOne(id)

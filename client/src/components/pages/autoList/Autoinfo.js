@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import {useHttp} from '../../../hooks/http.hook'
 const TOKENS_KYES='tokens'
 
@@ -33,7 +34,7 @@ function Autoinfo(){
       <img className="autoList_mobile" src='../src/img/auto_list_mobile.svg'/>
       <h2 className="autoList_titel">Зарабатывайте на своём<br/> автомобиле</h2>
       <p className="autoList_info">Сдавайте автомобиль в аренду и получайте заработок.</p>
-      <button className="autoList_button" onClick={authorRequest}>Добавить автомобиль</button>            
+      <NavLink to="/addauto"><button className="autoList_button" >Добавить автомобиль</button></NavLink>          
     </section>
     </>
   )

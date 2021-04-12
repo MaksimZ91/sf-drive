@@ -8,6 +8,7 @@ import { FormContex } from './contextApp'
 import Autopage from './pages/autoList/Autopage'
 import Newpage from './pages/autoList/autoListPage'
 import DetailAutoPage from './pages/detailAutoPage/detailAutoPage'
+import Addautopage from './pages/addAuto/addAutoPage'
 
 
 
@@ -30,6 +31,7 @@ function Routs (){
         <Route path="/" component={Newpage} exact/>
         <Route path="/auto" component={DetailAutoPage} exact/>
         <Route path="/myAuto" component={Autopage} exact/>
+        <Route path="/addauto" component={Addautopage} exact/>
         </>
         )
     }

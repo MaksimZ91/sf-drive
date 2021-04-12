@@ -1,6 +1,7 @@
 import { FETCH_AUTO_ALL, FETCH_AUTO_LIST,FETCH_AUTO } from "../type"
 
 const defaultState = {
+    addAuto:[],
     userAuto:[],
     allAuto:[],
     currentAuto:[]

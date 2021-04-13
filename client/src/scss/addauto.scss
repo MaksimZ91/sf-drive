@@ -1,0 +1,157 @@
+@import "fonts";
+@import "mixins";
+
+
+.new_auto{
+    display: flex;
+    justify-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 150px;
+    &_titel{ 
+        align-self:center;
+        >p:first-child{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 147.3%;
+        text-align: center;
+        color: #828282;
+        margin:0;
+      }
+      >p{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 64px;
+        line-height: 120%;
+        text-align: center;
+        color: #1B1B1B;
+        margin-top: 14px;
+        margin-bottom: 52px;
+      }
+        @include mobile{
+        >p:first-child{
+          font-size: 12px;
+        }
+        >p{
+          font-weight: 500;
+          font-size: 32px;
+        }
+      }
+    }
+ 
+    &_form, &_price, &_insurance{             
+        height:auto;
+        margin-top: 0px;        
+        width: 679px;     
+        >p:first-child{
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 36px;
+          line-height: 147.3%;
+          color: #1B1B1B;
+          margin-left: 0px;
+          margin-bottom: 30px;      
+        }        
+        >P{
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 16px;
+          color: #1B1B1B;
+          margin-top: 0;
+          margin-bottom: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }    
+        &_mark, &_model, &_vin, &_collor, &_motor, &_transmission, &_pts, &_sts, &_osago{
+
+          width: 416px;
+          height: 44px;
+          background: #FFFFFF;
+          border: 1px solid #E0E0E0;
+          box-sizing: border-box;
+          border-radius: 6px;
+          padding-left: 12px;     
+        }
+        
+        &_year, &_number, &_volume, &_mileage, &_current{
+          width: 155px;
+          height: 44px;
+          background: #FFFFFF;
+          border: 1px solid #E0E0E0;        
+          box-sizing: border-box;
+          border-radius: 6px;
+          margin-right: 261px;      
+          padding-left: 12px;   
+        }
+        >p:nth-child(10){            
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 16px;
+                color: #1B1B1B;
+                margin-top: 0;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                justify-content:left;            
+        }
+        &_power{
+            width: 155px;
+            height: 44px;
+            background: #FFFFFF;
+            border: 1px solid #E0E0E0;        
+            box-sizing: border-box;
+            border-radius: 6px;           
+            padding-left: 12px;
+            margin: 0 10px 0 190px;   
+          }
+
+         &_powerkwt{
+            width: 155px;
+            height: 44px;
+            background: #FFFFFF;
+            border: 1px solid #E0E0E0;        
+            box-sizing: border-box;
+            border-radius: 6px;           
+            padding-left: 12px;
+            margin: 0;   
+          }
+
+
+       
+      }
+      
+      &_continue{
+          margin-top: 80px;
+          height: 84px;
+          width: 100vw;
+          border-top: 1px solid #DEE2E4;
+          &_button{
+            margin:17px auto;
+            display: block;
+            align-items: center;
+            padding: 16px 40px;
+            width: 176px;
+            height: 51px;
+            background: #61A199;
+            border-radius: 6px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            color:#FFFFFF;
+            border-style: none; 
+            text-align: center;
+          }
+      }
+}

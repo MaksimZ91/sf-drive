@@ -12,6 +12,7 @@ import './src/scss/auto.scss'
 import './src/scss/myAuto.scss'
 import './src/scss/infoAutoBlock.scss'
 import './src/scss/addauto.scss'
+import './src/scss/Options.scss'
 import App from "./src/components/App";
 import { compose, createStore, applyMiddleware } from "redux";
 import { Provider } from 'react-redux'

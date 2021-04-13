@@ -9,6 +9,7 @@ import Autopage from './pages/autoList/Autopage'
 import Newpage from './pages/autoList/autoListPage'
 import DetailAutoPage from './pages/detailAutoPage/detailAutoPage'
 import Addautopage from './pages/addAuto/addAutoPage'
+import Optionsautopage from './pages/addAuto/optionsauto'
 
 
 
@@ -28,7 +29,7 @@ function Routs (){
       
         return(
         <>           
-        <Route path="/" component={Addautopage} exact/>
+        <Route path="/" component={Optionsautopage} exact/>
         <Route path="/auto" component={DetailAutoPage} exact/>
         <Route path="/myAuto" component={Autopage} exact/>
         <Route path="/addauto" component={Addautopage} exact/>

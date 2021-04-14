@@ -10,6 +10,7 @@ import Newpage from './pages/autoList/autoListPage'
 import DetailAutoPage from './pages/detailAutoPage/detailAutoPage'
 import Addautopage from './pages/addAuto/addAutoPage'
 import Optionsautopage from './pages/addAuto/optionsauto'
+import Addautophoto from './pages/addAuto/addautophoto'
 
 
 
@@ -29,7 +30,7 @@ function Routs (){
       
         return(
         <>           
-        <Route path="/" component={Optionsautopage} exact/>
+        <Route path="/" component={Addautophoto} exact/>
         <Route path="/auto" component={DetailAutoPage} exact/>
         <Route path="/myAuto" component={Autopage} exact/>
         <Route path="/addauto" component={Addautopage} exact/>

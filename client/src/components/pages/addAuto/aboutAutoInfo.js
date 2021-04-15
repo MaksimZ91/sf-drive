@@ -1,14 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import cars from '../../../js/cars.js'
 
 
 
-function Aboutautoinfo (){
+function Aboutautoinfo (){ 
+  const [mark, setMark]=useState("AC")
+  const [model, setModel]=useState(cars.list.AC[0])
+
+
+ const handleChangeMark = e => {
+    setMark(e.target.value);
+    setModel(cars.list[e.target.value][0])
+  }
+
+  const handleChangeModel = e => {
+    setModel(e.target.value);
+  }
+
+
+  console.log(mark, model)
+
+
+
+
+
+  //{cars.list[mark].map(e =><option value={e}>{e}</option>)}
+
+ 
+ 
+  
+ 
   return(
     <>
     <form className="new_auto_form" >
     <p className="new_auto_form_info" >Информация об автомобиле</p>
-    <p>Марка<input className="new_auto_form_mark" /></p>
-    <p>Модель<input className="new_auto_form_model"/></p>
+    <p>Марка<select className="new_auto_form_mark" value={mark} onChange={handleChangeMark}>{Object.keys(cars.list).map(e =><option value={e}>{e}</option>)}</select></p>
+    <p>Модель<select className="new_auto_form_model" value={model} onChange={handleChangeModel}>{cars.list[mark].map(e =><option value={e}>{e}</option>)}</select></p>
     <p>Год выпуска<input className="new_auto_form_year"/></p>
     <p>Гос. номер<input className="new_auto_form_number"/></p>
     <p>VIN<input className="new_auto_form_vin"/></p>

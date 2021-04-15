@@ -15,6 +15,7 @@ import AddDocumentPhoto from './pages/addAuto/adddocumentphoto'
 
 
 
+
 function Routs (){
     const {isAuthen} = useContext(FormContex)
     if (!isAuthen){ 
@@ -30,7 +31,7 @@ function Routs (){
       
         return(
         <>           
-        <Route path="/" component={AddDocumentPhoto} exact/>
+        <Route path="/" component={Addautopage} exact/>
         <Route path="/auto" component={DetailAutoPage} exact/>
         <Route path="/myAuto" component={Autopage} exact/>
         <Route path="/addauto" component={Addautopage} exact/>

@@ -1,8 +1,20 @@
 import React from 'react'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { addAutoOptionsForm } from '../../../../redux/actions/actions'
 
 
 function Dopoptions (){
+  const dispatch = useDispatch()
+  const addAutoOptions = useSelector((state)=>{
+    return state.auto.addAutoOptions
+})
+
+ const handleChange = e => {
+  dispatch(addAutoOptionsForm(addAutoOptions, e))
+  }
+
+  console.log(addAutoOptions)
+
   return(
     <> 
     <form className="options_auto_dopform" >
@@ -15,7 +27,7 @@ function Dopoptions (){
       <div className="options_auto_dopform_wrapper_price">
         <p>1 000 ₽</p>      
        <label className="options_auto_dopform_wrapper_price_switch">
-        <input className='options_auto_dopform_wrapper_price_switch_checkbox' type="checkbox"/>
+        <input className='options_auto_dopform_wrapper_price_switch_checkbox' type="checkbox" name='babyChair' value={addAutoOptions.babyChair} onChange={handleChange}/>
         <span className="options_auto_dopform_wrapper_price_switch_slider"></span>
       </label> 
       </div>     
@@ -28,7 +40,7 @@ function Dopoptions (){
       <div className="options_auto_dopform_wrapper_price">
         <p>1 000 ₽</p>      
        <label className="options_auto_dopform_wrapper_price_switch">
-        <input className='options_auto_dopform_wrapper_price_switch_checkbox' type="checkbox"/>
+        <input className='options_auto_dopform_wrapper_price_switch_checkbox' type="checkbox" name='deliveryAuto' value={addAutoOptions.deliveryAuto} onChange={handleChange}/>
         <span className="options_auto_dopform_wrapper_price_switch_slider"></span>
       </label> 
       </div>     
@@ -41,7 +53,7 @@ function Dopoptions (){
       <div className="options_auto_dopform_wrapper_price">
         <p>1 000 ₽</p>      
        <label className="options_auto_dopform_wrapper_price_switch">
-        <input className='options_auto_dopform_wrapper_price_switch_checkbox' type="checkbox"/>
+        <input className='options_auto_dopform_wrapper_price_switch_checkbox' type="checkbox" name='close' value={addAutoOptions.close} onChange={handleChange}/>
         <span className="options_auto_dopform_wrapper_price_switch_slider"></span>
       </label> 
       </div>     
@@ -54,7 +66,7 @@ function Dopoptions (){
       <div className="options_auto_dopform_wrapper_price">
         <p>1 000 ₽</p>      
        <label className="options_auto_dopform_wrapper_price_switch">
-        <input className='options_auto_dopform_wrapper_price_switch_checkbox' type="checkbox"/>
+        <input className='options_auto_dopform_wrapper_price_switch_checkbox' type="checkbox" name='fullTank' value={addAutoOptions.fullTank} onChange={handleChange}/>
         <span className="options_auto_dopform_wrapper_price_switch_slider"></span>
       </label> 
       </div>     

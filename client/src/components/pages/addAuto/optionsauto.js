@@ -6,6 +6,9 @@ import Continuestep from './continuestep'
 
 
 function Optionsautopage (){
+  
+  
+  const nextPage = '/addauto/photo'
   return(
     <>
     <main>
@@ -16,7 +19,7 @@ function Optionsautopage (){
     </div>
     <Options/>
     <Dopoptions/>
-    <Continuestep/>    
+    <Continuestep value={nextPage}/>    
     </section>  
     </main>
     </>

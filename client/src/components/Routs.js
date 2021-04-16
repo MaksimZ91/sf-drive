@@ -35,6 +35,7 @@ function Routs (){
         <Route path="/auto" component={DetailAutoPage} exact/>
         <Route path="/myAuto" component={Autopage} exact/>
         <Route path="/addauto" component={Addautopage} exact/>
+        <Route path="/addauto/options" component={Optionsautopage} exact/>
         </>
         )
     }

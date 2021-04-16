@@ -1,5 +1,5 @@
 import { fetchHttp } from '../../src/js/fetch'
-import { FETCH_AUTO_ALL, FETCH_AUTO_LIST, FETCH_AUTO, ADD_END_DATE, ADD_START_DATE } from '../type'
+import { FETCH_AUTO_ALL, FETCH_AUTO_LIST, FETCH_AUTO, ADD_END_DATE, ADD_START_DATE, ADD_AUTO, ADD_AUTO_OPTIONS } from '../type'
 const TOKENS_KYES='tokens'
 
 
@@ -30,6 +30,15 @@ export function addStartDate (data){
 
 export function addEndDate (data){
     return {type:ADD_END_DATE, payload:data}
+}
+
+
+export function addAutoForm (state, event){ 
+    return {type:ADD_AUTO, payload:{...state, [event.target.name]:event.target.value}}
+}
+
+export function addAutoOptionsForm (state, event){
+    return{type:ADD_AUTO_OPTIONS, payload:{...state, [event.target.name]:event.target.checked}}
 }
  
     

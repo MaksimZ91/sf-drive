@@ -1,12 +1,14 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 
 
-function Continuestep (){
+function Continuestep (props){
+    
     return(
         <>
         <div className="new_auto_continue">
-        <input className="new_auto_continue_button" type="submit" name="submit" value="Продолжить"  />
+        <NavLink to={props.value}><input className="new_auto_continue_button" type="submit" name="submit" value="Продолжить"  /></NavLink>
         </div>
         </>
     )

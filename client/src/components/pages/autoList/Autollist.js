@@ -9,11 +9,11 @@ const TOKENS_KYES='tokens'
 function Autolist (){
     const {request} = useHttp()
    const dispatch = useDispatch()
-
    const auto = useSelector((state)=>{
     return state.auto.userAuto
 })
-console.log(auto)
+
+
 
 
     const authorRequest = async () => {
@@ -39,7 +39,7 @@ console.log(auto)
         {auto.map(el => <NavLink to="/auto"  onClick={()=>dispatch(fetchAuto(el._id))}  key={el._id} ><Auto value={el}/></NavLink>)}                
         </section>
         <section className='add_auto' >
-        <NavLink to="/addauto"><button className='add_auto_button'onClick={authorRequest} >Добавить автомобиль</button></NavLink>
+        <NavLink to="/addauto"><button className='add_auto_button'>Добавить автомобиль</button></NavLink>
         </section>
         </>
     )

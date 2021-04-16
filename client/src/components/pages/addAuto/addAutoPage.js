@@ -6,6 +6,7 @@ import Continuestep from './continuestep'
 
 
 function Addautopage(){
+  const nextPage = '/addauto/options'
   return(
     <>
     <main>
@@ -17,7 +18,7 @@ function Addautopage(){
     <Aboutautoinfo/>
     <Priceauto/>
     <Insurance/> 
-    <Continuestep/>    
+    <Continuestep value={nextPage}/>    
     </section>  
     </main>
     </>

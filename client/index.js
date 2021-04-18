@@ -14,6 +14,7 @@ import './src/scss/infoAutoBlock.scss'
 import './src/scss/addauto.scss'
 import './src/scss/Options.scss'
 import './src/scss/addautophoto.scss'
+import './src/scss/uploader.scss'
 import App from "./src/components/App";
 import { compose, createStore, applyMiddleware } from "redux";
 import { Provider } from 'react-redux'

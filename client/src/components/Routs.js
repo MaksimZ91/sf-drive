@@ -31,7 +31,7 @@ function Routs (){
       
         return(
         <>           
-        <Route path="/" component={Addautopage} exact/>
+        <Route path="/" component={Addautophoto} exact/>
         <Route path="/auto" component={DetailAutoPage} exact/>
         <Route path="/myAuto" component={Autopage} exact/>
         <Route path="/addauto" component={Addautopage} exact/>

@@ -1,18 +1,19 @@
 import React from 'react'
 import Photo from './Photo'
 import Newphoto from './newPhoto'
+import { useSelector } from 'react-redux'
 
 
 function Autophoto (){
+    const addAutoPhoto = useSelector((state)=>{
+        return state.newAuto.autoPhoto
+    })
+
+    console.log(addAutoPhoto)
     return(
         <>
         <div className='add_photo_newphoto'>
-           <Photo/>
-           <Photo/>
-           <Photo/>
-           <Photo/>
-           <Photo/>
-           <Photo/>
+            {addAutoPhoto.map(e => <Photo value={e} key={e.lastModified}/>)}
            <Newphoto/>            
         </div>
 

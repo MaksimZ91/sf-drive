@@ -1,4 +1,6 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, UploadedFile, UseGuards, UseInterceptors } from "@nestjs/common";
+import { diskStorage } from 'multer'
+import { FileInterceptor } from "@nestjs/platform-express";
 import { JwtAuthGuard } from "src/guard/autn.guard";
 import { AutoService } from "src/service/auto.service";
 import { AddAutoDto } from '../dto/add-auto.dto'
@@ -28,6 +30,24 @@ export class AutoController {
     @Get('all/autos')
     getAllAutos(){
         return this.autoService.getAllAutos()
+    }
+    
+    @Post('upload')
+    @UseInterceptors(
+      FileInterceptor('file', {
+        storage:diskStorage({
+          distinations:'./files',
+          filename:(req, file, callback)=>{
+            file.originalname
+            callback(null, file.originalname)
+          }
+        })
+      })
+    )
+    uploadFile(@UploadedFile() file){
+      console.log(file)
+      return {message : 'ок'}
+
     }
 
 

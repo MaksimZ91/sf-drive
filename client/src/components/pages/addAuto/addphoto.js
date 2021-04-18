@@ -1,10 +1,29 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addAutoPhoto } from '../../../../redux/actions/actions'
 
 function Addphoto (){
+    const dispatch = useDispatch() 
+ 
+
+const onDropHandler = e =>{
+   e.preventDefault()
+   let files = [...e.dataTransfer.files]
+   files.forEach(foto => dispatch(addAutoPhoto(foto)))
+}
+
+const onDragStartHandler = e =>{
+    e.preventDefault()
+}
+
+const onDragLeveHandler = e =>{
+    e.preventDefault()
+}
+
     return(
         <>
-        <div className="add_photo_drop">
-            <div className='add_photo_drop_wrapper'>
+        <div className="add_photo_drop" onDrop={onDropHandler} onDragStart={onDragStartHandler} onDragLeave={onDragLeveHandler} onDragOver={onDragStartHandler}>
+            <div className='add_photo_drop_wrapper' >
                 <img src='../src/img/upload.svg'/>
                 <span>Перетащите или <input id="file-input" type='file'/>
                     <label htmlFor="file-input">выберите файл</label>

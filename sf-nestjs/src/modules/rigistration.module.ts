@@ -9,4 +9,5 @@ import { UserRepository } from '../repo/user.repository'
   controllers: [RegistrController],
   providers: [RegistrationService, UserRepository],
 })
+
 export class RegistrModul {}

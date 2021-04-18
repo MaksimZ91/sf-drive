@@ -7,7 +7,7 @@ import { addAutoForm } from '../../../../redux/actions/actions'
 function Priceauto (){
   const dispatch = useDispatch()
   const addAuto = useSelector((state)=>{
-    return state.auto.addAuto
+    return state.newAuto.addAuto
 })
 
  const handleChange = e => {

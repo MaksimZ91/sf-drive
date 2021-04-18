@@ -4,6 +4,7 @@ import { AuthorizationModul } from './modules/authorization_authentication.modul
 import { RegistrModul } from './modules/rigistration.module'
 import { AutoModule } from './modules/auto.module'
 import { TypeOrmModule } from '@nestjs/typeorm'
+import { MulterModule } from '@nestjs/platform-express'
 
 
 @Module({    
@@ -25,7 +26,10 @@ import { TypeOrmModule } from '@nestjs/typeorm'
               entities:[
                 `${__dirname}/**/*.entity.{ts,js}`
               ]
-            })
+            }),
+            MulterModule.register({
+              dest: './upload',
+            })           
           ],
   controllers: [],
   providers: [],

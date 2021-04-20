@@ -10,7 +10,7 @@ function Aboutautoinfo (){
   const addAuto = useSelector((state)=>{
     return state.newAuto.addAuto
 })
-console.log(addAuto)
+
 
  const handleChange = e => {
   dispatch(addAutoForm(addAuto, e))
@@ -45,7 +45,7 @@ console.log(addAuto)
       <option value="Вариатор">Вариатор</option>
       </select>
       </p>
-    <p>Пробег<input className="new_auto_form_mileage" placeholder='10 000 км' name='milage' value={addAuto.milage} onChange={handleChange}/></p>
+    <p>Пробег<input className="new_auto_form_mileage" placeholder='10 000 км' name='mileage' value={addAuto.mileage} onChange={handleChange}/></p>
     <p>Серия и номер ПТС<input className="new_auto_form_pts" placeholder='00 АА 000000' name='pts' value={addAuto.pts} onChange={handleChange}/></p>
     <p>Серия и номер СТС<input className="new_auto_form_sts" placeholder='00 АА 000000' name='sts' value={addAuto.sts} onChange={handleChange}/></p>
     </form>

@@ -43,9 +43,8 @@ export function addAutoOptionsForm (state, event){
 }
 
 
-export function deletePhoto (files, index){
-    files.splice(index, 1)
-    return {type:DELETE_PHOTO, payload:files}
+export function deletePhoto (index){    
+    return {type:DELETE_PHOTO, payload:index}
 }
 
 export function addAutoPhoto(photos){

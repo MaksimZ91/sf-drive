@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { CircularProgressbarWithChildren, buildStyles} from 'react-circular-progressbar';
 import { useSelector, useDispatch } from 'react-redux'
-import {  hideLoading, showLoading } from '../../../../redux/actions/actions';
+import {  hideLoading, showLoading, deletePhoto } from '../../../../redux/actions/actions';
 const TOKENS_KYES='tokens'
 
 
@@ -15,6 +15,10 @@ function Photo (props){
         return state.app.loading
     })
     console.log(props)
+
+    const onDeletePhoto = () =>{
+        dispath(deletePhoto(props.index))
+    }
 
    
 
@@ -73,7 +77,7 @@ function Photo (props){
                     <p>{props.value.name}</p>
                     <p>2 Mb, JPG</p>
                 </div>
-                <img src='../src/img/trash.svg' onClick={()=>props.onDeletePhoto(props.index)}/>
+                <img src='../src/img/trash.svg' onClick={onDeletePhoto}/>
             </div>
         </div>
         

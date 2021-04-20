@@ -36,10 +36,10 @@ export class Autos {
   transmission:string;
 
   @Column()
-  millege:string; 
+  mileage:string; 
 
   @Column()
-  numberPTS:string;
+  pts:string;
   
   @Column()
   price:string;
@@ -60,15 +60,14 @@ export class Autos {
   privod:string;
 
   @Column()
-  fuel:string;
+  motor:string;
 
   @Column()
   body:string;
 
+  @Column()
+  sts:string;
+
   @ManyToOne(()=>Users, user=>user.autos)
   user:Users
-
-
-
-
 }

@@ -26,16 +26,17 @@ export class AutoService{
     newAuto.volume=addAuto.volume
     newAuto.power=addAuto.power
     newAuto.transmission=addAuto.transmission
-    newAuto.millege=addAuto.millege
-    newAuto.numberPTS=addAuto.numberPTS
+    newAuto.mileage=addAuto.mileage
+    newAuto.pts=addAuto.pts
     newAuto.price=addAuto.price
     newAuto.priceThreeDays=addAuto.priceThreeDays
     newAuto.priceFiveDays=addAuto.priceFiveDays
     newAuto.osago=addAuto.osago
     newAuto.kasko=addAuto.kasko
     newAuto.privod=addAuto.privod
-    newAuto.fuel=addAuto.fuel
+    newAuto.motor=addAuto.motor
     newAuto.body=addAuto.body
+    newAuto.sts=addAuto.sts
     newAuto.user=currentUser   
     await this.autoRepository.SaveAuto(newAuto)
     return { message:"Ok"} 

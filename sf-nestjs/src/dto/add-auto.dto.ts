@@ -21,9 +21,9 @@ export class AddAutoDto{
  
   readonly  transmission:string;
 
-  readonly millege:string; 
+  readonly mileage:string; 
 
-  readonly numberPTS:string;  
+  readonly pts:string;  
 
   readonly price:string;
 
@@ -37,8 +37,10 @@ export class AddAutoDto{
 
   readonly privod:string;
 
-  readonly fuel:string;
+  readonly motor:string;
 
   readonly body:string;
+  
+  readonly sts:string;
 
 }

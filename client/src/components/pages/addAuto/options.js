@@ -8,8 +8,9 @@ import { addAutoOptionsForm } from '../../../../redux/actions/actions'
 function Options (){
   const dispatch = useDispatch()
   const addAutoOptions = useSelector((state)=>{
-    return state.auto.addAutoOptions
+    return state.newAuto.addAutoOptions
 })
+console.log(addAutoOptions)
 
  const handleChange = e => {
   dispatch(addAutoOptionsForm(addAutoOptions, e))

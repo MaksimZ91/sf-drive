@@ -1,4 +1,4 @@
-import {  ADD_AUTO, ADD_AUTO_OPTIONS, ADD_AUTO_PHOTO } from "../type"
+import {  ADD_AUTO, ADD_AUTO_OPTIONS, ADD_AUTO_PHOTO, DELETE_PHOTO } from "../type"
 
 const defaultState = {
     addAuto:{mark:'AC', model:null, year:null, number:null, vin:null, collor:null, motor:'Бензин',volume:null,power:null, powerkwt:null,
@@ -17,7 +17,9 @@ export const AddAutoReducer = (state=defaultState , action) => {
         case ADD_AUTO_OPTIONS:
             return {...state, addAutoOptions:action.payload}
         case ADD_AUTO_PHOTO:
-                return {...state, autoPhoto:state.autoPhoto.concat([action.payload])}                  
+                return {...state, autoPhoto:state.autoPhoto.concat([action.payload])}  
+        case DELETE_PHOTO:
+            return {...state, autoPhoto:state.autoPhoto.concat([action.payload])}                        
         default: return state
     }
 

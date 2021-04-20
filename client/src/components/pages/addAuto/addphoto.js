@@ -12,6 +12,12 @@ const onDropHandler = e =>{
    files.forEach(foto => dispatch(addAutoPhoto(foto)))
 }
 
+const handleFileInput = e =>{
+    e.preventDefault()
+    let files =[...e.target.files]
+    files.forEach(foto => dispatch(addAutoPhoto(foto)))
+}
+
 const onDragStartHandler = e =>{
     e.preventDefault()
 }
@@ -22,10 +28,10 @@ const onDragLeveHandler = e =>{
 
     return(
         <>
-        <div className="add_photo_drop" onDrop={onDropHandler} onDragStart={onDragStartHandler} onDragLeave={onDragLeveHandler} onDragOver={onDragStartHandler}>
+        <div className="add_photo_drop" onDrop={onDropHandler} onDragStart={onDragStartHandler} multiple onDragLeave={onDragLeveHandler} onDragOver={onDragStartHandler}>
             <div className='add_photo_drop_wrapper' >
                 <img src='../src/img/upload.svg'/>
-                <span>Перетащите или <input id="file-input" type='file'/>
+                <span>Перетащите или <input id="file-input" type='file' onChange={handleFileInput} multiple/>
                     <label htmlFor="file-input">выберите файл</label>
                 </span>
                 <p>JPG или PNG, не более 30 мб</p>

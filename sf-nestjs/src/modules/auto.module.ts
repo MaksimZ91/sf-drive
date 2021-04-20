@@ -6,8 +6,10 @@ import { AutoService } from 'src/service/auto.service';
 
 
 
+
+
 @Module({
-  imports: [],
+  imports: [ ],
   controllers: [AutoController],
   providers: [AutoService, UserRepository, AutoRepository],
 })

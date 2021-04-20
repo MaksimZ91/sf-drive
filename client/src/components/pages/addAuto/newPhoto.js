@@ -1,19 +1,28 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { addAutoPhoto } from '../../../../redux/actions/actions'
 
 
 function Newphoto (){
+    const dispatch = useDispatch()
 
-    const onDropHandler = e =>{
+    const onDropHandler = e => {
         e.preventDefault()
         let files = [...e.dataTransfer.files]
-        console.log(files)
+        files.forEach(foto => dispatch(addAutoPhoto(foto)))        
      }
+
+     const handleFileInput = e => {
+        e.preventDefault()
+        let files =[...e.target.files]
+        files.forEach(foto => dispatch(addAutoPhoto(foto)))
+    }
      
-     const onDragStartHandler = e =>{
+     const onDragStartHandler = e => {
          e.preventDefault()
      }
      
-     const onDragLeveHandler = e =>{
+     const onDragLeveHandler = e => {
          e.preventDefault()
      }
     return(
@@ -21,7 +30,7 @@ function Newphoto (){
        <div className='add_photo_newphoto_addphoto' onDrop={onDropHandler} onDragStart={onDragStartHandler} onDragLeave={onDragLeveHandler} onDragOver={onDragStartHandler}>
             <div className='add_photo_newphoto_addphoto_wrapper'>
                 <img src='../src/img/upload.svg'/>
-                <span><input id="file-input" type='file'/>
+                <span><input id="file-input" type='file'onChange={handleFileInput} multiple />
                     <label htmlFor="file-input">Добавить ещё файл</label>
                 </span>
                 

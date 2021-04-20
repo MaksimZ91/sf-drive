@@ -36,7 +36,7 @@ export class AutoController {
     @UseInterceptors(
       FileInterceptor('file', {
         storage:diskStorage({
-          distinations:'./files',
+          destination:'./files',
           filename:(req, file, callback)=>{
             file.originalname
             callback(null, file.originalname)
@@ -46,7 +46,7 @@ export class AutoController {
     )
     uploadFile(@UploadedFile() file){
       console.log(file)
-      return {message : 'ок'}
+      return {message : file.path}
 
     }
 

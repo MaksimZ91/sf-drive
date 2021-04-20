@@ -26,10 +26,9 @@ import { MulterModule } from '@nestjs/platform-express'
               entities:[
                 `${__dirname}/**/*.entity.{ts,js}`
               ]
-            }),
+            }),            
             MulterModule.register({
-              dest: './upload',
-            })           
+              dest:'./files'})           
           ],
   controllers: [],
   providers: [],

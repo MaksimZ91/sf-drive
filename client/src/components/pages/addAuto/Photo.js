@@ -11,12 +11,12 @@ function Photo (props){
     const [photoUrl, setPhotoUrl] = useState(null)    
     const [procentUpload, setProcentUpload]= useState(0)   
     const [error, setError]=useState(false)
+    const cancelFileUpload = useRef(null)
     const loading = useSelector((state)=>{
         return state.app.loading
     })
-    const cancelFileUpload = useRef(null)
-    console.log(error)
-      
+  
+
     const onDeletePhoto = () =>{
         dispath(deletePhoto(props.index))
     }

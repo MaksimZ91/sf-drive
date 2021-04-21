@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useRef, useState } from 'react'
+import axios, { CancelToken } from 'axios'
 import { CircularProgressbarWithChildren, buildStyles} from 'react-circular-progressbar';
 import { useSelector, useDispatch } from 'react-redux'
 import {  hideLoading, showLoading, deletePhoto } from '../../../../redux/actions/actions';
@@ -7,32 +7,19 @@ const TOKENS_KYES='tokens'
 
 
 function Photo (props){    
-    const dispath = useDispatch() 
-    const CancelToken = axios.CancelToken;   
-    const [photoUrl, setPhotoUrl] = useState(null)
-    const [source, setSource]=useState(CancelToken.source())
+    const dispath = useDispatch()    
+    const [photoUrl, setPhotoUrl] = useState(null)    
     const [procentUpload, setProcentUpload]= useState(0)   
     const [error, setError]=useState(false)
     const loading = useSelector((state)=>{
         return state.app.loading
     })
+    const cancelFileUpload = useRef(null)
     console.log(error)
       
-
-      
-
-
     const onDeletePhoto = () =>{
         dispath(deletePhoto(props.index))
     }
-
-    const onAbortFetch = () =>{ 
-        setSource(CancelToken.source())        
-        source.cancel('Operation canceled by the user.')
-    }
-
-
-   
 
     const uploadPhoto = async () => { 
         dispath(showLoading())  
@@ -51,7 +38,7 @@ function Photo (props){
                     setProcentUpload(progress)
                 }
             },
-            cancelToken: source.token 
+            cancelToken: new CancelToken( cancel => cancelFileUpload.current = cancel)
         } 
 
         await axios.post('http://localhost:5000/auto/upload', formData, config)
@@ -62,6 +49,7 @@ function Photo (props){
         dispath(hideLoading())
     } 
 
+
     useEffect (() => {
         let reader  = new FileReader();
         reader.readAsDataURL(props.value)
@@ -70,6 +58,11 @@ function Photo (props){
           }
           uploadPhoto() 
     },[])
+
+    const cancelUpload = () => {
+        if (cancelFileUpload.current)
+            cancelFileUpload.current('User has canceled the file upload')
+    }
 
     return(
         <>
@@ -85,7 +78,7 @@ function Photo (props){
                             pathColor: "#FFFFFF",
                             trailColor: "transparent"
                             })}>  
-                        {(!error&&loading)?<img src='../src/img/cancel_fetch.svg' onClick={onAbortFetch}/>:''} 
+                        {(!error&&loading)?<img src='../src/img/cancel_fetch.svg' onClick={()=>cancelUpload()}/>:''} 
                         {error?<img src='../src/img/upload_arrow.svg' onClick={uploadPhoto}/>:''}              
                         </CircularProgressbarWithChildren>                   
                 </div>:''}

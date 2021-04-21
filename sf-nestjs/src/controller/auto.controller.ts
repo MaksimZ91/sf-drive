@@ -1,10 +1,14 @@
-import { Body, Controller, Get, Param, Post, UploadedFile, UseGuards, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, UploadedFile, UseGuards, UseInterceptors, Res, Delete } from "@nestjs/common";
 import { diskStorage } from 'multer'
+import { Observable, of } from 'rxjs'
 import { FileInterceptor } from "@nestjs/platform-express";
 import { JwtAuthGuard } from "src/guard/autn.guard";
 import { AutoService } from "src/service/auto.service";
 import { AddAutoDto } from '../dto/add-auto.dto'
 import { AddAutoOptionsDto } from "src/dto/addAutoOptions.dto";
+import path = require('path');
+import { join } from 'path';
+import { param } from "express-validator";
 
 @Controller('auto')
 
@@ -54,6 +58,17 @@ export class AutoController {
       console.log(file)
       return {message : file.path}
 
+    }
+
+
+    @Get('auto-image/:imganame')
+    FindeFileImage(@Param('imganame') imagename, @Res() res):Observable<Object>{
+      return res.sendFile(imagename, {root:'files'})
+    }
+
+    @Delete('delet-image/:imganame')
+    FindeAndDeleteFile(@Param('imganame') imagename, @Res() res):Observable<Object>{
+      return res.delet(imagename, {root:'files'})
     }
 
 

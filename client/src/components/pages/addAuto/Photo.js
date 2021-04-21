@@ -7,40 +7,54 @@ const TOKENS_KYES='tokens'
 
 
 function Photo (props){ 
+    const CancelToken = axios.CancelToken;    
     const dispath = useDispatch()  
     const [photoUrl, setPhotoUrl] = useState(null)
     const [procentUpload, setProcentUpload]= useState(0)
+    const [source, setSource]=useState(CancelToken.source())
     const [error, setError]=useState(false)
     const loading = useSelector((state)=>{
         return state.app.loading
     })
-    console.log(props)
+
+    console.log(error)
+  
+
 
     const onDeletePhoto = () =>{
         dispath(deletePhoto(props.index))
+    }
+
+    const onAbortFetch = () =>{
+        setError(true)
+        source.cancel('Operation canceled by the user.')
     }
 
    
 
     const uploadPhoto = async () => {
         dispath(showLoading())
-        let tokens = JSON.parse(localStorage.getItem(TOKENS_KYES))
-         let access = tokens.accessToken  
         const formData = new FormData()
-        formData.append( 'file', props.value)           
-        await axios.post('http://localhost:5000/auto/upload', formData, {
+        formData.append( 'file', props.value) 
+        let tokens = JSON.parse(localStorage.getItem(TOKENS_KYES))
+        let access = tokens.accessToken  
+        const config ={       
             method:'POST',              
-            headers:{ Authorization: `Bearer ${access}`},
+            headers:{ Authorization: `Bearer ${access}`},            
             onUploadProgress: progressEvent => {
                 const totalLength = progressEvent.lengthComputable ? progressEvent.total : progressEvent.target.getResponseHeader('content-length') || progressEvent.target.getResponseHeader('x-decompressed-content-length');
-                console.log('total', totalLength)
                 if (totalLength) {
-                    let progress = Math.round((progressEvent.loaded * 100) / totalLength)
-                    console.log(progress)
+                    let progress = Math.round((progressEvent.loaded * 100) / totalLength)                   
                     setProcentUpload(progress)
                 }
-            },         
-        })
+            },
+            cancelToken: source.token 
+        }          
+        const response = await axios.post('http://localhost:5000/auto/upload', formData, config)
+        const data = await response.json()
+        if (!response.ok){
+            setError(data.message)
+        }
         dispath(hideLoading())
     } 
 
@@ -67,7 +81,8 @@ function Photo (props){
                             pathColor: "#FFFFFF",
                             trailColor: "transparent"
                             })}>  
-                        <img src='../src/img/upload_arrow.svg' onClick={uploadPhoto}/>              
+                        {(!error&&loading)?<img src='../src/img/cancel_fetch.svg' onClick={onAbortFetch}/>:''} 
+                        {error?<img src='../src/img/upload_arrow.svg' onClick={uploadPhoto}/>:''}              
                         </CircularProgressbarWithChildren>                   
                 </div>:''}
 
@@ -75,7 +90,7 @@ function Photo (props){
             <div className='add_photo_newphoto_currentphoto_text'>
                 <div className='add_photo_newphoto_currentphoto_text_wrapper'>
                     <p>{props.value.name.split(".")[0]}</p>
-                    <p>2 Mb, JPG</p>
+                    {!error?<p>2 Mb, JPG</p>:<p>Не удалось загрузить файл</p>}
                 </div>
                 <img src='../src/img/trash.svg' onClick={onDeletePhoto}/>
             </div>

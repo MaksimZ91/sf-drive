@@ -6,34 +6,37 @@ import {  hideLoading, showLoading, deletePhoto } from '../../../../redux/action
 const TOKENS_KYES='tokens'
 
 
-function Photo (props){ 
-    const CancelToken = axios.CancelToken;    
-    const dispath = useDispatch()  
+function Photo (props){    
+    const dispath = useDispatch() 
+    const CancelToken = axios.CancelToken;   
     const [photoUrl, setPhotoUrl] = useState(null)
-    const [procentUpload, setProcentUpload]= useState(0)
     const [source, setSource]=useState(CancelToken.source())
+    const [procentUpload, setProcentUpload]= useState(0)   
     const [error, setError]=useState(false)
     const loading = useSelector((state)=>{
         return state.app.loading
     })
-
     console.log(error)
-  
+      
+
+      
 
 
     const onDeletePhoto = () =>{
         dispath(deletePhoto(props.index))
     }
 
-    const onAbortFetch = () =>{
-        setError(true)
+    const onAbortFetch = () =>{ 
+        setSource(CancelToken.source())        
         source.cancel('Operation canceled by the user.')
     }
 
+
    
 
-    const uploadPhoto = async () => {
-        dispath(showLoading())
+    const uploadPhoto = async () => { 
+        dispath(showLoading())  
+        setError(false)    
         const formData = new FormData()
         formData.append( 'file', props.value) 
         let tokens = JSON.parse(localStorage.getItem(TOKENS_KYES))
@@ -49,12 +52,13 @@ function Photo (props){
                 }
             },
             cancelToken: source.token 
-        }          
-        const response = await axios.post('http://localhost:5000/auto/upload', formData, config)
-        const data = await response.json()
-        if (!response.ok){
-            setError(data.message)
-        }
+        } 
+
+        await axios.post('http://localhost:5000/auto/upload', formData, config)
+       .then(response => {           
+            console.log(response);
+        })
+        .catch(function (e) {setError(e)})
         dispath(hideLoading())
     } 
 

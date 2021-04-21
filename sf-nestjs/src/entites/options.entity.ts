@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToOne, ObjectIdColumn,ObjectID } from "typeorm";
-import { Users } from './user.entity'
+import { Autos } from "./auto.entity";
+
 
 
 @Entity()
@@ -61,4 +62,7 @@ export class OptionsAuto {
 
   @Column() 
   fullTank:boolean;
+
+  @ManyToOne(()=>Autos, auto=>auto.options)
+  auto:Autos
 }

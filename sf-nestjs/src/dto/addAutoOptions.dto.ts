@@ -1,5 +1,7 @@
 export class AddAutoOptionsDto{ 
 
+  readonly newAuto:string
+
   readonly isofix:boolean;
 
   readonly  srs:boolean;

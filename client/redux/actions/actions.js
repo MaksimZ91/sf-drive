@@ -1,6 +1,6 @@
 import { fetchHttp } from '../../src/js/fetch'
 import { FETCH_AUTO_ALL, FETCH_AUTO_LIST, FETCH_AUTO, ADD_END_DATE, ADD_START_DATE,
-     ADD_AUTO, ADD_AUTO_OPTIONS, ADD_AUTO_PHOTO, SHOW_LOADER, HIDE_LOADER, DELETE_PHOTO } from '../type'
+     ADD_AUTO, ADD_AUTO_OPTIONS, ADD_AUTO_PHOTO, SHOW_LOADER, HIDE_LOADER, DELETE_PHOTO, ADD_AUTO_NEW_AUTO_ID } from '../type'
 const TOKENS_KYES='tokens'
 
 
@@ -57,6 +57,10 @@ export function showLoading(){
 
 export function hideLoading(){
     return { type:HIDE_LOADER }
+}
+
+export function addNewAutoID(id){
+    return { type:ADD_AUTO_NEW_AUTO_ID, payload:id }
 }
  
     

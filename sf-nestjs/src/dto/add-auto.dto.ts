@@ -1,7 +1,7 @@
 
 
 export class AddAutoDto{
-  readonly userId:string ;
+  readonly userId:string;
 
   readonly  mark:string;
 

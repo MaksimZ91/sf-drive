@@ -3,7 +3,10 @@ import { getMongoManager} from "typeorm";
 import { AddAutoDto } from '../dto/add-auto.dto'
 import { AutoRepository } from "src/repo/auto.repository";
 import { UserRepository } from "src/repo/user.repository";
+import { OptionsRepository } from "src/repo/options.repository";
 import { Autos } from '../entites/auto.entity'
+import { AddAutoOptionsDto } from "src/dto/addAutoOptions.dto";
+import { OptionsAuto } from "src/entites/options.entity";
 
 
 
@@ -12,7 +15,8 @@ import { Autos } from '../entites/auto.entity'
 @Injectable()
 export class AutoService{
   constructor(private autoRepository:AutoRepository,
-              private userRepository:UserRepository){}
+              private userRepository:UserRepository,
+              private optionsRepository:OptionsRepository){}
   
   async createAuto(addAuto:AddAutoDto){
     const newAuto = new Autos
@@ -38,9 +42,37 @@ export class AutoService{
     newAuto.body=addAuto.body
     newAuto.sts=addAuto.sts
     newAuto.user=currentUser   
-    await this.autoRepository.SaveAuto(newAuto)
-    return { message:"Ok"} 
+    await this.autoRepository.SaveAuto(newAuto) 
+    const currentAuto = await this.autoRepository.FindOneByNumber(addAuto.number)   
+    return { newAuto:currentAuto._id } 
 
+  }
+
+
+  async AddAutoOptions(AddOptions:AddAutoOptionsDto){
+    const newOptions = new OptionsAuto
+    const auto = await this.autoRepository.FindOneByID(AddOptions.newAuto)
+    newOptions.isofix = AddOptions.isofix
+    newOptions.srs = AddOptions.srs
+    newOptions.heater = AddOptions.heater
+    newOptions.aux = AddOptions.aux
+    newOptions.bluetooth = AddOptions.bluetooth
+    newOptions.cruizControl = AddOptions.cruizControl
+    newOptions.conditioning = AddOptions.conditioning
+    newOptions.multimedia = AddOptions.multimedia
+    newOptions.navigation = AddOptions.navigation
+    newOptions.seatCondi = AddOptions.seatCondi
+    newOptions.seatHeater = AddOptions.seatHeater
+    newOptions.trunk = AddOptions.trunk
+    newOptions.park = AddOptions.park
+    newOptions.camera = AddOptions.camera
+    newOptions.babyChair = AddOptions.babyChair
+    newOptions.deliveryAuto = AddOptions.deliveryAuto
+    newOptions.close = AddOptions.close
+    newOptions.fullTank = AddOptions.fullTank
+    newOptions.auto = auto
+    await this.optionsRepository.SaveOptions(newOptions)
+    return {message:'ok'}
   }
 
 

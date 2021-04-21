@@ -74,7 +74,7 @@ function Photo (props){
             </div>
             <div className='add_photo_newphoto_currentphoto_text'>
                 <div className='add_photo_newphoto_currentphoto_text_wrapper'>
-                    <p>{props.value.name}</p>
+                    <p>{props.value.name.split(".")[0]}</p>
                     <p>2 Mb, JPG</p>
                 </div>
                 <img src='../src/img/trash.svg' onClick={onDeletePhoto}/>

@@ -4,6 +4,7 @@ import { FileInterceptor } from "@nestjs/platform-express";
 import { JwtAuthGuard } from "src/guard/autn.guard";
 import { AutoService } from "src/service/auto.service";
 import { AddAutoDto } from '../dto/add-auto.dto'
+import { AddAutoOptionsDto } from "src/dto/addAutoOptions.dto";
 
 @Controller('auto')
 
@@ -13,6 +14,11 @@ export class AutoController {
     @Post('add')
     CreateAuto(@Body() addAuto:AddAutoDto){
       return this.autoService.createAuto(addAuto)
+    }
+
+    @Post('add/options')
+    AddAutoOptions(@Body() AddAutoOptions:AddAutoOptionsDto){
+      return this.autoService.AddAutoOptions(AddAutoOptions)
     }
   
     @UseGuards(JwtAuthGuard)

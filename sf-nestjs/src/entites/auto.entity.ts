@@ -1,4 +1,5 @@
-import { Column, Entity, ManyToOne, ObjectIdColumn,ObjectID } from "typeorm";
+import { Column, Entity, ManyToOne, ObjectIdColumn,ObjectID, OneToMany } from "typeorm";
+import { OptionsAuto } from "./options.entity";
 import { Users } from './user.entity'
 
 
@@ -70,4 +71,7 @@ export class Autos {
 
   @ManyToOne(()=>Users, user=>user.autos)
   user:Users
+
+  @OneToMany(()=>OptionsAuto, options=>options.auto)
+  options:OptionsAuto[]
 }

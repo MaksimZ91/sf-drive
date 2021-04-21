@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Dopoptions from './dopOptions'
 import Options from './options'
 import Continuestep from './continuestep'
@@ -15,16 +15,16 @@ function Optionsautopage (){
   const [data, setData]=useState(null)
   const {request} = useHttp()
   const form = useSelector((state)=>{
-    return state.newAuto.addAutoOption
+    return {data:state.newAuto.addAutoOptions, id:state.newAuto.newAutoId}
   })
-  
+
+  console.log(form)
 
 
   const authorRequest = async () => {   
     try { 
-      dispatch(showLoading())       
-        const auto = await JSON.parse(localStorage.getItem(TOKENS_KYES))       
-        const result = await request('http://localhost:5000/auto/add','POST',{...form, userId:auto.userId })
+      dispatch(showLoading())
+        const result = await request('http://localhost:5000/auto/options','POST',{...form.data, ...form.id})
         setData(result) 
         dispatch(hideLoading())     
     } catch (e) {
@@ -45,7 +45,7 @@ function Optionsautopage (){
     <Options/>
     <Dopoptions/>
     <Continuestep  nextStep={authorRequest}/> 
-    {!error&&data?<Redirect to='/addauto/options'/>:''}  
+    {!error&&data?<Redirect to='/addauto/photo'/>:''}  
     </section>  
     </main>
     </>

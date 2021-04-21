@@ -6,7 +6,7 @@ import Continuestep from './continuestep'
 import {useHttp} from '../../../hooks/http.hook'
 import { Redirect } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
-import { hideLoading, showLoading } from '../../../../redux/actions/actions'
+import { addNewAutoID, hideLoading, showLoading } from '../../../../redux/actions/actions'
 const TOKENS_KYES='tokens'
 
 
@@ -27,6 +27,7 @@ function Addautopage(){
       dispatch(showLoading())       
         const auto = await JSON.parse(localStorage.getItem(TOKENS_KYES))       
         const result = await request('http://localhost:5000/auto/add','POST',{...form, userId:auto.userId })
+        dispatch(addNewAutoID(result))
         setData(result) 
         dispatch(hideLoading())     
     } catch (e) {

@@ -3,7 +3,7 @@ import axios, { CancelToken } from 'axios'
 import {useHttp} from '../../../hooks/http.hook'
 import { CircularProgressbarWithChildren, buildStyles} from 'react-circular-progressbar';
 import { useSelector, useDispatch } from 'react-redux'
-import {  hideLoading, showLoading, deletePhoto } from '../../../../redux/actions/actions';
+import {  hideLoading, showLoading, deletePhoto, addAutoPhotoName } from '../../../../redux/actions/actions';
 const TOKENS_KYES='tokens'
 
 
@@ -17,9 +17,9 @@ function Photo (props){
     const loading = useSelector((state)=>{
         return state.app.loading
     })
-
-  
-  
+    const autoID = useSelector((state)=>{
+        return state.newAuto.newAutoId
+    })
 
     const onDeletePhoto = async () =>{
         dispath(deletePhoto(props.index))     
@@ -46,9 +46,9 @@ function Photo (props){
             cancelToken: new CancelToken( cancel => cancelFileUpload.current = cancel)
         } 
 
-        await axios.post('http://localhost:5000/auto/upload', formData, config)
+        await axios.post(`http://localhost:5000/auto/upload`, formData, config)
        .then(response => {           
-            console.log(response);
+            dispath(addAutoPhotoName(response.data))
         })
         .catch(function (e) {setError(e)})
         dispath(hideLoading())

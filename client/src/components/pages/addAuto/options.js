@@ -10,7 +10,7 @@ function Options (){
   const addAutoOptions = useSelector((state)=>{
     return state.newAuto.addAutoOptions
 })
-console.log(addAutoOptions)
+
 
  const handleChange = e => {
   dispatch(addAutoOptionsForm(addAutoOptions, e))

@@ -1,8 +1,10 @@
-import { validationResult } from 'express-validator'
+
 import React from 'react'
 
 function Auto (props){
-    console.log(props)
+
+    
+   
    
     return(
        <div className='myAuto_auto'>

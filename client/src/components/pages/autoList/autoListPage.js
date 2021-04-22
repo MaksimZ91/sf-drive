@@ -27,9 +27,6 @@ function Newpage (){
       "Accept": "application/json",
       "Authorization": "Token " + token } )
       console.log(data)
-   
-
-
   }
 
 

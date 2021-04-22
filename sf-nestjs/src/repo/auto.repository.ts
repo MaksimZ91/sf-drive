@@ -16,6 +16,7 @@ export class AutoRepository {
         const repository= getMongoRepository(Autos)
         return await repository.find({where:{['user._id']:new ObjectID(userId)}})
     }
+    
 
     async FindOneByID (id:string){
         const repository=getMongoRepository(Autos)

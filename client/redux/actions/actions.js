@@ -1,5 +1,5 @@
 import { fetchHttp } from '../../src/js/fetch'
-import { FETCH_AUTO_ALL, FETCH_AUTO_LIST, FETCH_AUTO, ADD_END_DATE, ADD_START_DATE,
+import { FETCH_AUTO_ALL, FETCH_AUTO_LIST, FETCH_AUTO, ADD_END_DATE, ADD_START_DATE,ADD_AUTO_PHOTO_NAME,
      ADD_AUTO, ADD_AUTO_OPTIONS, ADD_AUTO_PHOTO, SHOW_LOADER, HIDE_LOADER, DELETE_PHOTO, ADD_AUTO_NEW_AUTO_ID } from '../type'
 const TOKENS_KYES='tokens'
 
@@ -49,6 +49,10 @@ export function deletePhoto (index){
 
 export function addAutoPhoto(photos){
     return{type:ADD_AUTO_PHOTO, payload:photos}
+}
+
+export function addAutoPhotoName(name){
+    return{type:ADD_AUTO_PHOTO_NAME, payload:name}
 }
 
 export function showLoading(){

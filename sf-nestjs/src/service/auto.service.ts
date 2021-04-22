@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { getMongoManager} from "typeorm";
+import { unlink } from 'fs/promises';
 import { AddAutoDto } from '../dto/add-auto.dto'
 import { AutoRepository } from "src/repo/auto.repository";
 import { UserRepository } from "src/repo/user.repository";
@@ -7,6 +7,9 @@ import { OptionsRepository } from "src/repo/options.repository";
 import { Autos } from '../entites/auto.entity'
 import { AddAutoOptionsDto } from "src/dto/addAutoOptions.dto";
 import { OptionsAuto } from "src/entites/options.entity";
+import { AddAutoPhotoNameDto } from "src/dto/addAutoPhotoName";
+import { AutoPhotoName } from "src/entites/autoPhotoName.entity";
+import { PhotoRepository } from "src/repo/photo.repository";
 
 
 
@@ -16,7 +19,8 @@ import { OptionsAuto } from "src/entites/options.entity";
 export class AutoService{
   constructor(private autoRepository:AutoRepository,
               private userRepository:UserRepository,
-              private optionsRepository:OptionsRepository){}
+              private optionsRepository:OptionsRepository,
+              private photoRepository:PhotoRepository){}
   
   async createAuto(addAuto:AddAutoDto){
     const newAuto = new Autos
@@ -75,6 +79,17 @@ export class AutoService{
     return {message:'ok'}
   }
 
+  async AddAutoPhotoName(addAutoPhotoName:AddAutoPhotoNameDto){
+    console.log(addAutoPhotoName)
+    const newAutoPhotoName = new AutoPhotoName
+    const currentAuto = await this.autoRepository.FindOneByID(addAutoPhotoName.newAuto)
+    newAutoPhotoName.photoName = addAutoPhotoName.photoName
+    newAutoPhotoName.auto = currentAuto
+    await this.photoRepository.SavePhoto(newAutoPhotoName)
+    return {message:'ok'}
+
+  }
+
 
   async getAll(addAuto:AddAutoDto){    
    return await this.autoRepository.FindAllByUserID(addAuto.userId)      
@@ -88,6 +103,19 @@ export class AutoService{
   async getAllAutos(){
     return  await  this.autoRepository.FindAll()
     
+  }
+
+  async getPhotoAuto(id){
+   return await this.photoRepository.FindePhotoByID(id)
+  }
+
+  async uploadFile(file){    
+    return file.filename
+  }
+
+  async deleteFile(imagename:string){
+    unlink('files/AutoPhoto/'+ imagename)
+    return {message: 'Delete'}
   }
 
 }

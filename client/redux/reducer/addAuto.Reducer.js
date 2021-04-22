@@ -1,4 +1,4 @@
-import {  ADD_AUTO, ADD_AUTO_OPTIONS, ADD_AUTO_PHOTO, DELETE_PHOTO, ADD_AUTO_NEW_AUTO_ID } from "../type"
+import {  ADD_AUTO, ADD_AUTO_OPTIONS, ADD_AUTO_PHOTO, DELETE_PHOTO, ADD_AUTO_NEW_AUTO_ID, ADD_AUTO_PHOTO_NAME } from "../type"
 
 const defaultState = {
     addAuto:{mark:'AC', model:null, year:null, number:null, vin:null, collor:null, motor:'Бензин',volume:null,power:null, powerkwt:null,
@@ -6,6 +6,7 @@ const defaultState = {
     addAutoOptions:{isofix:false, srs:false, heater:false, aux:false, bluetooth:false, cruizControl:false, conditioning:false, multimedia:false,
     navigation:false, seatCondi:false, seatHeater:false, trunk:false, park:false, camera:false, babyChair:false, deliveryAuto:false, close:false, fullTank:false },
     autoPhoto:[],
+    autoPhotoName:[],
     newAutoId:null
     
 }
@@ -21,6 +22,8 @@ export const AddAutoReducer = (state=defaultState , action) => {
             return {...state, addAutoOptions:action.payload}
         case ADD_AUTO_PHOTO:
                 return {...state, autoPhoto:state.autoPhoto.concat([action.payload])}  
+        case ADD_AUTO_PHOTO_NAME:
+                return {...state, autoPhotoName:state.autoPhotoName.concat([action.payload])} 
         case DELETE_PHOTO:
             return {...state, autoPhoto:[...state.autoPhoto.slice( 0, action.payload),...state.autoPhoto.slice( action.payload+1)]}
             default: return state

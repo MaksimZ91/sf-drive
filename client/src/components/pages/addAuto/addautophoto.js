@@ -1,20 +1,36 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Addphoto from './addphoto'
 import Continuestep from './continuestep'
 import Autophoto from './autophoto'
-import { useSelector } from 'react-redux'
-import {useHttp} from '../../../hooks/http.hook'
+import { Redirect } from 'react-router'
+import { useHttp } from '../../../hooks/http.hook'
+import { useSelector, useDispatch } from 'react-redux'
+import {  hideLoading, showLoading } from '../../../../redux/actions/actions';
 
-function Addautophoto (){  
-    const {request} = useHttp()  
+
+function Addautophoto (){ 
+    const dispatch = useDispatch() 
+    const [error, setError]=useState(null)
+    const [data, setData]=useState(null) 
+    const {request} = useHttp()
     const addAutoPhoto = useSelector((state)=>{
       return state.newAuto.autoPhoto
   })
-   
- 
 
+  const form = useSelector((state)=>{
+    return {photoName:state.newAuto.autoPhotoName, ...state.newAuto.newAutoId}
+  })
 
-    
+const authorRequest = async () => { 
+    try { 
+      dispatch(showLoading())
+        const result = await request('http://localhost:5000/auto/photoname','POST', form)
+        setData(result) 
+        dispatch(hideLoading())     
+    } catch (e) {
+      setError(e)
+    }     
+} 
     return(
         <>
         <main>
@@ -24,7 +40,8 @@ function Addautophoto (){
             <p>Фото автомобиля</p>
             <p>Чем больше качественных фотографий вы загрузите, тем выше шанс того, что выберут ваш автомобиль.</p> 
             {!addAutoPhoto.length==0?<Autophoto/>:<Addphoto/>}
-            <Continuestep/>            
+            <Continuestep nextStep={authorRequest}/> 
+            {!error&&data?<Redirect to='/addauto/documentphoto'/>:''}            
         </div>        
         </section>  
         </main>

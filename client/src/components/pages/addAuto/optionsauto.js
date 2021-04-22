@@ -18,7 +18,7 @@ function Optionsautopage (){
     return {data:state.newAuto.addAutoOptions, id:state.newAuto.newAutoId}
   })
 
-  console.log(form)
+
 
 
   const authorRequest = async () => {   
@@ -33,7 +33,7 @@ function Optionsautopage (){
 } 
   
   
-  const nextPage = '/addauto/photo'
+
   return(
     <>
     <main>

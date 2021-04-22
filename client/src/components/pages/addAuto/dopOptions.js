@@ -13,7 +13,7 @@ function Dopoptions (){
   dispatch(addAutoOptionsForm(addAutoOptions, e))
   }
 
-  console.log(addAutoOptions)
+
 
   return(
     <> 

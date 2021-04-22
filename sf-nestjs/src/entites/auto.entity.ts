@@ -1,4 +1,5 @@
 import { Column, Entity, ManyToOne, ObjectIdColumn,ObjectID, OneToMany } from "typeorm";
+import { AutoPhotoName } from "./autoPhotoName.entity";
 import { OptionsAuto } from "./options.entity";
 import { Users } from './user.entity'
 
@@ -74,4 +75,7 @@ export class Autos {
 
   @OneToMany(()=>OptionsAuto, options=>options.auto)
   options:OptionsAuto[]
+
+  @OneToMany(()=>AutoPhotoName, photoName=>photoName.auto)
+  photoName:AutoPhotoName[]
 }

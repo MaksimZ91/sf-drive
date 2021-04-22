@@ -6,9 +6,9 @@ import { JwtAuthGuard } from "src/guard/autn.guard";
 import { AutoService } from "src/service/auto.service";
 import { AddAutoDto } from '../dto/add-auto.dto'
 import { AddAutoOptionsDto } from "src/dto/addAutoOptions.dto";
+import { unlink } from 'fs/promises';
 import path = require('path');
 import { join } from 'path';
-import { param } from "express-validator";
 
 @Controller('auto')
 
@@ -63,12 +63,15 @@ export class AutoController {
 
     @Get('auto-image/:imganame')
     FindeFileImage(@Param('imganame') imagename, @Res() res):Observable<Object>{
-      return res.sendFile(imagename, {root:'files'})
+      return (res.sendFile(join(process.cwd(), 'files/'+ imagename)))
     }
 
-    @Delete('delet-image/:imganame')
-    FindeAndDeleteFile(@Param('imganame') imagename, @Res() res):Observable<Object>{
-      return res.delet(imagename, {root:'files'})
+
+
+    @Delete('delete-image/:imganame')
+    DeleteFile(@Param('imganame') imagename){
+      unlink('files/'+ imagename)
+      return {message: 'delete-ok'}
     }
 
 

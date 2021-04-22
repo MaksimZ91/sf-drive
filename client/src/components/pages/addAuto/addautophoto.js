@@ -11,14 +11,7 @@ function Addautophoto (){
       return state.newAuto.autoPhoto
   })
    
-  const authorRequest = async () => {   
-    try {         
-         
-        const result = await request('http://localhost:5000/auto/delet-image/U_pv129bwMw.jpg','DELETE')          
-    } catch (e) {
-      setError(e)
-    }     
-} 
+ 
 
 
     
@@ -27,7 +20,7 @@ function Addautophoto (){
         <main>
         <section className="add_photo">
         <div className="add_photo_titel">
-            <p onClick={authorRequest}>Шаг 3 из 4</p>
+            <p >Шаг 3 из 4</p>
             <p>Фото автомобиля</p>
             <p>Чем больше качественных фотографий вы загрузите, тем выше шанс того, что выберут ваш автомобиль.</p> 
             {!addAutoPhoto.length==0?<Autophoto/>:<Addphoto/>}

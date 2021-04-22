@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import axios, { CancelToken } from 'axios'
+import {useHttp} from '../../../hooks/http.hook'
 import { CircularProgressbarWithChildren, buildStyles} from 'react-circular-progressbar';
 import { useSelector, useDispatch } from 'react-redux'
 import {  hideLoading, showLoading, deletePhoto } from '../../../../redux/actions/actions';
 const TOKENS_KYES='tokens'
 
 
-function Photo (props){    
+function Photo (props){  
+    const {request} = useHttp()   
     const dispath = useDispatch()    
     const [photoUrl, setPhotoUrl] = useState(null)    
     const [procentUpload, setProcentUpload]= useState(0)   
@@ -15,10 +17,13 @@ function Photo (props){
     const loading = useSelector((state)=>{
         return state.app.loading
     })
+
+  
   
 
-    const onDeletePhoto = () =>{
-        dispath(deletePhoto(props.index))
+    const onDeletePhoto = async () =>{
+        dispath(deletePhoto(props.index))     
+        await request(`http://localhost:5000/auto/delete-image/${props.value.name}`,'DELETE')   
     }
 
     const uploadPhoto = async () => { 

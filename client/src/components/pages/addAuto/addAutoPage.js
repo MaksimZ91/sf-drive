@@ -3,10 +3,11 @@ import Aboutautoinfo from './aboutAutoInfo'
 import Priceauto from './priceAuto'
 import Insurance from './insurance'
 import Continuestep from './continuestep'
-import {useHttp} from '../../../hooks/http.hook'
+import { useHttp } from '../../../hooks/http.hook'
 import { Redirect } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { addNewAutoID, hideLoading, showLoading } from '../../../../redux/actions/actions'
+import Error from './error'
 const TOKENS_KYES='tokens'
 
 
@@ -19,7 +20,7 @@ function Addautopage(){
   const form = useSelector((state)=>{
     return state.newAuto.addAuto
   })
-  console.log(error, data)
+
 
 
   const authorRequest = async () => {   
@@ -40,6 +41,7 @@ function Addautopage(){
   return(
     <>
     <main>
+    {error?<Error/>:''}
     <section className="new_auto">
     <div className="new_auto_titel">
    <p>Шаг 1 из 4</p>

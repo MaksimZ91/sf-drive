@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import axios, { CancelToken } from 'axios'
-import {useHttp} from '../../../hooks/http.hook'
+import { useHttp } from '../../../hooks/http.hook'
 import { CircularProgressbarWithChildren, buildStyles} from 'react-circular-progressbar';
 import { useSelector, useDispatch } from 'react-redux'
-import {  hideLoading, showLoading, deletePhoto, addAutoPhotoName } from '../../../../redux/actions/actions';
+import {  hideLoading, showLoading } from '../../../../redux/actions/actions';
 const TOKENS_KYES='tokens'
 
 
 function Photo (props){  
+    console.log(props)
     const {request} = useHttp()   
     const dispath = useDispatch()    
     const [photoUrl, setPhotoUrl] = useState(null)    
@@ -22,7 +23,7 @@ function Photo (props){
     })
 
     const onDeletePhoto = async () =>{
-        dispath(deletePhoto(props.index))     
+        dispath(props.deletePhoto(props.index))     
         await request(`http://localhost:5000/auto/delete-image/${props.value.name}`,'DELETE')   
     }
 
@@ -48,7 +49,7 @@ function Photo (props){
 
         await axios.post(`http://localhost:5000/auto/upload`, formData, config)
        .then(response => {           
-            dispath(addAutoPhotoName(response.data))
+            dispath(props.photoName(response.data))
         })
         .catch(function (e) {setError(e)})
         dispath(hideLoading())

@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Dopoptions from './dopOptions'
 import Options from './options'
 import Continuestep from './continuestep'
+import Error from './error'
 import {useHttp} from '../../../hooks/http.hook'
 import { Redirect } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
@@ -36,7 +37,8 @@ function Optionsautopage (){
 
   return(
     <>
-    <main>
+    <main>   
+    {error?<Error/>:''}
     <section className="options_auto">
     <div className="options_auto_titel">
    <p>Шаг 2 из 4</p>

@@ -1,21 +1,21 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { addAutoPhoto } from '../../../../redux/actions/actions'
 
 
-function Newphoto (){
+function Newphoto (props){
     const dispatch = useDispatch()
+    
 
     const onDropHandler = e => {
         e.preventDefault()
         let files = [...e.dataTransfer.files]
-        files.forEach(foto => dispatch(addAutoPhoto(foto)))        
+        files.forEach(foto => dispatch(props.addPhoto(foto)))        
      }
 
      const handleFileInput = e => {
         e.preventDefault()
         let files =[...e.target.files]
-        files.forEach(foto => dispatch(addAutoPhoto(foto)))
+        files.forEach(foto => dispatch(props.addPhoto(foto)))
     }
      
      const onDragStartHandler = e => {

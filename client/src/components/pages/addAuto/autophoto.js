@@ -2,13 +2,14 @@ import React from 'react'
 import Photo from './Photo'
 import Newphoto from './newPhoto'
 import { useSelector, useDispatch } from 'react-redux'
-import { deletePhoto } from '../../../../redux/actions/actions';
 
 
-function Autophoto (){
+function Autophoto (props){
+
+    
     const dispath = useDispatch()
     const addAutoPhoto = useSelector((state)=>{
-        return state.newAuto.autoPhoto
+        return state.newAuto[props.value]
     })
 
     const deletePhotos = (index) =>{
@@ -19,8 +20,8 @@ function Autophoto (){
     return(
         <>
         <div className='add_photo_newphoto'>
-            {addAutoPhoto.map((e, index) => <Photo value={e} index={index} onDeletePhoto={deletePhotos} key={e.lastModified+index}/>)}
-           <Newphoto/>            
+            {addAutoPhoto.map((e, index) => <Photo value={e} index={index} photoName={props.photoName} deletePhoto={props.deletePhoto} key={e.lastModified+index}/>)}
+           <Newphoto addPhoto={props.addPhoto}/>            
         </div>
 
         </>

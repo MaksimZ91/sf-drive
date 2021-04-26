@@ -1,6 +1,7 @@
 import { fetchHttp } from '../../src/js/fetch'
 import { FETCH_AUTO_ALL, FETCH_AUTO_LIST, FETCH_AUTO, ADD_END_DATE, ADD_START_DATE,ADD_AUTO_PHOTO_NAME,
-     ADD_AUTO, ADD_AUTO_OPTIONS, ADD_AUTO_PHOTO, SHOW_LOADER, HIDE_LOADER, DELETE_PHOTO, ADD_AUTO_NEW_AUTO_ID } from '../type'
+     ADD_AUTO, ADD_AUTO_OPTIONS, ADD_AUTO_PHOTO, SHOW_LOADER, HIDE_LOADER, DELETE_PHOTO, ADD_AUTO_NEW_AUTO_ID,
+     ADD_AUTO_DOCUMENT_PHOTO, ADD_DOCUMENT_PHOTO_NAME, DELETE_PHOTO_DOCUMENT } from '../type'
 const TOKENS_KYES='tokens'
 
 
@@ -47,12 +48,24 @@ export function deletePhoto (index){
     return {type:DELETE_PHOTO, payload:index}
 }
 
-export function addAutoPhoto(photos){
+export function deletePhotoDocument (index){    
+    return {type:DELETE_PHOTO_DOCUMENT, payload:index}
+}
+
+export function addAutoPhotos(photos){
     return{type:ADD_AUTO_PHOTO, payload:photos}
+}
+
+export function addDocumetPhoto(photos){
+    return{type:ADD_AUTO_DOCUMENT_PHOTO, payload:photos}
 }
 
 export function addAutoPhotoName(name){
     return{type:ADD_AUTO_PHOTO_NAME, payload:name}
+}
+
+export function addDocumetPhotoName(name){
+    return{type:ADD_DOCUMENT_PHOTO_NAME, payload:name}
 }
 
 export function showLoading(){

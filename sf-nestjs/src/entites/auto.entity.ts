@@ -2,7 +2,7 @@ import { Column, Entity, ManyToOne, ObjectIdColumn,ObjectID, OneToMany } from "t
 import { AutoPhotoName } from "./autoPhotoName.entity";
 import { OptionsAuto } from "./options.entity";
 import { Users } from './user.entity'
-
+import { AutoPhotoDocumentName  } from './autoPhotoDocument.entity'
 
 @Entity()
 export class Autos {
@@ -78,4 +78,7 @@ export class Autos {
 
   @OneToMany(()=>AutoPhotoName, photoName=>photoName.auto)
   photoName:AutoPhotoName[]
+
+  @OneToMany(()=>AutoPhotoDocumentName, photoDocumentName=>photoDocumentName.auto)
+  photoDocumentName:AutoPhotoDocumentName[]
 }

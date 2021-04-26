@@ -10,6 +10,9 @@ import { OptionsAuto } from "src/entites/options.entity";
 import { AddAutoPhotoNameDto } from "src/dto/addAutoPhotoName";
 import { AutoPhotoName } from "src/entites/autoPhotoName.entity";
 import { PhotoRepository } from "src/repo/photo.repository";
+import { AddAutoDocumentPhotoNameDto } from "src/dto/addAutoPhotoDocumentName.dto";
+import { AutoPhotoDocumentName } from "src/entites/autoPhotoDocument.entity";
+import { PhotoDocumentRepository } from "src/repo/photoDocument.repository";
 
 
 
@@ -20,7 +23,8 @@ export class AutoService{
   constructor(private autoRepository:AutoRepository,
               private userRepository:UserRepository,
               private optionsRepository:OptionsRepository,
-              private photoRepository:PhotoRepository){}
+              private photoRepository:PhotoRepository,
+              private photoDocumentRepository:PhotoDocumentRepository){}
   
   async createAuto(addAuto:AddAutoDto){
     const newAuto = new Autos
@@ -90,6 +94,17 @@ export class AutoService{
 
   }
 
+  async AddAutoDocumentPhotoName(addAutoDocumentPhotoName:AddAutoDocumentPhotoNameDto){
+    console.log(addAutoDocumentPhotoName)
+    const newAutoDocumentPhotoName = new AutoPhotoDocumentName
+    const currentAuto = await this.autoRepository.FindOneByID(addAutoDocumentPhotoName.newAuto)
+    newAutoDocumentPhotoName.photoName = addAutoDocumentPhotoName.photoName
+    newAutoDocumentPhotoName.auto = currentAuto
+    await this.photoDocumentRepository.SavePhoto(newAutoDocumentPhotoName)
+    return {message:'ok'}
+
+  }
+
 
   async getAll(addAuto:AddAutoDto){    
    return await this.autoRepository.FindAllByUserID(addAuto.userId)      
@@ -115,6 +130,11 @@ export class AutoService{
 
   async deleteFile(imagename:string){
     unlink('files/AutoPhoto/'+ imagename)
+    return {message: 'Delete'}
+  }
+
+  async deleteDocumentFile(imagename:string){
+    unlink('files/documentAuto/'+ imagename)
     return {message: 'Delete'}
   }
 

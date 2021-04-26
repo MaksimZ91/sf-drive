@@ -8,7 +8,7 @@ const TOKENS_KYES='tokens'
 
 
 function Photo (props){  
-    console.log(props)
+    console.log(props.url.upload)
     const {request} = useHttp()   
     const dispath = useDispatch()    
     const [photoUrl, setPhotoUrl] = useState(null)    
@@ -24,7 +24,7 @@ function Photo (props){
 
     const onDeletePhoto = async () =>{
         dispath(props.deletePhoto(props.index))     
-        await request(`http://localhost:5000/auto/delete-image/${props.value.name}`,'DELETE')   
+        await request(props.url.delete + props.value.name,'DELETE')   
     }
 
     const uploadPhoto = async () => { 
@@ -47,7 +47,7 @@ function Photo (props){
             cancelToken: new CancelToken( cancel => cancelFileUpload.current = cancel)
         } 
 
-        await axios.post(`http://localhost:5000/auto/upload`, formData, config)
+        await axios.post(props.url.upload, formData, config)
        .then(response => {           
             dispath(props.photoName(response.data))
         })

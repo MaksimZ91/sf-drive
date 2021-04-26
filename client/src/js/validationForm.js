@@ -6,6 +6,10 @@ export const validation =(value)=>{
       case "": 
       return true
       break;
+      case null: 
+      return true
+      break;
+      
     }
   }return false
 }

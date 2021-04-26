@@ -18,14 +18,16 @@ function AddDocumentPhoto (){
         return state.newAuto.docunemtPhoto
     })
     const docunemtPhoto = 'docunemtPhoto'
+    const urlDelete = 'http://localhost:5000/auto/delete-image/document/'
+    const urlUpload='http://localhost:5000/auto/upload/document'
     const form = useSelector((state)=>{
-        return {photoName:state.newAuto.autoPhotoName, ...state.newAuto.newAutoId}
+        return {photoName:state.newAuto.documnetPhotoName, ...state.newAuto.newAutoId}
       })
     
     const authorRequest = async () => { 
         try { 
           dispatch(showLoading())
-            const result = await request('http://localhost:5000/auto/photoname','POST', form)
+            const result = await request('http://localhost:5000/auto/photoname/document','POST', form)
             setData(result) 
             dispatch(hideLoading())     
         } catch (e) {
@@ -43,8 +45,9 @@ function AddDocumentPhoto (){
             <p>Шаг 4 из 4</p>
             <p>Фото документов</p>
             <p>СТС или ПТС автомобиля, полис ОСАГО, полис КАСКО (если есть)</p>            
-            {!addAutoPhotoDocument.length==0?<Autophoto value={docunemtPhoto} photoName={addDocumetPhotoName} deletePhoto={deletePhotoDocument} addPhoto={addDocumetPhoto}/>:<Addphoto value={addDocumetPhoto}/>}
-            <Continuestep nextStep={authorRequest}/>            
+            {!addAutoPhotoDocument.length==0?<Autophoto value={docunemtPhoto} photoName={addDocumetPhotoName} url={{delete:urlDelete, upload:urlUpload}} deletePhoto={deletePhotoDocument} addPhoto={addDocumetPhoto}/>:<Addphoto value={addDocumetPhoto}/>}
+            <Continuestep nextStep={authorRequest}/>
+            {!error&&data?<Redirect to='/confirm'/>:''}            
         </div>        
         </section>  
         </main>

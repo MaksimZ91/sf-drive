@@ -18,6 +18,8 @@ function Addautophoto (){
       return state.newAuto.autoPhoto
   })
   const autoPhoto = 'autoPhoto'
+  const urlDelete = 'http://localhost:5000/auto/delete-image/'
+  const urlUpload='http://localhost:5000/auto/upload'
 
   const form = useSelector((state)=>{
     return {photoName:state.newAuto.autoPhotoName, ...state.newAuto.newAutoId}
@@ -42,7 +44,7 @@ const authorRequest = async () => {
             <p >Шаг 3 из 4</p>
             <p>Фото автомобиля</p>
             <p>Чем больше качественных фотографий вы загрузите, тем выше шанс того, что выберут ваш автомобиль.</p> 
-            {!addAutoPhoto.length==0?<Autophoto value={autoPhoto} photoName={addAutoPhotoName} deletePhoto={deletePhoto} addPhoto={addAutoPhotos}/>:<Addphoto value={addAutoPhotos}/>}
+            {!addAutoPhoto.length==0?<Autophoto value={autoPhoto} photoName={addAutoPhotoName} deletePhoto={deletePhoto} url={{delete:urlDelete, upload:urlUpload}} addPhoto={addAutoPhotos}/>:<Addphoto value={addAutoPhotos}/>}
             <Continuestep nextStep={authorRequest}/> 
             {!error&&data?<Redirect to='/addauto/documentphoto'/>:''}            
         </div>        

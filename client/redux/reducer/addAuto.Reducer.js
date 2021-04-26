@@ -2,8 +2,8 @@ import {  ADD_AUTO, ADD_AUTO_OPTIONS, ADD_AUTO_PHOTO, DELETE_PHOTO, ADD_AUTO_NEW
     ADD_DOCUMENT_PHOTO_NAME, DELETE_PHOTO_DOCUMENT} from "../type"
 
 const defaultState = {
-    addAuto:{mark:'AC', model:null, year:null, number:null, vin:null, collor:null, motor:'Бензин',volume:null,power:null, powerkwt:null,
-    transmission:null, mileage:null, pts:null, sts:null, price:null, priceThreeDays:null, priceFiveDays:null, osago:null, kasko:null},
+    addAuto:{mark:'AC', model:'', year:'', number:'', vin:'', collor:'', motor:'',volume:'',power:'', powerkwt:'',
+    transmission:'', mileage:'', pts:'', sts:'', price:'', priceThreeDays:'', priceFiveDays:'', osago:'', kasko:''},
     addAutoOptions:{isofix:false, srs:false, heater:false, aux:false, bluetooth:false, cruizControl:false, conditioning:false, multimedia:false,
     navigation:false, seatCondi:false, seatHeater:false, trunk:false, park:false, camera:false, babyChair:false, deliveryAuto:false, close:false, fullTank:false },
     autoPhoto:[],

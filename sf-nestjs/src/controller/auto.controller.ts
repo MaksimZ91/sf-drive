@@ -9,10 +9,20 @@ import { AddAutoOptionsDto } from "src/dto/addAutoOptions.dto";
 import path = require('path');
 import { join } from 'path';
 import { AddAutoPhotoNameDto } from "src/dto/addAutoPhotoName";
+import { AddAutoDocumentPhotoNameDto } from "src/dto/addAutoPhotoDocumentName.dto";
 
 const configAutoPhoto = {
   storage:diskStorage({
     destination:`./files/AutoPhoto/`,
+    filename:(req, file, callback)=>{
+      file.originalname
+      callback(null, file.originalname)
+    }
+  })
+}
+const configDocumentAutoPhoto = {
+  storage:diskStorage({
+    destination:`./files/documentAuto/`,
     filename:(req, file, callback)=>{
       file.originalname
       callback(null, file.originalname)
@@ -37,6 +47,11 @@ export class AutoController {
     @Post('photoname')
     AddAutoPhotoName(@Body() addAutoPhotoName:AddAutoPhotoNameDto){
       return this.autoService.AddAutoPhotoName(addAutoPhotoName)
+    }
+
+    @Post('photoname/document')
+    AddAutoDocumentPhotoName(@Body() addAutoDocumentPhotoName:AddAutoDocumentPhotoNameDto){
+      return this.autoService.AddAutoDocumentPhotoName(addAutoDocumentPhotoName)
     }
   
     @UseGuards(JwtAuthGuard)
@@ -67,6 +82,12 @@ export class AutoController {
       return this.autoService.uploadFile(file)
     }
 
+    @Post('upload/document')
+    @UseInterceptors(FileInterceptor('file', configDocumentAutoPhoto))
+    uploadFileDocument(@UploadedFile() file){      
+      return this.autoService.uploadFile(file)
+    }
+
 
     @Get('auto-image/:imganame')
     FindeFileImage(@Param('imganame') imagename, @Res() res):Observable<Object>{
@@ -77,6 +98,12 @@ export class AutoController {
     deleteFile(@Param('imganame') imagename){
       return this.autoService.deleteFile(imagename)     
     }
+
+    @Delete('delete-image/document/:imganame')
+    deleteDocumentFile(@Param('imganame') imagename){
+      return this.autoService.deleteDocumentFile(imagename)     
+    }
+
 
 
     

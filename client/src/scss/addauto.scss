@@ -154,5 +154,9 @@
             border-style: none; 
             text-align: center;
           }
+          &_button:disabled{
+            background: #E6E6E6;
+            color: #B4B5BD;
+          }
       }
 }

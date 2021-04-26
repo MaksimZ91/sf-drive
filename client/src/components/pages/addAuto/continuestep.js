@@ -13,7 +13,7 @@ function Continuestep (props){
     return(
         <>
         <div className="new_auto_continue">     
-        <button className="new_auto_continue_button" type="submit" name="submit" value="Продолжить" onClick={props.nextStep}>            
+        <button className="new_auto_continue_button" type="submit" name="submit" value="Продолжить" onClick={props.nextStep} disabled={props.validation}>            
         {loading?<Loader type="TailSpin" color="#FFFFFF" height={24} width={24}/>:'Продолжить'}
         </button>
         </div>

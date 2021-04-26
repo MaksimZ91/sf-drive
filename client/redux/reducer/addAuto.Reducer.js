@@ -1,9 +1,9 @@
 import {  ADD_AUTO, ADD_AUTO_OPTIONS, ADD_AUTO_PHOTO, DELETE_PHOTO, ADD_AUTO_NEW_AUTO_ID, ADD_AUTO_PHOTO_NAME, ADD_AUTO_DOCUMENT_PHOTO,
-    ADD_DOCUMENT_PHOTO_NAME, DELETE_PHOTO_DOCUMENT} from "../type"
+    ADD_DOCUMENT_PHOTO_NAME, DELETE_PHOTO_DOCUMENT, ADD_AUTO_KWT} from "../type"
 
 const defaultState = {
-    addAuto:{mark:'AC', model:'', year:'', number:'', vin:'', collor:'', motor:'',volume:'',power:'', powerkwt:'',
-    transmission:'', mileage:'', pts:'', sts:'', price:'', priceThreeDays:'', priceFiveDays:'', osago:'', kasko:''},
+    addAuto:{mark:'AC', model:"", year:"", number:"", vin:"", collor:"", motor:"",volume:"",power:"", powerkwt:"",
+    transmission:"", mileage:"", pts:"", sts:'', price:"", priceThreeDays:"", priceFiveDays:"", osago:"", kasko:""},
     addAutoOptions:{isofix:false, srs:false, heater:false, aux:false, bluetooth:false, cruizControl:false, conditioning:false, multimedia:false,
     navigation:false, seatCondi:false, seatHeater:false, trunk:false, park:false, camera:false, babyChair:false, deliveryAuto:false, close:false, fullTank:false },
     autoPhoto:[],
@@ -18,7 +18,7 @@ const defaultState = {
 export const AddAutoReducer = (state=defaultState , action) => {
     switch (action.type){     
         case ADD_AUTO:
-            return {...state, addAuto:action.payload}
+            return {...state, addAuto:action.payload}      
         case ADD_AUTO_NEW_AUTO_ID:
             return {...state, newAutoId:action.payload}      
         case ADD_AUTO_OPTIONS:

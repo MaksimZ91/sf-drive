@@ -33,13 +33,11 @@ export function addStartDate (data){
 export function addEndDate (data){
     return {type:ADD_END_DATE, payload:data}}
 
-
-export function kwtInPower (state,power){ 
-    const kwt = power * 735.5 / 1000
-    return {type:ADD_AUTO, payload:{...state, powerkwt:kwt}}
-}
-
 export function addAutoForm (state, event){ 
+    if(event.target.name=='power'){
+        const kwt = event.target.value * 735.5 / 1000  
+    return {type:ADD_AUTO, payload:{...state, [event.target.name]:event.target.value, powerkwt:kwt }}      
+    }
     return {type:ADD_AUTO, payload:{...state, [event.target.name]:event.target.value}}
 }
 

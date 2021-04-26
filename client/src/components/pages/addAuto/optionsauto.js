@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Dopoptions from './dopOptions'
 import Options from './options'
 import Continuestep from './continuestep'
@@ -13,14 +13,12 @@ import { hideLoading, showLoading } from '../../../../redux/actions/actions'
 function Optionsautopage (){
   const dispatch = useDispatch()
   const [error, setError]=useState(null)
+  const [valid, setValid]=useState(true)
   const [data, setData]=useState(null)
   const {request} = useHttp()
   const form = useSelector((state)=>{
     return {data:state.newAuto.addAutoOptions, id:state.newAuto.newAutoId}
   })
-
-
-
 
   const authorRequest = async () => {   
     try { 
@@ -32,6 +30,17 @@ function Optionsautopage (){
       setError(e)
     }     
 } 
+const validation = (form) =>{
+  for (let key in form){
+    if (form[key]==true)
+    return false
+  }
+}
+console.log(valid)
+
+useEffect(()=>{
+  setValid(validation(form.data))
+},[FormData])
   
   
 
@@ -46,8 +55,8 @@ function Optionsautopage (){
     </div>
     <Options/>
     <Dopoptions/>
-    <Continuestep  nextStep={authorRequest}/> 
-    {!error&&data?<Redirect to='/addauto/photo'/>:''}  
+    <Continuestep  nextStep={authorRequest} validation={valid}/> 
+    {!error&&data?<Redirect to='/addauto/photo' />:''}  
     </section>  
     </main>
     </>

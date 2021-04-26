@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Aboutautoinfo from './aboutAutoInfo'
 import Priceauto from './priceAuto'
 import Insurance from './insurance'
@@ -7,19 +7,24 @@ import { useHttp } from '../../../hooks/http.hook'
 import { Redirect } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { addNewAutoID, hideLoading, showLoading } from '../../../../redux/actions/actions'
+import { validation } from '../../../js/validationForm'
 import Error from './error'
+
 const TOKENS_KYES='tokens'
 
 
 
 function Addautopage(){
   const dispatch = useDispatch()
+  const [valid, setValid]=useState(true)
   const [error, setError]=useState(null)
   const [data, setData]=useState(null)
   const {request} = useHttp()
   const form = useSelector((state)=>{
     return state.newAuto.addAuto
   })
+
+
 
 
 
@@ -36,6 +41,10 @@ function Addautopage(){
     }     
 } 
 
+useEffect(()=>{
+  setValid(validation(form))
+},[form])
+
 
 
   return(
@@ -50,7 +59,7 @@ function Addautopage(){
     <Aboutautoinfo/>
     <Priceauto/>
     <Insurance/> 
-    <Continuestep  nextStep={authorRequest}/> 
+    <Continuestep  nextStep={authorRequest} validation={valid}/> 
     {!error&&data?<Redirect to='/addauto/options'/>:''}
     </section>  
     </main>

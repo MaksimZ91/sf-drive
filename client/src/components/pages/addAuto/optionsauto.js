@@ -31,16 +31,16 @@ function Optionsautopage (){
     }     
 } 
 const validation = (form) =>{
-  for (let key in form){
-    if (form[key]==true)
-    return false
+  for (let key in form){  
+    if (form[key]==true)return false
   }
+  return true
 }
-console.log(valid)
+
 
 useEffect(()=>{
   setValid(validation(form.data))
-},[FormData])
+},[form.data])
   
   
 

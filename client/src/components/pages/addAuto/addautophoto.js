@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Addphoto from './addphoto'
 import Continuestep from './continuestep'
 import Autophoto from './autophoto'
@@ -13,6 +13,7 @@ function Addautophoto (){
     const dispatch = useDispatch() 
     const [error, setError]=useState(null)
     const [data, setData]=useState(null) 
+    const [valid, setValid]=useState(true)
     const {request} = useHttp()
     const addAutoPhoto = useSelector((state)=>{
       return state.newAuto.autoPhoto
@@ -35,6 +36,17 @@ const authorRequest = async () => {
       setError(e)
     }     
 } 
+
+
+const validation = (form) =>{
+  if (form.length==0)return true
+  return false
+}
+
+useEffect(()=>{
+  setValid(validation(addAutoPhoto))
+},[addAutoPhoto])
+
     return(
         <>
         <main>
@@ -45,7 +57,7 @@ const authorRequest = async () => {
             <p>Фото автомобиля</p>
             <p>Чем больше качественных фотографий вы загрузите, тем выше шанс того, что выберут ваш автомобиль.</p> 
             {!addAutoPhoto.length==0?<Autophoto value={autoPhoto} photoName={addAutoPhotoName} deletePhoto={deletePhoto} url={{delete:urlDelete, upload:urlUpload}} addPhoto={addAutoPhotos}/>:<Addphoto value={addAutoPhotos}/>}
-            <Continuestep nextStep={authorRequest}/> 
+            <Continuestep nextStep={authorRequest} validation={valid}/> 
             {!error&&data?<Redirect to='/addauto/documentphoto'/>:''}            
         </div>        
         </section>  

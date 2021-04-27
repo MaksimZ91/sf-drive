@@ -11,11 +11,17 @@
     }
     >a{
         text-decoration: none;
-    }
+    }   
     &_auto{
         display:flex;
         align-items: center;
         margin:30px 0 30px 207px;
+        >img{
+            width: 242px;
+            height: 176px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
         &_wrapper{
             margin-left: 15px;
             &_status{

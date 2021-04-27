@@ -9,19 +9,19 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 150px;
+    margin-top: 150px;    
     &_titel{
-      align-self:center;
+      align-self:center;     
       >p:first-child{
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 20px;
-      line-height: 147.3%;
-      text-align: center;
-      color: #828282;
-      margin:0;
-    }
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 147.3%;
+        text-align: center;
+        color: #828282;
+        margin:0;
+      }      
     >p{
       font-family: Roboto;
       font-style: normal;

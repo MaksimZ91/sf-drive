@@ -23,3 +23,26 @@
   transform:translate(-50%, -50%);
   
 }
+
+.back{
+  align-self: flex-start;
+  position: relative;      
+  margin-left:14.3vw;
+  display: flex;
+  top:30px;
+  align-items: center;     
+  width: 75px;
+  height: 24px;
+  cursor: pointer;
+  &_arrow{
+    margin-right: 14px;
+  }
+  &_text{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 147.3%;
+    color: #508E87
+  }
+}    

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 
 function Addphoto (props){
-    console.log(props)
+    
     const dispatch = useDispatch()  
 
 const onDropHandler = e =>{

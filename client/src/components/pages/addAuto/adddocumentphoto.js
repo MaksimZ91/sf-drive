@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from "react-router-dom"
 import Addphoto from './addphoto'
 import Continuestep from './continuestep'
 import Autophoto from './autophoto'
@@ -24,6 +25,12 @@ function AddDocumentPhoto (){
     const form = useSelector((state)=>{
         return {photoName:state.newAuto.documnetPhotoName, ...state.newAuto.newAutoId}
       })
+
+      let history = useHistory();
+
+      function handleClick() {
+        history.push("/addauto/photo");
+      }
     
     const authorRequest = async () => { 
         try { 
@@ -51,6 +58,10 @@ function AddDocumentPhoto (){
         <main>
         {error?<Error/>:''}
         <section className="add_photo">
+        <div className='back'  onClick={handleClick}>      
+          <img className='back_arrow' src='../src/img/back_arrow.svg'/>
+          <span className='back_text'>Назад</span>             
+        </div> 
         <div className="add_photo_titel">
             <p>Шаг 4 из 4</p>
             <p>Фото документов</p>

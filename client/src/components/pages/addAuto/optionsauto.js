@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import { useHistory } from "react-router-dom"
 import Dopoptions from './dopOptions'
 import Options from './options'
 import Continuestep from './continuestep'
@@ -19,6 +20,13 @@ function Optionsautopage (){
   const form = useSelector((state)=>{
     return {data:state.newAuto.addAutoOptions, id:state.newAuto.newAutoId}
   })
+
+  let history = useHistory();
+
+  function handleClick() {
+    history.push("/addauto");
+  }
+
 
   const authorRequest = async () => {   
     try { 
@@ -49,8 +57,12 @@ useEffect(()=>{
     <main>   
     {error?<Error/>:''}
     <section className="options_auto">
-    <div className="options_auto_titel">
-   <p>Шаг 2 из 4</p>
+    <div className='back' onClick={handleClick}>      
+        <img className='back_arrow' src='../src/img/back_arrow.svg'/>
+        <span className='back_text'>Назад</span>             
+    </div> 
+    <div className="options_auto_titel">  
+    <p>Шаг 2 из 4</p>  
    <p>Дополнительно</p>
     </div>
     <Options/>

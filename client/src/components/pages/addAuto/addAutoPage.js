@@ -52,7 +52,7 @@ useEffect(()=>{
     <main>
     {error?<Error/>:''}
     <section className="new_auto">
-    <div className="new_auto_titel">
+    <div className="new_auto_titel">   
    <p>Шаг 1 из 4</p>
    <p>Новый автомобиль</p>
     </div>

@@ -8,7 +8,7 @@ const TOKENS_KYES='tokens'
 
 
 function Photo (props){  
-    console.log(props.url.upload)
+    
     const {request} = useHttp()   
     const dispath = useDispatch()    
     const [photoUrl, setPhotoUrl] = useState(null)    

@@ -1,14 +1,24 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useHttp } from '../../../hooks/http.hook'
 
 function Auto (props){
+    const [autoPhoto, setAutoPhoto]=useState(null)
+    const {request} = useHttp()
+   
+
+    useEffect( async () => {
+        console.log('a')
+        const data = await request(`http://localhost:5000/auto/photo/${props.value._id}`)
+        setAutoPhoto(data.photoName[0])
+    },[])
 
     
    
    
     return(
        <div className='myAuto_auto'>
-           <img className='myAuto_img' src='../src/img/hend_auto.svg'/>
+           <img className='myAuto_img' src={`http://localhost:5000/auto/auto-image/${autoPhoto}`}/>
            <div className='myAuto_auto_wrapper'>
                <div className='myAuto_auto_wrapper_status'>
                    <img src='../src/img/golden_star.svg'/>

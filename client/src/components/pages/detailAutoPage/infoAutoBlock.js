@@ -2,9 +2,11 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 function InfoAutoBlock (){
+    
     const auto = useSelector((state)=>{
         return state.auto.currentAuto
     })
+    console.log(auto)
     return(
         <>
         <section className='infoAutoBlock'>
@@ -41,7 +43,7 @@ function InfoAutoBlock (){
                 </div>
                 <div className='infoAutoBlock_specification_elem'>
                     <p>Кузов</p>
-                    <p>Седана</p>
+                    <p>{auto.body}</p>
                 </div>
                 <div className='infoAutoBlock_specification_elem'>
                     <p>Двигатель</p>
@@ -57,7 +59,7 @@ function InfoAutoBlock (){
                 </div>
                 <div className='infoAutoBlock_specification_elem'>
                     <p>Пробег</p>
-                    <p>{auto.millege} км</p>
+                    <p>{auto.mileage} км</p>
                 </div>
             </div>           
             <div className='infoAutoBlock_options'>

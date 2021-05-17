@@ -146,6 +146,202 @@
             >input:focus{
                 outline: none;
             }
+            &_currnetmonth{         
+                display: flex; 
+                flex-direction: column; 
+                width: 367px;
+                height: 433px;
+                z-index: 1;
+                background: #FFFFFF;
+                box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
+                border-radius: 8px;
+                position: fixed;
+                  &_date {                 
+                  height: 29px;
+                  width: 367px;
+                  display: flex; 
+                  margin-top: 30px;  
+                  justify-content: space-around;          
+                &_mons{
+                  width: 183px;
+                  margin-right:5px;           
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  font-family: Roboto;
+                  font-style: normal;
+                  font-weight: normal;
+                  font-size: 20px;
+                  line-height: 147.3%;
+                  text-align: center;        
+                  color: #000000;
+                  >img{
+                     
+                  }
+                        }
+                &_year{
+                  width: 183px;
+                  margin: 0; 
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  font-family: Roboto;
+                  font-style: normal;
+                  font-weight: normal;
+                  font-size: 20px;
+                  line-height: 147.3%;
+                  color: #000000;
+                  >img{
+                      
+                  }
+                }
+              }
+                &_table{  
+                  align-self: flex-start;
+                  width: 335px;
+                  height: 269px;  
+                  margin: 30px auto 0;                     
+                  font-family: Roboto;
+                  font-style: normal;
+                  font-weight: normal;
+                  font-size: 16px;
+                  line-height: 147.3%;
+                  text-align: center;
+                  color: #000000;
+                  >tbody{
+                  >tr:first-child{
+                    font-family: Roboto;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 147.3%;
+                    text-align: center;
+                    color: #B1B1B1;              
+                  }  
+                  >tr{
+                      height: 48px;
+                      width: 335px;
+                      margin-top: 19px;
+                      display: flex;
+                      justify-content: space-around;
+                      margin: 0;    
+                    >td:nth-child(6)>input, >td:nth-child(7)>input {
+                      font-family: Roboto;
+                      font-style: normal;
+                      font-weight: normal;
+                      font-size: 16px;
+                      line-height: 147.3%;
+                      text-align: center;
+                      color: #868686;
+                      
+                     
+                    }
+                    >td:nth-child(6)>input:hover, >td:nth-child(7)>input:hover {
+                     background: #61A199;
+                     opacity: 0.5;
+                     border-radius: 50%;
+                     color: #000000;
+                  
+                    }
+                    .filter_wrapper_date_currnetmonth_table_startday:nth-child(6)>input,  .filter_wrapper_date_currnetmonth_table_startday:nth-child(7)>input{
+                      color: white;             
+                     }
+      
+                     .filter_wrapper_date_currnetmonth_table_endday:nth-child(6)>input, .filter_wrapper_date_currnetmonth_table_endday:nth-child(7)>input{
+                      color: white;             
+                     }
+      
+                    .filter_wrapper_date_currnetmonth_table_startday{                    
+                      background: #61A199;
+                      padding: 0;
+                      border-radius: 50%;    
+                      color: #FFFFFF;
+                      border: none;
+                      text-align: center; 
+                      font-family: Roboto;
+                      font-style: normal;
+                      font-weight: normal;
+                      font-size: 16px;
+                      line-height: 147.3%;
+                      text-align: center;
+                      >input{
+                          background: rgba(97, 161, 153, 0.15);  
+                          border-top-left-radius: 50%;
+                          border-bottom-left-radius: 50%;
+                          color:white;                   
+                        }
+                    }
+                    .filter_wrapper_date_currnetmonth_table_endday{  
+                        background: #61A199;
+                        padding: 0;
+                        border-radius: 50%;    
+                        color: #FFFFFF;
+                        border: none;
+                        text-align: center;        
+                        font-family: Roboto;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 147.3%;
+                        text-align: center;
+                        >input{
+                          background: rgba(97, 161, 153, 0.15);  
+                          border-top-right-radius: 50%;
+                          border-bottom-right-radius: 50%;
+                          color:white;    
+                        }
+                      }
+                      .filter_wrapper_date_currnetmonth_table_inrangeday{  
+                        background: rgba(97, 161, 153, 0.15);  
+                        padding: 0; 
+                        color: #000000;
+                        border: none;
+                        text-align: center;
+                        width: 48px;
+                        height: 48px;
+                        font-family: Roboto;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 147.3%;
+                        text-align: center;
+                      }
+                    >td{           
+                        width: 48px;
+                        height: 48px;         
+                      >input{
+                        border: none;
+                        text-align: center;
+                        padding: 0;
+                        width: 100%;  
+                        height: 100%;
+                        background: none;
+                        font-family: Roboto;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 147.3%;
+                        text-align: center;
+                        color: #000000;
+                      }
+                      >input:focus {
+                        border: none;
+                        outline:none;
+                      }
+                      >input:hover{
+                      background: #61A199;
+                      opacity: 0.5;
+                      border-radius: 50%; 
+                      color: #000000;   
+                            
+                      }            
+                    }     
+                  }
+                }
+              }
+              
+              
+              }
         }
         &_category{
             margin-bottom:2.2vh;

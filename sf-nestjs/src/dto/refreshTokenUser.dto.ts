@@ -1,8 +1,3 @@
-export class RefreshTokenUserDto{  
-   
-     readonly refToken:string
-
-    }
-
-    
-
+export class RefreshTokenUserDto {
+  readonly refToken: string;
+}

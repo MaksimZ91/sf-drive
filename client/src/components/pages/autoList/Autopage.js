@@ -9,7 +9,7 @@ function  Autopage  ()  {
 
     const dispatch = useDispatch()
 
-    const auto =useSelector((state)=>{
+    const auto = useSelector((state)=>{
         return state.auto.userAuto
     })
    

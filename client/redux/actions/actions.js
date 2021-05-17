@@ -8,8 +8,8 @@ const TOKENS_KYES='tokens'
 export function fetchAutoList (){    
     return async dispatch => {
         const token = await JSON.parse(localStorage.getItem(TOKENS_KYES)) 
-        const data = await fetchHttp('http://localhost:5000/auto/onuser','post', {userId:token.userId})
-        dispatch({type:FETCH_AUTO_LIST, payload:data})
+        const data = await fetchHttp('http://localhost:5000/auto/onuser','post', {userId:token.userId})           
+        dispatch({type:FETCH_AUTO_LIST, payload:data[0].autos})
     }    
 }
 

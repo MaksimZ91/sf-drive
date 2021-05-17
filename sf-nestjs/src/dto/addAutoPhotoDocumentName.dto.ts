@@ -1,7 +1,5 @@
-export class AddAutoDocumentPhotoNameDto{ 
+export class AddAutoDocumentPhotoNameDto {
+  readonly newAuto: string;
 
-  readonly newAuto:string;
-  
-  readonly photoName:[];
-
+  readonly photoName: [];
 }

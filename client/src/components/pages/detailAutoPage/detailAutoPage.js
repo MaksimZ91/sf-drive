@@ -6,18 +6,32 @@ import DateBlock from './dateBlock'
 import ComentBlock from './comentBlock'
 import ArendaBlock from './arendaBlock'
 import { useSelector, useDispatch } from 'react-redux'
-import {fetchAuto } from '../../../../redux/actions/actions'
+import {addEndDate, addStartDate, fetchAuto } from '../../../../redux/actions/actions'
 
 function DetailAutoPage (props){ 
+    const dispatch = useDispatch()
     const auto =useSelector((state)=>{
         return state.auto.currentAuto
     })
+
+    const calen = useSelector((state)=>{
+        return state.calen
+    })
+
+    
+   
 
     let history = useHistory();
 
     function handleClick() {
       history.push("/myAuto");
     }
+
+    useEffect (()=>{
+        dispatch(addStartDate(null))
+        dispatch(addEndDate(null))
+    },[])
+    
   
 
    
@@ -33,7 +47,7 @@ function DetailAutoPage (props){
             <InfoAutoBlock/>           
             <DateBlock/>
             <ComentBlock/>
-            <ArendaBlock/>
+            <ArendaBlock auto={auto._id} />
         </main>        
         </>        
     )

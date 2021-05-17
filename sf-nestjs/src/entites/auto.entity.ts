@@ -1,84 +1,94 @@
-import { Column, Entity, ManyToOne, ObjectIdColumn,ObjectID, OneToMany } from "typeorm";
-import { AutoPhotoName } from "./autoPhotoName.entity";
-import { OptionsAuto } from "./options.entity";
-import { Users } from './user.entity'
-import { AutoPhotoDocumentName  } from './autoPhotoDocument.entity'
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { AutoPhotoName } from './autoPhotoName.entity';
+import { OptionsAuto } from './options.entity';
+import { Users } from './users.entity';
+import { AutoPhotoDocumentName } from './autoPhotoDocument.entity';
+import { Arenda } from './arenda.entity';
 
 @Entity()
 export class Autos {
 
-@ObjectIdColumn()
-  _id:ObjectID; 
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column()
-  mark:string;
+  mark: string;
 
   @Column()
-  model:string;
+  model: string;
 
   @Column()
-  year:string; 
+  year: string;
 
   @Column()
-  number:string;
+  number: string;
 
   @Column()
-  vin:string;
+  vin: string;
 
   @Column()
-  collor:string;
+  collor: string;
 
   @Column()
-  volume:string;
+  volume: string;
 
   @Column()
-  power:string;
+  power: string;
 
   @Column()
-  transmission:string;
+  transmission: string;
+    
+  @Column()
+  mileage: string;
 
   @Column()
-  mileage:string; 
+  pts: string;
 
   @Column()
-  pts:string;
-  
-  @Column()
-  price:string;
+  price: string;
 
   @Column()
-  priceThreeDays:string;
+  priceThreeDays: string;
 
   @Column()
-  priceFiveDays:string;
+  priceFiveDays: string;
 
   @Column()
-  osago:string;
+  osago: string;
 
   @Column()
-  kasko:string;
+  kasko: string;
 
   @Column()
-  privod:string;
+  privod: string;
 
   @Column()
-  motor:string;
+  motor: string;
 
   @Column()
-  body:string;
+  body: string;
 
   @Column()
-  sts:string;
+  sts: string;
 
-  @ManyToOne(()=>Users, user=>user.autos)
-  user:Users
+  @ManyToOne(() => Users, user => user.autos)
+  user: Users;
 
-  @OneToMany(()=>OptionsAuto, options=>options.auto)
-  options:OptionsAuto[]
+  @OneToMany(() => OptionsAuto, options => options.auto)
+  options: OptionsAuto[];
 
-  @OneToMany(()=>AutoPhotoName, photoName=>photoName.auto)
-  photoName:AutoPhotoName[]
+  @OneToMany(() => AutoPhotoName, photoName => photoName.auto)
+  photoName: AutoPhotoName[];
 
-  @OneToMany(()=>AutoPhotoDocumentName, photoDocumentName=>photoDocumentName.auto)
-  photoDocumentName:AutoPhotoDocumentName[]
+  @OneToMany(() => AutoPhotoDocumentName, photoDocumentName => photoDocumentName.auto)
+  photoDocumentName: AutoPhotoDocumentName[];
+
+  @OneToMany(() => Arenda, arenda => arenda.auto)
+  arenda: Arenda[];
 }

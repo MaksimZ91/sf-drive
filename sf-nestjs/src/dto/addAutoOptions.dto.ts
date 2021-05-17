@@ -1,41 +1,39 @@
-export class AddAutoOptionsDto{ 
+export class AddAutoOptionsDto {
+  readonly newAuto: string;
 
-  readonly newAuto:string
+  readonly isofix: boolean;
 
-  readonly isofix:boolean;
+  readonly srs: boolean;
 
-  readonly  srs:boolean;
+  readonly heater: boolean;
 
-  readonly  heater:boolean;
+  readonly aux: boolean;
 
-  readonly   aux:boolean;
+  readonly bluetooth: boolean;
 
-  readonly  bluetooth:boolean;
- 
-  readonly  cruizControl:boolean;
-  
-  readonly conditioning:boolean;
-  
-  readonly  multimedia:boolean;
- 
-  readonly  navigation:boolean;
- 
-  readonly  seatCondi:boolean;
+  readonly cruizControl: boolean;
 
-  readonly seatHeater:boolean;
+  readonly conditioning: boolean;
 
-  readonly trunk:boolean; 
+  readonly multimedia: boolean;
 
-  readonly park:boolean;
+  readonly navigation: boolean;
 
-  readonly camera:boolean;
+  readonly seatCondi: boolean;
 
-  readonly babyChair:boolean;
-  
-  readonly deliveryAuto:boolean;
-  
-  readonly close:boolean;
+  readonly seatHeater: boolean;
 
-  readonly fullTank:boolean;
+  readonly trunk: boolean;
 
+  readonly park: boolean;
+
+  readonly camera: boolean;
+
+  readonly babyChair: boolean;
+
+  readonly deliveryAuto: boolean;
+
+  readonly close: boolean;
+
+  readonly fullTank: boolean;
 }

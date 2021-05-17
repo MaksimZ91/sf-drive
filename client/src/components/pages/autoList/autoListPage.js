@@ -1,15 +1,46 @@
 import React, {useState, useEffect} from 'react'
 import List from './List'
+import axios, { CancelToken } from 'axios'
 import Footer from '../../footer/footer'
 import {useHttp} from '../../../hooks/http.hook'
 import { useDispatch , useSelector} from 'react-redux'
-import { fetchAutoListAll } from '../../../../redux/actions/actions'
+import { fetchAutoListAll, addStartDate, addEndDate } from '../../../../redux/actions/actions'
+import Calendarb from '../detailAutoPage/calendarb'
 
 
 function Newpage (){
   const {request}=useHttp()
   const [value, setValue] = useState();
-  const dispatch = useDispatch()
+  const [hide, setHide]=useState(false)
+  const [data, setData]=useState(null)
+  const [error, setError]=useState(null)
+  const dispatch = useDispatch()  
+  const calendName = 'filter_wrapper_date_currnetmonth'  
+  const curentDate = new Date()
+  const date = useSelector((state)=>{
+    return state.calen
+  })
+ 
+
+
+
+
+  const handelHide = () =>{
+    setHide(!hide)
+  }
+
+  useEffect (()=>{
+    dispatch(addStartDate(null))
+    dispatch(addEndDate(null))
+},[])
+
+
+
+
+const authorRequest = async () => { 
+  await axios.post('http://localhost:5000/auto/filter/aa', date )
+  
+} 
 
  
 
@@ -33,7 +64,7 @@ function Newpage (){
 
   return (
     <>
-    <main className='auto_list'>
+    <main className='auto_list'  >
       <section className='filter'>
         <h2 className='filter_titel'>Арендуйте автомобиль</h2 >
         <div className='filter_wrapper'>
@@ -42,14 +73,15 @@ function Newpage (){
           <label className='filter_wrapper_city_input'>Местоположение</label>         
           </div>
           <div className='filter_wrapper_date'>
-          <input className='filter_wrapper_date_input' type='text'  name='date' required />
+          <input className='filter_wrapper_date_input' type='text'  name='date'  onClick={handelHide} required />
           <label className='filter_wrapper_date_input'>Период аренды</label>
+          {hide?<Calendarb value={{calendName, date:curentDate}}/>:''}
           </div>
           <div className='filter_wrapper_category'>
           <input className='filter_wrapper_category_input' type='text'  name='category' required />
           <label className='filter_wrapper_category_input'>Категория</label>
           </div>
-          <button className='filter_wrapper_button'>Найти</button>
+          <button className='filter_wrapper_button'  onClick={authorRequest} >Найти</button>
         </div>
       </section>
       <List/> 

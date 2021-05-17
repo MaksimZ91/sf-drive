@@ -1,36 +1,48 @@
-import { Injectable } from "@nestjs/common";
-import { Autos } from '../entites/auto.entity'
-import { getMongoRepository } from "typeorm";
-import { ObjectID } from 'mongodb'
+import { Injectable } from '@nestjs/common';
+import { Autos } from '../entites/auto.entity';
+import { Between, getMongoRepository, getRepository } from 'typeorm';
+import { ObjectID } from 'mongodb';
 
-
-Injectable()
+Injectable();
 export class AutoRepository {
+  async SaveAuto(auto: Autos) {
+    const repository = getRepository(Autos);
+    return await repository.save(auto);
+  }
 
-    async SaveAuto(auto:Autos){
-        const repository= getMongoRepository(Autos)
-        return await repository.save(auto)
-    }
 
-    async FindAllByUserID (userId:string){
-        const repository= getMongoRepository(Autos)
-        return await repository.find({where:{['user._id']:new ObjectID(userId)}})
-    }
-    
+  async FindOneByID(id: string) {
+    const repository = getRepository(Autos);
+    return await repository.findOne({ where: { ['id']: id } });
+  }
 
-    async FindOneByID (id:string){
-        const repository=getMongoRepository(Autos)
-        return await repository.findOne({where:{['_id']:new ObjectID(id)}})
-    }
+  async FindOneByNumber(number: string) {
+    const repository = getRepository(Autos);
+    return await repository.findOne({ where: { ['number']: number } });
+  }
 
-    async FindOneByNumber (number:string){
-        const repository=getMongoRepository(Autos)
-        return await repository.findOne({where:{['number']:number}})
-    }
+  async FindAll() {
+    const repository = getRepository(Autos);
+    return await repository.find();
+  }
 
-    async FindAll (){
-        const repository=getMongoRepository(Autos)
-        return await repository.find({ relations: ["user"] })
-    }
+  async FindePhotoByID(id: string) {
+    const repository = getRepository(Autos);
+    return await repository.findOne({        
+      relations:['photoName'],
+      where:{['id']:id}
+    });
+  }
 
+
+
+  async filterAuto(startDate: Date, endDate: Date) {
+    console.log(startDate, endDate);
+    const repository = getRepository(Autos);
+    return await repository.find({
+      where: {
+        ['arenda.startDay']: startDate,
+      },
+    });
+  }
 }

@@ -8,8 +8,8 @@ function DateBlock (){
   const curentDate = new Date()
   const currentMonth = curentDate.getMonth()
   const year = curentDate.getFullYear()
-  const date= new Date (year, currentMonth + 1)
-  const month = date.getMonth()
+  const nextDate= new Date (year, currentMonth + 1)
+
 
 
 
@@ -18,8 +18,8 @@ function DateBlock (){
         <section className='dateblock'>
             <p>Доступность</p>
             <div className='dateblock_wrapper'>
-                <Calendarb value={{calendName, month:currentMonth}}/>
-                <Calendarb value={{calendName, month:month}}/>
+                <Calendarb value={{calendName, date:curentDate}}/>
+                <Calendarb value={{calendName, date:nextDate}}/>
             </div>
             </section>
         </>

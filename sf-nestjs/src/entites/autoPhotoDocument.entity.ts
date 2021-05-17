@@ -1,17 +1,19 @@
-import { Column, Entity, ManyToOne, ObjectIdColumn,ObjectID } from "typeorm";
-import { Autos } from "./auto.entity";
-
-
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Autos } from './auto.entity';
 
 @Entity()
 export class AutoPhotoDocumentName {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-@ObjectIdColumn()
-  _id:ObjectID; 
+  @Column({ type: 'simple-array', select: false })
+  photoName: string[];
 
-  @Column()
-  photoName:[]
-
-  @ManyToOne(()=>Autos, auto=>auto.photoDocumentName)
-  auto:Autos
+  @ManyToOne(() => Autos, auto => auto.photoDocumentName)
+  auto: Autos;
 }

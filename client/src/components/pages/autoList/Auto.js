@@ -5,11 +5,11 @@ import { useHttp } from '../../../hooks/http.hook'
 function Auto (props){
     const [autoPhoto, setAutoPhoto]=useState(null)
     const {request} = useHttp()
+
    
 
-    useEffect( async () => {
-        console.log('a')
-        const data = await request(`http://localhost:5000/auto/photo/${props.value._id}`)
+    useEffect( async () => {       
+        const data = await request(`http://localhost:5000/auto/photo/${props.value.id}`)
         setAutoPhoto(data.photoName[0])
     },[])
 

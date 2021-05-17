@@ -1,46 +1,43 @@
+export class AddAutoDto {
+  readonly userId: string;
 
+  readonly mark: string;
 
-export class AddAutoDto{
-  readonly userId:string;
+  readonly model: string;
 
-  readonly  mark:string;
+  readonly year: string;
 
-  readonly  model:string;
+  readonly number: string;
 
-  readonly   year:string; 
+  readonly vin: string;
 
-  readonly  number:string;
- 
-  readonly  vin:string;
-  
-  readonly collor:string;
-  
-  readonly  volume:string;
- 
-  readonly  power:string;
- 
-  readonly  transmission:string;
+  readonly collor: string;
 
-  readonly mileage:string; 
+  readonly volume: string;
 
-  readonly pts:string;  
+  readonly power: string;
 
-  readonly price:string;
+  readonly transmission: string;
 
-  readonly priceThreeDays:string;
+  readonly mileage: string;
 
-  readonly priceFiveDays:string;
-  
-  readonly osago:string;
-  
-  readonly kasko:string;
+  readonly pts: string;
 
-  readonly privod:string;
+  readonly price: string;
 
-  readonly motor:string;
+  readonly priceThreeDays: string;
 
-  readonly body:string;
-  
-  readonly sts:string;
+  readonly priceFiveDays: string;
 
+  readonly osago: string;
+
+  readonly kasko: string;
+
+  readonly privod: string;
+
+  readonly motor: string;
+
+  readonly body: string;
+
+  readonly sts: string;
 }

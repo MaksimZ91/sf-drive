@@ -6,7 +6,7 @@ function InfoAutoBlock (){
     const auto = useSelector((state)=>{
         return state.auto.currentAuto
     })
-    console.log(auto)
+  
     return(
         <>
         <section className='infoAutoBlock'>

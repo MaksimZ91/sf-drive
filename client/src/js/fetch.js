@@ -12,8 +12,7 @@ export const fetchHttp =  async (url, method='GET', body=null, headers={}) =>{
                 body = JSON.stringify(body)
                 headers['Content-Type'] = 'application/json'} 
                 const response = await fetch(url,{method,body,headers})
-                const data =  await response.json()
-                console.log(data)
+                const data =  await response.json()                
                 if(!response.ok){
                 throw new Error(data.message)
             }
@@ -41,8 +40,7 @@ export const fetchHttp =  async (url, method='GET', body=null, headers={}) =>{
                  access = dataToken.accessToken
                 }
                 if (body){                                     
-                body = JSON.stringify(body)}
-                console.log(body)          
+                body = JSON.stringify(body)}                      
                 if(Object.keys(headers).length==0){
                 headers={'Content-Type':'application/json', Authorization: `Bearer ${access}`}} 
                 const response = await fetch(url,{method,body,headers})

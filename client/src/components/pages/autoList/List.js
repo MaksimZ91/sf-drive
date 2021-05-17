@@ -15,7 +15,7 @@ function List (){
     <section className='list'>
         <p className='list_titel'>Рекомендуем поблизости</p>
         <div className='list_wrapper'>
-            {auto.map(el => <Auto key={el._id} value={el}/>)}          
+            {auto.map(el => <Auto key={el.id} value={el}/>)}          
         </div>
     </section>
     </>

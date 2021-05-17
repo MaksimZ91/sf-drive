@@ -1,68 +1,71 @@
-import { Column, Entity, ManyToOne, ObjectIdColumn,ObjectID } from "typeorm";
-import { Autos } from "./auto.entity";
-
-
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Autos } from './auto.entity';
 
 @Entity()
 export class OptionsAuto {
-
-@ObjectIdColumn()
-  _id:ObjectID; 
-
-  @Column()
-  isofix:boolean;;
-
-  @Column()
-  srs:boolean;
-
-  @Column()
-  heater:boolean;
-
-  @Column()
-  aux:boolean;
-
-  @Column()
-  bluetooth:boolean;
-
-  @Column() 
-  cruizControl:boolean;
-
-  @Column()   
-  conditioning:boolean;
-
-  @Column()  
-  multimedia:boolean;
-
-  @Column()  
-  navigation:boolean;
-
-  @Column()  
-  seatCondi:boolean;
   
-  @Column()  
-  seatHeater:boolean;
-
-  @Column() 
-  trunk:boolean; 
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column()
-  park:boolean;
+  isofix: boolean;
 
   @Column()
-  camera:boolean;
+  srs: boolean;
 
   @Column()
-  babyChair:boolean;
+  heater: boolean;
 
-  @Column()  
-  deliveryAuto:boolean;
+  @Column()
+  aux: boolean;
 
-  @Column()    
-  close:boolean;
+  @Column()
+  bluetooth: boolean;
 
-  @Column() 
-  fullTank:boolean;
+  @Column()
+  cruizControl: boolean;
 
-  @ManyToOne(()=>Autos, auto=>auto.options)
-  auto:Autos
+  @Column()
+  conditioning: boolean;
+
+  @Column()
+  multimedia: boolean;
+
+  @Column()
+  navigation: boolean;
+
+  @Column()
+  seatCondi: boolean;
+
+  @Column()
+  seatHeater: boolean;
+
+  @Column()
+  trunk: boolean;
+
+  @Column()
+  park: boolean;
+
+  @Column()
+  camera: boolean;
+
+  @Column()
+  babyChair: boolean;
+
+  @Column()
+  deliveryAuto: boolean;
+
+  @Column()
+  close: boolean;
+
+  @Column()
+  fullTank: boolean;
+
+  @ManyToOne(() => Autos, auto => auto.options)
+  auto: Autos;
 }

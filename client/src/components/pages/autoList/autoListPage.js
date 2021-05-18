@@ -10,7 +10,7 @@ import Calendarb from '../detailAutoPage/calendarb'
 
 function Newpage (){
   const {request}=useHttp()
-  const [value, setValue] = useState();
+  const [value, setValue] = useState({city:''});
   const [hide, setHide]=useState(false)
   const [data, setData]=useState(null)
   const [error, setError]=useState(null)
@@ -20,6 +20,13 @@ function Newpage (){
   const date = useSelector((state)=>{
     return state.calen
   })
+  
+
+
+
+  const hadelChange = event =>{
+    setValue({value, city:event.target.innerText})   
+  }
  
 
 
@@ -49,18 +56,19 @@ const authorRequest = async () => {
     },[])
 
   const  callApi = async (event) => {
-    setValue(event.target.value)
+    setValue({...value, city:event.target.value}) 
     const token = "f05072e0afe10172227f57debd27fa6412b661ab"
     console.log(event.target.value)
-    const data = await request('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/car_brand', 
+    const data = await request('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address', 
     'POST',{query:event.target.value}, {
       "Content-Type": "application/json",
       "Accept": "application/json",
       "Authorization": "Token " + token } )
-      console.log(data)
+      setData(data.suggestions)
   }
+  console.log(data)
 
-
+/*  */
 
   return (
     <>
@@ -69,8 +77,9 @@ const authorRequest = async () => {
         <h2 className='filter_titel'>Арендуйте автомобиль</h2 >
         <div className='filter_wrapper'>
           <div className='filter_wrapper_city'>
-          <input className='filter_wrapper_city_input' type='text'  name='city'value={value} onChange={callApi}  required />
-          <label className='filter_wrapper_city_input'>Местоположение</label>         
+          <input className='filter_wrapper_city_input' type='text'   value={value.city} onChange={callApi}  required />          
+          <label className='filter_wrapper_city_input'>Местоположение</label>     
+          {data?data.map(el=> <div className='filter_wrapper_city_options' name='city' key={el.value} onClick={hadelChange} value={el.data.city}>{el.data.city}</div>):''}
           </div>
           <div className='filter_wrapper_date'>
           <input className='filter_wrapper_date_input' type='text'  name='date'  onClick={handelHide} required />

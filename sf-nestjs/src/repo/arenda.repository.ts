@@ -11,12 +11,12 @@ export class ArendaRepository {
 
   async filterAuto(startDate: Date, endDate: Date) {
     const repository = getRepository(Arenda)
-    return await repository.findOne({
+    console.log(startDate, endDate )
+    return await repository.find({
       relations:['auto'],
-      where:{startDay:Not(Between(new Date(startDate), new Date(endDate)))}})   
+      where:{startDay:Not(Between(new Date(startDate), new Date(endDate))),
+              endDay:Not(Between(new Date(startDate), new Date(endDate)))}
+    })    
   }
 }
-/* .createQueryBuilder('arenda')
-    .leftJoinAndSelect('arenda.auto', 'auto')
-    .where('arenda.startDay =:startDay', {startDay:new Date(startDate)})
-    .getOne()*/
+

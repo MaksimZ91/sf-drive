@@ -10,7 +10,7 @@ import {addEndDate, addStartDate, fetchAuto } from '../../../../redux/actions/ac
 
 function DetailAutoPage (props){ 
     const dispatch = useDispatch()
-    const auto =useSelector((state)=>{
+    const auto = useSelector((state)=>{
         return state.auto.currentAuto
     })
 
@@ -47,7 +47,7 @@ function DetailAutoPage (props){
             <InfoAutoBlock/>           
             <DateBlock/>
             <ComentBlock/>
-            <ArendaBlock auto={auto._id} />
+            <ArendaBlock auto={auto.id} />
         </main>        
         </>        
     )

@@ -10,8 +10,10 @@ function Auto (props){
 
     useEffect( async () => {       
         const data = await request(`http://localhost:5000/auto/photo/${props.value.id}`)
-        setAutoPhoto(data.photoName[0])
+        setAutoPhoto(data.photoName[0].photoName)
     },[])
+
+    console.log(autoPhoto)
 
     
    

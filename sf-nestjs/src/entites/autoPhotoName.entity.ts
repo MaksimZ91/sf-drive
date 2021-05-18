@@ -11,8 +11,8 @@ export class AutoPhotoName {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'simple-array', select: false })
-  photoName: string[];
+  @Column()
+  photoName: string;
 
  @ManyToOne(() => Autos, auto=> auto.photoName)
   auto: Autos;

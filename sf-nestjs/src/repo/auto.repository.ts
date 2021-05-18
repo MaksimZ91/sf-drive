@@ -13,7 +13,9 @@ export class AutoRepository {
 
   async FindOneByID(id: string) {
     const repository = getRepository(Autos);
-    return await repository.findOne({ where: { ['id']: id } });
+    return await repository.findOne({
+      relations:['user'],
+       where: { ['id']: id } });
   }
 
   async FindOneByNumber(number: string) {
@@ -27,22 +29,12 @@ export class AutoRepository {
   }
 
   async FindePhotoByID(id: string) {
-    const repository = getRepository(Autos);
-    return await repository.findOne({        
-      relations:['photoName'],
-      where:{['id']:id}
-    });
+    return await getRepository(Autos)
+    .createQueryBuilder("auto")
+    .leftJoinAndSelect('auto.photoName', 'photoName')
+    .where("auto.id = :id", { id: id })       
+    .getOne();
   }
 
-
-
-  async filterAuto(startDate: Date, endDate: Date) {
-    console.log(startDate, endDate);
-    const repository = getRepository(Autos);
-    return await repository.find({
-      where: {
-        ['arenda.startDay']: startDate,
-      },
-    });
-  }
+  
 }

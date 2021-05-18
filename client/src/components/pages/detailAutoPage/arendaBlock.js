@@ -17,6 +17,7 @@ function ArendaBlock (props){
 
          newAuto : props.auto
      }
+     console.log(body)
 
    
 
@@ -28,6 +29,8 @@ function ArendaBlock (props){
           setError(e)
         }     
     } 
+
+    console.log(data)
 
     
     return(

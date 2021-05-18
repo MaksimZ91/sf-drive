@@ -48,6 +48,8 @@ export class Users {
   @Column()
   refToken: string;
 
-  @OneToMany(() => Autos, autos => autos.user)
+  @OneToMany(() => Autos, autos => autos.user, {
+    cascade: true,
+})
   autos: Autos[];
 }

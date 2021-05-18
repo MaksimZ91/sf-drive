@@ -54,8 +54,8 @@ export class AutoService {
     newAuto.sts = addAuto.sts;
     newAuto.user = currentUser;
     await this.autoRepository.SaveAuto(newAuto);
-    /*currentUser.autos=[newAuto]
-    await this.userRepository.SaveUser(currentUser)*/
+    currentUser.autos=[newAuto]
+    await this.userRepository.SaveUser(currentUser)
     const currentAuto = await this.autoRepository.FindOneByNumber(
       addAuto.number,
     );
@@ -156,6 +156,6 @@ export class AutoService {
 
   async filterAuto(AutoData: AutoDataDto) {
     const { startDate, endDate } = AutoData;
-    return await this.autoRepository.filterAuto(startDate, endDate);
+    return await this.arendaRepository.filterAuto(startDate, endDate);
   }
 }

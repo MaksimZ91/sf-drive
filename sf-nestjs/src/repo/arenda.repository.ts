@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Arenda } from 'src/entites/arenda.entity';
-import { getRepository } from 'typeorm';
+import { Between, getRepository, Not } from 'typeorm';
 
 Injectable();
 export class ArendaRepository {
@@ -10,11 +10,13 @@ export class ArendaRepository {
   }
 
   async filterAuto(startDate: Date, endDate: Date) {
-    console.log(startDate, endDate);
-    return await getRepository(Arenda)
-    .createQueryBuilder('arenda')
-    .leftJoinAndSelect('arenda.auto', 'auto')
-    .where('arenda.startDay =:startDay', {startDay:new Date(startDate)})
-    .getOne()
+    const repository = getRepository(Arenda)
+    return await repository.findOne({
+      relations:['auto'],
+      where:{startDay:Not(Between(new Date(startDate), new Date(endDate)))}})   
   }
 }
+/* .createQueryBuilder('arenda')
+    .leftJoinAndSelect('arenda.auto', 'auto')
+    .where('arenda.startDay =:startDay', {startDay:new Date(startDate)})
+    .getOne()*/

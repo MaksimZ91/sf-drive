@@ -36,6 +36,7 @@ export class AutoService {
     newAuto.model = addAuto.model;
     newAuto.number = addAuto.number;
     newAuto.year = addAuto.year;
+    newAuto.type = addAuto.type
     newAuto.vin = addAuto.vin;
     newAuto.collor = addAuto.collor;
     newAuto.volume = addAuto.volume;
@@ -53,9 +54,7 @@ export class AutoService {
     newAuto.body = addAuto.body;
     newAuto.sts = addAuto.sts;
     newAuto.user = currentUser;
-    await this.autoRepository.SaveAuto(newAuto);
-    currentUser.autos=[newAuto]
-    await this.userRepository.SaveUser(currentUser)
+    await this.autoRepository.SaveAuto(newAuto);    
     const currentAuto = await this.autoRepository.FindOneByNumber(
       addAuto.number,
     );

@@ -20,17 +20,10 @@ function Newpage (){
   const date = useSelector((state)=>{
     return state.calen
   })
-  
-
-
 
   const hadelChange = event =>{
     setValue({value, city:event.target.innerText})   
   }
- 
-
-
-
 
   const handelHide = () =>{
     setHide(!hide)
@@ -41,24 +34,17 @@ function Newpage (){
     dispatch(addEndDate(null))
 },[])
 
-
-
-
 const authorRequest = async () => { 
   await axios.post('http://localhost:5000/auto/filter/aa', date )
   
 } 
-
- 
-
   useEffect(  ()=>{
        dispatch(fetchAutoListAll())
     },[])
 
   const  callApi = async (event) => {
     setValue({...value, city:event.target.value}) 
-    const token = "f05072e0afe10172227f57debd27fa6412b661ab"
-    console.log(event.target.value)
+    const token = "f05072e0afe10172227f57debd27fa6412b661ab"  
     const data = await request('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address', 
     'POST',{query:event.target.value}, {
       "Content-Type": "application/json",
@@ -66,9 +52,7 @@ const authorRequest = async () => {
       "Authorization": "Token " + token } )
       setData(data.suggestions)
   }
-  console.log(data)
-
-/*  */
+  
 
   return (
     <>

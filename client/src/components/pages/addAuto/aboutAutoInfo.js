@@ -31,6 +31,14 @@ function Aboutautoinfo (){
     <p>Кузов<input className="new_auto_form_body" placeholder='Седан' name='body' value={addAuto.body} onChange={handleChange}/></p>
     <p>VIN<input className="new_auto_form_vin" placeholder='ABCD1234567890' name='vin' value={addAuto.vin} onChange={handleChange}/></p>
     <p>Цвет<input className="new_auto_form_collor" placeholder='Белый' name='collor' value={addAuto.collor} onChange={handleChange}/></p>
+    <p>Тип ТС<select className="new_auto_form_type" name='type' value={addAuto.type} onChange={handleChange} >
+      <option>Выберите тип ТС</option>
+      <option value='Легковой'>Легковой</option>
+      <option value='Грузовой'>Грузовой</option>
+      <option value='Грузовой'>Микроавтобус</option>
+      <option value='Мотоциклы'>Мотоциклы</option>
+      </select>
+      </p>
     <p>Тип двигателя<select className="new_auto_form_motor" name='motor' value={addAuto.motor} onChange={handleChange} >
       <option>Выберите тип двигателя</option>
       <option value='Бензин'>Бензин</option>

@@ -77,6 +77,9 @@ export class Autos {
   @Column()
   sts: string;
 
+  @Column()
+  type: string;
+
   @ManyToOne(() => Users, user => user.autos)
   user: Users;
 

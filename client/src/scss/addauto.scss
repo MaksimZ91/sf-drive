@@ -71,7 +71,7 @@
           align-items: center;
           justify-content: space-between;
         }    
-        &_mark, &_model, &_vin, &_collor, &_motor, &_transmission,&_privod, &_pts, &_sts, &_osago, &_body{
+        &_mark, &_model, &_vin, &_collor,&_type, &_motor, &_transmission,&_privod, &_pts, &_sts, &_osago, &_body{
 
           width: 416px;
           height: 44px;
@@ -92,7 +92,7 @@
           margin-right: 261px;      
           padding-left: 12px;   
         }
-        >p:nth-child(11){            
+        >p:nth-child(12){            
                 font-family: Roboto;
                 font-style: normal;
                 font-weight: normal;

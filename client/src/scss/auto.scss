@@ -37,6 +37,21 @@
             position: relative;            
             border-radius: 6px;   
             border: 1px solid #D0CDE1;
+            &_options{
+                width: 329px;
+                height: 58px;
+                padding: 12px 0 30px 20px;
+                background: #FFFFFF;
+                border-radius: 8px;
+                box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 16px;
+                color: #1B1B1B;
+
+            }
             >input{
                 font-family: Roboto;
                 font-style: normal;

@@ -10,14 +10,17 @@ export class ArendaRepository {
   }
 
   async filterAuto(startDate: Date, endDate: Date) {
-    const repository = getRepository(Arenda)   
-    const data = repository.find({  
-      relations:['auto'],   
-      where:{ startDay:Not(Between(new Date(startDate), new Date(endDate))),
-              endDay:Not(Between(new Date(startDate), new Date(endDate))),
-              auto:{type:"Э"}}
-    })  
-      
+    return await getRepository(Arenda)
+    .createQueryBuilder('arenda') 
+    .leftJoinAndSelect('arenda.auto', 'auto')
+    .where('startDay NOT BETWEEN :begin AND :end', { begin: new Date(startDate), end: new Date(endDate)})
+    .andWhere('endDay NOT BETWEEN :begin AND :end', { begin: new Date(startDate), end: new Date(endDate)})
+    .andWhere(':begin NOT BETWEEN startDay AND endDay',{begin: new Date(startDate), end: new Date(endDate)})
+    .andWhere(':end NOT BETWEEN startDay AND endDay',{begin: new Date(startDate), end: new Date(endDate)})
+    .andWhere('auto.type =:type', {type:'Легковой'})
+    .select('auto')
+    .getRawMany()
   }
 }
+
 

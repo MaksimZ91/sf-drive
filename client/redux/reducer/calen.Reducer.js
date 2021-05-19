@@ -1,8 +1,8 @@
 import {  ADD_START_DATE, ADD_END_DATE } from  '../type'
 
 const defaultState = {
-  startDate:null,
-  endDate:null   
+  startDate:'',
+  endDate:''   
 }
 
 

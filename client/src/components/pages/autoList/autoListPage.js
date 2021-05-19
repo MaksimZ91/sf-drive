@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import List from './List'
 import axios, { CancelToken } from 'axios'
+import {fixDate} from '../../../js/fixday.js'
 import Footer from '../../footer/footer'
 import {useHttp} from '../../../hooks/http.hook'
 import { useDispatch , useSelector} from 'react-redux'
 import { fetchAutoListAll, addStartDate, addEndDate } from '../../../../redux/actions/actions'
 import Calendarb from '../detailAutoPage/calendarb'
+import FilterAuto from './filterAuto'
 
 
 function Newpage (){
@@ -13,6 +15,8 @@ function Newpage (){
   const [value, setValue] = useState({city:''});
   const [hide, setHide]=useState(false)
   const [data, setData]=useState(null)
+  const [type, setType]=useState(null)
+  const [selectDate, setSelectDate] = useState({calen:''})
   const [error, setError]=useState(null)
   const dispatch = useDispatch()  
   const calendName = 'filter_wrapper_date_currnetmonth'  
@@ -21,13 +25,22 @@ function Newpage (){
     return state.calen
   })
 
-  const hadelChange = event =>{
-    setValue({value, city:event.target.innerText})   
+  const handleCity = event =>{
+    setValue({ city:event.target.innerText})   
+  }
+
+  const handleChange = event =>{
+    setType(event.target.value)
   }
 
   const handelHide = () =>{
-    setHide(!hide)
+    setHide(!hide) 
   }
+
+  /*useEffect(()=>{
+    setSelectDate({calen:`${fixDate(date.startDate)}-${fixDate(date.endDate)}`})  
+  },[])*/
+
 
   useEffect (()=>{
     dispatch(addStartDate(null))
@@ -63,21 +76,27 @@ const authorRequest = async () => {
           <div className='filter_wrapper_city'>
           <input className='filter_wrapper_city_input' type='text'   value={value.city} onChange={callApi}  required />          
           <label className='filter_wrapper_city_input'>Местоположение</label>     
-          {data?data.map(el=> <div className='filter_wrapper_city_options' name='city' key={el.value} onClick={hadelChange} value={el.data.city}>{el.data.city}</div>):''}
+          {data?data.map(el=> <div className='filter_wrapper_city_options' name='city' key={el.value} onClick={handleCity} value={el.data.city}>{el.data.city}</div>):''}
           </div>
           <div className='filter_wrapper_date'>
-          <input className='filter_wrapper_date_input' type='text'  name='date'  onClick={handelHide} required />
+          <input className='filter_wrapper_date_input' type='text'  name='date' defaultValue='' value={selectDate.calen} onClick={handelHide} required />
           <label className='filter_wrapper_date_input'>Период аренды</label>
           {hide?<Calendarb value={{calendName, date:curentDate}}/>:''}
           </div>
           <div className='filter_wrapper_category'>
-          <input className='filter_wrapper_category_input' type='text'  name='category' required />
-          <label className='filter_wrapper_category_input'>Категория</label>
+          <select className="filter_wrapper_category_input" name='type' value={type} onChange={handleChange}>
+            <option></option>
+            <option value='Легковой'>Легковой</option>
+            <option value='Грузовой'>Грузовой</option>
+            <option value='Грузовой'>Микроавтобус</option>
+            <option value='Мотоциклы'>Мотоциклы</option>
+            </select>
+            <label className='filter_wrapper_category_input'>Категория</label>            
           </div>
           <button className='filter_wrapper_button'  onClick={authorRequest} >Найти</button>
         </div>
       </section>
-      <List/> 
+      <FilterAuto/>
     </main>
     <Footer/>
     </>

@@ -17,7 +17,7 @@ export class ArendaRepository {
     .andWhere('endDay NOT BETWEEN :begin AND :end', { begin: new Date(startDate), end: new Date(endDate)})
     .andWhere(':begin NOT BETWEEN startDay AND endDay',{begin: new Date(startDate), end: new Date(endDate)})
     .andWhere(':end NOT BETWEEN startDay AND endDay',{begin: new Date(startDate), end: new Date(endDate)})
-    .andWhere('auto.type =:type', {type:'Легковой'})
+    .andWhere('auto.type =:type', {type:'Грузовой'})
     .select('auto')
     .getRawMany()
   }

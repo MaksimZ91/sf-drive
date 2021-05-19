@@ -13,7 +13,7 @@ function Auto (props){
         setAutoPhoto(data.photoName[0].photoName)
     },[])
 
-    console.log(autoPhoto)
+    
 
     
    

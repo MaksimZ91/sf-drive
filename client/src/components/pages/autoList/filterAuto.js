@@ -1,9 +1,13 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Auto from './Auto'
+import { NavLink } from 'react-router-dom'
+import { fetchAuto }from '../../../../redux/actions/actions'
+
 
 
 function FilterAuto (){
+    const dispatch = useDispatch()
     const auto = useSelector((state)=>{
         return state.auto.autoFilter
       })
@@ -22,7 +26,7 @@ function FilterAuto (){
             </div>
         {auto.map(el =>
         <div className ='options_autolist'>
-            <Auto key={el.id} value={el}/>
+           <NavLink to="/auto"  onClick={()=>dispatch(fetchAuto(el.id))}  key={el.id} ><Auto value={el}/></NavLink>)
             <button className ='options_autolist_wrapper' >Арендовать</button>
         </div>)}
         </section>

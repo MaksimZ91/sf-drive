@@ -155,6 +155,6 @@ export class AutoService {
 
   async filterAuto(AutoData: AutoDataDto) {
     const { startDate, endDate } = AutoData;
-    return await this.arendaRepository.filterAuto(startDate, endDate);
+    return await this.autoRepository.filterAuto(startDate, endDate);
   }
 }

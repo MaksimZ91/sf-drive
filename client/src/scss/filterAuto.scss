@@ -1,5 +1,105 @@
 .options{
-        &_wrappper{
-            display: flex;
+    width: 71.3vw;
+    margin-bottom: 80px;
+    &_wrapper{
+        display: flex;
+        align-items: center;
+        margin-top: 50px;  
+        justify-content: center;     
+        &_price, &_kpp{
+            background: #F7F7F8;
+            border: 1px solid #D0CDE1;
+            box-sizing: border-box;
+            border-radius: 8px;
+            height: 36px;
+            width: 7.2vw;
+            margin-right: 0.93vw;
+            cursor: pointer;
+            >p{
+                margin: 10px auto;
+                text-align: center;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 16px;
+                color: #1B1B1B;
+            }
         }
+        &_privod{
+            background: #F7F7F8;
+            border: 1px solid #D0CDE1;
+            box-sizing: border-box;
+            border-radius: 8px;
+            height: 36px;
+            width: 8.4vw;
+            margin-right:  0.93vw;
+            cursor: pointer;
+            >p{
+                margin: 10px auto;
+                text-align: center;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 16px;
+                color: #1B1B1B;
+            }            
+        }
+        &_motor{
+            background: #F7F7F8;
+            border: 1px solid #D0CDE1;
+            box-sizing: border-box;
+            border-radius: 8px;
+            height: 36px;
+            width: 9.7vw;
+            cursor: pointer;
+            >p{
+                margin: 10px auto;
+                text-align: center;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 16px;
+                color: #1B1B1B;
+            }            
+        }
+        &_map{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 9.4vw;
+            margin-left: 26.8vw;
+            cursor: pointer;
+            >p{
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 16px;
+                color: #61A199;
+            }
+        }       
+    }
+    &_autolist{
+        display: flex;
+        justify-content: space-between;
+        >button{
+            width: 158px;
+            height: 44px;
+            align-self: center;
+            background: rgba(97, 161, 153, 0.15);
+            border-radius: 6px;
+            border-style:none;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            text-align: center;
+            color: #61A199;
+            cursor: pointer;
+        }
+    }
 }

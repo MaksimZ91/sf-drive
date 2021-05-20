@@ -1,7 +1,7 @@
 import { fetchHttp } from '../../src/js/fetch'
 import { FETCH_AUTO_ALL, FETCH_AUTO_LIST, FETCH_AUTO, ADD_END_DATE, ADD_START_DATE,ADD_AUTO_PHOTO_NAME,
      ADD_AUTO, ADD_AUTO_OPTIONS, ADD_AUTO_PHOTO, SHOW_LOADER, HIDE_LOADER, DELETE_PHOTO, ADD_AUTO_NEW_AUTO_ID,
-     ADD_AUTO_DOCUMENT_PHOTO, ADD_DOCUMENT_PHOTO_NAME, DELETE_PHOTO_DOCUMENT } from '../type'
+     ADD_AUTO_DOCUMENT_PHOTO, ADD_DOCUMENT_PHOTO_NAME, DELETE_PHOTO_DOCUMENT, FILTER_AUTO } from '../type'
 const TOKENS_KYES='tokens'
 
 
@@ -25,6 +25,13 @@ export function fetchAuto(id){return async dispatch => {
     const data = await fetchHttp(`http://localhost:5000/auto/${id}`)
     dispatch({type:FETCH_AUTO, payload:data})
 }}
+
+export function filterAuto(data){
+    return async dispatch => {        
+        const autos = await fetchHttp('http://localhost:5000/auto/filter/aa', 'post', data)
+        dispatch({type:FILTER_AUTO, payload:autos})
+    } 
+}
 
 export function addStartDate (data){
     return{type:ADD_START_DATE, payload:data} 

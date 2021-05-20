@@ -2,7 +2,7 @@
 @import "header";
 @import "footer";
 @import "fonts";
-
+@import "filterAuto";
 
 .auto_list{
     display: flex;
@@ -28,9 +28,7 @@
         display: flex;
         justify-content: center;
         margin-top: 50px;
-        &_city{
-            width: 22.8vw;
-            max-width: 329px;
+        &_city{        
             height: 44px;  
             display: inline-block;
             vertical-align: top;
@@ -38,9 +36,7 @@
             border-radius: 6px;   
             border: 1px solid #D0CDE1;
             &_options{
-                width: 329px;
-                height: 58px;
-                padding: 12px 0 30px 20px;
+                width: 22.8vw;               
                 background: #FFFFFF;
                 border-radius: 8px;
                 box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
@@ -50,6 +46,16 @@
                 font-size: 14px;
                 line-height: 16px;
                 color: #1B1B1B;
+                position: relative;
+                z-index: 1;
+                >p:first-child{
+                  padding-top: 29px;
+                  margin: 0;
+                }
+                >p{
+                  height: 58px;              
+              
+                }
 
             }
             >input{
@@ -61,7 +67,6 @@
                 color: #1B1B1B;
                 outline-offset:0px;
                 width: 22.8vw;
-                max-width: 329px;
                 height: 44px;
                 padding: 0;   
                 padding: 21px 0 7px 12px;
@@ -78,8 +83,7 @@
                 font-size: 14px;
                 line-height: 16px;
                 color: #A3A0B1;
-                width: 22.8vw;
-                max-width: 329px;
+                width: 22.8vw;           
                 position: absolute;
                 pointer-events: none;
                 left: 15px;
@@ -104,14 +108,15 @@
         }
         &_date{
             margin-bottom:2.2vh;
-            width: 15vw;            
-            max-width: 217px;
+            width: 15vw; 
             height: 44px;  
             display: inline-block;
             vertical-align: top;
             position: relative;            
             border-radius: 6px;   
             border: 1px solid #D0CDE1;
+            background:url(../img/calendar.svg) no-repeat center right 15px;
+            cursor: pointer;
             >input{
                 font-family: Roboto;
                 font-style: normal;
@@ -120,9 +125,7 @@
                 line-height: 16px;
                 color: #1B1B1B;
                 outline-offset:0px;
-                width: 15vw;            
-                max-width: 217px;
-                height: 44px;
+                width: 15vw;
                 padding: 0;   
                 padding: 21px 0 7px 12px;
                 box-sizing: border-box;
@@ -138,8 +141,7 @@
                 font-size: 14px;
                 line-height: 16px;
                 color: #A3A0B1;
-                width: 15vw;            
-                max-width: 217px;
+                width: 15vw;
                 position: absolute;
                 pointer-events: none;
                 left: 15px;
@@ -360,7 +362,6 @@
         }
         &_category{
             margin-bottom:2.2vh;
-            max-width: 308px;
             width: 21.3vw;
             height: 44px;  
             display: inline-block;
@@ -376,7 +377,6 @@
                 line-height: 16px;
                 color: #1B1B1B;
                 outline-offset:0px;
-                max-width: 308px;
                 width: 21.3vw;
                 height: 44px;
                 padding: 0;   
@@ -394,7 +394,6 @@
                 font-size: 14px;
                 line-height: 16px;
                 color: #A3A0B1;
-                max-width: 308px;
                 width: 21.3vw;                    
                 position: absolute;
                 pointer-events: none;
@@ -419,11 +418,11 @@
             }           
         }
         &_button{
-            width: 158px;
+            width: 10.9vw;
             height: 44px;
             background: #61A199;
             border-radius: 6px;
-            margin-left: 18px;
+            margin-left: 1.25vw;
             border-style:none;
             font-family: Roboto;
             font-style: normal;
@@ -432,6 +431,7 @@
             line-height: 19px;
             text-align: center;
             color: #FFFFFF;
+            cursor: pointer;
         }
     }
 }
@@ -509,47 +509,3 @@
 }
 
 
-.options{
-    &_wrapper{
-        display: flex;
-        align-items: center;
-        &_price{
-            background: #F7F7F8;
-            border: 1px solid #D0CDE1;
-            box-sizing: border-box;
-            border-radius: 8px;
-            height: 36px;
-            >p{
-                margin: 10px auto;
-                text-align: center;
-                font-family: Roboto;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 14px;
-                line-height: 16px;
-                color: #1B1B1B;
-
-            }
-            &_kpp{
-                background: #F7F7F8;
-                border: 1px solid #D0CDE1;
-                box-sizing: border-box;
-                border-radius: 8px;
-                height: 36px;
-                >p{
-                    margin: 10px auto;
-                    text-align: center;
-                    font-family: Roboto;
-                    font-style: normal;
-                    font-weight: normal;
-                    font-size: 14px;
-                    line-height: 16px;
-                    color: #1B1B1B;
-    
-                }
-                
-            }
-        }
-       
-    }
-}

@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MulterModule } from '@nestjs/platform-express';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
+import { AutosResolver } from './autos/autos.resolver';
 
 
 @Module({
@@ -29,10 +30,10 @@ import { join } from 'path';
       entities: [__dirname + '/**/*.entity.{ts,js}'],
       synchronize: true,
       autoLoadEntities:true }),
-    }),
+    }),    
     MulterModule.register({
       dest: './files',
-    }),
+    }),    
     GraphQLModule.forRoot({
       typePaths: ['./**/*.graphql'],
       definitions: {
@@ -41,6 +42,6 @@ import { join } from 'path';
     }),
   ],
   controllers: [],
-  providers: [],
+  providers: [AutosResolver],
 })
 export class AppModule {}

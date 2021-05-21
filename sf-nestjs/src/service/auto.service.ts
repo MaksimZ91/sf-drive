@@ -152,9 +152,9 @@ export class AutoService {
     arenda.auto = auto;
     await this.arendaRepository.SaveArenda(arenda);
   }
-
+  
   async filterAuto(AutoData: AutoDataDto) {
-    const { startDate, endDate } = AutoData;
-    return await this.autoRepository.filterAuto(startDate, endDate);
+    const { startDate, endDate, type } = AutoData;
+    return await this.autoRepository.filterAuto(startDate, endDate, type);
   }
 }

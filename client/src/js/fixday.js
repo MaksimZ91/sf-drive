@@ -8,5 +8,7 @@ export const fixDate =(date) => {
     if (month<10){
       month = "0"+ month
     }
-   return  day+"."+month+"."+ newDate.getFullYear()
+    const year = newDate.getFullYear().toString().substr(2)
+   const result = day+"."+month+"."+ year
+   return result
   }

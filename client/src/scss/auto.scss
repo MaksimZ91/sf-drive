@@ -49,12 +49,25 @@
                 position: relative;
                 z-index: 1;
                 >p:first-child{
-                  padding-top: 29px;
+                  padding-top: 20px;
+                  padding-left: 12px;
                   margin: 0;
                 }
                 >p{
-                  height: 58px;              
-              
+                  padding-top: 20px;
+                  padding-left: 12px;
+                  height: 58px;
+                  margin: 0;
+                  font-family: Roboto;
+                  font-style: normal;
+                  font-weight: normal;
+                  font-size: 14px;
+                  line-height: 16px;
+                  color: #1B1B1B;
+                }
+                >p:hover{
+                  background: (97, 161, 153, 0.15);               
+                  color: #1B1B1B;
                 }
 
             }

@@ -26,9 +26,10 @@ export function fetchAuto(id){return async dispatch => {
     dispatch({type:FETCH_AUTO, payload:data})
 }}
 
-export function filterAuto(data){
+export function filterAuto(data, type){ 
+    const { startDate, endDate } = data;
     return async dispatch => {        
-        const autos = await fetchHttp('http://localhost:5000/auto/filter/aa', 'post', data)
+        const autos = await fetchHttp('http://localhost:5000/auto/filter/aa', 'post', {startDate, endDate, type})
         dispatch({type:FILTER_AUTO, payload:autos})
     } 
 }

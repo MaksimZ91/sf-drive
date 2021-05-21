@@ -2,7 +2,32 @@ type User {
   id:String
 }
 
+type Autos{
+  id: ID!
+  mark: String
+  model: String
+  year: String
+  number: String
+  vin: String
+  collor: String
+  volume: String
+  power: String
+  transmission: String
+  mileage: String
+  pts: String
+  price: String
+  priceThreeDays: String
+  priceFiveDays: String
+  osago: String
+  kasko: String
+  privod: String
+  motor: String
+  body: String
+  sts: String
+  type: String
+}
+
 type Query {
-  findeAllUsers:[User]!
+   filterAuto:[Autos]!
 
 }

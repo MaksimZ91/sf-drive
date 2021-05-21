@@ -36,7 +36,7 @@ export class AutoRepository {
     .getOne();
   }
   
-  async filterAuto(startDate: Date, endDate: Date) {
+  async filterAuto(startDate: Date, endDate: Date, type:string) {
     return await getRepository(Autos)
     .createQueryBuilder('auto') 
     .leftJoinAndSelect('auto.arenda', 'arenda')
@@ -44,8 +44,7 @@ export class AutoRepository {
     .andWhere('arenda.endDay NOT BETWEEN :begin AND :end', { begin: new Date(startDate), end: new Date(endDate)})
     .andWhere(':begin NOT BETWEEN arenda.startDay AND arenda.endDay',{begin: new Date(startDate), end: new Date(endDate)})
     .andWhere(':end NOT BETWEEN arenda.startDay AND arenda.endDay',{begin: new Date(startDate), end: new Date(endDate)})
-   // .andWhere('type =:type', {type:'Легковой'})
-   // .select('auto')
+    .andWhere('type =:type', {type:type})  
     .getMany()
   }
 }

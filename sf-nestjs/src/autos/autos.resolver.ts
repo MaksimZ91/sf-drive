@@ -1,14 +1,16 @@
-import { Body } from '@nestjs/common';
 import { Resolver, Query, Args  } from '@nestjs/graphql';
 import { AutoService } from 'src/service/auto.service';
-import { AutoDataDto } from '../dto/autoData.dto'
+import { ArendaInput } from '../graphql'
 
 
 @Resolver()
-export class AutosResolver {
-    constructor (private readonly  autoService:AutoService){}
+export class AutosResolver { 
+   constructor (private  autoService:AutoService){}
+
     @Query()
-    filterAuto(@Args('AutoData') AutoData: AutoDataDto) {
-        return this.autoService.filterAuto(AutoData);
-      }
-}
+    filterAuto(@Args('arendaInput') arendaInput:ArendaInput){      
+      const {startDate, endDate, type} = arendaInput
+      console.log(startDate, endDate, type)
+      return this.autoService.filterAuto(startDate, endDate, type);
+    }
+    }

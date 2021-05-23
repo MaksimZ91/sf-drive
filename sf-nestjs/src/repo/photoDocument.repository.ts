@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { AutoPhotoDocumentName } from '../entites/autoPhotoDocument.entity';
 import { getRepository } from 'typeorm';
-import { ObjectID } from 'mongodb';
 
 @Injectable()
 export class PhotoDocumentRepository {
@@ -15,5 +14,5 @@ export class PhotoDocumentRepository {
     return await repository.findOne({
       where: { ['auto.id']: id },
     });
-  }
+  }  
 }

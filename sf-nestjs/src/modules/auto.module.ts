@@ -7,6 +7,7 @@ import { PhotoRepository } from 'src/repo/photo.repository';
 import { PhotoDocumentRepository } from 'src/repo/photoDocument.repository';
 import { UserRepository } from 'src/repo/user.repository';
 import { AutoService } from 'src/service/auto.service';
+import { AutosResolver } from 'src/autos/autos.resolver';
 
 @Module({
   imports: [],
@@ -19,6 +20,7 @@ import { AutoService } from 'src/service/auto.service';
     PhotoRepository,
     PhotoDocumentRepository,
     ArendaRepository,
+    AutosResolver
   ],
 })
 export class AutoModule {}

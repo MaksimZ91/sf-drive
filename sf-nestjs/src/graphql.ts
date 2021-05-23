@@ -7,8 +7,21 @@
 
 /* tslint:disable */
 /* eslint-disable */
+export interface ArendaInput {
+    startDate?: string;
+    endDate?: string;
+    type?: string;
+}
+
 export interface User {
     id?: string;
+}
+
+export interface Arenda {
+    id: string;
+    startDay?: string;
+    endDay?: string;
+    auto?: Autos[];
 }
 
 export interface Autos {
@@ -34,8 +47,10 @@ export interface Autos {
     body?: string;
     sts?: string;
     type?: string;
+    arenda?: Arenda[];
 }
 
 export interface IQuery {
-    filterAuto(): Autos[] | Promise<Autos[]>;
+    filterAuto(arendaInput?: ArendaInput): Autos[] | Promise<Autos[]>;
+    getAllAutos(): Autos[] | Promise<Autos[]>;
 }

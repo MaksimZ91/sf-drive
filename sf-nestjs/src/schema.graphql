@@ -2,6 +2,14 @@ type User {
   id:String
 }
 
+type Arenda{
+  id: ID!
+  startDay: String  
+  endDay: String
+  auto:[Autos]
+
+}
+
 type Autos{
   id: ID!
   mark: String
@@ -25,9 +33,18 @@ type Autos{
   body: String
   sts: String
   type: String
+  arenda:[Arenda]
+}
+
+
+input ArendaInput{ 
+  startDate: String
+  endDate: String
+  type:String
 }
 
 type Query {
-   filterAuto:[Autos]!
+   filterAuto(arendaInput: ArendaInput):[Autos]!
+   getAllAutos:[Autos]!
 
 }

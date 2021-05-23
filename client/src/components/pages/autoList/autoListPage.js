@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import List from './List'
-import axios, { CancelToken } from 'axios'
 import {fixDate} from '../../../js/fixday.js'
 import Footer from '../../footer/footer'
 import {useHttp} from '../../../hooks/http.hook'
@@ -8,27 +7,30 @@ import { useDispatch , useSelector} from 'react-redux'
 import { fetchAutoListAll, addStartDate, addEndDate, filterAuto } from '../../../../redux/actions/actions'
 import Calendarb from '../detailAutoPage/calendarb'
 import FilterAuto from './filterAuto'
+import { useQuery, useLazyQuery} from '@apollo/react-hooks'
+import { FETCH_FILTER_AUTO, FETCH_ALL_AUTO } from '../../../js/graphql-request'
 
 
 function Newpage (){
   const {request}=useHttp()
   const [value, setValue] = useState({city:''});
   const [hide, setHide]=useState(false)
-  const [data, setData]=useState([]) 
+  const [adress, setAdress]=useState([]) 
   const [dataHide, setDataHide]=useState(false) 
   const [type, setType]=useState(null)
   const [filter, setFilter]=useState(false)
   const [selectDate, setSelectDate] = useState({calen:''})
-  const [error, setError]=useState(null)
   const dispatch = useDispatch()  
   const calendName = 'filter_wrapper_date_currnetmonth'  
   const curentDate = new Date()
-  const date = useSelector((state)=>{
+    const date = useSelector((state)=>{
     return state.calen
   })
+  const { startDate, endDate } = date; 
   const auto = useSelector((state)=>{
     return state.auto.autoFilter
   }) 
+ 
 
   useEffect(()=>{
     if(date.startDate||date.endDate)setSelectDate({calen:`${fixDate(date.startDate)}-${fixDate(date.endDate)}`})
@@ -43,6 +45,7 @@ function Newpage (){
     },[])
 
 
+
   const handleCity = event =>{    
     setHide(false)
     setValue({ city:event.target.innerText}) 
@@ -53,6 +56,7 @@ function Newpage (){
     setHide(false)    
     setType(event.target.value)
   }
+ 
 
 
 
@@ -60,11 +64,17 @@ function Newpage (){
     setHide(!hide) 
   }
   
-const authorRequest = async () => {
+  const [getAutos, { data:{filterAuto:autos}={} }] = useLazyQuery(FETCH_FILTER_AUTO )  
+  
+const  authorRequest = () => { 
   setHide(false) 
   setFilter(true)
-  dispatch(filterAuto(date, type))
+   getAutos({variables:{arendaInput:{startDate, endDate, type}}})  
 } 
+useEffect(()=>{
+  dispatch(filterAuto(autos))
+},[autos])
+
  
 
     
@@ -78,7 +88,7 @@ const authorRequest = async () => {
       "Content-Type": "application/json",
       "Accept": "application/json",
       "Authorization": "Token " + token } )    
-       setData(payload.suggestions) 
+      setAdress(payload.suggestions) 
   }
 
  
@@ -93,8 +103,8 @@ const authorRequest = async () => {
           <div className='filter_wrapper_city'>
           <input className='filter_wrapper_city_input' type='text'   value={value.city} onChange={callApi}  required />          
           <label className='filter_wrapper_city_input'>Местоположение</label>     
-          {(data&&dataHide)?<div className='filter_wrapper_city_options'>
-           {data.map(el=><p className='filter_wrapper_city_options_element' name='city' key={el.value} onClick={handleCity} value={el.value} >{el.value}</p>)}
+          {(adress&&dataHide)?<div className='filter_wrapper_city_options'>
+           {adress.map(el=><p className='filter_wrapper_city_options_element' name='city' key={el.value} onClick={handleCity} value={el.value} >{el.value}</p>)}
             </div>:''}
           </div>
           <div className='filter_wrapper_date'>

@@ -120,7 +120,7 @@ export class AutoService {
   async getOne(id: string) {
    return await this.autoRepository.FindOneByID(id);    
   }
-
+  
   async getAllAutos() {
     return await this.autoRepository.FindAll();
   }
@@ -151,10 +151,10 @@ export class AutoService {
     arenda.endDay = addArenda.endDay;
     arenda.auto = auto;
     await this.arendaRepository.SaveArenda(arenda);
-  }
+    }
   
-  async filterAuto(AutoData: AutoDataDto) {
-    const { startDate, endDate, type } = AutoData;
+  async filterAuto(startDate:string, endDate:string, type:string ) {
+    //const { startDate, endDate, type } = AutoData;
     return await this.autoRepository.filterAuto(startDate, endDate, type);
   }
 }

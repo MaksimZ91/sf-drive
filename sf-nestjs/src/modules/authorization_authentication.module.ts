@@ -6,6 +6,7 @@ import { TestGuardSevice } from '../service/testGuard.service';
 import { JwtStrategy } from '../guard/jwt-strategy';
 import { JwtAuthGuard } from '../guard/autn.guard';
 
+
 @Module({
   imports: [],
   controllers: [AutrozationAuthenController],

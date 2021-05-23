@@ -7,7 +7,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MulterModule } from '@nestjs/platform-express';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
-import { AutosResolver } from './autos/autos.resolver';
 
 
 @Module({
@@ -42,6 +41,6 @@ import { AutosResolver } from './autos/autos.resolver';
     }),
   ],
   controllers: [],
-  providers: [AutosResolver],
+  providers: [],
 })
 export class AppModule {}

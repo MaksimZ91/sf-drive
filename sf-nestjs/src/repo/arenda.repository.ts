@@ -7,7 +7,7 @@ export class ArendaRepository {
   async SaveArenda(arenda: Arenda) {
     const repository = getRepository(Arenda);
     return await repository.save(arenda);
-  }
+  }  
 }
 
 

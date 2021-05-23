@@ -79,7 +79,7 @@ export class AutoController {
   @Get(':id')
   getOne(@Param('id') id: string) {
     return this.autoService.getOne(id);
-  }
+    }
 
   @Get('all/autos')
   getAllAutos() {
@@ -123,8 +123,8 @@ export class AutoController {
     return this.autoService.createArenda(addArenda);
   }
 
-  @Post('filter/aa')
+  /*@Post('filter/aa')
   filterAuto(@Body() AutoData: AutoDataDto) {
     return this.autoService.filterAuto(AutoData);
-  }
+  }*/
 }

@@ -9,7 +9,7 @@ export class AutoRepository {
     const repository = getRepository(Autos);
     return await repository.save(auto);
   }
-
+  
 
   async FindOneByID(id: string) {
     const repository = getRepository(Autos);
@@ -36,7 +36,7 @@ export class AutoRepository {
     .getOne();
   }
   
-  async filterAuto(startDate: Date, endDate: Date, type:string) {
+  async filterAuto(startDate: string, endDate: string, type:string) {
     return await getRepository(Autos)
     .createQueryBuilder('auto') 
     .leftJoinAndSelect('auto.arenda', 'arenda')

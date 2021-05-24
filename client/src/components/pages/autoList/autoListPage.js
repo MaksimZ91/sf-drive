@@ -17,7 +17,7 @@ function Newpage (){
   const [hide, setHide]=useState(false)
   const [adress, setAdress]=useState([]) 
   const [dataHide, setDataHide]=useState(false) 
-  const [type, setType]=useState(null)
+  const [type, setType]=useState("")
   const [filter, setFilter]=useState(false)
   const [selectDate, setSelectDate] = useState({calen:''})
   const dispatch = useDispatch()  
@@ -108,7 +108,7 @@ useEffect(()=>{
             </div>:''}
           </div>
           <div className='filter_wrapper_date'>
-          <input className='filter_wrapper_date_input' type='text'  name='date'  value={selectDate.calen} onClick={handelHide} required />
+          <input className='filter_wrapper_date_input' type='text'  name='date'  defaultValue={selectDate.calen} onClick={handelHide} required />
           <label className='filter_wrapper_date_input'>Период аренды</label>
           {hide?<Calendarb value={{calendName, date:curentDate}}  />:''}
           </div>

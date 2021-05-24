@@ -14,7 +14,7 @@ export class AutoRepository {
   async FindOneByID(id: string) {
     const repository = getRepository(Autos);
     return await repository.findOne({
-      relations:['user'],
+      relations:['user', 'arenda'],
        where: { ['id']: id } });
   }
 

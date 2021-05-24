@@ -34,6 +34,11 @@ const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plug
         {
           test: /\.(png|jpe?g|gif|ttf|svg)$/i,
           loader: 'file-loader'       
+        },
+        {
+          test: /\.m?js$/i,
+          use: ['smart-source-map-loader'],
+          enforce: 'pre'
         }
       ]
     },   

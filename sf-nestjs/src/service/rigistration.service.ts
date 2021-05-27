@@ -15,17 +15,10 @@ export class RegistrationService {
 
   async Registration(registrationDTO: RegistrUserDto) {    
     const { email, password } = registrationDTO;
-    const newUser = new Users();
-    newUser.email = email;
-    newUser.fio = registrationDTO.fio;
-    newUser.phone = registrationDTO.phone;
-    newUser.date = registrationDTO.date;
-    newUser.number = registrationDTO.number;
-    newUser.passDate = registrationDTO.passDate;
-    newUser.about = registrationDTO.about;
-    newUser.cod = registrationDTO.cod;
-    newUser.numberLicense = registrationDTO.numberLicense;
-    newUser.dateLicense = registrationDTO.dateLicense;  
+    const newUser = new Users(registrationDTO.fio, email, registrationDTO.phone,
+      registrationDTO.date, registrationDTO.number, registrationDTO.passDate,
+      registrationDTO.about, registrationDTO.cod, registrationDTO.numberLicense,
+      registrationDTO.dateLicense);
     const person = await this.userRepository.FindOneByEmail(email);  
     if (person) {
       throw new HttpException(

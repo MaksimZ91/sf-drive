@@ -8,6 +8,20 @@ import { Autos } from './auto.entity';
 
 @Entity()
 export class Users {
+  constructor (fio:string, email:string,phone:string,
+     date:string, number:string, passDate:string, about:string,
+      cod:string, numberLicense:string, dateLicense:string){
+        this.fio = fio;
+        this.email = email;        
+        this.phone = phone;
+        this.date = date;
+        this.number = number;
+        this.passDate = passDate;
+        this.about = about;
+        this.cod= cod;
+        this.numberLicense = numberLicense;
+        this.dateLicense = dateLicense;
+  }
   
   @PrimaryGeneratedColumn()
   id: number;

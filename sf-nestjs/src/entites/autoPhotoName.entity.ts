@@ -8,6 +8,10 @@ import { Autos } from './auto.entity';
 
 @Entity()
 export class AutoPhotoName {
+  constructor (photoName:string){
+    this.photoName = photoName
+  }
+  
   @PrimaryGeneratedColumn()
   id: number;
 

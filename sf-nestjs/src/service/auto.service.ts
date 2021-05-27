@@ -30,29 +30,12 @@ export class AutoService {
   ) {}
 
   async createAuto(addAuto: AddAutoDto) {
-    const newAuto = new Autos();
-    const currentUser = await this.userRepository.FindOneByID(addAuto.userId);
-    newAuto.mark = addAuto.mark;
-    newAuto.model = addAuto.model;
-    newAuto.number = addAuto.number;
-    newAuto.year = addAuto.year;
-    newAuto.type = addAuto.type
-    newAuto.vin = addAuto.vin;
-    newAuto.collor = addAuto.collor;
-    newAuto.volume = addAuto.volume;
-    newAuto.power = addAuto.power;
-    newAuto.transmission = addAuto.transmission;
-    newAuto.mileage = addAuto.mileage;
-    newAuto.pts = addAuto.pts;
-    newAuto.price = addAuto.price;
-    newAuto.priceThreeDays = addAuto.priceThreeDays;
-    newAuto.priceFiveDays = addAuto.priceFiveDays;
-    newAuto.osago = addAuto.osago;
-    newAuto.kasko = addAuto.kasko;
-    newAuto.privod = addAuto.privod;
-    newAuto.motor = addAuto.motor;
-    newAuto.body = addAuto.body;
-    newAuto.sts = addAuto.sts;
+    const newAuto = new Autos(addAuto.mark, addAuto.model,addAuto.year, addAuto.number,
+      addAuto.vin, addAuto.collor, addAuto.volume, addAuto.power, addAuto.transmission,
+      addAuto.mileage,addAuto.pts, addAuto.price, addAuto.priceThreeDays,
+      addAuto.priceFiveDays, addAuto.osago, addAuto.kasko, addAuto.privod,
+      addAuto.motor, addAuto.body, addAuto.sts, addAuto.type);
+    const currentUser = await this.userRepository.FindOneByID(addAuto.userId); 
     newAuto.user = currentUser;
     await this.autoRepository.SaveAuto(newAuto);    
     const currentAuto = await this.autoRepository.FindOneByNumber(
@@ -62,26 +45,12 @@ export class AutoService {
   }
 
   async AddAutoOptions(AddOptions: AddAutoOptionsDto) {
-    const newOptions = new OptionsAuto();
-    const auto = await this.autoRepository.FindOneByID(AddOptions.newAuto);
-    newOptions.isofix = AddOptions.isofix;
-    newOptions.srs = AddOptions.srs;
-    newOptions.heater = AddOptions.heater;
-    newOptions.aux = AddOptions.aux;
-    newOptions.bluetooth = AddOptions.bluetooth;
-    newOptions.cruizControl = AddOptions.cruizControl;
-    newOptions.conditioning = AddOptions.conditioning;
-    newOptions.multimedia = AddOptions.multimedia;
-    newOptions.navigation = AddOptions.navigation;
-    newOptions.seatCondi = AddOptions.seatCondi;
-    newOptions.seatHeater = AddOptions.seatHeater;
-    newOptions.trunk = AddOptions.trunk;
-    newOptions.park = AddOptions.park;
-    newOptions.camera = AddOptions.camera;
-    newOptions.babyChair = AddOptions.babyChair;
-    newOptions.deliveryAuto = AddOptions.deliveryAuto;
-    newOptions.close = AddOptions.close;
-    newOptions.fullTank = AddOptions.fullTank;
+    const newOptions = new OptionsAuto(AddOptions.isofix, AddOptions.srs,AddOptions.heater,
+      AddOptions.aux, AddOptions.bluetooth, AddOptions.cruizControl, AddOptions.conditioning,
+      AddOptions.multimedia, AddOptions.navigation, AddOptions.seatCondi, AddOptions.seatHeater, 
+      AddOptions.trunk, AddOptions.park, AddOptions.camera,AddOptions.babyChair, 
+      AddOptions.deliveryAuto, AddOptions.close,AddOptions.fullTank);
+    const auto = await this.autoRepository.FindOneByID(AddOptions.newAuto); 
     newOptions.auto = auto;
     await this.optionsRepository.SaveOptions(newOptions);
     return { message: 'ok' };
@@ -92,8 +61,7 @@ export class AutoService {
       addAutoPhotoName.newAuto,
     );
     addAutoPhotoName.photoName.forEach(photo=> {
-      const newAutoPhotoName = new AutoPhotoName();
-      newAutoPhotoName.photoName = photo
+      const newAutoPhotoName = new AutoPhotoName(photo);      
       newAutoPhotoName.auto = currentAuto;
       this.photoRepository.SavePhoto(newAutoPhotoName);      
     })
@@ -103,13 +71,14 @@ export class AutoService {
   async AddAutoDocumentPhotoName(
     addAutoDocumentPhotoName: AddAutoDocumentPhotoNameDto,
   ) {
-    const newAutoDocumentPhotoName = new AutoPhotoDocumentName();
     const currentAuto = await this.autoRepository.FindOneByID(
       addAutoDocumentPhotoName.newAuto,
     );
-    newAutoDocumentPhotoName.photoName = addAutoDocumentPhotoName.photoName;
-    newAutoDocumentPhotoName.auto = currentAuto;
-    await this.photoDocumentRepository.SavePhoto(newAutoDocumentPhotoName);
+    addAutoDocumentPhotoName.photoName.forEach(photo =>{
+      const newAutoDocumentPhotoName = new AutoPhotoDocumentName(photo);    
+      newAutoDocumentPhotoName.auto = currentAuto;
+      this.photoDocumentRepository.SavePhoto(newAutoDocumentPhotoName);
+    })
     return { message: 'ok' };
   }
 
@@ -145,10 +114,8 @@ export class AutoService {
   }
 
   async createArenda(addArenda: ArendaDtO) {
-    const arenda = new Arenda();
-    const auto = await this.autoRepository.FindOneByID(addArenda.newAuto);
-    arenda.startDay = addArenda.startDay;
-    arenda.endDay = addArenda.endDay;
+    const arenda = new Arenda(addArenda.startDay, addArenda.endDay);
+    const auto = await this.autoRepository.FindOneByID(addArenda.newAuto);   
     arenda.auto = auto;
     await this.arendaRepository.SaveArenda(arenda);
     }

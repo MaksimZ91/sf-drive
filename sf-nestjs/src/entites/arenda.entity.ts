@@ -3,6 +3,10 @@ import { Autos } from './auto.entity';
 
 @Entity()
 export class Arenda {
+  constructor (startDay: Date, endDay: Date){
+    this.startDay = startDay;
+    this.endDay = endDay;
+  }
   @PrimaryGeneratedColumn()
   id: number;
 

@@ -8,11 +8,14 @@ import { Autos } from './auto.entity';
 
 @Entity()
 export class AutoPhotoDocumentName {
+  constructor (photoName: string){
+    this.photoName = photoName
+  }
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'simple-array', select: false })
-  photoName: string[];
+  @Column()
+  photoName: string;
 
   @ManyToOne(() => Autos, auto => auto.photoDocumentName)
   auto: Autos;

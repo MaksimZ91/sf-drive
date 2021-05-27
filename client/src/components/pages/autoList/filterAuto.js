@@ -26,7 +26,7 @@ function FilterAuto (){
             </div>
         {auto.map(el =>
         <div className ='options_autolist'>
-           <NavLink to="/auto"  onClick={()=>dispatch(fetchAuto(el.id))}  key={el.id} ><Auto value={el}/></NavLink>
+           <NavLink to="/auto"  onClick={()=>dispatch(fetchAuto(el.id))}  key={el.id} ><Auto value={el} hidden={false}/></NavLink>
             <button className ='options_autolist_wrapper' >Арендовать</button>
         </div>)}
         </section>

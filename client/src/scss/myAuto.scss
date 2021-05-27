@@ -80,6 +80,9 @@
                         color: #8D8B99;                      
                     }
                 }
+                &.active{
+                    display: none;
+                }
             }          
             &_price{
                 margin: 0;

@@ -13,6 +13,7 @@ import Optionsautopage from './pages/addAuto/optionsauto'
 import Addautophoto from './pages/addAuto/addautophoto'
 import AddDocumentPhoto from './pages/addAuto/adddocumentphoto'
 import Confirmation from "./pages/addAuto/confirmation";
+import ArendaPage from "./pages/arendaPage/arenaPage";
 
 
 
@@ -40,6 +41,7 @@ function Routs (){
         <Route path="/addauto/options" component={ Optionsautopage } exact/>
         <Route path="/addauto/photo" component={ Addautophoto } exact/>
         <Route path="/addauto/documentphoto" component={ AddDocumentPhoto } exact/>
+        <Route path="/auto/arenda" component= { ArendaPage } />
         </>
         )
     }

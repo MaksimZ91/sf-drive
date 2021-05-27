@@ -4,11 +4,13 @@ import { useHttp } from '../../../hooks/http.hook'
 
 function Auto (props){
     const [autoPhoto, setAutoPhoto]=useState(null)
+    const [hidden, setHidden]=useState(false)
     const {request} = useHttp()
 
    
 
-    useEffect( async () => {       
+    useEffect( async () => {  
+        setHidden(props.hidden)     
         const data = await request(`http://localhost:5000/auto/photo/${props.value.id}`)
         setAutoPhoto(data.photoName[0].photoName)
     },[])
@@ -27,7 +29,7 @@ function Auto (props){
                    <span>4,5 (12)</span>
                </div>
                <p className='myAuto_auto_wrapper_name'>{props.value.mark} {props.value.model}, {props.value.year}</p>
-               <div className='myAuto_auto_wrapper_tech'>
+               <div  className={hidden?'myAuto_auto_wrapper_tech active':'myAuto_auto_wrapper_tech'}>
                     <div className='myAuto_auto_wrapper_tech_motor'>
                         <img src='../src/img/motor.svg'/>
                         <p>{props.value.volume} л / {props.value.power} л.с. / Бензин</p>

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from "react-router-dom"
 import Addphoto from './addphoto'
 import Continuestep from './continuestep'
 import Autophoto from './autophoto'
-import Error from './error'
+import Error from '../../error/error'
 import { Redirect } from 'react-router'
 import { useHttp } from '../../../hooks/http.hook'
 import { useSelector, useDispatch } from 'react-redux'
 import {  hideLoading, showLoading, addAutoPhotos, addAutoPhotoName, deletePhoto } from '../../../../redux/actions/actions';
+import Backarrow from '../../backarrow/backArrow'
 
 
 function Addautophoto (){ 
@@ -22,17 +22,14 @@ function Addautophoto (){
   const autoPhoto = 'autoPhoto'
   const urlDelete = 'http://localhost:5000/auto/delete-image/'
   const urlUpload='http://localhost:5000/auto/upload'
+  const backlink = "/addauto/options"
 
 
   const form = useSelector((state)=>{
     return {photoName:state.newAuto.autoPhotoName, ...state.newAuto.newAutoId}
   })
 
-  let history = useHistory();
-
-  function handleClick() {
-    history.push("/addauto/options");
-  }
+ 
 
 const authorRequest = async () => { 
     try { 
@@ -60,10 +57,7 @@ useEffect(()=>{
         <main>
         {error?<Error/>:''}
         <section className="add_photo">
-        <div className='back' onClick={handleClick}>      
-          <img className='back_arrow' src='../src/img/back_arrow.svg'/>
-          <span className='back_text'>Назад</span>             
-        </div> 
+        <Backarrow value={backlink}/>       
         <div className="add_photo_titel">
             <p >Шаг 3 из 4</p>
             <p>Фото автомобиля</p>

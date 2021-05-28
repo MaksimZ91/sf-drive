@@ -8,7 +8,7 @@ import { Redirect } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { addNewAutoID, hideLoading, showLoading } from '../../../../redux/actions/actions'
 import { validation } from '../../../js/validationForm'
-import Error from './error'
+import Error from '../../error/error'
 
 const TOKENS_KYES='tokens'
 

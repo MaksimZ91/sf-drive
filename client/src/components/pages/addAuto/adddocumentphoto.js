@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from "react-router-dom"
 import Addphoto from './addphoto'
 import Continuestep from './continuestep'
 import Autophoto from './autophoto'
-import Error from './error'
+import Error from '../../error/error'
 import { Redirect } from 'react-router'
 import { addDocumetPhoto, hideLoading, showLoading, addDocumetPhotoName, deletePhotoDocument } from '../../../../redux/actions/actions'
 import { useHttp } from '../../../hooks/http.hook'
 import { useDispatch, useSelector } from 'react-redux'
+import Backarrow from '../../backarrow/backArrow'
 
 
 function AddDocumentPhoto (){
@@ -22,15 +22,11 @@ function AddDocumentPhoto (){
     const docunemtPhoto = 'docunemtPhoto'
     const urlDelete = 'http://localhost:5000/auto/delete-image/document/'
     const urlUpload='http://localhost:5000/auto/upload/document'
+    const backlink = "/addauto/photo"
     const form = useSelector((state)=>{
         return {photoName:state.newAuto.documnetPhotoName, ...state.newAuto.newAutoId}
       })
 
-      let history = useHistory();
-
-      function handleClick() {
-        history.push("/addauto/photo");
-      }
     
     const authorRequest = async () => { 
         try { 
@@ -58,6 +54,7 @@ function AddDocumentPhoto (){
         <main>
         {error?<Error/>:''}
         <section className="add_photo">
+        <Backarrow value={backlink}/>
         <div className='back'  onClick={handleClick}>      
           <img className='back_arrow' src='../src/img/back_arrow.svg'/>
           <span className='back_text'>Назад</span>             

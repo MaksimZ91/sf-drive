@@ -1,7 +1,7 @@
 import React, { useEffect, useState }  from "react"
-import { monthDay, areEqual } from '../../../js/calc'
+import { monthDay, areEqual } from '../../js/calc'
 import { useSelector, useDispatch } from 'react-redux'
-import { addStartDate, addEndDate } from '../../../../redux/actions/actions'
+import { addStartDate, addEndDate } from '../../../redux/actions/actions'
 
 
 

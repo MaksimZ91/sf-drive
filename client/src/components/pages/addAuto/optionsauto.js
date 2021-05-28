@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react'
-import { useHistory } from "react-router-dom"
 import Dopoptions from './dopOptions'
 import Options from './options'
 import Continuestep from './continuestep'
-import Error from './error'
+import Error from '../../error/error'
 import {useHttp} from '../../../hooks/http.hook'
 import { Redirect } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { hideLoading, showLoading } from '../../../../redux/actions/actions'
+import Backarrow from '../../backarrow/backArrow'
 
 
 
@@ -20,13 +20,9 @@ function Optionsautopage (){
   const form = useSelector((state)=>{
     return {data:state.newAuto.addAutoOptions, id:state.newAuto.newAutoId}
   })
+  const backlink = "/addauto"
 
-  let history = useHistory();
-
-  function handleClick() {
-    history.push("/addauto");
-  }
-
+  
 
   const authorRequest = async () => {   
     try { 
@@ -57,10 +53,7 @@ useEffect(()=>{
     <main>   
     {error?<Error/>:''}
     <section className="options_auto">
-    <div className='back' onClick={handleClick}>      
-        <img className='back_arrow' src='../src/img/back_arrow.svg'/>
-        <span className='back_text'>Назад</span>             
-    </div> 
+    <Backarrow value={backlink}/>
     <div className="options_auto_titel">  
     <p>Шаг 2 из 4</p>  
    <p>Дополнительно</p>

@@ -1,37 +1,24 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import Auto from '../autoList/Auto'
+import Backarrow from '../../backarrow/backArrow'
+import Arendastructure from './arendaStructure'
+import Arendainfo from './arendaInfo'
+import Arendaoptions from './arendaOptions'
+import ArendaCheck from './arendaCheck'
 
 
 
 function ArendaPage(){
-    let history = useHistory()
-    const auto =useSelector((state)=>{
-        return state.auto.currentAuto
-    })
- 
-
-
-const handleClick = () =>{
-    history.goBack('/auto')
-
-}
+    const backlink = '/auto'
 
     return(
         <>
-        <main>
-            <div className='back' onClick={handleClick}>
-                <img className='back_arrow' src='../src/img/back_arrow.svg'/>
-                <span className='back_text'>Назад</span>             
-            </div>
+        <main className='arenda'>
+            <Backarrow value={backlink}/>          
             <h1>Оформление аренды</h1>
-            <section>
-                <p>Состав заказа</p>
-               <Auto hidden={true} value={auto}/>
-            </section>
-            <section></section>
-            <section></section>
+            <Arendastructure/>
+            <Arendainfo/>
+            <Arendaoptions/>
+            <ArendaCheck/>           
         </main>
         </>
     )

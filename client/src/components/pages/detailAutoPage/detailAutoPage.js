@@ -13,14 +13,10 @@ function DetailAutoPage (props){
     const auto = useSelector((state)=>{
         return state.auto.currentAuto
     })
-
     const calen = useSelector((state)=>{
         return state.calen
     })
-
-    
-   
-
+  
     let history = useHistory();
 
     function handleClick() {

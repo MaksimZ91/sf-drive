@@ -18,6 +18,7 @@ import './src/scss/uploader.scss'
 import './src/scss/error.scss'
 import './src/scss/confirmation.scss'
 import './src/scss/filterAuto.scss'
+import './src/scss/arenda.scss'
 import App from "./src/components/App";
 import { compose, createStore, applyMiddleware } from "redux";
 import { Provider } from 'react-redux'

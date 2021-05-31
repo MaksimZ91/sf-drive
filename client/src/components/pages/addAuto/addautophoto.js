@@ -21,8 +21,9 @@ function Addautophoto (){
   })
   const autoPhoto = 'autoPhoto'
   const urlDelete = 'http://localhost:5000/auto/delete-image/'
-  const urlUpload='http://localhost:5000/auto/upload'
+  const urlUpload ='http://localhost:5000/auto/upload'
   const backlink = "/addauto/options"
+  const backName = 'add_photo_back'
 
 
   const form = useSelector((state)=>{
@@ -57,7 +58,7 @@ useEffect(()=>{
         <main>
         {error?<Error/>:''}
         <section className="add_photo">
-        <Backarrow value={backlink}/>       
+        <Backarrow value={backlink} name={backName}/>       
         <div className="add_photo_titel">
             <p >Шаг 3 из 4</p>
             <p>Фото автомобиля</p>

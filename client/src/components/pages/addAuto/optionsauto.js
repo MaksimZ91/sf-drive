@@ -21,6 +21,7 @@ function Optionsautopage (){
     return {data:state.newAuto.addAutoOptions, id:state.newAuto.newAutoId}
   })
   const backlink = "/addauto"
+  const backName ='options_auto_back'
 
   
 
@@ -53,7 +54,7 @@ useEffect(()=>{
     <main>   
     {error?<Error/>:''}
     <section className="options_auto">
-    <Backarrow value={backlink}/>
+    <Backarrow value={backlink} name={backName}/>
     <div className="options_auto_titel">  
     <p>Шаг 2 из 4</p>  
    <p>Дополнительно</p>

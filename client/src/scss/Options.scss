@@ -9,7 +9,27 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 150px;    
+    margin-top: 150px;
+    &_back{
+      cursor: pointer; 
+      width: 71.3vw;  
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      &_arrow{
+          margin-right: 14px;        
+      }
+      &_text{
+          margin:0;
+          padding: 0;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 147.3%;
+          color: #508E87;
+      }
+  }    
     &_titel{
       align-self:center;     
       >p:first-child{

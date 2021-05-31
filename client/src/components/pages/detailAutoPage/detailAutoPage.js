@@ -7,6 +7,7 @@ import ComentBlock from './comentBlock'
 import ArendaBlock from './arendaBlock'
 import { useSelector, useDispatch } from 'react-redux'
 import {addEndDate, addStartDate, fetchAuto } from '../../../../redux/actions/actions'
+import Backarrow from '../../backarrow/backArrow'
 
 function DetailAutoPage (props){ 
     const dispatch = useDispatch()
@@ -16,12 +17,10 @@ function DetailAutoPage (props){
     const calen = useSelector((state)=>{
         return state.calen
     })
-  
-    let history = useHistory();
 
-    function handleClick() {
-      history.push("/myAuto");
-    }
+    const backlink = "/myAuto"
+    const backName = 'back_wrapper'
+
 
     useEffect (()=>{
         dispatch(addStartDate(null))
@@ -35,10 +34,7 @@ function DetailAutoPage (props){
     return(
         <>
         <main>
-            <div className='back_wrapper' onClick={handleClick}>
-                <img className='back_wrapper_arrow' src='../src/img/back_arrow.svg'/>
-                <span className='back_wrapper_text'>Назад</span>
-            </div>
+            <Backarrow value={backlink} name={backName} />
             <FotoBlock/> 
             <InfoAutoBlock/>           
             <DateBlock/>

@@ -23,6 +23,7 @@ function AddDocumentPhoto (){
     const urlDelete = 'http://localhost:5000/auto/delete-image/document/'
     const urlUpload='http://localhost:5000/auto/upload/document'
     const backlink = "/addauto/photo"
+    const backName = 'add_photo_back'
     const form = useSelector((state)=>{
         return {photoName:state.newAuto.documnetPhotoName, ...state.newAuto.newAutoId}
       })
@@ -54,11 +55,7 @@ function AddDocumentPhoto (){
         <main>
         {error?<Error/>:''}
         <section className="add_photo">
-        <Backarrow value={backlink}/>
-        <div className='back'  onClick={handleClick}>      
-          <img className='back_arrow' src='../src/img/back_arrow.svg'/>
-          <span className='back_text'>Назад</span>             
-        </div> 
+        <Backarrow value={backlink} name={backName}/>       
         <div className="add_photo_titel">
             <p>Шаг 4 из 4</p>
             <p>Фото документов</p>

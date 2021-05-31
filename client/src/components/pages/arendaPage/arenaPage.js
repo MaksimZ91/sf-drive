@@ -9,11 +9,12 @@ import ArendaCheck from './arendaCheck'
 
 function ArendaPage(){
     const backlink = '/auto'
+    const back = 'arenda_back'
 
     return(
         <>
         <main className='arenda'>
-            <Backarrow value={backlink}/>          
+            <Backarrow value={backlink} name={back}/>          
             <h1>Оформление аренды</h1>
             <Arendastructure/>
             <Arendainfo/>

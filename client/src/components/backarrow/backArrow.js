@@ -12,9 +12,9 @@ function Backarrow (props){
 
     return(
         <>
-         <div className='back' onClick={handleClick}>
-                <img className='back_arrow' src='../src/img/back_arrow.svg'/>
-                <span className='back_text'>Назад</span>             
+         <div className={`${props.name}`} onClick={handleClick}>
+                <img className={`${props.name}_arrow`} src='../src/img/back_arrow.svg'/>
+                <span className={`${props.name}_text`}>Назад</span>             
             </div>
         </>
     )

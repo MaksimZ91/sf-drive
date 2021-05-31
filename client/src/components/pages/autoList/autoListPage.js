@@ -7,8 +7,8 @@ import { useDispatch , useSelector} from 'react-redux'
 import { fetchAutoListAll, addStartDate, addEndDate, filterAuto } from '../../../../redux/actions/actions'
 import Calendarb from '../../calendarb/calendarb'
 import FilterAuto from './filterAuto'
-import { useQuery, useLazyQuery} from '@apollo/react-hooks'
-import { FETCH_FILTER_AUTO, FETCH_ALL_AUTO } from '../../../js/graphql-request'
+import { useLazyQuery } from '@apollo/react-hooks'
+import { FETCH_FILTER_AUTO } from '../../../js/graphql-request'
 
 
 function Newpage (){

@@ -4,13 +4,13 @@
 
 .back_wrapper{
     cursor: pointer;
-    margin: 155px auto 0; 
-    width: 1026px;  
+    margin: 157px auto 0; 
+    width: 71.3vw;  
     display: flex;
     align-items: center;
     cursor: pointer;
     &_arrow{
-        margin-right: 14px;        
+        margin-right: 14px;
     }
     &_text{
         margin:0;
@@ -22,7 +22,8 @@
         line-height: 147.3%;
         color: #508E87;
     }
-}
+}   
+   
 
 .fotoBlock{
     width: 1026px;

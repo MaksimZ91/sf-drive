@@ -55,6 +55,7 @@ export class AutoController {
 
   @Post('options')
   AddAutoOptions(@Body() AddAutoOptions: AddAutoOptionsDto) {
+    console.log(AddAutoOptions)
     return this.autoService.AddAutoOptions(AddAutoOptions);
   }
 

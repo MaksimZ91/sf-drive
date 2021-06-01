@@ -1,79 +1,60 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { addAutoOptionsForm } from '../../../../redux/actions/actions'
+import { useSelector } from 'react-redux'
+import Option from '../../options/option'
 
 
-function Dopoptions (){
-  const dispatch = useDispatch()
+function Dopoptions (){ 
   const addAutoOptions = useSelector((state)=>{
-    return state.newAuto.addAutoOptions
+    return state.newAuto.dopOptions
 })
+const optionBabyChait = {
+  cost:1000,
+  titel:'Детское кресло',
+  text:'Сдавайте кресло в аренду и получайте дополнительный заработок',
+  value:addAutoOptions.babyChair,
+  name:'babyChair',
+  className:'options_auto_dopform'
+}
 
- const handleChange = e => {
-  dispatch(addAutoOptionsForm(addAutoOptions, e))
-  }
+const optionDeliveryAuto = {
+  cost:1000,
+  titel:'Доставка автомобиля',
+  text:'Привезите автомобиль в удобное для арендатора место и получите доход',
+  value:addAutoOptions.deliveryAuto,
+  name:'deliveryAuto',
+  className:'options_auto_dopform'
+}
 
+const optionClose = {
+  cost:1000,
+  titel:'Завершение аренды в любом месте',
+  text:'Заберите автомобиль в удобном для арендатора месте за доп. доход',
+  value:addAutoOptions.close,
+  name:'close',
+  className:'options_auto_dopform'
+}
 
+const optionFullTank = {
+  cost:1000,
+  titel:'Полный бак',
+  text:'Заправьте полный бак перед сдачей в аренду',
+  value:addAutoOptions.fullTank,
+  name:'fullTank',
+  className:'options_auto_dopform'
+}
 
   return(
     <> 
-    <form className="options_auto_dopform" >
-    <p className="new_auto_dopform_info" >Дополнительные услуги</p>
-    <div className="options_auto_dopform_wrapper" >
-      <div className="options_auto_dopform_wrapper_text">
-        <p>Детское кресло</p>
-        <p>Сдавайте кресло в аренду и получайте дополнительный заработок</p>
-      </div>
-      <div className="options_auto_dopform_wrapper_price">
-        <p>1 000 ₽</p>      
-       <label className="options_auto_dopform_wrapper_price_switch">
-        <input className='options_auto_dopform_wrapper_price_switch_checkbox' type="checkbox" name='babyChair' value={addAutoOptions.babyChair} onChange={handleChange}/>
-        <span className="options_auto_dopform_wrapper_price_switch_slider"></span>
-      </label> 
-      </div>     
-    </div>
-    <div className="options_auto_dopform_wrapper" >
-      <div className="options_auto_dopform_wrapper_text">
-        <p>Доставка автомобиля</p>
-        <p>Привезите автомобиль в удобное для арендатора место и получите доход</p>
-      </div>
-      <div className="options_auto_dopform_wrapper_price">
-        <p>1 000 ₽</p>      
-       <label className="options_auto_dopform_wrapper_price_switch">
-        <input className='options_auto_dopform_wrapper_price_switch_checkbox' type="checkbox" name='deliveryAuto' value={addAutoOptions.deliveryAuto} onChange={handleChange}/>
-        <span className="options_auto_dopform_wrapper_price_switch_slider"></span>
-      </label> 
-      </div>     
-    </div>
-    <div className="options_auto_dopform_wrapper" >
-      <div className="options_auto_dopform_wrapper_text">
-        <p>Завершение аренды в любом месте</p>
-        <p>Заберите автомобиль в удобном для арендатора месте за доп. доход</p>
-      </div>
-      <div className="options_auto_dopform_wrapper_price">
-        <p>1 000 ₽</p>      
-       <label className="options_auto_dopform_wrapper_price_switch">
-        <input className='options_auto_dopform_wrapper_price_switch_checkbox' type="checkbox" name='close' value={addAutoOptions.close} onChange={handleChange}/>
-        <span className="options_auto_dopform_wrapper_price_switch_slider"></span>
-      </label> 
-      </div>     
-    </div>
-    <div className="options_auto_dopform_wrapper" >
-      <div className="options_auto_dopform_wrapper_text">
-        <p>Полный бак</p>
-        <p>Заправьте полный бак перед сдачей в аренду</p>
-      </div>
-      <div className="options_auto_dopform_wrapper_price">
-        <p>1 000 ₽</p>      
-       <label className="options_auto_dopform_wrapper_price_switch">
-        <input className='options_auto_dopform_wrapper_price_switch_checkbox' type="checkbox" name='fullTank' value={addAutoOptions.fullTank} onChange={handleChange}/>
-        <span className="options_auto_dopform_wrapper_price_switch_slider"></span>
-      </label> 
-      </div>     
-    </div>
-    </form>   
+      <form className='options_auto_dopform' >
+        <p className='options_auto_dopform_info'>Дополнительные услуги</p>
+        <Option settings={optionBabyChait}/>
+        <Option settings={optionDeliveryAuto}/>
+        <Option settings={optionClose}/>
+        <Option settings={optionFullTank}/>
+      </form>   
     </>
   )
 }
 
 export default Dopoptions
+

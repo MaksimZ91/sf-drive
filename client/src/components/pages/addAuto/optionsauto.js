@@ -18,17 +18,15 @@ function Optionsautopage (){
   const [data, setData]=useState(null)
   const {request} = useHttp()
   const form = useSelector((state)=>{
-    return {data:state.newAuto.addAutoOptions, id:state.newAuto.newAutoId}
+    return {data:state.newAuto.addAutoOptions, id:state.newAuto.newAutoId, dopOptions:state.newAuto.dopOptions}
   })
   const backlink = "/addauto"
-  const backName ='options_auto_back'
-
-  
+  const backName ='options_auto_back'  
 
   const authorRequest = async () => {   
     try { 
       dispatch(showLoading())
-        const result = await request('http://localhost:5000/auto/options','POST',{...form.data, ...form.id})
+        const result = await request('http://localhost:5000/auto/options','POST',{...form.data, ...form.id, ...form.dopOptions})
         setData(result) 
         dispatch(hideLoading())     
     } catch (e) {

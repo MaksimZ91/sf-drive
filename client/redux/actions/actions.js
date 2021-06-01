@@ -1,7 +1,7 @@
 import { fetchHttp } from '../../src/js/fetch'
 import { FETCH_AUTO_ALL, FETCH_AUTO_LIST, FETCH_AUTO, ADD_END_DATE, ADD_START_DATE,ADD_AUTO_PHOTO_NAME,
      ADD_AUTO, ADD_AUTO_OPTIONS, ADD_AUTO_PHOTO, SHOW_LOADER, HIDE_LOADER, DELETE_PHOTO, ADD_AUTO_NEW_AUTO_ID,
-     ADD_AUTO_DOCUMENT_PHOTO, ADD_DOCUMENT_PHOTO_NAME, DELETE_PHOTO_DOCUMENT, FILTER_AUTO } from '../type'
+     ADD_AUTO_DOCUMENT_PHOTO, ADD_DOCUMENT_PHOTO_NAME, DELETE_PHOTO_DOCUMENT, FILTER_AUTO,  ADD_AUTO_DOP_OPTIONS } from '../type'
 const TOKENS_KYES='tokens'
 
 
@@ -47,6 +47,10 @@ export function addAutoForm (state, event){
 
 export function addAutoOptionsForm (state, event){
     return{type:ADD_AUTO_OPTIONS, payload:{...state, [event.target.name]:event.target.checked}}
+}
+
+export function addDopAutoOptionsForm (state, event){
+    return{type:ADD_AUTO_DOP_OPTIONS, payload:{...state, [event.target.name]:event.target.checked}}
 }
 
 

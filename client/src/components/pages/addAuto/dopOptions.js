@@ -7,13 +7,16 @@ function Dopoptions (){
   const addAutoOptions = useSelector((state)=>{
     return state.newAuto.dopOptions
 })
+
+const nameClass = 'options_auto_dopform'
+
 const optionBabyChait = {
   cost:1000,
   titel:'Детское кресло',
   text:'Сдавайте кресло в аренду и получайте дополнительный заработок',
   value:addAutoOptions.babyChair,
   name:'babyChair',
-  className:'options_auto_dopform'
+  className: nameClass
 }
 
 const optionDeliveryAuto = {
@@ -22,7 +25,7 @@ const optionDeliveryAuto = {
   text:'Привезите автомобиль в удобное для арендатора место и получите доход',
   value:addAutoOptions.deliveryAuto,
   name:'deliveryAuto',
-  className:'options_auto_dopform'
+  className: nameClass
 }
 
 const optionClose = {
@@ -31,7 +34,7 @@ const optionClose = {
   text:'Заберите автомобиль в удобном для арендатора месте за доп. доход',
   value:addAutoOptions.close,
   name:'close',
-  className:'options_auto_dopform'
+  className: nameClass
 }
 
 const optionFullTank = {
@@ -40,7 +43,7 @@ const optionFullTank = {
   text:'Заправьте полный бак перед сдачей в аренду',
   value:addAutoOptions.fullTank,
   name:'fullTank',
-  className:'options_auto_dopform'
+  className: nameClass
 }
 
   return(

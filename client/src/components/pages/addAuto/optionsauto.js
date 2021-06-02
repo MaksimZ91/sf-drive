@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import Dopoptions from './dopOptions'
 import Options from './options'
-import Continuestep from './continuestep'
+import Continuestep from '../../continueStep/continuestep'
 import Error from '../../error/error'
 import {useHttp} from '../../../hooks/http.hook'
 import { Redirect } from 'react-router'
@@ -22,6 +22,8 @@ function Optionsautopage (){
   })
   const backlink = "/addauto"
   const backName ='options_auto_back'  
+  const continueTitel ='Продолжить'
+  const nameClass = "new_auto_continue"
 
   const authorRequest = async () => {   
     try { 
@@ -59,7 +61,7 @@ useEffect(()=>{
     </div>
     <Options/>
     <Dopoptions/>
-    <Continuestep  nextStep={authorRequest} validation={valid}/> 
+    <Continuestep  nextStep={authorRequest} validation={valid} titel={continueTitel} nameClass={nameClass}/> 
     {!error&&data?<Redirect to='/addauto/photo' />:''}  
     </section>  
     </main>

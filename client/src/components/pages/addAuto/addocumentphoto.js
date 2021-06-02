@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Addphoto from './addphoto'
-import Continuestep from './continuestep'
+import Continuestep from '../../continueStep/continuestep'
 import Autophoto from './autophoto'
 import Error from '../../error/error'
 import { Redirect } from 'react-router'
@@ -24,6 +24,8 @@ function AddDocumentPhoto (){
     const urlUpload='http://localhost:5000/auto/upload/document'
     const backlink = "/addauto/photo"
     const backName = 'add_photo_back'
+    const continueTitel ='Продолжить'
+    const nameClass = "new_auto_continue"
     const form = useSelector((state)=>{
         return {photoName:state.newAuto.documnetPhotoName, ...state.newAuto.newAutoId}
       })
@@ -61,7 +63,7 @@ function AddDocumentPhoto (){
             <p>Фото документов</p>
             <p>СТС или ПТС автомобиля, полис ОСАГО, полис КАСКО (если есть)</p>            
             {!addAutoPhotoDocument.length==0?<Autophoto value={docunemtPhoto} photoName={addDocumetPhotoName} url={{delete:urlDelete, upload:urlUpload}} deletePhoto={deletePhotoDocument} addPhoto={addDocumetPhoto}/>:<Addphoto value={addDocumetPhoto}/>}
-            <Continuestep nextStep={authorRequest} validation={valid}/>
+            <Continuestep nextStep={authorRequest} validation={valid} titel={continueTitel} nameClass={nameClass}/>
             {!error&&data?<Redirect to='/confirm'/>:''}            
         </div>        
         </section>  

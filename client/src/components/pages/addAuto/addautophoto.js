@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Addphoto from './addphoto'
-import Continuestep from './continuestep'
+import Continuestep from '../../continueStep/continuestep'
 import Autophoto from './autophoto'
 import Error from '../../error/error'
 import { Redirect } from 'react-router'
@@ -24,6 +24,8 @@ function Addautophoto (){
   const urlUpload ='http://localhost:5000/auto/upload'
   const backlink = "/addauto/options"
   const backName = 'add_photo_back'
+  const continueTitel='Продолжить'
+  const nameClass = "new_auto_continue"
 
 
   const form = useSelector((state)=>{
@@ -64,7 +66,7 @@ useEffect(()=>{
             <p>Фото автомобиля</p>
             <p>Чем больше качественных фотографий вы загрузите, тем выше шанс того, что выберут ваш автомобиль.</p> 
             {!addAutoPhoto.length==0?<Autophoto value={autoPhoto} photoName={addAutoPhotoName} deletePhoto={deletePhoto} url={{delete:urlDelete, upload:urlUpload}} addPhoto={addAutoPhotos}/>:<Addphoto value={addAutoPhotos}/>}
-            <Continuestep nextStep={authorRequest} validation={valid}/> 
+            <Continuestep nextStep={authorRequest} validation={valid} titel={continueTitel} nameClass={nameClass}/> 
             {!error&&data?<Redirect to='/addauto/documentphoto'/>:''}            
         </div>        
         </section>  

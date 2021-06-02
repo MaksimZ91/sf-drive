@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Aboutautoinfo from './aboutAutoInfo'
 import Priceauto from './priceAuto'
 import Insurance from './insurance'
-import Continuestep from './continuestep'
+import Continuestep from '../../continueStep/continuestep'
 import { useHttp } from '../../../hooks/http.hook'
 import { Redirect } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
@@ -23,6 +23,8 @@ function Addautopage(){
   const form = useSelector((state)=>{
     return state.newAuto.addAuto
   })
+  const continueTitel='Продолжить'
+  const nameClass = "new_auto_continue"
 
 
 
@@ -59,7 +61,7 @@ useEffect(()=>{
     <Aboutautoinfo/>
     <Priceauto/>
     <Insurance/> 
-    <Continuestep  nextStep={authorRequest} validation={valid}/> 
+    <Continuestep  nextStep={authorRequest} validation={valid} titel={continueTitel} nameClass={nameClass}/> 
     {!error&&data?<Redirect to='/addauto/options'/>:''}
     </section>  
     </main>

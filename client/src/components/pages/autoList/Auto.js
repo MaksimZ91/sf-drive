@@ -7,19 +7,12 @@ function Auto (props){
     const [hidden, setHidden]=useState(false)
     const {request} = useHttp()
 
-   
-
     useEffect( async () => {  
         setHidden(props.hidden)     
         const data = await request(`http://localhost:5000/auto/photo/${props.value.id}`)
         setAutoPhoto(data.photoName[0].photoName)
     },[])
 
-    
-
-    
-   
-   
     return(
        <div className='myAuto_auto'>
            <img className='myAuto_img' src={`http://localhost:5000/auto/auto-image/${autoPhoto}`}/>

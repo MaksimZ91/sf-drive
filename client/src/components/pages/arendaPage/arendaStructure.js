@@ -12,7 +12,7 @@ function Arendastructure (){
         <>
          <section className='arenda_structure'>
                 <p>Состав заказа</p>
-               <Auto hidden={true} value={auto}/>
+                <Auto hidden={true} value={auto}/>
             </section>
         </>
     )

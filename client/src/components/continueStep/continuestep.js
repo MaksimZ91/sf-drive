@@ -13,9 +13,9 @@ function Continuestep (props){
     
     return(
         <>
-        <div className="new_auto_continue">     
-        <button className="new_auto_continue_button" type="submit" name="submit" value="Продолжить" onClick={props.nextStep} disabled={props.validation}>            
-        {loading?<Loader type="TailSpin" color="#FFFFFF" height={24} width={24}/>:'Продолжить'}
+        <div className={props.nameClass}>     
+        <button className={`${props.nameClass}_button`} type="submit" name="submit" value={props.titel} onClick={props.nextStep} disabled={props.validation}>            
+        {loading?<Loader type="TailSpin" color="#FFFFFF" height={24} width={24}/>:props.titel}
         </button>
         </div>
         </>

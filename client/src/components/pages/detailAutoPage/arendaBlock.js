@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 import { useHttp } from '../../../hooks/http.hook'
 
 
@@ -17,26 +18,13 @@ function ArendaBlock (props){
 
          newAuto : props.auto
      }
-     console.log(body)
 
    
-
-    const authorRequest = async () => { 
-        try {      
-            const result = await request('http://localhost:5000/auto/arenda','POST', body)  
-            setData(result)
-        } catch (e) {
-          setError(e)
-        }     
-    } 
-
-    console.log(data)
-
     
     return(
         <>
         <section className="arendablok">
-            <button className='arendablock_button' onClick={authorRequest}>Арендовать</button>
+            <NavLink to="/auto/arenda"><button className='arendablock_button'>Арендовать</button></NavLink>
         </section>
         </>
     )

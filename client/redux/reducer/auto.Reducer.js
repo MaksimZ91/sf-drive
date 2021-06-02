@@ -4,7 +4,7 @@ import { FETCH_AUTO_ALL, FETCH_AUTO_LIST,FETCH_AUTO, FILTER_AUTO,} from "../type
 const defaultState = { 
     userAuto:[],
     allAuto:[],
-    currentAuto:[],
+    currentAuto:{},
     autoFilter:[]
 }
 

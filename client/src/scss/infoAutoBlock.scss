@@ -518,21 +518,24 @@
 .arendablok{
     height: 84px;
     border-top: 1px solid #DEE2E4;
-    >button{
-        display: block;
-        margin:17px auto;
-        width: 171px;
-        height: 51px;
-        background: #61A199;
-        border-radius: 6px;
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 19px;
-        text-align: center;
-        color: #FFFFFF;
-        border-style: none;
-        cursor: pointer;
-    }
+    >a{
+        text-decoration: none;
+        >button{
+            display: block;
+            margin:17px auto;
+            width: 171px;
+            height: 51px;
+            background: #61A199;
+            border-radius: 6px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            text-align: center;
+            color: #FFFFFF;
+            border-style: none;
+            cursor: pointer;
+        }
+    }   
 }

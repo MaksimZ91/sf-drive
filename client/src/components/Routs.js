@@ -11,9 +11,9 @@ import DetailAutoPage from './pages/detailAutoPage/detailAutoPage'
 import Addautopage from './pages/addAuto/addAutoPage'
 import Optionsautopage from './pages/addAuto/optionsauto'
 import Addautophoto from './pages/addAuto/addautophoto'
-import AddDocumentPhoto from './pages/addAuto/adddocumentphoto'
+import AddDocumentPhoto from './pages/addAuto/addocumentphoto'
 import Confirmation from "./pages/addAuto/confirmation";
-import ArendaPage from "./pages/arendaPage/arenaPage";
+import ArendaPage from "./pages/arendaPage/arendaPage";
 
 
 
@@ -33,7 +33,7 @@ function Routs (){
       
         return(
         <>           
-        <Route path="/" component={ Optionsautopage } exact/>
+        <Route path="/" component={ Newpage } exact/>
         <Route path="/auto" component= { DetailAutoPage } exact/>
         <Route path="/myAuto" component={ Autopage } exact/>
         <Route path="/addauto" component={ Addautopage } exact/>

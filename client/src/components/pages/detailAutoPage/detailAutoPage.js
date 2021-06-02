@@ -17,7 +17,7 @@ function DetailAutoPage (props){
     const calen = useSelector((state)=>{
         return state.calen
     })
-
+console.log(auto)
     const backlink = "/myAuto"
     const backName = 'back_wrapper'
 

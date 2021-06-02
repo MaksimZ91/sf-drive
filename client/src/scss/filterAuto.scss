@@ -85,21 +85,27 @@
     &_autolist{
         display: flex;
         justify-content: space-between;
-        >button{
-            width: 158px;
-            height: 44px;
+        >a{
+            text-decoration: none;
             align-self: center;
-            background: rgba(97, 161, 153, 0.15);
-            border-radius: 6px;
-            border-style:none;
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 19px;
-            text-align: center;
-            color: #61A199;
-            cursor: pointer;
+            >button{
+                width: 158px;
+                height: 44px;
+                align-self: center;
+                background: rgba(97, 161, 153, 0.15);
+                border-radius: 6px;
+                border-style:none;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 19px;
+                text-align: center;
+                color: #61A199;
+                cursor: pointer;
+            }
+
         }
+       
     }
 }

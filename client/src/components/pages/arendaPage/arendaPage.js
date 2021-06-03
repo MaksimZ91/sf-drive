@@ -19,14 +19,16 @@ function ArendaPage(){
     const autoDate = useSelector ((state)=>{
         return state.calen
     })
+    const auto = useSelector((state)=>{
+        return state.auto.currentAuto
+    })
     const continueTitel ='Перейти к оплате'
     const nameClass = 'arenda_continue'
     const body = {
          startDay : autoDate.startDate,
          endDay : autoDate.endDate,
-
-        
      }
+
 
     const authorRequest = async () => { 
         try {      
@@ -42,9 +44,9 @@ function ArendaPage(){
         <main className='arenda'>
             <Backarrow value={backlink} name={back}/>          
             <h1>Оформление аренды</h1>
-            <Arendastructure/>
+            {!(Object.keys(auto).length==0)?<Arendastructure/>:''} 
             <Arendainfo/>
-            <Arendaoptions/>               
+            {!(Object.keys(auto).length==0)?<Arendaoptions/>:''}            
             <ArendaCheck/>
         </main>
         <Continuestep titel={continueTitel} validation={false} nextStep={authorRequest} nameClass={nameClass}/>

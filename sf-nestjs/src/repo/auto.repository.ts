@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Autos } from '../entites/auto.entity';
-import { Between, getMongoRepository, getRepository } from 'typeorm';
-import { ObjectID } from 'mongodb';
+import { getRepository } from 'typeorm';
+
 
 Injectable();
 export class AutoRepository {
@@ -12,11 +12,15 @@ export class AutoRepository {
   
 
   async FindOneByID(id: string) {
-    const repository = getRepository(Autos);
-    return await repository.findOne({
-      relations:['user', 'arenda', 'options'],
-       where: { ['id']: id } });
+    return await getRepository(Autos)
+    .createQueryBuilder('auto')
+    .leftJoinAndSelect('auto.user', 'user')
+    .leftJoinAndSelect('auto.arenda', 'arenda')
+    .leftJoinAndSelect('auto.options', 'options')
+    .where('auto.id = :id', {id:id})
+    .getOne() 
   }
+
 
   async FindOneByNumber(number: string) {
     const repository = getRepository(Autos);

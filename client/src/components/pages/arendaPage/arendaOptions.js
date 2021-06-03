@@ -10,6 +10,7 @@ function Arendaoptions (){
         return {options:state.newAuto.dopOptions, currenAutoOptions:state.auto.currentAuto.options[0]}
     })
   
+  
     
     const nameClass = 'arenda_options'
     
@@ -51,13 +52,15 @@ function Arendaoptions (){
     
     return(
         <>
+        {!(Object.keys(addAutoOptions.currenAutoOptions).length==0)?
         <section className='arenda_options'>
             <p className='arenda_options_info'>Дополнительные услуги</p>
             {addAutoOptions.currenAutoOptions.babyChair?<Option settings={optionBabyChait}/>:''}
             {addAutoOptions.currenAutoOptions.deliveryAuto?<Option settings={optionDeliveryAuto}/>:''}
             {addAutoOptions.currenAutoOptions.close?<Option settings={optionClose}/>:''}
             {addAutoOptions.currenAutoOptions.fullTank?<Option settings={optionFullTank}/>:''}
-        </section>
+        </section>:
+        ''}
         </>
     )
 }

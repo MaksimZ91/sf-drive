@@ -27,6 +27,7 @@ function ArendaPage(){
     const body = {
          startDay : autoDate.startDate,
          endDay : autoDate.endDate,
+         newAuto: auto.id
      }
 
 

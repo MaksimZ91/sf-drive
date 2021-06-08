@@ -121,7 +121,15 @@ export class AutoService {
     }
   
   async filterAuto(startDate:string, endDate:string, type:string ) {
-    //const { startDate, endDate, type } = AutoData;
-    return await this.autoRepository.filterAuto(startDate, endDate, type);
+    const allAuto = await this.autoRepository.FindeAllByType(type);
+    const filterAuto = await this.autoRepository.filterAuto(startDate, endDate, type);  
+    for (let i=0; i<=allAuto.length-1;i++){
+      filterAuto.forEach(e=>{
+        if(allAuto[i].id==e.id){
+          allAuto.splice(i,1)
+        }
+      })
+    }
+    return allAuto
   }
 }

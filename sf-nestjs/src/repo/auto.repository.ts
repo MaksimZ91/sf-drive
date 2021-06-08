@@ -39,15 +39,23 @@ export class AutoRepository {
     .where("auto.id = :id", { id: id })       
     .getOne();
   }
+
+  async FindeAllByType(type: string) {
+    return await getRepository(Autos)
+    .createQueryBuilder("auto")
+    .leftJoinAndSelect('auto.arenda', 'arenda')
+    .where('type =:type', {type:type})       
+    .getMany();
+  }
   
   async filterAuto(startDate: string, endDate: string, type:string) {
     return await getRepository(Autos)
     .createQueryBuilder('auto') 
     .leftJoinAndSelect('auto.arenda', 'arenda')
-    .where('arenda.startDay NOT BETWEEN :begin AND :end', { begin: new Date(startDate), end: new Date(endDate)})
-    .andWhere('arenda.endDay NOT BETWEEN :begin AND :end', { begin: new Date(startDate), end: new Date(endDate)})
-    .andWhere(':begin NOT BETWEEN arenda.startDay AND arenda.endDay',{begin: new Date(startDate), end: new Date(endDate)})
-    .andWhere(':end NOT BETWEEN arenda.startDay AND arenda.endDay',{begin: new Date(startDate), end: new Date(endDate)})
+    .where('arenda.startDay  BETWEEN :begin AND :end', { begin: new Date(startDate), end: new Date(endDate)})
+    .orWhere('arenda.endDay  BETWEEN :begin AND :end', { begin: new Date(startDate), end: new Date(endDate)})
+    .orWhere(':begin  BETWEEN arenda.startDay AND arenda.endDay',{begin: new Date(startDate), end: new Date(endDate)})
+    .orWhere(':end BETWEEN arenda.startDay AND arenda.endDay',{begin: new Date(startDate), end: new Date(endDate)})
     .andWhere('type =:type', {type:type})  
     .getMany()
   }

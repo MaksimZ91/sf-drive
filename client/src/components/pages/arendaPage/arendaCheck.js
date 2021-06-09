@@ -24,7 +24,7 @@ useEffect(()=>{
     setArendaCost(getCostArenda(props.startDate, props.endDate, props.priceFiveDays,props.priceThreeDays,props.price ))  
     setArendaFullPrice(getFullPrice(props.startDate, props.endDate, props.price))
     const total =arendaCost + optionCost + SERVICE_COMMISSION
-    dispatch(addArenda('cost', total))   
+    dispatch(addArenda(totalCost,'cost', total))   
     },[props.startDate, props.endDate, option, arendaCost, optionCost])
 
 

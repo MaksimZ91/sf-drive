@@ -1,7 +1,7 @@
 import { ADD_ARENDA } from "../type"
 
 const defaultState = { 
-    arendaParam:{cost:0,coment:''}
+    arendaParam:{cost:0, coment:''}
 }
 
 

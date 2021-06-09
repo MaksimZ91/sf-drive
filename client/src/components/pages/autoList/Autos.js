@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { validationResult } from 'express-validator'
 import { useHttp } from '../../../hooks/http.hook'
 
 

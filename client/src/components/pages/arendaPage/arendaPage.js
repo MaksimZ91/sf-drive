@@ -22,15 +22,20 @@ function ArendaPage(){
     const auto = useSelector((state)=>{
         return state.auto.currentAuto
     })
+    const arenda = useSelector((state)=>{
+        return state.arenda.arendaParam
+    })
     const continueTitel ='Перейти к оплате'
     const nameClass = 'arenda_continue'
     const body = {
          startDay : autoDate.startDate,
          endDay : autoDate.endDate,
          newAuto: auto.id,
-         cost:null,
-         coment:null
+         cost:arenda.cost,
+         coment:arenda.coment
      }
+
+     console.log(arenda.cost,arenda.coment)
 
 
 

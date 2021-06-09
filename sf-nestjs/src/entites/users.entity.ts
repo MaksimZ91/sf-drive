@@ -1,28 +1,32 @@
-import {
-  Column,
-  Entity,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Autos } from './auto.entity';
 
 @Entity()
 export class Users {
-  constructor (fio:string, email:string,phone:string,
-     date:string, number:string, passDate:string, about:string,
-      cod:string, numberLicense:string, dateLicense:string){
-        this.fio = fio;
-        this.email = email;        
-        this.phone = phone;
-        this.date = date;
-        this.number = number;
-        this.passDate = passDate;
-        this.about = about;
-        this.cod= cod;
-        this.numberLicense = numberLicense;
-        this.dateLicense = dateLicense;
+  constructor(
+    fio: string,
+    email: string,
+    phone: string,
+    date: string,
+    number: string,
+    passDate: string,
+    about: string,
+    cod: string,
+    numberLicense: string,
+    dateLicense: string,
+  ) {
+    this.fio = fio;
+    this.email = email;
+    this.phone = phone;
+    this.date = date;
+    this.number = number;
+    this.passDate = passDate;
+    this.about = about;
+    this.cod = cod;
+    this.numberLicense = numberLicense;
+    this.dateLicense = dateLicense;
   }
-  
+
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -62,8 +66,8 @@ export class Users {
   @Column()
   refToken: string;
 
-  @OneToMany(() => Autos, autos => autos.user, {
+  @OneToMany(() => Autos, (autos) => autos.user, {
     cascade: true,
-})
+  })
   autos: Autos[];
 }

@@ -20,7 +20,7 @@ import { AutosResolver } from 'src/autos/autos.resolver';
     PhotoRepository,
     PhotoDocumentRepository,
     ArendaRepository,
-    AutosResolver
+    AutosResolver,
   ],
 })
 export class AutoModule {}

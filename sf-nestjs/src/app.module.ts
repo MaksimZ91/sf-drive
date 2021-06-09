@@ -8,7 +8,6 @@ import { MulterModule } from '@nestjs/platform-express';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 
-
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -19,20 +18,21 @@ import { join } from 'path';
     AutoModule,
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
-      name: 'default',
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'bd28e09f',
-      database: 'sf_db',
-      entities: [__dirname + '/**/*.entity.{ts,js}'],
-      synchronize: true,
-      autoLoadEntities:true }),
-    }),    
+        name: 'default',
+        type: 'mysql',
+        host: 'localhost',
+        port: 3306,
+        username: 'root',
+        password: 'bd28e09f',
+        database: 'sf_db',
+        entities: [__dirname + '/**/*.entity.{ts,js}'],
+        synchronize: true,
+        autoLoadEntities: true,
+      }),
+    }),
     MulterModule.register({
       dest: './files',
-    }),    
+    }),
     GraphQLModule.forRoot({
       typePaths: ['./**/*.graphql'],
       definitions: {

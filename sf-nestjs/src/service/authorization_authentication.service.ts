@@ -83,7 +83,7 @@ export class AuthorizationAuthenService {
     if (!data) {
       throw new HttpException('Токин не валиден!', HttpStatus.BAD_REQUEST);
     }
-    
+
     const person = await this.userRepository.FindOneByRefToken(refToken);
 
     const accessToken = jwt.sign(

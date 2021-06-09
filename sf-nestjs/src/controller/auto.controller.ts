@@ -55,7 +55,7 @@ export class AutoController {
 
   @Post('options')
   AddAutoOptions(@Body() AddAutoOptions: AddAutoOptionsDto) {
-    console.log(AddAutoOptions)
+    console.log(AddAutoOptions);
     return this.autoService.AddAutoOptions(AddAutoOptions);
   }
 
@@ -80,7 +80,7 @@ export class AutoController {
   @Get(':id')
   getOne(@Param('id') id: string) {
     return this.autoService.getOne(id);
-    }
+  }
 
   @Get('all/autos')
   getAllAutos() {

@@ -13,33 +13,51 @@ import { Arenda } from './arenda.entity';
 
 @Entity()
 export class Autos {
-  constructor(mark:string, model:string, year:string, number:string,vin:string,
-    collor:string, volume:string,power:string,transmission:string,mileage:string,
-    pts:string, price:string, priceThreeDays:string, priceFiveDays:string, osago:string,
-    kasko:string, privod:string, motor:string, body:string, sts:string, type:string  ){
-      
-      this.mark = mark;
-      this.model= model;
-      this.year = year;
-      this.number = number;
-      this.vin = vin;
-      this.collor = collor;
-      this.volume = volume;
-      this.power = power;
-      this.transmission = transmission;
-      this.mileage = mileage;
-      this.pts = pts;
-      this.price = price;
-      this.priceThreeDays = priceThreeDays;
-      this.priceFiveDays = priceFiveDays;
-      this.osago = osago;
-      this.kasko = kasko;
-      this.privod = privod;
-      this.motor = motor;
-      this.body = body;
-      this.sts = sts;
-      this.type = type;
-    }
+  constructor(
+    mark: string,
+    model: string,
+    year: string,
+    number: string,
+    vin: string,
+    collor: string,
+    volume: string,
+    power: string,
+    transmission: string,
+    mileage: string,
+    pts: string,
+    price: string,
+    priceThreeDays: string,
+    priceFiveDays: string,
+    osago: string,
+    kasko: string,
+    privod: string,
+    motor: string,
+    body: string,
+    sts: string,
+    type: string,
+  ) {
+    this.mark = mark;
+    this.model = model;
+    this.year = year;
+    this.number = number;
+    this.vin = vin;
+    this.collor = collor;
+    this.volume = volume;
+    this.power = power;
+    this.transmission = transmission;
+    this.mileage = mileage;
+    this.pts = pts;
+    this.price = price;
+    this.priceThreeDays = priceThreeDays;
+    this.priceFiveDays = priceFiveDays;
+    this.osago = osago;
+    this.kasko = kasko;
+    this.privod = privod;
+    this.motor = motor;
+    this.body = body;
+    this.sts = sts;
+    this.type = type;
+  }
 
   @PrimaryGeneratedColumn()
   id: number;
@@ -70,7 +88,7 @@ export class Autos {
 
   @Column()
   transmission: string;
-    
+
   @Column()
   mileage: string;
 
@@ -107,20 +125,21 @@ export class Autos {
   @Column()
   type: string;
 
-  @ManyToOne(() => Users, user => user.autos)
+  @ManyToOne(() => Users, (user) => user.autos)
   user: Users;
 
-  @OneToMany(() => OptionsAuto, options => options.auto)
+  @OneToMany(() => OptionsAuto, (options) => options.auto)
   options: OptionsAuto[];
 
-  @OneToMany(() => AutoPhotoName, photoName => photoName.auto)
+  @OneToMany(() => AutoPhotoName, (photoName) => photoName.auto)
   photoName: AutoPhotoName[];
 
-  @OneToMany(() => AutoPhotoDocumentName, photoDocumentName => photoDocumentName.auto)
+  @OneToMany(
+    () => AutoPhotoDocumentName,
+    (photoDocumentName) => photoDocumentName.auto,
+  )
   photoDocumentName: AutoPhotoDocumentName[];
 
-  @OneToMany(() => Arenda, arenda => arenda.auto)
+  @OneToMany(() => Arenda, (arenda) => arenda.auto)
   arenda: Arenda[];
-
-  
 }

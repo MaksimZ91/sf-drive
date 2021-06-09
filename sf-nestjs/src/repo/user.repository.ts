@@ -17,9 +17,9 @@ export class UserRepository {
 
   async FindAllByUserID(userId: string) {
     const repository = getRepository(Users);
-    return await repository.find({ 
-      relations:['autos'],
-       where: { ['id']: userId }  
+    return await repository.find({
+      relations: ['autos'],
+      where: { ['id']: userId },
     });
   }
 

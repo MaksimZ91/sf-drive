@@ -27,8 +27,12 @@ function ArendaPage(){
     const body = {
          startDay : autoDate.startDate,
          endDay : autoDate.endDate,
-         newAuto: auto.id
+         newAuto: auto.id,
+         cost:null,
+         coment:null
      }
+
+
 
 
     const authorRequest = async () => { 
@@ -42,14 +46,19 @@ function ArendaPage(){
 //   <Arendaoptions/>
     return(
         <>
+        {!(Object.keys(auto).length==0)?
         <main className='arenda'>
             <Backarrow value={backlink} name={back}/>          
             <h1>Оформление аренды</h1>
-            {!(Object.keys(auto).length==0)?<Arendastructure/>:''} 
+            <Arendastructure/>
             <Arendainfo/>
-            {!(Object.keys(auto).length==0)?<Arendaoptions/>:''}            
-            <ArendaCheck/>
-        </main>
+            <Arendaoptions/>           
+            <ArendaCheck startDate = { autoDate.startDate }
+                         endDate = { autoDate.endDate }
+                         price = { auto.price }
+                         priceThreeDays = { auto.priceThreeDays }
+                         priceFiveDays = { auto.priceFiveDays }/>
+        </main>:''}    
         <Continuestep titel={continueTitel} validation={false} nextStep={authorRequest} nameClass={nameClass}/>
         </>
     )

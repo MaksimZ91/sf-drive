@@ -14,5 +14,5 @@ export class PhotoDocumentRepository {
     return await repository.findOne({
       where: { ['auto.id']: id },
     });
-  }  
+  }
 }

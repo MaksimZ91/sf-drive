@@ -13,13 +13,21 @@ export class RegistrationService {
     private userRepository: UserRepository,
   ) {}
 
-  async Registration(registrationDTO: RegistrUserDto) {    
+  async Registration(registrationDTO: RegistrUserDto) {
     const { email, password } = registrationDTO;
-    const newUser = new Users(registrationDTO.fio, email, registrationDTO.phone,
-      registrationDTO.date, registrationDTO.number, registrationDTO.passDate,
-      registrationDTO.about, registrationDTO.cod, registrationDTO.numberLicense,
-      registrationDTO.dateLicense);
-    const person = await this.userRepository.FindOneByEmail(email);  
+    const newUser = new Users(
+      registrationDTO.fio,
+      email,
+      registrationDTO.phone,
+      registrationDTO.date,
+      registrationDTO.number,
+      registrationDTO.passDate,
+      registrationDTO.about,
+      registrationDTO.cod,
+      registrationDTO.numberLicense,
+      registrationDTO.dateLicense,
+    );
+    const person = await this.userRepository.FindOneByEmail(email);
     if (person) {
       throw new HttpException(
         'Такой пользователь уже сушествует',

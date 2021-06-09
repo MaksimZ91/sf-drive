@@ -6,12 +6,12 @@ const defaultState = {
 }
 
 
-export const calenReducer = (state=defaultState , action) => {
+export const calenReducer = (state = defaultState , action) => {
     switch (action.type){
         case ADD_START_DATE:
-            return {...state, startDate:action.payload}       
+            return { ...state, startDate:action.payload }       
         case ADD_END_DATE:
-            return {...state, endDate:action.payload}
+            return { ...state, endDate:action.payload }
         default: return state
     }
 

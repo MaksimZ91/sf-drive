@@ -9,16 +9,16 @@ const defaultState = {
 }
 
 
-export const autoReducer = (state=defaultState , action) => {
+export const autoReducer = (state = defaultState , action) => {
     switch (action.type){
         case FETCH_AUTO_LIST:
-            return {...state, userAuto:action.payload}
+            return { ...state, userAuto:action.payload }
         case FETCH_AUTO_ALL:
-            return {...state, allAuto:action.payload} 
+            return { ...state, allAuto:action.payload } 
         case FETCH_AUTO:
-            return {...state, currentAuto:action.payload} 
+            return { ...state, currentAuto:action.payload } 
         case FILTER_AUTO:
-            return {...state, autoFilter:action.payload} 
+            return { ...state, autoFilter:action.payload } 
         default: return state
     }
 

@@ -3,5 +3,5 @@ export class AutoDataDto {
 
   readonly endDate: Date;
 
-  readonly type:string
+  readonly type: string;
 }

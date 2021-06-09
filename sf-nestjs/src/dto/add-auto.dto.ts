@@ -9,8 +9,8 @@ export class AddAutoDto {
 
   readonly number: string;
 
-  readonly type:string;
-  
+  readonly type: string;
+
   readonly vin: string;
 
   readonly collor: string;

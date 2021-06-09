@@ -1,7 +1,38 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import { useSelector } from 'react-redux'
+import { fixDate, arendaDay } from '../../../js/fixday.js'
 
 
-function ArendaCheck (){
+function ArendaCheck (props){
+const [selectDate, setSelectDate] = useState({calen:''})
+const option = useSelector((state)=>{
+    return state.newAuto.dopOptions
+}) 
+useEffect(()=>{
+    if(props.startDate||props.endDate)setSelectDate({calen:`${fixDate(props.startDate)}-${fixDate(props.endDate)}`})
+    })
+
+  
+
+useEffect(()=>{
+    const getCostArenda = () =>{
+        const arendaDays = arendaDay(props.startDate, props.endDate)
+        if(arendaDays >= 5){
+            return arendaDays * props.priceFiveDays
+        }else if(arendaDays >= 3){
+            return arendaDays * props.priceThreeDays 
+        }else{
+            return arendaDays * props.price
+        }
+    }
+}) 
+
+const getCostOptions = 
+
+
+
+
+
     return(
         <>
          <section className='arenda_check'>
@@ -12,7 +43,7 @@ function ArendaCheck (){
                      <p>4 800 ₽</p>
                  </div>
                  <div className='arenda_check_price_discount'>
-                     <p>05.06.20 – 08.06.20</p>
+                     <p>{selectDate.calen}</p>
                      <p>5 400 ₽</p>
                  </div>
              </div>

@@ -1,15 +1,10 @@
-import {
-  Column,
-  Entity,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Autos } from './auto.entity';
 
 @Entity()
 export class AutoPhotoDocumentName {
-  constructor (photoName: string){
-    this.photoName = photoName
+  constructor(photoName: string) {
+    this.photoName = photoName;
   }
   @PrimaryGeneratedColumn()
   id: number;
@@ -17,6 +12,6 @@ export class AutoPhotoDocumentName {
   @Column()
   photoName: string;
 
-  @ManyToOne(() => Autos, auto => auto.photoDocumentName)
+  @ManyToOne(() => Autos, (auto) => auto.photoDocumentName)
   auto: Autos;
 }

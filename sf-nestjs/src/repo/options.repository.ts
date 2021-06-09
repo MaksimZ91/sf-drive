@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { OptionsAuto } from 'src/entites/options.entity';
-import { getRepository} from 'typeorm';
+import { getRepository } from 'typeorm';
 
 Injectable();
 export class OptionsRepository {

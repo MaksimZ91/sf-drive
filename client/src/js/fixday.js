@@ -12,3 +12,10 @@ export const fixDate =(date) => {
    const result = day+"."+month+"."+ year
    return result
   }
+
+  export const arendaDay = (startDay, endDay) =>{
+    const oneDay = 1000*60*60*24; 
+    const start = new Date(startDay)
+    const end = new Date(endDay)
+    return Math.round((end.getTime()-start.getTime())/oneDay)+1
+} 

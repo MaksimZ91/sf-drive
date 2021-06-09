@@ -27,11 +27,7 @@ useEffect(()=>{
     dispatch(addArenda('cost', total))   
     },[props.startDate, props.endDate, option, arendaCost, optionCost])
 
-/*const getTotal = () =>{
-        const total =arendaCost + optionCost + SERVICE_COMMISSION
-        dispatch(addArenda('cost', total))
-        return total
-    }*/
+
     return(
         <>
          <section className='arenda_check'>

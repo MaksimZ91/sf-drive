@@ -4,8 +4,7 @@ import { addDopAutoOptionsForm } from '../../../../redux/actions/actions'
 import Option from '../../options/option'
 
 
-function Dopoptions (){ 
-  const dispatch = useDispatch()
+function Dopoptions (){  
   const addAutoOptions = useSelector((state)=>{
     return state.newAuto.dopOptions
 })
@@ -18,6 +17,8 @@ const optionBabyChait = {
   titel:'Детское кресло',
   text:'Сдавайте кресло в аренду и получайте дополнительный заработок',
   name:'babyChair',
+  state:addAutoOptions,
+  addOptions:addDopAutoOptionsForm,
   className: nameClass
 }
 
@@ -26,6 +27,8 @@ const optionDeliveryAuto = {
   titel:'Доставка автомобиля',
   text:'Привезите автомобиль в удобное для арендатора место и получите доход',
   name:'deliveryAuto',
+  state:addAutoOptions,
+  addOptions:addDopAutoOptionsForm,
   className: nameClass
 }
 
@@ -34,6 +37,8 @@ const optionClose = {
   titel:'Завершение аренды в любом месте',
   text:'Заберите автомобиль в удобном для арендатора месте за доп. доход',
   name:'close',
+  state:addAutoOptions,
+  addOptions:addDopAutoOptionsForm,
   className: nameClass
 }
 
@@ -42,6 +47,8 @@ const optionFullTank = {
   titel:'Полный бак',
   text:'Заправьте полный бак перед сдачей в аренду',
   name:'fullTank',
+  state:addAutoOptions,
+  addOptions:addDopAutoOptionsForm,
   className: nameClass
 }
 

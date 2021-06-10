@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { addDopAutoOptionsForm } from '../../../../redux/actions/actions'
+import React   from 'react'
+import {  useSelector } from 'react-redux'
+import { addArendaOptions } from '../../../../redux/actions/actions'
 import Option from '../../options/option'
 
 
 
 
 function Arendaoptions (){
-  const dispatch = useDispatch()
+ 
     const addAutoOptions = useSelector((state)=>{
-        return {options:state.newAuto.dopOptions, currenAutoOptions:state.auto.currentAuto.options[0]}
+        return {options:state.arenda.options, currenAutoOptions:state.auto.currentAuto.options[0]}
     })
 
     
@@ -20,7 +20,9 @@ function Arendaoptions (){
       titel:'Детское кресло',
       text:'Владелец установит своё детское кресло в автомобиль',
       name:'babyChair',
-      className: nameClass
+      className: nameClass,
+      state:addAutoOptions.options,
+      addOptions:addArendaOptions
     }
     
     const optionDeliveryAuto = {
@@ -28,7 +30,9 @@ function Arendaoptions (){
       titel:'Доставка автомобиля',
       text:'Владелец доставит автомобиль в любую удобную для вас точку города',
       name:'deliveryAuto',
-      className: nameClass
+      className: nameClass,
+      state:addAutoOptions.options,
+      addOptions:addArendaOptions
     }
     
     const optionClose = {
@@ -36,7 +40,9 @@ function Arendaoptions (){
       titel:'Завершение аренды в любом месте',
       text:'Владелец приедет за автомобилем в любую точку города',
       name:'close',
-      className: nameClass
+      className: nameClass,
+      state:addAutoOptions.options,
+      addOptions:addArendaOptions
     }
     
     const optionFullTank = {
@@ -44,7 +50,9 @@ function Arendaoptions (){
       titel:'Полный бак',
       text:'Владелец заправит полный бак перед сдачей автомобиля в аренду',
       name:'fullTank',
-      className: nameClass
+      className: nameClass,
+      state:addAutoOptions.options,
+      addOptions:addArendaOptions
     }
     
     return(

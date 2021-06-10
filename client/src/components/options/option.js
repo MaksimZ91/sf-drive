@@ -1,23 +1,15 @@
-import React, { useEffect }from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { addDopAutoOptionsForm } from '../../../redux/actions/actions'
+import React from 'react'
+import { useDispatch} from 'react-redux'
 
 
 function Option (props){
     const dispatch = useDispatch()
-    const addAutoOptions = useSelector((state)=>{
-        return state.newAuto.dopOptions
-    })
+
     const handleChange = e => {
         const name = e.target.name
         const data = e.target.checked
-        dispatch(addDopAutoOptionsForm(addAutoOptions, name, data))
+        dispatch(props.settings. addOptions(props.settings.state, name, data))
     }
-
-    useEffect(()=>{
-        dispatch(addDopAutoOptionsForm(addAutoOptions, props.settings.name , false))
-    },[])    
-     
      
 
     return(

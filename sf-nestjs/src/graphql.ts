@@ -19,7 +19,13 @@ export interface Users {
     email?: string;
     phone?: string;
     date?: string;
-    auto?: Autos[];
+    number?: string;
+    passDate?: string;
+    about?: string;
+    cod?: string;
+    numberLicense?: string;
+    dateLicense?: string;
+    autos?: Autos[];
 }
 
 export interface Arenda {
@@ -53,7 +59,7 @@ export interface Autos {
     sts?: string;
     type?: string;
     arenda?: Arenda[];
-    users?: Users[];
+    user?: Users;
 }
 
 export interface IQuery {

@@ -11,7 +11,6 @@ describe('AutosResolver', () => {
 
     resolver = module.get<AutosResolver>(AutosResolver);
   });
-
   it('should be defined', () => {
     expect(resolver).toBeDefined();
   });

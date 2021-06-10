@@ -12,6 +12,7 @@ export class RegistrationService {
     private configService: ConfigService,
     private userRepository: UserRepository,
   ) {}
+  
 
   async Registration(registrationDTO: RegistrUserDto) {
     const { email, password } = registrationDTO;

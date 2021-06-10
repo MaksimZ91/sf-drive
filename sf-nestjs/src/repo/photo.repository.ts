@@ -8,4 +8,5 @@ export class PhotoRepository {
     const repository = getRepository(AutoPhotoName);
     return await repository.save(photos);
   }
+  
 }

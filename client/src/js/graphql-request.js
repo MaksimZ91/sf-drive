@@ -29,7 +29,7 @@ query FilterAuto($arendaInput:ArendaInput!){
       startDay
       endDay
     } 
-    users{
+    user{
       fio
     }  
 

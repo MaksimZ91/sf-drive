@@ -169,14 +169,15 @@ export class AutoService {
       startDate,
       endDate,
       type,
-    );
+          );
     for (let i = 0; i <= allAuto.length - 1; i++) {
       filterAuto.forEach((e) => {
         if (allAuto[i].id == e.id) {
           allAuto.splice(i, 1);
         }
       });
-    }    
+    } 
+    console.log(allAuto)   
     return allAuto;
   }  
 }

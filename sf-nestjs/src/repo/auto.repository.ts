@@ -40,15 +40,17 @@ export class AutoRepository {
   async FindeAllByType(type: string) {
     return await getRepository(Autos)
       .createQueryBuilder('auto')
+      .leftJoinAndSelect('auto.user', 'user')
       .leftJoinAndSelect('auto.arenda', 'arenda')
       .where('type =:type', { type: type })
       .getMany();
-  }
+      }
 
   async filterAuto(startDate: string, endDate: string, type: string) {
     return await getRepository(Autos)
       .createQueryBuilder('auto')
       .leftJoinAndSelect('auto.arenda', 'arenda')
+      .leftJoinAndSelect('auto.user', 'user')
       .where('arenda.startDay  BETWEEN :begin AND :end', {
         begin: new Date(startDate),
         end: new Date(endDate),

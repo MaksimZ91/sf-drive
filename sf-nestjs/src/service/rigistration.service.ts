@@ -54,5 +54,5 @@ export class RegistrationService {
     await this.userRepository.SaveUser(newUser);
 
     return { accessToken, refreshToken, userId: newUser.id, message: 'Ok' };
-  }
+  }  
 }

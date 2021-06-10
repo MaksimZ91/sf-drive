@@ -5,7 +5,7 @@ import { fixDate } from '../../../js/fixday.js'
 import { getCostOptions, getCostArenda, getFullPrice } from '../../../js/utils.js'
 
 
-function ArendaCheck (props){
+function ArendaCheck (props){  
 const dispatch = useDispatch()  
 const [selectDate, setSelectDate] = useState({calen:''})
 const [optionCost, setOptiosnCost] = useState(0)

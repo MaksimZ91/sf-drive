@@ -13,8 +13,13 @@ export interface ArendaInput {
     type?: string;
 }
 
-export interface User {
-    id?: string;
+export interface Users {
+    id: string;
+    fio?: string;
+    email?: string;
+    phone?: string;
+    date?: string;
+    auto?: Autos[];
 }
 
 export interface Arenda {
@@ -48,6 +53,7 @@ export interface Autos {
     sts?: string;
     type?: string;
     arenda?: Arenda[];
+    users?: Users[];
 }
 
 export interface IQuery {

@@ -1,5 +1,10 @@
-type User {
-  id:String
+type Users {
+  id:ID!
+  fio: String
+  email: String,
+  phone: String,
+  date: String
+  auto:[Autos]
 }
 
 type Arenda{
@@ -34,6 +39,7 @@ type Autos{
   sts: String
   type: String
   arenda:[Arenda]
+  users:[Users]
 }
 
 

@@ -7,10 +7,11 @@ import ArendaCheck from './arendaCheck'
 import { useHttp } from '../../../hooks/http.hook'
 import { useSelector } from 'react-redux'
 import Continuestep from '../../continueStep/continuestep'
+const TOKENS_KYES='tokens'
 
 
 
-function ArendaPage(){
+function ArendaPage(){    
     const backlink = '/auto'
     const back = 'arenda_back'
     const [error, setError]=useState(null)
@@ -22,33 +23,33 @@ function ArendaPage(){
     const auto = useSelector((state)=>{
         return state.auto.currentAuto
     })
+    const option = useSelector((state)=>{
+        return state.newAuto.dopOptions
+    }) 
     const arenda = useSelector((state)=>{
         return state.arenda.arendaParam
     })
     const continueTitel ='Перейти к оплате'
     const nameClass = 'arenda_continue'
-    const body = {
-         startDay : autoDate.startDate,
-         endDay : autoDate.endDate,
-         newAuto: auto.id,
-         cost:arenda.cost,
-         coment:arenda.coment
-     }
-
-     console.log(arenda.cost,arenda.coment)
-
-
-
-
+   
     const authorRequest = async () => { 
-        try {      
-            const result = await request('http://localhost:5000/auto/arenda','POST', body)  
+        try { 
+            const user = await JSON.parse(localStorage.getItem(TOKENS_KYES))  
+            const body = {
+                startDay : autoDate.startDate,
+                endDay : autoDate.endDate,
+                newAuto: auto.id,
+                cost : arenda.cost,
+                coment : arenda.coment,
+                user : user.userId
+            }     
+            const result = await request('http://localhost:5000/auto/arenda','POST', {...body , ...option})  
             setData(result)
         } catch (e) {
           setError(e)
         }     
     } 
-//   <Arendaoptions/>
+
     return(
         <>
         {!(Object.keys(auto).length==0)?

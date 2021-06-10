@@ -146,8 +146,19 @@ export class AutoService {
   }
 
   async createArenda(addArenda: ArendaDtO) {
-    const arenda = new Arenda(addArenda.startDay, addArenda.endDay);
+    const arenda = new Arenda(
+      addArenda.startDay,
+      addArenda.endDay,
+      addArenda.cost,
+      addArenda.coment,
+      addArenda.babyChair,
+      addArenda.deliveryAuto,
+      addArenda.close,
+      addArenda.fullTank
+      );
     const auto = await this.autoRepository.FindOneByID(addArenda.newAuto);
+    const user = await this.userRepository.FindOneByID(addArenda.user)
+    arenda.user = user
     arenda.auto = auto;
     await this.arendaRepository.SaveArenda(arenda);
   }
@@ -165,7 +176,7 @@ export class AutoService {
           allAuto.splice(i, 1);
         }
       });
-    }
+    }    
     return allAuto;
-  }
+  }  
 }

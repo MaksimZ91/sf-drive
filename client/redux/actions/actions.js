@@ -54,8 +54,8 @@ export function addArenda (state,name, data){
     return{type:ADD_ARENDA, payload:{...state, [name]:data}}
 }
 
-export function addDopAutoOptionsForm (state, event){
-    return{type:ADD_AUTO_DOP_OPTIONS, payload:{...state, [event.target.name]:event.target.checked}}
+export function addDopAutoOptionsForm (state, name, data){
+    return{type:ADD_AUTO_DOP_OPTIONS, payload:{...state, [name]:data}}
 }
 
 

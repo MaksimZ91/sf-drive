@@ -1,20 +1,22 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addDopAutoOptionsForm } from '../../../../redux/actions/actions'
 import Option from '../../options/option'
 
 
 function Dopoptions (){ 
+  const dispatch = useDispatch()
   const addAutoOptions = useSelector((state)=>{
     return state.newAuto.dopOptions
 })
 
 const nameClass = 'options_auto_dopform'
 
+
 const optionBabyChait = {
   cost:1000,
   titel:'Детское кресло',
   text:'Сдавайте кресло в аренду и получайте дополнительный заработок',
-  value:addAutoOptions.babyChair,
   name:'babyChair',
   className: nameClass
 }
@@ -23,7 +25,6 @@ const optionDeliveryAuto = {
   cost:1000,
   titel:'Доставка автомобиля',
   text:'Привезите автомобиль в удобное для арендатора место и получите доход',
-  value:addAutoOptions.deliveryAuto,
   name:'deliveryAuto',
   className: nameClass
 }
@@ -32,7 +33,6 @@ const optionClose = {
   cost:1000,
   titel:'Завершение аренды в любом месте',
   text:'Заберите автомобиль в удобном для арендатора месте за доп. доход',
-  value:addAutoOptions.close,
   name:'close',
   className: nameClass
 }
@@ -41,7 +41,6 @@ const optionFullTank = {
   cost:1000,
   titel:'Полный бак',
   text:'Заправьте полный бак перед сдачей в аренду',
-  value:addAutoOptions.fullTank,
   name:'fullTank',
   className: nameClass
 }

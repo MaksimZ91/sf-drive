@@ -23,7 +23,7 @@ function FilterAuto (){
                     <img src='../src/img/map.svg'/>
                     <p>Показать карту</p>                    
                 </div>
-            </div>
+            </div>            
         {auto.map(el =>
         <div className ='options_autolist' key={el.mark} >
            <NavLink to="/auto" onClick={()=>dispatch(fetchAuto(el.id))}  ><Auto value={el} hidden={false}/></NavLink>

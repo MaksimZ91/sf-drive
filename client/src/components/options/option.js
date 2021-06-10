@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect }from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addDopAutoOptionsForm } from '../../../redux/actions/actions'
 
@@ -9,8 +9,14 @@ function Option (props){
         return state.newAuto.dopOptions
     })
     const handleChange = e => {
-        dispatch(addDopAutoOptionsForm(addAutoOptions, e))
-        }
+        const name = e.target.name
+        const data = e.target.checked
+        dispatch(addDopAutoOptionsForm(addAutoOptions, name, data))
+    }
+
+    useEffect(()=>{
+        dispatch(addDopAutoOptionsForm(addAutoOptions, props.settings.name , false))
+    },[])    
      
      
 
@@ -24,7 +30,7 @@ function Option (props){
                 <div className={`${props.settings.className}_wrapper_price`}>
                     <p>{props.settings.cost}₽</p>      
                     <label className={`${props.settings.className}_wrapper_price_switch`}>
-                        <input className={`${props.settings.className}_wrapper_price_switch_checkbox`} type="checkbox" name={props.settings.name} value={props.settings.value} onChange={handleChange}/>
+                        <input className={`${props.settings.className}_wrapper_price_switch_checkbox`} type="checkbox" name={props.settings.name}  onChange={handleChange}/>
                         <span className={`${props.settings.className}_wrapper_price_switch_slider`}/>
                     </label> 
                 </div>     

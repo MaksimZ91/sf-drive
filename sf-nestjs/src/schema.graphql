@@ -11,13 +11,21 @@ type Users {
   numberLicense: String
   dateLicense: String
   autos:[Autos]
+  arenda:[Arenda]
 }
 
 type Arenda{
   id: ID!
   startDay: String  
   endDay: String
-  auto:[Autos]
+  cost:String
+  coment:String
+  babyChair: Boolean
+  deliveryAuto: Boolean
+  close: Boolean
+  fullTank: Boolean
+  auto:Autos
+  user:Users
 
 }
 
@@ -55,8 +63,13 @@ input ArendaInput{
   type:String
 }
 
+input UserArendaInput{ 
+  id: ID!
+}
+
 type Query {
    filterAuto(arendaInput: ArendaInput):[Autos]!
+   userArendaHistory(userArendaInput:UserArendaInput ):[Arenda]!
    getAllAutos:[Autos]!
 
 }

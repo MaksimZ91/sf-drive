@@ -8,4 +8,13 @@ export class ArendaRepository {
     const repository = getRepository(Arenda);
     return await repository.save(arenda);
   }
+
+  async findeHistoryArenda(id: string) {
+    return await getRepository(Arenda)
+      .createQueryBuilder('arenda')
+      .leftJoinAndSelect('arenda.user', 'user')
+      .leftJoinAndSelect('arenda.auto', 'auto')
+      .where('user.id =:id', { id: id })
+      .getMany();
+      }
 }

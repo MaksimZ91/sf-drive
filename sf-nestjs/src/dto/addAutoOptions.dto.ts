@@ -34,6 +34,6 @@ export class AddAutoOptionsDto {
   readonly deliveryAuto: boolean;
 
   readonly close: boolean;
-
+  
   readonly fullTank: boolean;
 }

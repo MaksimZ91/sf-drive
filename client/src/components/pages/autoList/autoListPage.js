@@ -8,7 +8,8 @@ import { fetchAutoListAll, addStartDate, addEndDate, filterAuto } from '../../..
 import Calendarb from '../../calendarb/calendarb'
 import FilterAuto from './filterAuto'
 import { useLazyQuery } from '@apollo/react-hooks'
-import { FETCH_FILTER_AUTO } from '../../../js/graphql-request'
+import { FETCH_FILTER_AUTO, FETCH_USER_ARENDA_HISTORY } from '../../../js/graphql-request'
+const TOKENS_KYES='tokens'
 
 
 function Newpage (){
@@ -64,7 +65,19 @@ function Newpage (){
     setHide(!hide) 
   }
   
-  const [getAutos, { data:{filterAuto:autos}={} }] = useLazyQuery(FETCH_FILTER_AUTO )  
+const [getAutos, { data:{filterAuto:autos}={} }] = useLazyQuery(FETCH_FILTER_AUTO)  
+
+
+const [getArendaUser, { data:{userArendaHistory:arenda}={} }] = useLazyQuery(FETCH_USER_ARENDA_HISTORY)
+
+const getArenda = async () =>{
+  const user = await JSON.parse(localStorage.getItem(TOKENS_KYES))  
+  const id = user.userId 
+  getArendaUser( { variables:{ userArendaInput:{ id } } })
+  console.log(arenda)
+
+}
+
   
 const  authorRequest = () => { 
   setHide(false) 
@@ -98,7 +111,7 @@ useEffect(()=>{
     <>
     <main className='auto_list'  >
       <section className='filter'>
-        {!filter?<h2 className='filter_titel'>Арендуйте автомобиль</h2 >:''}
+        {!filter?<h2 className='filter_titel' onClick={getArenda}>Арендуйте автомобиль</h2 >:''}
         <div className='filter_wrapper'>
           <div className='filter_wrapper_city'>
           <input className='filter_wrapper_city_input' type='text'   value={value.city} onChange={callApi}  required />          

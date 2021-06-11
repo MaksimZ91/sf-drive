@@ -51,7 +51,7 @@ export class AutoService {
       addAuto.motor,
       addAuto.body,
       addAuto.sts,
-      addAuto.type,
+      addAuto.type,            
     );
     const currentUser = await this.userRepository.FindOneByID(addAuto.userId);
     newAuto.user = currentUser;
@@ -176,8 +176,7 @@ export class AutoService {
           allAuto.splice(i, 1);
         }
       });
-    } 
-    console.log(allAuto)   
+    }     
     return allAuto;
   }  
 }

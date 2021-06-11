@@ -8,7 +8,7 @@ export class AutoPhotoDocumentName {
   }
   @PrimaryGeneratedColumn()
   id: number;
-
+  
   @Column()
   photoName: string;
 

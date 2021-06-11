@@ -4,5 +4,5 @@ import { Injectable } from '@nestjs/common';
 export class TestGuardSevice {
   Test() {
     return { message: 'Тест да' };    
-  }
+  }  
 }

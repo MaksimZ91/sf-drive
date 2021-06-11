@@ -40,20 +40,22 @@ query FilterAuto($arendaInput:ArendaInput!){
 export const FETCH_USER_ARENDA_HISTORY = gql`
 query UserArendaHistory($userArendaInput:UserArendaInput!){
   userArendaHistory(userArendaInput:$userArendaInput){
-  id
-  startDay
-  endDay
-  cost
-  coment
-  babyChair
-  deliveryAuto
-  close
-  fullTank    
-  auto{
     id
+    fio     
+  autos{
+    id
+    mark
     }
-  user{
-      id
+  arenda{
+    id
+    startDay
+    endDay
+    cost
+    coment
+    babyChair
+    deliveryAuto
+    close
+    fullTank 
     }
   }
 }

@@ -76,6 +76,6 @@ export interface Autos {
 
 export interface IQuery {
     filterAuto(arendaInput?: ArendaInput): Autos[] | Promise<Autos[]>;
-    userArendaHistory(userArendaInput?: UserArendaInput): Arenda[] | Promise<Arenda[]>;
+    userArendaHistory(userArendaInput?: UserArendaInput): Users[] | Promise<Users[]>;
     getAllAutos(): Autos[] | Promise<Autos[]>;
 }

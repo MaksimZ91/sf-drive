@@ -34,4 +34,13 @@ export class UserRepository {
       where: { ['id']: param },
     });
   }
+
+  async findeHistoryArendaByID(id: string) {
+    return await getRepository(Users)
+      .createQueryBuilder('user')
+      .leftJoinAndSelect('user.autos', 'autos')
+      .leftJoinAndSelect('user.arenda', 'arenda')
+      .where('user.id =:id', { id: id })
+      .getMany();
+      }
 }

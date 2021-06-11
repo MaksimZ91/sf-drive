@@ -5,6 +5,8 @@ import { UserRepository } from '../repo/user.repository';
 import { TestGuardSevice } from '../service/testGuard.service';
 import { JwtStrategy } from '../guard/jwt-strategy';
 import { JwtAuthGuard } from '../guard/autn.guard';
+import { UserResolver } from 'src/user/user.resolver';
+import { UserService } from 'src/service/user.service';
 
 @Module({
   imports: [],
@@ -15,6 +17,8 @@ import { JwtAuthGuard } from '../guard/autn.guard';
     JwtStrategy,
     JwtAuthGuard,
     UserRepository,
+    UserService,
+    UserResolver
   ],
 })
 export class AuthorizationModul {}

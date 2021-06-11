@@ -73,5 +73,5 @@ export class Users {
   autos: Autos[];
 
   @OneToMany(() => Arenda, (arenda) => arenda.user)
-  arenda: Arenda;
+  arenda: Arenda[];
 }

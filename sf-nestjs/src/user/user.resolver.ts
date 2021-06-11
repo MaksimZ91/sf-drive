@@ -1,15 +1,15 @@
 import { Resolver, Query, Args } from '@nestjs/graphql';
-import { ArendaService } from 'src/service/arenda.service';
+import { UserService } from 'src/service/user.service';
 import { UserArendaInput } from '../graphql';
 
 @Resolver()
-export class ArendaResolver {
-    constructor(private arendaService:ArendaService) {}
+export class UserResolver {
+    constructor(private userService:UserService) {}
     
     @Query()
     userArendaHistory(@Args('userArendaInput') userArendaInput: UserArendaInput) {
       console.log(userArendaInput)
       const { id } = userArendaInput;    
-      return this.arendaService.userArendaHistory(id)
+      return this.userService.userArendaHistory(id)
     }
 }

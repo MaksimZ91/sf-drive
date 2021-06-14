@@ -18,7 +18,7 @@ export class UserRepository {
   async FindAllByUserID(userId: string) {
     const repository = getRepository(Users);
     return await repository.find({
-      relations: ['autos'],
+      relations: ['autos', 'arenda'],
       where: { ['id']: userId },
     });
   }
@@ -35,12 +35,5 @@ export class UserRepository {
     });
   }
 
-  async findeHistoryArendaByID(id: string) {
-    return await getRepository(Users)
-      .createQueryBuilder('user')
-      .leftJoinAndSelect('user.autos', 'autos')
-      .leftJoinAndSelect('user.arenda', 'arenda')
-      .where('user.id =:id', { id: id })
-      .getMany();
-      }
+ 
 }

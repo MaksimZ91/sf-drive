@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MulterModule } from '@nestjs/platform-express';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
+import { DateScalar } from './DateScalar';
 
 @Module({
   imports: [
@@ -41,6 +42,6 @@ import { join } from 'path';
     }),
   ],
   controllers: [],
-  providers: [],
+  providers: [DateScalar],
 })
 export class AppModule {}

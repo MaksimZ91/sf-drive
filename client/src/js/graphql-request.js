@@ -39,14 +39,7 @@ query FilterAuto($arendaInput:ArendaInput!){
 
 export const FETCH_USER_ARENDA_HISTORY = gql`
 query UserArendaHistory($userArendaInput:UserArendaInput!){
-  userArendaHistory(userArendaInput:$userArendaInput){
-    id
-    fio     
-  autos{
-    id
-    mark
-    }
-  arenda{
+  userArendaHistory(userArendaInput:$userArendaInput){  
     id
     startDay
     endDay
@@ -56,7 +49,11 @@ query UserArendaHistory($userArendaInput:UserArendaInput!){
     deliveryAuto
     close
     fullTank 
+    auto{
+      id
+      mark
     }
+    
   }
 }
 `

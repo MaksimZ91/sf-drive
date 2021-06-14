@@ -8,6 +8,8 @@ import { PhotoDocumentRepository } from 'src/repo/photoDocument.repository';
 import { UserRepository } from 'src/repo/user.repository';
 import { AutoService } from 'src/service/auto.service';
 import { AutosResolver } from 'src/autos/autos.resolver';
+import { ArendaResolver } from 'src/user/arenda.resolver';
+import { ArendaService } from 'src/service/arenda.service';
 
 
 @Module({
@@ -21,7 +23,9 @@ import { AutosResolver } from 'src/autos/autos.resolver';
     PhotoRepository,
     PhotoDocumentRepository,
     ArendaRepository,
-    AutosResolver
+    AutosResolver,
+    ArendaResolver,
+    ArendaService
   ],
 })
 export class AutoModule {}

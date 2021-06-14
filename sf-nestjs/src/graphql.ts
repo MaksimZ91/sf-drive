@@ -14,7 +14,7 @@ export interface ArendaInput {
 }
 
 export interface UserArendaInput {
-    id: string;
+    userId: string;
 }
 
 export interface Users {
@@ -35,14 +35,15 @@ export interface Users {
 
 export interface Arenda {
     id: string;
-    startDay?: string;
-    endDay?: string;
+    startDay?: Date;
+    endDay?: Date;
     cost?: string;
     coment?: string;
     babyChair?: boolean;
     deliveryAuto?: boolean;
     close?: boolean;
     fullTank?: boolean;
+    autoId?: string;
     auto?: Autos;
     user?: Users;
 }
@@ -76,6 +77,6 @@ export interface Autos {
 
 export interface IQuery {
     filterAuto(arendaInput?: ArendaInput): Autos[] | Promise<Autos[]>;
-    userArendaHistory(userArendaInput?: UserArendaInput): Users[] | Promise<Users[]>;
+    userArendaHistory(userArendaInput?: UserArendaInput): Arenda[] | Promise<Arenda[]>;
     getAllAutos(): Autos[] | Promise<Autos[]>;
 }

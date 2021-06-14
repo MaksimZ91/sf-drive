@@ -1,0 +1,21 @@
+.booking{
+  display: flex; 
+  justify-content: center;
+  align-self: center;
+  margin-top: 190px; 
+  &_wrapper{
+    display: flex; 
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;  
+    >p{
+      font-family: Roboto bold;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 120%;
+      text-align: center;
+      color: #1B1B1B;
+    }
+  }
+}

@@ -22,7 +22,7 @@ function Auto (props){
                    <span>4,5 (12)</span>
                </div>
                <p className='myAuto_auto_wrapper_name'>{props.value.mark} {props.value.model}, {props.value.year}</p>
-               <div  className={hidden?'myAuto_auto_wrapper_tech active':'myAuto_auto_wrapper_tech'}>
+               {hidden?'':<div className='myAuto_auto_wrapper_tech'>
                     <div className='myAuto_auto_wrapper_tech_motor'>
                         <img src='../src/img/motor.svg'/>
                         <p>{props.value.volume} л / {props.value.power} л.с. / Бензин</p>
@@ -31,7 +31,7 @@ function Auto (props){
                         <img src='../src/img/kpp.svg'/>
                         <p>{props.value.transmission} / {props.value.privod} привод</p>
                     </div>
-               </div>
+               </div>}
                <p className='myAuto_auto_wrapper_price'>{props.value.price} ₽ в сутки</p>
            </div>
 

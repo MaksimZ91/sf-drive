@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { UserResolver } from './user.resolver';
+import { ArendaResolver } from './arenda.resolver';
 
-describe('UserResolver', () => {
-  let resolver: UserResolver;
+describe('ArendaResolver', () => {
+  let resolver: ArendaResolver;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [UserResolver],
+      providers: [ArendaResolver],
     }).compile();
 
-    resolver = module.get<UserResolver>(UserResolver);
+    resolver = module.get<ArendaResolver>(ArendaResolver);
   });
 
   it('should be defined', () => {

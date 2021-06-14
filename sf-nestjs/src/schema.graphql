@@ -1,3 +1,5 @@
+scalar Date
+
 type Users {
   id:ID!
   fio: String
@@ -16,14 +18,15 @@ type Users {
 
 type Arenda{
   id: ID!
-  startDay: String  
-  endDay: String
+  startDay: Date
+  endDay: Date
   cost:String
   coment:String
   babyChair: Boolean
   deliveryAuto: Boolean
   close: Boolean
   fullTank: Boolean
+  autoId: ID
   auto:Autos
   user:Users
 
@@ -57,6 +60,10 @@ type Autos{
 }
 
 
+
+
+
+
 input ArendaInput{ 
   startDate: String
   endDate: String
@@ -64,12 +71,13 @@ input ArendaInput{
 }
 
 input UserArendaInput{ 
-  id: ID!
+  userId: ID!
 }
 
 type Query {
    filterAuto(arendaInput: ArendaInput):[Autos]!
-   userArendaHistory(userArendaInput:UserArendaInput ):[Users]!
+   userArendaHistory(userArendaInput:UserArendaInput ):[Arenda]
    getAllAutos:[Autos]!
 
 }
+

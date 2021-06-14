@@ -103,7 +103,7 @@ export class AutoService {
 
   async AddAutoDocumentPhotoName(
     addAutoDocumentPhotoName: AddAutoDocumentPhotoNameDto,
-  ) {
+  )   {
     const currentAuto = await this.autoRepository.FindOneByID(
       addAutoDocumentPhotoName.newAuto,
     );

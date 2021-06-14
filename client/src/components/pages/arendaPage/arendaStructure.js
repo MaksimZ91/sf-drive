@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import Auto from '../autoList/Auto'
+import Auto from '../../Auto/Auto'
 
 
 function Arendastructure (){
@@ -12,7 +12,7 @@ function Arendastructure (){
         <>
          <section className='arenda_structure'>
                 <p>Состав заказа</p>
-                <Auto hidden={true} value={auto}/>
+                <Auto hidden={true} value={auto} cost={false} date={false}/>
             </section>
         </>
     )

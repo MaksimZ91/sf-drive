@@ -52,8 +52,27 @@ query UserArendaHistory($userArendaInput:UserArendaInput!){
     auto{
       id
       mark
-    }
-    
+      model
+      year
+      number
+      vin
+      collor
+      volume
+      power
+      transmission
+      mileage
+      pts
+      price
+      priceThreeDays
+      priceFiveDays
+      osago
+      kasko
+      privod
+      motor
+      body
+      sts
+      type
+    }    
   }
 }
 `

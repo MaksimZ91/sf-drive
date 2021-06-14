@@ -1,8 +1,9 @@
 
 import React, { useEffect, useState } from 'react'
-import { useHttp } from '../../../hooks/http.hook'
+import { useHttp } from '../../hooks/http.hook'
+import { fixDate } from '../../js/fixday'
 
-function Auto (props){
+function Auto (props){  
     const [autoPhoto, setAutoPhoto]=useState(null)
     const [hidden, setHidden]=useState(false)
     const {request} = useHttp()
@@ -32,7 +33,14 @@ function Auto (props){
                         <p>{props.value.transmission} / {props.value.privod} привод</p>
                     </div>
                </div>}
-               <p className='myAuto_auto_wrapper_price'>{props.value.price} ₽ в сутки</p>
+               {props.date?<div>
+                   <div className='myAuto_auto_wrapper_tech_motor'>
+                        <img src='../src/img/date_arenda.svg'/>
+                        <p>{fixDate(new Date(props.date.startDay))}-{fixDate(new Date(props.date.endDay))}</p>
+                    </div>
+               </div>:''}
+               {!props.cost?<p className='myAuto_auto_wrapper_price'>{props.value.price} ₽ в сутки</p>:
+               <p className='myAuto_auto_wrapper_price'>{props.cost} ₽</p>}
            </div>
 
        </div>

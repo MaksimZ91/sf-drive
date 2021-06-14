@@ -31,3 +31,13 @@ export const arendaDay = (startDay, endDay) =>{
     const end = new Date(endDay)
     return Math.round((end.getTime()-start.getTime())/oneDay)+1
 } 
+
+export const filterArenda = (arendaList) =>{
+    let activeArenda=[]
+    let arhiveArenda = []
+    const currentDay = new Date ()
+    arendaList.forEach(element => {
+     (new Date(element.endDay) < currentDay)?arhiveArenda.push(element):activeArenda.push(element)
+    })
+    return {active:activeArenda ,  arhive:arhiveArenda}
+  }

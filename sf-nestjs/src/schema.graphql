@@ -62,7 +62,9 @@ type Autos{
 
 
 
-
+input FindeArendaInput{ 
+  id: ID!
+}
 
 input ArendaInput{ 
   startDate: String
@@ -76,6 +78,7 @@ input UserArendaInput{
 
 type Query {
    filterAuto(arendaInput: ArendaInput):[Autos]!
+   findeArendaByID(findeArendaInput:FindeArendaInput):Arenda
    userArendaHistory(userArendaInput:UserArendaInput ):[Arenda]
    getAllAutos:[Autos]!
 

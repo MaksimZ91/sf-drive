@@ -36,7 +36,7 @@ export class AutoRepository {
       .where('auto.id = :id', { id: id })
       .getOne();
   }
-
+  
   async FindeAllByType(type: string) {
     return await getRepository(Autos)
       .createQueryBuilder('auto')

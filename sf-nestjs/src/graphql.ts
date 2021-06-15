@@ -7,6 +7,10 @@
 
 /* tslint:disable */
 /* eslint-disable */
+export interface FindeArendaInput {
+    id: string;
+}
+
 export interface ArendaInput {
     startDate?: string;
     endDate?: string;
@@ -77,6 +81,7 @@ export interface Autos {
 
 export interface IQuery {
     filterAuto(arendaInput?: ArendaInput): Autos[] | Promise<Autos[]>;
+    findeArendaByID(findeArendaInput?: FindeArendaInput): Arenda | Promise<Arenda>;
     userArendaHistory(userArendaInput?: UserArendaInput): Arenda[] | Promise<Arenda[]>;
     getAllAutos(): Autos[] | Promise<Autos[]>;
 }

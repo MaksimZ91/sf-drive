@@ -6,6 +6,9 @@ import './BookingCart.scss'
 import BookingDopOptions from './bookingDopOptions'
 import Continuestep from '../../continueStep/continuestep'
 import QustionsDelete from './qustionsDelete'
+import { useSelector } from 'react-redux'
+
+
 
 
 function BookingCart () {
@@ -17,17 +20,22 @@ function BookingCart () {
     const handleHide = () =>{
         setHide(!hide)
     }
+    const arenda = useSelector((state)=>{
+        return state.arenda.arendaUser
+    }) 
+   
+
 
     return(
         <>
-        <main className={!hide?'booking_cart':'booking_cart active'}>
+        {!(Object.keys(arenda).length==0)?<main className={!hide?'booking_cart':'booking_cart active'}>
             {hide?<QustionsDelete close={handleHide}/>:''}
             <Backarrow value={backlink} name={backName}/>
             <FotoBlock/>
-            <BookingInfoBlock/>
-            <BookingDopOptions/>
+            <BookingInfoBlock />
+            <BookingDopOptions />
             <Continuestep  validation={false} titel={continueTitel} nameClass={nameClass} nextStep={handleHide}/>     
-        </main>
+        </main>:''}
         
 
         </>

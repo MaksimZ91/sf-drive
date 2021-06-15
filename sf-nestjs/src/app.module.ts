@@ -8,6 +8,7 @@ import { MulterModule } from '@nestjs/platform-express';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { DateScalar } from './DateScalar';
+import { ArendaModule } from './modules/arenda.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { DateScalar } from './DateScalar';
       isGlobal: true,
     }),
     AuthorizationModul,
+    ArendaModule,
     RegistrModul,
     AutoModule,
     TypeOrmModule.forRootAsync({

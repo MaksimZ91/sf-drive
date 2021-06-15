@@ -10,6 +10,9 @@
     }
     &_activeList{
       margin-top: 30px;
+      >a{
+        text-decoration: none;
+      }
       >p{
         font-family: Roboto;
         font-style: normal;
@@ -19,11 +22,15 @@
         text-align: center;
         color: #2A2C32;
         margin-bottom: 30px;
+        text-decoration: none;
       }
     }
     &_arhiveList{
         margin-top:80px;
         margin-bottom: 132px;
+        >a{
+          text-decoration: none;
+        }
         >p{
             font-family: Roboto;
             font-style: normal;
@@ -33,6 +40,7 @@
             text-align: center;
             color: #2A2C32;
             margin-bottom: 30px;
+            text-decoration: none;
         }
     }
   }

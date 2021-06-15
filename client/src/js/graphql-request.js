@@ -77,6 +77,50 @@ query UserArendaHistory($userArendaInput:UserArendaInput!){
 }
 `
 
+export const FETCH_ARENDA =gql`
+query FindeArenda ($findeArendaInput:FindeArendaInput){
+  findeArendaByID(findeArendaInput:$findeArendaInput){
+    id
+    startDay
+    endDay
+    cost
+    coment
+    babyChair
+    deliveryAuto
+    close
+    fullTank 
+    auto{
+      id
+      mark
+      model
+      year
+      number
+      vin
+      collor
+      volume
+      power
+      transmission
+      mileage
+      pts
+      price
+      priceThreeDays
+      priceFiveDays
+      osago
+      kasko
+      privod
+      motor
+      body
+      sts
+      type
+    }
+    user{
+      id
+      fio
+    }
+  }
+}
+`
+
 export const FETCH_ALL_AUTO =gql`
 {
   getAllAutos{

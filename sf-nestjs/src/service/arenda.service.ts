@@ -1,4 +1,5 @@
 import { Injectable } from "@nestjs/common";
+import { BookingDto } from "src/dto/booking.dto";
 import { ArendaRepository } from "src/repo/arenda.repository";
 
 
@@ -11,5 +12,9 @@ export class ArendaService {
     async userArendaHistory (id:string){  
         return await this.arendaRepository.findeHistoryArendaByID(id)
     }
-    
+
+    async findeArendaByiD(bookingDto:BookingDto){
+        const { id } = bookingDto
+        return await this.arendaRepository.findeArendaDyID(id)
+    }    
 }

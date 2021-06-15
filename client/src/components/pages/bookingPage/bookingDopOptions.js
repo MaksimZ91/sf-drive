@@ -1,8 +1,13 @@
 import React from 'react'
 import Option from '../../options/option'
+import { useSelector } from 'react-redux'
 
 
 function BookingDopOptions () {
+  const arenda = useSelector((state)=>{
+    return state.arenda.arendaUser
+}) 
+
 
     const nameClass = 'booking_cart_dopOptions_options'
     
@@ -47,10 +52,10 @@ function BookingDopOptions () {
         <>
         <section className='booking_cart_dopOptions'>
             <p>Дополнительные услуги</p>
-            <Option settings={optionBabyChait} />
-            <Option settings={optionDeliveryAuto} />
-            <Option settings={optionClose}/>
-            <Option settings={optionFullTank}/>            
+            {arenda.babyChair?<Option settings={optionBabyChait} />:''}
+            {arenda.deliveryAuto?<Option settings={optionDeliveryAuto}/>:''}
+            {arenda.close?<Option settings={optionClose}/>:''}
+            {arenda.fullTank?<Option settings={optionFullTank}/> :''}          
         </section>
         </>
     )

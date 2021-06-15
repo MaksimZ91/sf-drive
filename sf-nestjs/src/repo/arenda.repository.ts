@@ -17,5 +17,16 @@ export class ArendaRepository {
       .where('user.id =:id', { id: id })
       .getMany();
       }
+
+  async findeArendaDyID(id:string){
+    return await getRepository(Arenda)
+    .createQueryBuilder('arenda')
+    .leftJoinAndSelect('arenda.user', 'user')
+    .leftJoinAndSelect('arenda.auto', 'auto')
+    .where('arenda.id =:id', { id: id })
+    .getOne()
+  }    
+
+
   
 }

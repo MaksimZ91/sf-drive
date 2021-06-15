@@ -1,4 +1,4 @@
-import  React, {useContext} from "react";
+import  React, { useContext } from "react";
 import Aboutpage from "./pages/about/aboutPage"
 import Mainpage from "./pages/main/mainPage"
 import Faq from "./pages/faq/Faq"
@@ -26,17 +26,17 @@ function Routs (){
     if (!isAuthen){ 
         return(
         <>
-        <Route path="/" component={Mainpage} exact/>
-        <Route path="/about" component={Aboutpage} exact/>
-        <Route path="/registr" component={Registpage}/>
-        <Route path="/faq" component={Faq}/>  
+        <Route path="/" component={ Mainpage } exact/>
+        <Route path="/about" component={ Aboutpage } exact/>
+        <Route path="/registr" component={ Registpage }/>
+        <Route path="/faq" component={ Faq }/>  
         </>
         )
     }else{
       
         return(
         <>           
-        <Route path="/" component={ BookingCart } exact/>
+        <Route path="/" component={ Newpage } exact/>
         <Route path="/auto" component= { DetailAutoPage } exact/>
         <Route path="/myAuto" component={ Autopage } exact/>
         <Route path="/addauto" component={ Addautopage } exact/>
@@ -46,6 +46,7 @@ function Routs (){
         <Route path="/addauto/documentphoto" component={ AddDocumentPhoto } exact/>
         <Route path="/auto/arenda" component= { ArendaPage } />
         <Route path="/booking" component = { BookingPage } />
+        <Route path="/cart" component = { BookingCart } />
         </>
         )
     }

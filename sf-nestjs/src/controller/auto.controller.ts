@@ -23,6 +23,7 @@ import { AddAutoPhotoNameDto } from 'src/dto/addAutoPhotoName';
 import { AddAutoDocumentPhotoNameDto } from 'src/dto/addAutoPhotoDocumentName.dto';
 import { ArendaDtO } from 'src/dto/arenda.dto';
 import { AutoDataDto } from 'src/dto/autoData.dto';
+import { BookingDto } from 'src/dto/booking.dto';
 
 const configAutoPhoto = {
   storage: diskStorage({
@@ -124,8 +125,5 @@ export class AutoController {
     return this.autoService.createArenda(addArenda);
   }
 
-  /*@Post('filter/aa')
-  filterAuto(@Body() AutoData: AutoDataDto) {
-    return this.autoService.filterAuto(AutoData);
-  }*/
+  
 }

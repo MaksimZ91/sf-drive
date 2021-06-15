@@ -1,8 +1,33 @@
-.booking_cart{
-    width: 1026px;
-    margin: 0 auto;    
-    &_info{
-        margin-bottom: 60px;
+.booking_cart{  
+    position: relative; 
+    &.active{
+      background-color: #E5E5E5;
+    }
+    &_back{
+      cursor: pointer; 
+      width: 71.3vw;  
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin:0 auto;
+      padding-top: 157px;
+      &_arrow{
+          margin-right: 14px;        
+      }
+      &_text{
+          margin:0;
+          padding: 0;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 147.3%;
+          color: #508E87;
+      }
+  }    
+    &_info{        
+        margin: 60px auto 0 auto;  
+        width: 1026px;
         position: relative;
         >h1{
             text-align: left;
@@ -115,7 +140,8 @@
         } 
     }
     &_dopOptions{
-        margin-bottom:178px;
+        width: 1026px;
+        margin: 0 auto 178px auto;
         >p{
             font-family: Roboto;
             font-style: normal;
@@ -251,11 +277,86 @@
             &_wrapper:nth-child(5){
               margin-bottom: 0;
             }
-          } 
-    }
-    
-}
-
+          }
+        }
+        &_qustions{
+          background-color:#E5E5E5;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 504px;    
+          background: #FFFFFF;
+          border-radius: 10px;
+          z-index: 1;
+          top:50%;
+          left: 50%;
+          position: fixed;  
+          transform: translate(-50%, -50%);
+          >img:first-child{
+            align-self: flex-end;
+            margin-top: 2.7vh;
+            margin-right: 25px;
+            margin-bottom: 0;
+          }
+          >img{
+            margin-top: 22px;
+            margin-bottom: 38px;
+          }
+          &_titel{
+            margin: 0 0 10px 0;
+            font-family: Roboto bold;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 32px;
+            line-height: 120%;
+            text-align: center;
+            color: #1B1B1B;
+          }
+          &_text{
+            margin: 0 0 44px 0;
+            width: 324px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            text-align: center;
+            color: #1B1B1B;
+          }
+          &_wrapper{
+            margin-bottom:61px;
+            display: flex;
+            width: 319px;
+            align-items: center;
+            justify-content: space-between;
+            >button:nth-child(2){
+              background: rgba(97, 161, 153, 0.15);
+              color: #61A199;
+              text-align: center;
+              width: 144px;
+            }
+            >button{
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              padding: 16px 40px;
+              width: 165px;
+              height: 51px;
+              background: #61A199;
+              border-radius: 6px;
+              font-family: Roboto;
+              font-style: normal;
+              font-weight: 500;
+              font-size: 16px;
+              line-height: 19px;
+              text-align: center;
+              color: #FFFFFF;
+              border-style: none; 
+            }
+          }
+        }
+      }
 .booking_cart_delete{
     margin-top: 80px;
     height: 84px;
@@ -280,3 +381,4 @@
       text-align: center;
     }   
 }
+

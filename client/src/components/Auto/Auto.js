@@ -34,7 +34,7 @@ function Auto (props){
                     </div>
                </div>}
                {props.date?<div>
-                   <div className='myAuto_auto_wrapper_tech_motor'>
+                   <div className='myAuto_auto_wrapper_date'>
                         <img src='../src/img/date_arenda.svg'/>
                         <p>{fixDate(new Date(props.date.startDay))}-{fixDate(new Date(props.date.endDay))}</p>
                     </div>

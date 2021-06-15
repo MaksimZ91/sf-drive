@@ -1,32 +1,38 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { filterArenda } from '../../../js/utils'
 import Auto from '../../Auto/Auto'
+import './BookingList.scss'
 
 
 function BookingList (props) {
 const history = props.value.userArendaHistory
 const data = filterArenda(history)
-console.log(data.active)
-
-
-console.log(data.active[0].startDay)
-
 
   return(
-    <>
-    <h1>Бронирования</h1>    
-    <div>
-      <p>Актуальные</p> 
-      {data.active.map(e=>
-      <Auto value={e.auto} hidden={true} cost={e.cost} date={ {startDay:e.startDay, endDay:e.endDay} }/>
-      )}     
-    </div>
-    <div>
-      <p>В архиве</p>
-      {data.arhive.map(e=>
-       <Auto value={e.auto} hidden={true} cost={e.cost} date={false} date={ {startDay:e.startDay, endDay:e.endDay} }/>
-      )}
-    </div>
+    <>    
+    <main className='booking_list'>
+      <h1 className='booking_list_titel'>Бронирования</h1>
+      <div className='booking_list_activeList'>
+        <p>Актуальные</p>
+        {data.active.map(e=>
+        <Auto value={e.auto}
+              hidden={true}
+              cost={e.cost}
+              date={ {startDay:e.startDay, endDay:e.endDay}
+            }/>
+            )}
+      </div>
+      <div className='booking_list_arhiveList'>
+        <p>В архиве</p>
+        {data.arhive.map(e=>
+        <Auto value={e.auto}
+             hidden={true}
+             cost={e.cost}
+             date={ {startDay:e.startDay, endDay:e.endDay}
+             }/>
+             )}
+      </div>
+      </main>
     </>    
   )
 }

@@ -93,6 +93,23 @@
                 line-height: 21px;
                 color: #1B1B1B;
             }
+            &_date{
+                display: flex;
+                margin-right: 29px;                    
+                >img{
+                    margin-right: 11px;
+                }
+                >p{
+                    margin: 14px 0 14px 9px ;
+                    font-family: Roboto;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 14px;
+                    line-height: 16px;
+                    color: #8D8B99;
+                    
+                }
+            }
         }        
     }
 }

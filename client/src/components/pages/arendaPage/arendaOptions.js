@@ -22,7 +22,8 @@ function Arendaoptions (){
       name:'babyChair',
       className: nameClass,
       state:addAutoOptions.options,
-      addOptions:addArendaOptions
+      addOptions:addArendaOptions,
+      checked:true
     }
     
     const optionDeliveryAuto = {
@@ -32,7 +33,8 @@ function Arendaoptions (){
       name:'deliveryAuto',
       className: nameClass,
       state:addAutoOptions.options,
-      addOptions:addArendaOptions
+      addOptions:addArendaOptions,
+      checked:true
     }
     
     const optionClose = {
@@ -42,7 +44,8 @@ function Arendaoptions (){
       name:'close',
       className: nameClass,
       state:addAutoOptions.options,
-      addOptions:addArendaOptions
+      addOptions:addArendaOptions,
+      checked:true
     }
     
     const optionFullTank = {
@@ -52,7 +55,8 @@ function Arendaoptions (){
       name:'fullTank',
       className: nameClass,
       state:addAutoOptions.options,
-      addOptions:addArendaOptions
+      addOptions:addArendaOptions,
+      checked:true
     }
     
     return(

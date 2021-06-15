@@ -8,7 +8,7 @@ function Option (props){
     const handleChange = e => {
         const name = e.target.name
         const data = e.target.checked
-        dispatch(props.settings. addOptions(props.settings.state, name, data))
+        dispatch(props.settings.addOptions(props.settings.state, name, data))
     }
      
 
@@ -21,10 +21,10 @@ function Option (props){
                 </div>
                 <div className={`${props.settings.className}_wrapper_price`}>
                     <p>{props.settings.cost}₽</p>      
-                    <label className={`${props.settings.className}_wrapper_price_switch`}>
+                    {props.settings.checked?<label className={`${props.settings.className}_wrapper_price_switch`}>
                         <input className={`${props.settings.className}_wrapper_price_switch_checkbox`} type="checkbox" name={props.settings.name}  onChange={handleChange}/>
                         <span className={`${props.settings.className}_wrapper_price_switch_slider`}/>
-                    </label> 
+                    </label>:''}
                 </div>     
             </div>
         </>

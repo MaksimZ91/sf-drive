@@ -19,7 +19,8 @@ const optionBabyChait = {
   name:'babyChair',
   state:addAutoOptions,
   addOptions:addDopAutoOptionsForm,
-  className: nameClass
+  className: nameClass,
+  checked:true
 }
 
 const optionDeliveryAuto = {
@@ -29,7 +30,8 @@ const optionDeliveryAuto = {
   name:'deliveryAuto',
   state:addAutoOptions,
   addOptions:addDopAutoOptionsForm,
-  className: nameClass
+  className: nameClass,
+  checked:true
 }
 
 const optionClose = {
@@ -39,7 +41,8 @@ const optionClose = {
   name:'close',
   state:addAutoOptions,
   addOptions:addDopAutoOptionsForm,
-  className: nameClass
+  className: nameClass,
+  checked:true
 }
 
 const optionFullTank = {
@@ -49,7 +52,7 @@ const optionFullTank = {
   name:'fullTank',
   state:addAutoOptions,
   addOptions:addDopAutoOptionsForm,
-  className: nameClass
+  className: nameClass,
 }
 
   return(

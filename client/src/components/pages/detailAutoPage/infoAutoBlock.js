@@ -1,7 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import UserBlock from '../../user/user'
 
 function InfoAutoBlock (){
+
+    const userClassName='infoAutoBlock_user'
     
     const auto = useSelector((state)=>{
         return state.auto.currentAuto
@@ -27,14 +30,7 @@ function InfoAutoBlock (){
                     </div>
                 </div>
             </div>
-            <div className='infoAutoBlock_user'>
-                <div className='infoAutoBlock_user_wrapper'>
-                    <img className='infoAutoBlock_user_wrapper_img' src='../src/img/person_owner.svg'/>
-                    <p className='infoAutoBlock_user_wrapper_name'>Иван И.</p>
-                    <p className='infoAutoBlock_user_wrapper_owner'>Владелец</p>
-                    <p className='infoAutoBlock_user_wrapper_profile'><a>Посмотреть профиль</a></p>
-                </div>
-            </div>
+            <UserBlock name={userClassName}/>           
             <div className='infoAutoBlock_specification'>
                 <p>Характеристики</p>
                 <div className='infoAutoBlock_specification_elem'>

@@ -12,7 +12,7 @@ const data = filterArenda(history)
     <>    
     <main className='booking_list'>
       <h1 className='booking_list_titel'>Бронирования</h1>
-      <div className='booking_list_activeList'>
+      {!(data.active.length==0)?<div className='booking_list_activeList'>
         <p>Актуальные</p>
         {data.active.map(e=>
         <Auto value={e.auto}
@@ -21,8 +21,8 @@ const data = filterArenda(history)
               date={ {startDay:e.startDay, endDay:e.endDay}
             }/>
             )}
-      </div>
-      <div className='booking_list_arhiveList'>
+      </div>:''}
+      {!(data.arhive.length==0)?<div className='booking_list_arhiveList'>
         <p>В архиве</p>
         {data.arhive.map(e=>
         <Auto value={e.auto}
@@ -31,7 +31,7 @@ const data = filterArenda(history)
              date={ {startDay:e.startDay, endDay:e.endDay}
              }/>
              )}
-      </div>
+      </div>:''}
       </main>
     </>    
   )

@@ -14,13 +14,15 @@ import BookingList from './bookingList'
     FETCH_USER_ARENDA_HISTORY,
     { variables:{ userArendaInput:{ userId } } },
   );
-
-return(
-<>
-
-  {data?<BookingList value={data}/>:<NotBookingPage/>}
-
-</>
-)}
+  
+if (loading){
+  return (<NotBookingPage/>)
+}else{
+  return(
+    <>
+      {!(data.userArendaHistory.length==0)?<BookingList value={data}/>:<NotBookingPage/>}
+    </>
+    )
+}}
 
 export default BookingPage

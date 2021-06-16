@@ -81,6 +81,9 @@ type Query {
    findeArendaByID(findeArendaInput:FindeArendaInput):Arenda
    userArendaHistory(userArendaInput:UserArendaInput ):[Arenda]
    getAllAutos:[Autos]!
+}
 
+type Mutation {
+  deleteArenda(findeArendaInput:FindeArendaInput): Arenda!
 }
 

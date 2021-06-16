@@ -37,7 +37,7 @@ function BookingCart () {
     return(
         <>
         {(!loading )?<main className={!hide?'booking_cart':'booking_cart active'}>
-            {hide?<QustionsDelete close={handleHide}/>:''}
+            {hide?<QustionsDelete close={handleHide} id={arenda.id}/>:''}
             <Backarrow value={backlink} name={backName} />
             <FotoBlock/>
             <BookingInfoBlock arenda={arenda} />

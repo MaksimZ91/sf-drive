@@ -25,8 +25,15 @@ export class ArendaRepository {
     .leftJoinAndSelect('arenda.auto', 'auto')
     .where('arenda.id =:id', { id: id })
     .getOne()
-  }    
-
-
+  } 
   
+  
+  async findeAndDeleteArenda (id:string){
+    return await getRepository(Arenda)
+    .createQueryBuilder('arenda')
+    .delete()
+    .from(Arenda)
+    .where('arenda.id =:id', { id: id })
+    .execute()
+  }  
 }

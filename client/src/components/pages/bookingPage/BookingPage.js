@@ -12,7 +12,7 @@ import BookingList from './bookingList'
 
   const { loading, error, data } =  useQuery (
     FETCH_USER_ARENDA_HISTORY,
-    { variables:{ userArendaInput:{ userId } } },
+    { variables:{ userArendaInput:{ userId } }, pollInterval: 5000 },
   );
   
 if (loading){

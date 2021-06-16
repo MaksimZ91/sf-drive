@@ -121,6 +121,22 @@ query FindeArenda ($findeArendaInput:FindeArendaInput){
 }
 `
 
+export const DELETE_ARENDA = gql`
+mutation DeleteArenda ($findeArendaInput:FindeArendaInput) {
+  deleteArenda(findeArendaInput:$findeArendaInput){
+    
+    startDay
+    endDay
+    cost
+    coment
+    babyChair
+    deliveryAuto
+    close
+    fullTank 
+  }  
+}
+`
+
 export const FETCH_ALL_AUTO =gql`
 {
   getAllAutos{

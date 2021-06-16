@@ -85,3 +85,7 @@ export interface IQuery {
     userArendaHistory(userArendaInput?: UserArendaInput): Arenda[] | Promise<Arenda[]>;
     getAllAutos(): Autos[] | Promise<Autos[]>;
 }
+
+export interface IMutation {
+    deleteArenda(findeArendaInput?: FindeArendaInput): Arenda | Promise<Arenda>;
+}

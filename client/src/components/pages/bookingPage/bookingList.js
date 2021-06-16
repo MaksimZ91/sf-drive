@@ -32,7 +32,7 @@ const dispatch = useDispatch()
       {!(data.arhive.length==0)?<div className='booking_list_arhiveList'>
         <p>В архиве</p>
         {data.arhive.map(e=>
-         <NavLink to="/cart" key={e.id} onClick={()=>dispatch(fetchArendaUser(e.id))} >   
+         <NavLink to="/cart" key={e.id} onClick={()=>dispatch(fetchArendaIDUser(e.id))} >   
             <Auto value={e.auto}
                 hidden={true}
                 cost={e.cost}

@@ -1,4 +1,4 @@
-import { Resolver, Query, Args } from '@nestjs/graphql';
+import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
 import { ArendaService } from 'src/service/arenda.service';
 import { FindeArendaInput, UserArendaInput } from '../graphql';
 
@@ -7,14 +7,20 @@ export class ArendaResolver {
     constructor(private arendaService:ArendaService) {}
     
     @Query()
-    userArendaHistory(@Args('userArendaInput') userArendaInput: UserArendaInput) {     
+    async userArendaHistory(@Args('userArendaInput') userArendaInput: UserArendaInput) {     
       const { userId } = userArendaInput;    
-      return this.arendaService.userArendaHistory(userId)
+      return await this.arendaService.userArendaHistory(userId)
     }
 
     @Query()
-    findeArendaByID(@Args('findeArendaInput') findeArendaInput:FindeArendaInput){
+   async findeArendaByID(@Args('findeArendaInput') findeArendaInput:FindeArendaInput){
       const { id } = findeArendaInput;
-      return this.arendaService.findeArendaByID(id)
+      return await this.arendaService.findeArendaByID(id)
     }
+
+    @Mutation()
+   async deleteArenda(@Args('findeArendaInput') findeArendaInput:FindeArendaInput){
+    const { id } = findeArendaInput;
+    return await this.arendaService.deleteArenda(id)
+  }
 }

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import './booking.scss'
+import './scss/Booking.scss'
 import NotBookingPage from './notBokingpage'
 import {  useQuery } from '@apollo/react-hooks'
 import { FETCH_USER_ARENDA_HISTORY } from '../../../js/graphql-request'

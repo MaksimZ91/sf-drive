@@ -1,12 +1,8 @@
 import React from 'react'
 import Option from '../../options/option'
-import { useSelector } from 'react-redux'
 
-
-function BookingDopOptions () {
-  const arenda = useSelector((state)=>{
-    return state.arenda.arendaUser
-}) 
+function BookingDopOptions (props) {
+  const arenda = props.arenda
 
 
     const nameClass = 'booking_cart_dopOptions_options'

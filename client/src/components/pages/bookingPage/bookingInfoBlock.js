@@ -1,14 +1,11 @@
 import React from 'react'
 import UserBlock from '../../user/user'
-import { useSelector } from 'react-redux'
 import { fixDate } from '../../../js/fixday'
 
 
 function BookingInfoBlock (props){
     const userClassName='booking_cart_info_user'
-    const arenda = useSelector((state)=>{
-        return state.arenda.arendaUser
-    }) 
+    const arenda = props.arenda
 
  
     

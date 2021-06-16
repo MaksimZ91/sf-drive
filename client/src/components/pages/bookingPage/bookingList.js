@@ -1,25 +1,16 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { filterArenda } from '../../../js/utils'
 import { NavLink } from 'react-router-dom'
 import Auto from '../../Auto/Auto'
-import './BookingList.scss'
-import { useLazyQuery } from '@apollo/client'
-import { FETCH_ARENDA } from '../../../js/graphql-request'
+import './scss/BookingList.scss'
 import { useDispatch } from 'react-redux'
-import { fetchArendaUser } from '../../../../redux/actions/actions'
+import { fetchArendaIDUser } from '../../../../redux/actions/actions'
 
 
 function BookingList (props) {
 const history = props.value.userArendaHistory
-const [asd, setAsd]=useState(false)
 const data = filterArenda(history)
 const dispatch = useDispatch()
-const [isLoadingMore, setIsLoadingMore] = useState(false);
-
-
-
-const [getArenda, { data:{findeArendaByID:arenda}={} }] = useLazyQuery(FETCH_ARENDA)  
-
 
 
   return(
@@ -29,7 +20,7 @@ const [getArenda, { data:{findeArendaByID:arenda}={} }] = useLazyQuery(FETCH_ARE
       {!(data.active.length==0)?<div className='booking_list_activeList'>
         <p>Актуальные</p>
         {data.active.map(e=>
-          <NavLink to="/cart" key={e.id} onClick={()=>dispatch(fetchArendaUser(e.id))} >        
+          <NavLink to="/cart" key={e.id} onClick={()=>dispatch(fetchArendaIDUser(e.id))} >        
             <Auto value={e.auto}
                 hidden={true}
                 cost={e.cost}
@@ -49,8 +40,7 @@ const [getArenda, { data:{findeArendaByID:arenda}={} }] = useLazyQuery(FETCH_ARE
                 />
           </NavLink>          
              )}
-      </div>:''}
-    
+      </div>:''}    
       </main>      
     </>    
   )

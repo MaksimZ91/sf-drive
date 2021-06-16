@@ -2,7 +2,7 @@ import { fetchHttp } from '../../src/js/fetch'
 import { FETCH_AUTO_ALL, FETCH_AUTO_LIST, FETCH_AUTO, ADD_END_DATE, ADD_START_DATE,ADD_AUTO_PHOTO_NAME,
      ADD_AUTO, ADD_AUTO_OPTIONS, ADD_AUTO_PHOTO, SHOW_LOADER, HIDE_LOADER, DELETE_PHOTO, ADD_AUTO_NEW_AUTO_ID,
      ADD_AUTO_DOCUMENT_PHOTO, ADD_DOCUMENT_PHOTO_NAME, DELETE_PHOTO_DOCUMENT, FILTER_AUTO,  ADD_AUTO_DOP_OPTIONS,
-     ADD_ARENDA, ADD_ARENDA_OPTIONS, ADD_ARENDA_USER } from '../type'
+     ADD_ARENDA, ADD_ARENDA_OPTIONS, ADD_ARENDA_ID_USER } from '../type'
 const TOKENS_KYES='tokens'
 
 
@@ -14,11 +14,8 @@ export function fetchAutoList (){
     }    
 }
 
-export  function fetchArendaUser (id){   
-    return async dispatch => {        
-        const data = await fetchHttp('http://localhost:5000/arenda/booking','post', {id})           
-        dispatch({type:ADD_ARENDA_USER, payload:data})
-    }
+export  function fetchArendaIDUser (id){             
+    return {type:ADD_ARENDA_ID_USER, payload:id} 
 }
 
 export function fetchAutoListAll (){    

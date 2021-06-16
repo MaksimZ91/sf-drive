@@ -12,9 +12,9 @@ export class ArendaResolver {
       return this.arendaService.userArendaHistory(userId)
     }
 
-    /*@Query()
+    @Query()
     findeArendaByID(@Args('findeArendaInput') findeArendaInput:FindeArendaInput){
       const { id } = findeArendaInput;
-      return this.arendaService.findeArendaByiD(id)
-    }*/
+      return this.arendaService.findeArendaByID(id)
+    }
 }

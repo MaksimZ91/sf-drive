@@ -2,11 +2,14 @@ import React, { useState } from 'react'
 import Backarrow from '../../backarrow/backArrow'
 import FotoBlock from '../detailAutoPage/fotoBlock'
 import BookingInfoBlock from './bookingInfoBlock'
-import './BookingCart.scss'
+import './scss/BookingCart.scss'
 import BookingDopOptions from './bookingDopOptions'
 import Continuestep from '../../continueStep/continuestep'
 import QustionsDelete from './qustionsDelete'
 import { useSelector } from 'react-redux'
+import { useQuery } from '@apollo/react-hooks'
+import { FETCH_ARENDA } from '../../../js/graphql-request'
+
 
 
 
@@ -20,20 +23,25 @@ function BookingCart () {
     const handleHide = () =>{
         setHide(!hide)
     }
-    const arenda = useSelector((state)=>{
-        return state.arenda.arendaUser
-    }) 
-   
+    const id = useSelector((state)=>{
+        return state.arenda.arendaIDUser
+    })   
+
+    const { loading, error, data:{findeArendaByID:arenda}={}  } =  useQuery (
+        FETCH_ARENDA,
+        { variables:{ findeArendaInput:{ id } } },
+      );
+      
 
 
     return(
         <>
-        {!(Object.keys(arenda).length==0)?<main className={!hide?'booking_cart':'booking_cart active'}>
+        {(!loading )?<main className={!hide?'booking_cart':'booking_cart active'}>
             {hide?<QustionsDelete close={handleHide}/>:''}
-            <Backarrow value={backlink} name={backName}/>
+            <Backarrow value={backlink} name={backName} />
             <FotoBlock/>
-            <BookingInfoBlock />
-            <BookingDopOptions />
+            <BookingInfoBlock arenda={arenda} />
+            <BookingDopOptions arenda={arenda} />
             <Continuestep  validation={false} titel={continueTitel} nameClass={nameClass} nextStep={handleHide}/>     
         </main>:''}
         
@@ -41,6 +49,6 @@ function BookingCart () {
         </>
     )
 }
-//nextStep={authorRequest}
+
 
 export  default BookingCart

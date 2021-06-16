@@ -1,22 +1,28 @@
 import { useMutation } from '@apollo/client'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Redirect } from 'react-router-dom'
 import { DELETE_ARENDA } from '../../../js/graphql-request'
 
 function QustionsDelete (props){
-
-    const [deleteArenda, {data} ] = useMutation(DELETE_ARENDA, {
+  
+    const [deleteArenda, {loading, error, data} ] = useMutation(DELETE_ARENDA, {
         variables:{
-            findeArendaInput:{id:props.id}
+            findeArendaInput:{id:'44'}
         }
     })
 
 
-    const onSubmit = (e) =>{
-        //e.preventDefault()
-        deleteArenda()
-        props.close()   
+    const onSubmit = async () =>{
+        try {
+            await deleteArenda()
+        }catch(error){            
+            props.close()
+            throw new Error(error)
+        }
      }
+
+
+
 
     return(
         <>
@@ -28,10 +34,10 @@ function QustionsDelete (props){
             на эти же даты.</p>
             <div className='booking_cart_qustions_wrapper'>
                 <button onClick={props.close}>Не удалять</button>
-                <button onClick={onSubmit}>Удалить</button>   
+                <button onClick={onSubmit}>Удалить</button> 
+                 {(!error&&data)?<Redirect to='/booking'/>:''}
             </div>                
-        </div>
-        {(data)?<Redirect to='/booking'/>:''}
+        </div>        
         </>
     )
 }

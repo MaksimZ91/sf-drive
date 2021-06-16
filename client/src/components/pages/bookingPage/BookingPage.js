@@ -12,11 +12,11 @@ import BookingList from './bookingList'
 
   const { loading, error, data } =  useQuery (
     FETCH_USER_ARENDA_HISTORY,
-    { variables:{ userArendaInput:{ userId } }, pollInterval: 5000 },
+    { variables:{ userArendaInput:{ userId } }, pollInterval: 5000, fetchPolicy: "cache-and-network"},
   );
   
 if (loading){
-  return (<NotBookingPage/>)
+  return (<>""</>)
 }else{
   return(
     <>

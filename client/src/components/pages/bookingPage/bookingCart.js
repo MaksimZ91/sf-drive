@@ -29,7 +29,8 @@ function BookingCart () {
 
     const { loading, error, data:{findeArendaByID:arenda}={}  } =  useQuery (
         FETCH_ARENDA,
-        { variables:{ findeArendaInput:{ id } } },
+        { variables:{ findeArendaInput:{ id } } },             
+          
       );
       
 

@@ -1,13 +1,16 @@
 import { useMutation } from '@apollo/client'
 import React, {useEffect, useState} from 'react'
+import { useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { showAlert } from '../../../../redux/actions/actions'
 import { DELETE_ARENDA } from '../../../js/graphql-request'
 
 function QustionsDelete (props){
+    const dispatch = useDispatch()
   
     const [deleteArenda, {loading, error, data} ] = useMutation(DELETE_ARENDA, {
         variables:{
-            findeArendaInput:{id:'44'}
+            findeArendaInput:{id:props.id}
         }
     })
 
@@ -15,8 +18,10 @@ function QustionsDelete (props){
     const onSubmit = async () =>{
         try {
             await deleteArenda()
+            dispatch(showAlert('Бронирование удалено'))
         }catch(error){            
             props.close()
+            dispatch(showAlert('Не удалось отменить бронирование. Попробуйте ещё раз'))
             throw new Error(error)
         }
      }

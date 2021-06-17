@@ -1,13 +1,13 @@
 import React from 'react'
 
 
-function Error ({text}){
+function Sucses ({text}){
     return(
         <>
-        <div className='error'>
+        <div className='sucses'>
             <p>{text}</p>
         </div>
         </>
     )
 }
-export default Error
+export default Sucses

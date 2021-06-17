@@ -2,8 +2,9 @@ import React from 'react'
 import { filterArenda } from '../../../js/utils'
 import { NavLink } from 'react-router-dom'
 import Auto from '../../Auto/Auto'
+import Sucses from '../../sucses/sucses'
 import './scss/BookingList.scss'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { fetchArendaIDUser } from '../../../../redux/actions/actions'
 
 
@@ -11,10 +12,14 @@ function BookingList (props) {
 const history = props.value.userArendaHistory
 const data = filterArenda(history)
 const dispatch = useDispatch()
+const alert = useSelector((state)=>{
+  return state.app.alert
+})
 
 
   return(
-    <>    
+    <>
+    {alert?<Sucses text={alert}/>:''}   
     <main className='booking_list'> 
       <h1 className='booking_list_titel'>Бронирования</h1>
       {!(data.active.length==0)?<div className='booking_list_activeList'>

@@ -16,6 +16,8 @@ import Confirmation from "./pages/addAuto/confirmation";
 import ArendaPage from "./pages/arendaPage/arendaPage";
 import BookingPage from "./pages/bookingPage/BookingPage";
 import BookingCart from "./pages/bookingPage/bookingCart";
+import Chat from "./pages/chat/chatPage";
+import UserChat from "./pages/chat/userChat";
 
 
 
@@ -36,7 +38,7 @@ function Routs (){
       
         return(
         <>           
-        <Route path="/" component={ Newpage } exact/>
+        <Route path="/" component={ UserChat } exact/>
         <Route path="/auto" component= { DetailAutoPage } exact/>
         <Route path="/myAuto" component={ Autopage } exact/>
         <Route path="/addauto" component={ Addautopage } exact/>
@@ -47,6 +49,8 @@ function Routs (){
         <Route path="/auto/arenda" component= { ArendaPage } />
         <Route path="/booking" component = { BookingPage } />
         <Route path="/cart" component = { BookingCart } />
+        <Route path='/chat' component = { Chat } /> 
+        <Route path='/user/chat' component = { UserChat } /> 
         </>
         )
     }

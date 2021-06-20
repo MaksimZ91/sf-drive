@@ -1,0 +1,46 @@
+.user_chat{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 110px;  
+  &_user{
+    display: flex;
+    align-items: center;
+    width: 1034px;
+    >p{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 147.3%;
+      text-align: center;
+      color: #1B1B1B;
+    }
+    &_back{
+      cursor: pointer;       
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin-right: 406px;          
+      &_arrow{
+        margin-right: 14px;        
+      }
+      &_text{
+          margin:0;
+          padding: 0;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 147.3%;
+          color: #508E87;
+      }
+    }  
+  }
+  &_chatWindow{
+    background-color: red;
+    height: 100vh;
+    width: 688px;
+  }
+}

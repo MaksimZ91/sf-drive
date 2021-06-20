@@ -12,14 +12,10 @@ import BookingList from './bookingList'
 
   const { loading, error, data } =  useQuery (
     FETCH_USER_ARENDA_HISTORY,
-<<<<<<< HEAD
-    { variables:{ userArendaInput:{ userId } }, fetchPolicy: "cache-and-network"}
-=======
     { variables:{ userArendaInput:{ userId } }, pollInterval: 1000, fetchPolicy: "cache-and-network"},
->>>>>>> 098965e1b14756041fdf18c58854387f2fd09f00
   );
   
-if (loading){
+if (!data&&loading){
   return (<>""</>)
 }else{
   return(

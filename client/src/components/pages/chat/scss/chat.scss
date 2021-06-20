@@ -1,0 +1,61 @@
+.chat{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 150px;
+  >h1{
+    margin: 0 0 60px 0;
+  }
+  &_list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    >a{
+      text-decoration: none;
+    }
+    &_perosn{
+      width: 678px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 15px 0;
+      &_wrapper{
+        display: flex;
+        align-self: center;
+        >img{
+          margin-right: 20px;
+        }
+        &_user{
+          display: flex;
+          justify-content: center;
+          align-items: left;
+          flex-direction: column;
+          &_name{
+            display: flex;
+            margin-bottom: 2.5px;            
+            >p{
+              margin:0 11px 0 0;
+              font-family: Roboto bold;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 18px;
+              line-height: 21px;
+              color: #1B1B1B;                       
+            }
+          }
+          &_auto{            
+            margin:2.5px 0 0 0;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #828282;
+          }
+        }        
+      }
+    }   
+  }
+}

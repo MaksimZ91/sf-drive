@@ -42,7 +42,6 @@ function Auto (props){
                {!props.cost?<p className='myAuto_auto_wrapper_price'>{props.value.price} ₽ в сутки</p>:
                <p className='myAuto_auto_wrapper_price'>{props.cost} ₽</p>}
            </div>
-
        </div>
     )
 }

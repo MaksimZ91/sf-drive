@@ -15,11 +15,6 @@ function Auto (props){
     },[])
 
     
-
-/*`*/
-// 
-
-    
     return(
         <>
         <div className='list_wrapper_auto'>

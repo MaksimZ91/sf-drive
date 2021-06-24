@@ -15,6 +15,8 @@ const backLink = '/chat'
         <p>Иван И.</p>
       </div>
       <div className='user_chat_chatWindow'>
+        <Message />   
+        <Message />   
         <Message />                
       </div>
       <form className='user_chat_form'>

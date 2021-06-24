@@ -7,7 +7,7 @@ function Message (props){
         <div className='user_chat_chatWindow_message'>
             <img className='user_chat_chatWindow_message_img' />
             <div className='user_chat_chatWindow_message_wrapper'>            
-                <p className='user_chat_chatWindow_message_wrapper_text'>Планирую посетить Санкт-Петербург, покататься по городу, съездить в Выборг и Петергоф.</p>
+                <span className='user_chat_chatWindow_message_wrapper_text'>Планирую посетить Санкт-Петербург, покататься по городу, съездить в Выборг и Петергоф.</span>
             <div className='user_chat_chatWindow_message_wrapper_date'>12:33</div>
             </div>           
         </div>

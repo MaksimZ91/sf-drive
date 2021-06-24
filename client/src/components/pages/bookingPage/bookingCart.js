@@ -29,9 +29,8 @@ function BookingCart () {
     })
     const id = useSelector((state)=>{
         return state.arenda.arendaIDUser
-    })
-    const errorText= 'Не удалось отменить бронирование. Попробуйте ещё раз'   
-
+    })  
+ 
     const { loading, error, data:{findeArendaByID:arenda}={}  } =  useQuery (
         FETCH_ARENDA,
         { variables:{ findeArendaInput:{ id } } },             

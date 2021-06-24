@@ -10,7 +10,7 @@ function QustionsDelete (props){
   
     const [deleteArenda, {loading, error, data} ] = useMutation(DELETE_ARENDA, {
         variables:{
-            findeArendaInput:{id:props.id}
+            findeArendaInput:{id:props}
         }
     })
 

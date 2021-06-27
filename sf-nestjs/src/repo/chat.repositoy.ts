@@ -11,12 +11,23 @@ export class ChatRepository{
     return await repository.save(messages);
   }
 
- /* async findeAll(id: string){
-   return await getRepository(Messages)
-   .createQueryBuilder('messages')
-   .leftJoinAndSelect('auto.user', 'user')
-   .where('auto.id = :id', { id: id })
-   .getMany()
-  }*/
-
+  async findeAll (user:string, selectUser:string){
+    const repository = getRepository(MessagesEntity)
+    return await repository.find({
+      relations: ['user', 'toUser'],
+      where: [
+        {
+          ['user']: user,
+          ['toUser']: selectUser,
+        },
+        {
+          ['user']: selectUser,
+          ['toUser']: user,
+        },
+      ],
+      order: {
+        createdAt: 'DESC',
+      },
+    })
+  }
 }

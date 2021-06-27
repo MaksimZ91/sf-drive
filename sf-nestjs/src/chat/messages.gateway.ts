@@ -1,4 +1,4 @@
-import { OnGatewayDisconnect, SubscribeMessage, WebSocketGateway, WsResponse } from '@nestjs/websockets';
+import { OnGatewayDisconnect, SubscribeMessage, WebSocketGateway, WsResponse} from '@nestjs/websockets';
 import { Socket } from 'socket.io';
 import * as jwt from 'jsonwebtoken'
 import { ChatService } from 'src/service/chat.service';
@@ -42,9 +42,8 @@ export class MessagesGateway implements OnGatewayDisconnect {
   handleMessage(
     socket: Socket,
     payload: {accessToken:string},
-    ):Promise<WsResponse<{ success:boolean; message?:string }>>{    
+    ){    
     try {
-
       const {id, exp } = jwt.verify(
         payload?.accessToken,
         'AccessSecret'

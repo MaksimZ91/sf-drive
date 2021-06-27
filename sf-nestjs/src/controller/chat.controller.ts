@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Req, UseGuards, Body } from '@nestjs/common';
+import { Controller, Get, Post, Req, UseGuards, Body, Query } from '@nestjs/common';
 import { ChatService } from '../service/chat.service';
 import { JwtAuthGuard } from '../guard/autn.guard';
 import { CreateMessageDto } from 'src/dto/createMessge.dto';
+
 
 
 @Controller('chat')
@@ -17,5 +18,19 @@ export class ChatController {
   this.chatService.push(message)
    //return await this.chatService.create(user, createMessageDto)
    return message 
+  }
+
+
+  @UseGuards(JwtAuthGuard)
+  @Get('findeMessage')
+  public async findeAllMessges(
+    @Req() req:any,
+    @Query('selectedUser')
+    selectUser:string
+     ){
+       const user = req.user.id
+
+       return this.chatService.findeAll(user,selectUser )
+
   }
 }

@@ -74,7 +74,7 @@ export class Autos {
   @Column()
   number: string;
 
-  @Column()
+  @Column({ select: false })
   vin: string;
 
   @Column()
@@ -92,7 +92,7 @@ export class Autos {
   @Column()
   mileage: string;
 
-  @Column()
+  @Column({ select: false })
   pts: string;
 
   @Column()
@@ -104,10 +104,10 @@ export class Autos {
   @Column()
   priceFiveDays: string;
 
-  @Column()
+  @Column({ select: false })
   osago: string;
 
-  @Column()
+  @Column({ select: false })
   kasko: string;
 
   @Column()
@@ -119,7 +119,7 @@ export class Autos {
   @Column()
   body: string;
 
-  @Column()
+  @Column({ select: false })
   sts: string;
 
   @Column()

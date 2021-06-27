@@ -39,7 +39,7 @@ export class Users {
   @Column()
   email: string;
 
-  @Column()
+  @Column({ select: false })
   password: string;
 
   @Column()
@@ -48,25 +48,25 @@ export class Users {
   @Column()
   date: string;
 
-  @Column()
+  @Column({ select: false })
   number: string;
 
-  @Column()
+  @Column({ select: false })
   passDate: string;
 
-  @Column()
+  @Column({ select: false })
   about: string;
 
-  @Column()
+  @Column({ select: false })
   cod: string;
 
-  @Column()
+  @Column({ select: false })
   numberLicense: string;
 
-  @Column()
+  @Column({ select: false })
   dateLicense: string;
 
-  @Column()
+  @Column({ select: false })
   refToken: string;
 
   @OneToMany(() => Autos, (autos) => autos.user, {

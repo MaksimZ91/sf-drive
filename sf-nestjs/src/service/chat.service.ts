@@ -17,9 +17,9 @@ export class ChatService {
     this.push= sender
   }  
 
- /* async findeAll(id:string){
-    return await this.chatRepository.findeAll(id)
-  }*/
+  async findeAll(user:string , selectUser:string){
+    return await this.chatRepository.findeAll(user,selectUser)
+  }
 
   async create(user:any,createMessageDto:CreateMessageDto, ){   
     const toUser = await this.userRepository.FindOneByID( createMessageDto.toUserId);

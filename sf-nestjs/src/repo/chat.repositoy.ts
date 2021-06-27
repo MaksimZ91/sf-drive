@@ -1,13 +1,13 @@
 import { Injectable } from "@nestjs/common"
-import { Messages } from "../entites/messages.entity";
+import { MessagesEntity } from "../entites/messages.entity";
 import { getRepository } from "typeorm"
 
 
 
 Injectable()
 export class ChatRepository{
-  async SaveMessage(messages:Messages) {   
-    const repository = getRepository(Messages);
+  async SaveMessage(messages:MessagesEntity) {   
+    const repository = getRepository(MessagesEntity);
     return await repository.save(messages);
   }
 

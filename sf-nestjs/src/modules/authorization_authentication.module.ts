@@ -11,8 +11,8 @@ import { ChatRepository } from 'src/repo/chat.repositoy';
 
 
 
+
 @Module({
-  imports: [],
   controllers: [AutrozationAuthenController],
   providers: [
     AuthorizationAuthenService,

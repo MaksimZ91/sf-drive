@@ -2,8 +2,8 @@ import { Column, Entity,  ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Users } from "./users.entity";
 
 
-Entity()
-export class Messages{
+@Entity()
+export class MessagesEntity{
   constructor (body:string){
     this.body = body
   }
@@ -13,10 +13,10 @@ export class Messages{
   @Column()
   body:string;
 
-  @Column()
-  createdAt:number = Date.now();
+  @Column({ type:'bigint', update: false })
+  createdAt: number = Date.now()
 
-  @ManyToOne(()=>Users)
+  @ManyToOne(()=>Users, (user) => user.messages)
   user:Users
 
   @ManyToOne(()=>Users)

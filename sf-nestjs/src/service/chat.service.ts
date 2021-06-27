@@ -1,14 +1,21 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateMessageDto } from 'src/dto/createMessge.dto';
-import { Messages } from 'src/entites/messages.entity';
+import { MessagesEntity } from 'src/entites/messages.entity';
 import { UserRepository } from 'src/repo/user.repository';
 import { ChatRepository } from '../repo/chat.repositoy';
 
+
 @Injectable()
 export class ChatService {
+  public push:(message:MessagesEntity)=> void
   constructor (private readonly chatRepository:ChatRepository,
               private readonly userRepository:UserRepository
     ){}
+
+
+  public attachSendler(sender:(message:MessagesEntity)=> void){
+    this.push= sender
+  }  
 
  /* async findeAll(id:string){
     return await this.chatRepository.findeAll(id)
@@ -23,11 +30,10 @@ export class ChatService {
       );
     }  
     try {
-      const newMessage = new Messages (createMessageDto.body)
+      const newMessage = new MessagesEntity(createMessageDto.body)
       newMessage.user=user
-      newMessage.toUser=toUser      
+      newMessage.toUser=toUser 
       return await this.chatRepository.SaveMessage(newMessage);
-      
     } catch (error) {
       switch (error.code) {
         case 'SQLITE_CONSTRAINT':

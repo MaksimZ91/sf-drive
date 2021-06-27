@@ -1,7 +1,7 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Arenda } from './arenda.entity';
 import { Autos } from './auto.entity';
-import { Messages } from './messages.entity';
+import { MessagesEntity } from './messages.entity';
 
 
 @Entity()
@@ -73,6 +73,9 @@ export class Users {
     cascade: true,
   })
   autos: Autos[];
+
+  @OneToMany(()=>MessagesEntity, (messages) => messages.user)
+  messages:MessagesEntity[]
 
   @OneToMany(() => Arenda, (arenda) => arenda.user)
   arenda: Arenda[];

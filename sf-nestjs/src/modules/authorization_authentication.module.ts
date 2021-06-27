@@ -5,6 +5,9 @@ import { UserRepository } from '../repo/user.repository';
 import { TestGuardSevice } from '../service/testGuard.service';
 import { JwtStrategy } from '../guard/jwt-strategy';
 import { JwtAuthGuard } from '../guard/autn.guard';
+import { AuthService } from 'src/service/auth.service';
+import { UserSevice } from 'src/service/user.service';
+import { ChatRepository } from 'src/repo/chat.repositoy';
 
 
 
@@ -16,7 +19,10 @@ import { JwtAuthGuard } from '../guard/autn.guard';
     TestGuardSevice,
     JwtStrategy,
     JwtAuthGuard,
-    UserRepository,   
+    UserRepository,
+    AuthService,
+    UserSevice,
+    ChatRepository
   ],
 })
 export class AuthorizationModul {}

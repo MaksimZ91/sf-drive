@@ -1,6 +1,8 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Arenda } from './arenda.entity';
 import { Autos } from './auto.entity';
+import { Messages } from './messages.entity';
+
 
 @Entity()
 export class Users {

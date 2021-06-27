@@ -15,7 +15,7 @@ function Addautophoto (){
     const [error, setError]=useState(null)
     const [data, setData]=useState(null) 
     const [valid, setValid]=useState(true)
-    const {request} = useHttp()
+    const { request } = useHttp()
     const addAutoPhoto = useSelector((state)=>{
       return state.newAuto.autoPhoto
   })

@@ -9,6 +9,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { DateScalar } from './DateScalar';
 import { ArendaModule } from './modules/arenda.module';
+import { ChatModule } from './modules/chat.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ArendaModule } from './modules/arenda.module';
     ArendaModule,
     RegistrModul,
     AutoModule,
+    ChatModule,
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
         name: 'default',
@@ -42,6 +44,7 @@ import { ArendaModule } from './modules/arenda.module';
         path: join(process.cwd(), '/src/graphql.ts'),
       },
     }),
+    ChatModule,
   ],
   controllers: [],
   providers: [DateScalar],

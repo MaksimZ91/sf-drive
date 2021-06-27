@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Arenda } from 'src/entites/arenda.entity';
-import { Between, getRepository, Like, Not } from 'typeorm';
+import { getRepository } from 'typeorm';
 
 Injectable();
 export class ArendaRepository {

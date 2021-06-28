@@ -5,11 +5,9 @@ const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
 
  module.exports = {
-   entry:{
-     about:"./index.js",
-     },
+   entry:"./index.js",
    output:{
-     path: path.join(__dirname, "/dist"),
+     path: path.resolve(__dirname, 'dist'),
      filename: "main.js"
    },
    module: {

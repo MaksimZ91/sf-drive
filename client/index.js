@@ -27,7 +27,10 @@ import { rootReducer } from "./redux/root.Reducer";
 
 const store = createStore(rootReducer, compose(
     applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__
+    ? window.__REDUX_DEVTOOLS_EXTENSION__()
+    : f => f
+    
 ))
 const app = (<Provider store={store}><App/></Provider>)
 

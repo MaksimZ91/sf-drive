@@ -2,13 +2,13 @@
   "name": "sf-drive",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --mode development --open",
-    "build": "webpack  --mode production"
+    "build": "webpack  --mode development"
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "",
   "keywords": [],
   "author": "",
   "license": "ISC",

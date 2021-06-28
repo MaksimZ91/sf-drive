@@ -22,7 +22,7 @@ import { ChatRepository } from 'src/repo/chat.repositoy';
     UserRepository,
     AuthService,
     UserSevice,
-    ChatRepository
+    ChatRepository    
   ],
 })
 export class AuthorizationModul {}

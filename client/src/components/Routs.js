@@ -34,8 +34,7 @@ function Routs (){
         <Route path="/faq" component={ Faq }/>  
         </>
         )
-    }else{
-      
+    }else{      
         return(
         <>           
         <Route path="/" component={ Newpage } exact/>

@@ -26,7 +26,7 @@ export class ChatRepository{
         },
       ],
       order: {
-        createdAt: 'DESC',
+        createdAt: 'ASC',
       },
     })
   }

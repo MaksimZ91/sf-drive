@@ -1,14 +1,16 @@
 import React from 'react'
+import moment from 'moment'
 
 
 function Message (props){
+        
     return(
         <>
         <div className='user_chat_chatWindow_message'>
             <img className='user_chat_chatWindow_message_img' />
             <div className='user_chat_chatWindow_message_wrapper'>            
-                <span className='user_chat_chatWindow_message_wrapper_text'>Планирую посетить Санкт-Петербург, покататься по городу, съездить в Выборг и Петергоф.</span>
-            <div className='user_chat_chatWindow_message_wrapper_date'>12:33</div>
+                <span className='user_chat_chatWindow_message_wrapper_text'>{props.value.body}</span>
+            <div className='user_chat_chatWindow_message_wrapper_date'>{moment(+props.value.createdAt).format('HH:MM')}</div>
             </div>           
         </div>
         </>

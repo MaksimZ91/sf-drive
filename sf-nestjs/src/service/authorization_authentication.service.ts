@@ -14,7 +14,7 @@ export class AuthorizationAuthenService {
     private userRepository: UserRepository,
   ) {}
 
-  async Authorization(authorizationUser: AuthorizationUserDto) {
+  async Authorization(authorizationUser: AuthorizationUserDto) {    
     const { email, password } = authorizationUser;
     const person = await this.userRepository.FindOneByEmail(email);
 
@@ -23,7 +23,7 @@ export class AuthorizationAuthenService {
         'Пользователь c таким email не найден!',
         HttpStatus.NOT_FOUND,
       );
-    }
+    }    
 
     const isMatch = await bcrypt.compare(password, person.password);
 
@@ -33,6 +33,7 @@ export class AuthorizationAuthenService {
         HttpStatus.FORBIDDEN,
       );
     }
+    
 
     const accessToken = jwt.sign(
       { name: person.fio, userId: person.id },
@@ -46,6 +47,7 @@ export class AuthorizationAuthenService {
       { expiresIn: this.configService.get('REFRESH_TOKEN_LIFE') },
     );
 
+    
     person.refToken = refreshToken;
     this.userRepository.SaveUser(person);
 

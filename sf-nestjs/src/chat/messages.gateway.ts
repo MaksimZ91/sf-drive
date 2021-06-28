@@ -15,8 +15,7 @@ export class MessagesGateway implements OnGatewayDisconnect {
 
   constructor (private readonly chatService:ChatService){
 
-    this.chatService.attachSendler(message=>{
-      console.log(message)
+    this.chatService.attachSendler(message=>{      
       this.clientSocketMap.forEach(({id, socket})=>{
         if(
           id === message.user.id  ||
@@ -44,7 +43,7 @@ export class MessagesGateway implements OnGatewayDisconnect {
     payload: {accessToken:string},
     ){    
     try {
-      const {id, exp } = jwt.verify(
+      const { id, exp } = jwt.verify(
         payload?.accessToken,
         'AccessSecret'
       ) as {id:number; exp:number}

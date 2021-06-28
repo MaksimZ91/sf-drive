@@ -29,8 +29,6 @@ export class ChatController {
     selectUser:string
      ){
        const user = req.user.id
-
-       return this.chatService.findeAll(user,selectUser )
-
+       return this.chatService.findeAll(user,selectUser)
   }
 }

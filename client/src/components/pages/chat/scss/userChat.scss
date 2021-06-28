@@ -42,7 +42,17 @@
     height: 100vh;
     width: 688px;
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
+    &_date{
+      margin:40px auto 30px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 147.3%;
+      text-align: center;
+      color: #BDBDBD;
+    }    
     &_message{
       align-self: flex-end;
       >img{

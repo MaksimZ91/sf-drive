@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export const getCostOptions = (option)=>{
     const costOneOptions = 1000
     let sum = 0
@@ -41,3 +43,12 @@ export const filterArenda = (arendaList) =>{
     })
     return {active:activeArenda ,  arhive:arhiveArenda}
   }
+
+
+export  const getDate = (index ,day, prevDay ) =>{
+    let currentDay = moment(+day).format('L')  
+    if (index >0 && !moment(currentDay).isSame(moment(+prevDay).format('L'))){                  
+      return true
+   }
+   return false
+  }  

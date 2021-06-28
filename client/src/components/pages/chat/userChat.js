@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import Backarrow from '../../backarrow/backArrow'
-import moment from 'moment'
+import { getDate } from '../../../js/utils'
 import './scss/userChat.scss'
 import Message from './message'
 import { useHttp } from '../../../hooks/http.hook'
 
 
+
 function UserChat (){
 const { request } = useHttp()
 const [messages, setMessages]=useState([])
-const [date, setDate] = useState(Date.now())
 const backArrowClassName ='user_chat_user_back'
 const backLink = '/chat'
 
@@ -24,10 +24,8 @@ const sendMessage = async () =>{
 useEffect(async ()=>{
   const result = await request('http://localhost:5000/chat/findeMessage?selectedUser=2')
   setMessages(result)
+  
 },[])
-
-
-
 
 
 
@@ -41,8 +39,8 @@ useEffect(async ()=>{
       </div>
       <div className='user_chat_chatWindow'>   
          {messages.map((e, index)=>
-
-         <Message value={e} key={e.createdAt}/>
+           (index==0)?<Message value={e} date={true} key={e.createdAt}/>:
+           <Message value={e} date={getDate(index, e.createdAt, messages[index-1].createdAt)} key={e.createdAt}/>
         )}              
       </div>
       <form className='user_chat_form'>

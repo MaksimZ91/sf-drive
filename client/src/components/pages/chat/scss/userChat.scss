@@ -38,8 +38,7 @@
       }
     }  
   }
-  &_chatWindow{
-    height: 100vh;
+  &_chatWindow{    
     width: 688px;
     display: flex;
     flex-direction: column;
@@ -82,9 +81,8 @@
           font-size: 12px;
           line-height: 147.3%;
           text-align: right;
-          color: #B5D7D2;
-          margin-right: 20px;
-          padding-bottom: 15px;
+          color: #B5D7D2;          
+          padding: 0 20px 15px;
         }
       }
 

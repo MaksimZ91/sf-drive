@@ -7,10 +7,11 @@ import { DELETE_ARENDA } from '../../../js/graphql-request'
 
 function QustionsDelete (props){
     const dispatch = useDispatch()
+    
   
     const [deleteArenda, {loading, error, data} ] = useMutation(DELETE_ARENDA, {
         variables:{
-            findeArendaInput:{id:props}
+            findeArendaInput:{id:props.id}
         }
     })
 

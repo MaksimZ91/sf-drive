@@ -45,10 +45,8 @@ export const filterArenda = (arendaList) =>{
   }
 
 
-export  const getDate = (index ,day, prevDay ) =>{
+export  const getDate = ( day, prevDay ) =>{
     let currentDay = moment(+day).format('L')  
-    if (index >0 && !moment(currentDay).isSame(moment(+prevDay).format('L'))){                  
-      return true
-   }
+    if (!moment(currentDay).isSame(moment(+prevDay).format('L')))return true   
    return false
   }  

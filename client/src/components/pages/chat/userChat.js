@@ -13,7 +13,8 @@ const [messages, setMessages]=useState([])
 const backArrowClassName ='user_chat_user_back'
 const backLink = '/chat'
 
-const sendMessage = async () =>{
+const sendMessage = async (e) =>{
+  e.preventDefault();
   try {
     const result = await request('http://localhost:5000/chat/created','POST', {toUserId:2, body:'zxkehsbg'})
     setMessages([...messages, result])
@@ -23,8 +24,7 @@ const sendMessage = async () =>{
 
 useEffect(async ()=>{
   const result = await request('http://localhost:5000/chat/findeMessage?selectedUser=2')
-  setMessages(result)
-  
+  setMessages(result)  
 },[])
 
 
@@ -35,18 +35,18 @@ useEffect(async ()=>{
     <div className='user_chat'>
       <div className='user_chat_user'>
         <Backarrow name={backArrowClassName}  value={backLink}/>
-        <p onClick={sendMessage}>Иван И.</p>
+        <p >Иван И.</p>
       </div>
       <div className='user_chat_chatWindow'>   
          {messages.map((e, index)=>
            (index==0)?<Message value={e} date={true} key={e.createdAt}/>:
-           <Message value={e} date={getDate(index, e.createdAt, messages[index-1].createdAt)} key={e.createdAt}/>
+           <Message value={e} date={getDate(e.createdAt, messages[index-1].createdAt)} key={e.createdAt}/>
         )}              
       </div>
-      <form className='user_chat_form'>
+      <form className='user_chat_form' onSubmit={sendMessage} >
         <img className='user_chat_form_file' src='../src/img/fileIcon.svg'/>
         <input className='user_chat_form_input' type='text' name='text'/>
-        <button className='user_chat_form_button'><img className='user_chat_form_button_img' src='../src/img/buttonImg.svg' ></img></ button>
+        <button className='user_chat_form_button' type='submit'><img className='user_chat_form_button_img' src='../src/img/buttonImg.svg' ></img></button>
       </form>
     </div>
     </>

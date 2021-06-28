@@ -123,8 +123,7 @@ query FindeArenda ($findeArendaInput:FindeArendaInput){
 
 export const DELETE_ARENDA = gql`
 mutation DeleteArenda ($findeArendaInput:FindeArendaInput) {
-  deleteArenda(findeArendaInput:$findeArendaInput){
-    
+  deleteArenda(findeArendaInput:$findeArendaInput){    
     startDay
     endDay
     cost

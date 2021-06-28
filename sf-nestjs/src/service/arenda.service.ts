@@ -24,7 +24,7 @@ export class ArendaService {
         throw new NotFoundException (`Arenda ${id} not found!`)
     }   
     
-    async deleteArenda(id:string){
+    async deleteArenda(id:string){        
         const arenda = await this.arendaRepository.findeArendaDyID(id)
         if (!arenda){
             throw new NotFoundException (`Arenda ${id} not found!`) 

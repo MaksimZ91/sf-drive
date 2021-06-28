@@ -20,7 +20,7 @@ export class ArendaResolver {
 
     @Mutation()
    async deleteArenda(@Args('findeArendaInput') findeArendaInput:FindeArendaInput){
-    const { id } = findeArendaInput;
+    const { id } = findeArendaInput;   
     return await this.arendaService.deleteArenda(id)
   }
 }

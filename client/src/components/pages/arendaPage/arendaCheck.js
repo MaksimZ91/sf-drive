@@ -13,7 +13,7 @@ const [arendaCost, setArendaCost] = useState(0)
 const [arendaFullPrice, setArendaFullPrice] = useState(0)
 const SERVICE_COMMISSION = 1000
 const option = useSelector((state)=>{
-    return state.newAuto.dopOptions
+    return state.arenda.options
 }) 
 const totalCost = useSelector ((state)=>{
     return state.arenda.arendaParam
@@ -23,7 +23,7 @@ useEffect(()=>{
     setOptiosnCost((getCostOptions(option)))
     setArendaCost(getCostArenda(props.startDate, props.endDate, props.priceFiveDays,props.priceThreeDays,props.price ))  
     setArendaFullPrice(getFullPrice(props.startDate, props.endDate, props.price))
-    const total =arendaCost + optionCost + SERVICE_COMMISSION
+    const total = arendaCost + optionCost + SERVICE_COMMISSION
     dispatch(addArenda(totalCost,'cost', total))   
     },[props.startDate, props.endDate, option, arendaCost, optionCost])
 

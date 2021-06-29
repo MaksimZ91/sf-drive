@@ -7,6 +7,7 @@ import Message from './message'
 import { useHttp } from '../../../hooks/http.hook'
 import { WEBSOCKET_SERVER_URL } from '../../../js/constJS'
 import { FormContex } from '../../contextApp'
+import { useSelector } from 'react-redux'
 const TOKENS_KEY="tokens"
 
 
@@ -20,19 +21,22 @@ const backLink = '/chat'
 const handelChange = (e) =>{
   setValue(e.target.value)  
 }
+const toUserId = useSelector((state)=>{
+  return state.chat.toUserId
+})
 
 const sendMessage = async (e) =>{
   e.preventDefault();
   setValue("")
   try {
-    const result = await request('http://localhost:5000/chat/created','POST', {toUserId:2, body:value})
+    const result = await request('http://localhost:5000/chat/created','POST', {toUserId, body:value})
     setMessages([...messages, result])
   } catch (e) {  
   } 
 }
 
 useEffect(async ()=>{
-  const result = await request('http://localhost:5000/chat/findeMessage?selectedUser=2')
+  const result = await request(`http://localhost:5000/chat/findeMessage?selectedUser=${toUserId}`)
   setMessages(result)  
 },[])
 
@@ -52,11 +56,6 @@ useEffect(  ()=>{
   })
  
 },[accessToken])
-
-
-
-
-
 
   return(
     <>

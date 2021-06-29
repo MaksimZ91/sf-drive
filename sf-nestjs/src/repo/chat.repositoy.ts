@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common"
 import { MessagesEntity } from "../entites/messages.entity";
 import { getRepository } from "typeorm"
+import { ChatEntity } from "src/entites/chat.entity";
 
 
 
@@ -11,11 +12,25 @@ export class ChatRepository{
     return await repository.save(messages);
   }
 
-  async findeAllUserChat (userId:string){
-    const repository = getRepository(MessagesEntity)
+
+  async SaveChat(chat:ChatEntity) {   
+    const repository = getRepository(ChatEntity);
+    return await repository.save(chat);
+  }
+
+  async findeAllChats (id:number){
+    return await getRepository(ChatEntity)
+    .createQueryBuilder('chat')
+    .leftJoinAndSelect( 'chat.toUser', 'user')
+    .where('user.id = :id' ,{id : id})
+    .getOne()
+  }
+
+ async findeAllUserChat (userId:string){
+    const repository = getRepository(ChatEntity)
     return await repository.find({
-      relations:['toUser'],      
-      where: { ['user']: userId } })
+      relations: ['toUser'],
+      where:{ ['user']: userId }})
   }
 
   async findeAll (user:string, selectUser:string){

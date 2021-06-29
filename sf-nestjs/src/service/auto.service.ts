@@ -13,10 +13,7 @@ import { PhotoRepository } from 'src/repo/photo.repository';
 import { AddAutoDocumentPhotoNameDto } from 'src/dto/addAutoPhotoDocumentName.dto';
 import { AutoPhotoDocumentName } from 'src/entites/autoPhotoDocument.entity';
 import { PhotoDocumentRepository } from 'src/repo/photoDocument.repository';
-import { ArendaDtO } from 'src/dto/arenda.dto';
-import { AutoDataDto } from 'src/dto/autoData.dto';
-import { Arenda } from 'src/entites/arenda.entity';
-import { ArendaRepository } from 'src/repo/arenda.repository';
+
 
 @Injectable()
 export class AutoService {
@@ -26,7 +23,6 @@ export class AutoService {
     private optionsRepository: OptionsRepository,
     private photoRepository: PhotoRepository,
     private photoDocumentRepository: PhotoDocumentRepository,
-    private arendaRepository: ArendaRepository,
   ) {}
 
   async createAuto(addAuto: AddAutoDto) {
@@ -145,23 +141,7 @@ export class AutoService {
     return { message: 'Delete' };
   }
 
-  async createArenda(addArenda: ArendaDtO) {
-    const arenda = new Arenda(
-      addArenda.startDay,
-      addArenda.endDay,
-      addArenda.cost,
-      addArenda.coment,
-      addArenda.babyChair,
-      addArenda.deliveryAuto,
-      addArenda.close,
-      addArenda.fullTank
-      );
-    const auto = await this.autoRepository.FindOneByID(addArenda.newAuto);
-    const user = await this.userRepository.FindOneByID(addArenda.user)
-    arenda.user = user
-    arenda.auto = auto;
-    await this.arendaRepository.SaveArenda(arenda);
-  }
+ 
 
   async filterAuto(startDate: string, endDate: string, type: string) {
     const allAuto = await this.autoRepository.FindeAllByType(type);

@@ -3,6 +3,9 @@ import { ArendaRepository } from 'src/repo/arenda.repository';
 import { ArendaResolver } from 'src/user/arenda.resolver';
 import { ArendaService } from 'src/service/arenda.service';
 import { ArendaController } from 'src/controller/arenda.controller';
+import { UserRepository } from 'src/repo/user.repository';
+import { AutoRepository } from 'src/repo/auto.repository';
+import { ChatRepository } from 'src/repo/chat.repositoy';
 
 
 @Module({
@@ -11,7 +14,10 @@ import { ArendaController } from 'src/controller/arenda.controller';
   providers: [    
     ArendaRepository,   
     ArendaResolver,
-    ArendaService
+    ArendaService,
+    UserRepository,
+    AutoRepository,
+    ChatRepository
   ],
 })
 export class ArendaModule {}

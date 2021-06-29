@@ -1,5 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateMessageDto } from 'src/dto/createMessge.dto';
+import { ChatEntity } from 'src/entites/chat.entity';
 import { MessagesEntity } from 'src/entites/messages.entity';
 import { UserRepository } from 'src/repo/user.repository';
 import { ChatRepository } from '../repo/chat.repositoy';
@@ -35,9 +36,22 @@ export class ChatService {
     }  
     try {
       const newMessage = new MessagesEntity(createMessageDto.body)
-      newMessage.user=user
-      newMessage.toUser=toUser 
-      return await this.chatRepository.SaveMessage(newMessage);
+      newMessage.user = user 
+      newMessage.toUser = toUser      
+      const chat = await this.chatRepository.findeAllChats(toUser.id)
+      if(!chat){
+        console.log(toUser.id)
+        const newChat =  new ChatEntity()
+            newChat.user =  user 
+            newChat.toUser = toUser 
+            newMessage.chat = newChat
+            await this.chatRepository.SaveChat(newChat)
+            await this.chatRepository.SaveMessage(newMessage)
+            return await this.chatRepository.SaveMessage(newMessage);
+      }else{   
+        newMessage.chat = chat
+        return await this.chatRepository.SaveMessage(newMessage);
+      }
     } catch (error) {
       switch (error.code) {
         case 'SQLITE_CONSTRAINT':

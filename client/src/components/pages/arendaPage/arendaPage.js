@@ -43,7 +43,7 @@ function ArendaPage(){
                 coment : arenda.coment,
                 user : user.userId
             }     
-            const result = await request('http://localhost:5000/auto/arenda','POST', {...body , ...option})  
+            const result = await request('http://localhost:5000/arenda/created','POST', {...body , ...option})  
             setData(result)
         } catch (e) {
           setError(e)

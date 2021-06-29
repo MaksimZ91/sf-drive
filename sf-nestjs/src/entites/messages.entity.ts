@@ -1,4 +1,5 @@
-import { Column, Entity,  ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity,  ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { ChatEntity } from "./chat.entity";
 import { Users } from "./users.entity";
 
 
@@ -21,4 +22,7 @@ export class MessagesEntity{
 
   @ManyToOne(()=>Users)
   toUser:Users
+  
+  @ManyToOne(()=>ChatEntity, (chat)=>chat.messages)
+  chat:ChatEntity
 }

@@ -1,6 +1,7 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Arenda } from './arenda.entity';
 import { Autos } from './auto.entity';
+import { ChatEntity } from './chat.entity';
 import { MessagesEntity } from './messages.entity';
 
 
@@ -77,6 +78,10 @@ export class Users {
   @OneToMany(()=>MessagesEntity, (messages) => messages.user)
   messages:MessagesEntity[]
 
+  @OneToMany(()=>ChatEntity, (chat) => chat.user)
+  chat:ChatEntity
+
   @OneToMany(() => Arenda, (arenda) => arenda.user)
   arenda: Arenda[];
+ 
 }

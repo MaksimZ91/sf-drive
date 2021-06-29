@@ -120,10 +120,7 @@ export class AutoController {
     return this.autoService.deleteDocumentFile(imagename);
   }
 
-  @Post('arenda')
-  createArenda(@Body() addArenda: ArendaDtO) {
-    return this.autoService.createArenda(addArenda);
-  }
+
 
   
 }

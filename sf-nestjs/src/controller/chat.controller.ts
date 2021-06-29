@@ -22,6 +22,16 @@ export class ChatController {
 
 
   @UseGuards(JwtAuthGuard)
+  @Get('findeChat')
+  public async findeAllChatUsers(
+    @Req() req:any
+  ){
+    const user = req.user.id
+    return this.chatService.findeAllUserChat(user)
+  }
+
+
+  @UseGuards(JwtAuthGuard)
   @Get('findeMessage')
   public async findeAllMessges(
     @Req() req:any,

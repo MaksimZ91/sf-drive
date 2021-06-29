@@ -12,7 +12,7 @@ export const FormProvider = ({ children }) => {
   const isAuthen = !!accessToken
  
 return (
-  <FormContex.Provider value={{openAuthor,setOpenAuthor,recovery, setRecovery,login,refreshToken,userId,isAuthen, setAccessToken }}>
+  <FormContex.Provider value={{openAuthor,setOpenAuthor,recovery, setRecovery,login,refreshToken,userId,isAuthen, setAccessToken, accessToken }}>
     {children}
   </FormContex.Provider>
   )

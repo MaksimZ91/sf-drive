@@ -6,7 +6,7 @@ import { Logger } from '@nestjs/common';
 
 
 
-@WebSocketGateway(3001)
+@WebSocketGateway(5001)
 export class MessagesGateway implements OnGatewayDisconnect {
   private clientSocketMap = new Map<
   string,
@@ -15,7 +15,7 @@ export class MessagesGateway implements OnGatewayDisconnect {
 
   constructor (private readonly chatService:ChatService){
 
-    this.chatService.attachSendler(message=>{      
+    this.chatService.attachSendler(message => {      
       this.clientSocketMap.forEach(({id, socket})=>{
         if(
           id === message.user.id  ||
@@ -36,13 +36,14 @@ export class MessagesGateway implements OnGatewayDisconnect {
       'MessageGateway'
     )
   }
-
+      
   @SubscribeMessage('authenticate')
   handleMessage(
     socket: Socket,
     payload: {accessToken:string},
-    ){    
-    try {
+    ){  
+      console.log(payload)  
+    try {      
       const { id, exp } = jwt.verify(
         payload?.accessToken,
         'AccessSecret'
@@ -54,7 +55,7 @@ export class MessagesGateway implements OnGatewayDisconnect {
       this.logger.warn(
         `Connected and stored client: ${socket.client.id}`,
         'MessageGateway'
-      )     
+      )
 
     } catch (error) {
       return {

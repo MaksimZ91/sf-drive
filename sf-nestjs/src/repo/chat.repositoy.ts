@@ -11,6 +11,13 @@ export class ChatRepository{
     return await repository.save(messages);
   }
 
+  async findeAllUserChat (userId:string){
+    const repository = getRepository(MessagesEntity)
+    return await repository.find({
+      relations:['toUser'],      
+      where: { ['user']: userId } })
+  }
+
   async findeAll (user:string, selectUser:string){
     const repository = getRepository(MessagesEntity)
     return await repository.find({

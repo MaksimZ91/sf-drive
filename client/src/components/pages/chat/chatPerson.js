@@ -2,7 +2,7 @@ import React from 'react'
 
 
 
-function ChatPerson (){
+function ChatPerson (props){
   return(
     <>
     <div className='chat_list_perosn'>

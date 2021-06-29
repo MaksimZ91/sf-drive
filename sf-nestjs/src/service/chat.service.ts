@@ -7,7 +7,7 @@ import { ChatRepository } from '../repo/chat.repositoy';
 
 @Injectable()
 export class ChatService {
-  public push:(message:MessagesEntity)=> void
+  public push:(message:MessagesEntity) => void
   constructor (private readonly chatRepository:ChatRepository,
               private readonly userRepository:UserRepository
     ){}
@@ -19,6 +19,10 @@ export class ChatService {
 
   async findeAll(user:string , selectUser:string){
     return await this.chatRepository.findeAll(user,selectUser)
+  }
+
+  async findeAllUserChat(userid:string){
+    return await this.chatRepository.findeAllUserChat(userid)
   }
 
   async create(user:any,createMessageDto:CreateMessageDto, ){   

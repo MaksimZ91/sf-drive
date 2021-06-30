@@ -30,7 +30,7 @@ const sendMessage = async (e) =>{
   setValue("")
   try {
     const result = await request('http://localhost:5000/chat/created','POST', {toUserId, body:value})   
-    setMessages([...messages, result])
+    
   } catch (e) {  
   } 
 }
@@ -43,12 +43,10 @@ useEffect(async ()=>{
 useEffect(  ()=>{
   const socket = openSocket(WEBSOCKET_SERVER_URL)
 
-  socket.on('message', (message) => {   
-    console.log(message)
-    if(message.user == toUserId || 
+  socket.on('message', (message) => {    
+    if(message.user.id == toUserId || 
       message.toUser.id == toUserId )
       {
-        console.log(message.user , message.toUser.id )
         setMessages([...messages, message])
       }
   })

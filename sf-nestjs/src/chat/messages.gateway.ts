@@ -16,9 +16,9 @@ export class MessagesGateway implements OnGatewayDisconnect {
   constructor (private readonly chatService:ChatService){
 
     this.chatService.attachSendler(message => {      
-      this.clientSocketMap.forEach(({userId, socket})=>{
+      this.clientSocketMap.forEach(({userId, socket})=>{ 
         if(
-          userId === message.user.id  ||
+          userId === message.user.id ||
           userId === message.toUser.id
         ){
           socket.emit('message', message)

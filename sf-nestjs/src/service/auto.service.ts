@@ -96,7 +96,7 @@ export class AutoService {
     });
     return { message: 'ok' };
   }
-
+  
   async AddAutoDocumentPhotoName(
     addAutoDocumentPhotoName: AddAutoDocumentPhotoNameDto,
   )   {

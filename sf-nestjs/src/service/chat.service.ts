@@ -28,6 +28,7 @@ export class ChatService {
 
   async create(userId:any,createMessageDto:CreateMessageDto, ){   
     const toUser = await this.userRepository.FindOneByID( createMessageDto.toUserId);
+    const user =  await this.userRepository.FindOneByID( userId );      
     if (!toUser) {
       throw new HttpException(
         `User ${createMessageDto.toUserId} not found`,
@@ -35,7 +36,7 @@ export class ChatService {
       );
     }  
     try {
-      const newMessage = new MessagesEntity(createMessageDto.body, userId, toUser)     
+      const newMessage = new MessagesEntity(createMessageDto.body, user , toUser)     
       const UserChats = await this.chatRepository.findeAllChats(userId, toUser.id)
       const ChatToUser = await this.chatRepository.findeChatToUser(userId, toUser.id)
       if(!UserChats){                                        //проверяем есть ли чат у обоих пользователей, если нет создаем чаты

@@ -10,16 +10,16 @@ import { Logger } from '@nestjs/common';
 export class MessagesGateway implements OnGatewayDisconnect {
   private clientSocketMap = new Map<
   string,
-  {id:number, socket:Socket}
+  {userId:number, socket:Socket}
   >()
 
   constructor (private readonly chatService:ChatService){
 
     this.chatService.attachSendler(message => {      
-      this.clientSocketMap.forEach(({id, socket})=>{
+      this.clientSocketMap.forEach(({userId, socket})=>{
         if(
-          id === message.user.id  ||
-          id === message.toUser.id
+          userId === message.user.id  ||
+          userId === message.toUser.id
         ){
           socket.emit('message', message)
         }
@@ -36,21 +36,21 @@ export class MessagesGateway implements OnGatewayDisconnect {
       'MessageGateway'
     )
   }
-      
+        
   @SubscribeMessage('authenticate')
   handleMessage(
     socket: Socket,
     payload: {accessToken:string},
     ){      
     try {      
-      const { id, exp } = jwt.verify(
+      const { userId, exp } = jwt.verify(
         payload?.accessToken,
         'AccessSecret'
-      ) as {id:number; exp:number}
-
+      ) as {userId:number; exp:number}  
+      console.log(payload)
       if (exp * 1000 < Date.now()){
         throw new Error ('Token expired')}
-      this.clientSocketMap.set(socket.client.id, {id, socket})
+      this.clientSocketMap.set(socket.client.id, {userId, socket})
       this.logger.warn(
         `Connected and stored client: ${socket.client.id}`,
         'MessageGateway'

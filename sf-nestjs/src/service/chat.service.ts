@@ -15,7 +15,7 @@ export class ChatService {
 
 
   public attachSendler(sender:(message:MessagesEntity)=> void){
-    this.push= sender
+    this.push = sender
   }  
 
   async findeAll(user:string , selectUser:string){

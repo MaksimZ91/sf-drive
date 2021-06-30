@@ -11,7 +11,7 @@ export class MessagesEntity{
     this.toUser = toUser
     this.chat = chat
   }
-  @PrimaryGeneratedColumn('uuid')
+            @PrimaryGeneratedColumn('uuid')
   id:string;
 
   @Column()

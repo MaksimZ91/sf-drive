@@ -41,8 +41,7 @@ export class MessagesGateway implements OnGatewayDisconnect {
   handleMessage(
     socket: Socket,
     payload: {accessToken:string},
-    ){  
-      console.log(payload)  
+    ){      
     try {      
       const { id, exp } = jwt.verify(
         payload?.accessToken,

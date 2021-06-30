@@ -12,7 +12,7 @@ const TOKENS_KEY="tokens"
 
 
 function UserChat (){
-const { accessToken } = useContext(FormContex)
+const { accessToken, userId } = useContext(FormContex)
 const { request } = useHttp()
 const [messages, setMessages]=useState([])
 const [value, setValue]=useState('')
@@ -29,8 +29,7 @@ const sendMessage = async (e) =>{
   e.preventDefault();
   setValue("")
   try {
-    const result = await request('http://localhost:5000/chat/created','POST', {toUserId, body:value})
-    setMessages([...messages, result])
+    const result = await request('http://localhost:5000/chat/created','POST', {toUserId, body:value})   
   } catch (e) {  
   } 
 }
@@ -43,6 +42,17 @@ useEffect(async ()=>{
 useEffect(  ()=>{
   const socket = openSocket(WEBSOCKET_SERVER_URL)
 
+  socket.on('message', (message) => {   
+    if(message.user == toUserId || 
+      message.toUser.id == toUserId )
+      {
+        console.log(message.user , message.toUser.id )
+        setMessages([...messages, message])
+      }
+  })
+
+
+
   socket.on('authenticated', (authStatusResponse) => {
       if(authStatusResponse.success){
         console.log('WS was authenticated')
@@ -54,8 +64,13 @@ useEffect(  ()=>{
   socket.emit('authenticate', {
     accessToken,
   })
+
+
+  return () =>{
+    socket.disconnect()
+  }
  
-},[accessToken])
+},[accessToken, messages, toUserId ])
 
   return(
     <>

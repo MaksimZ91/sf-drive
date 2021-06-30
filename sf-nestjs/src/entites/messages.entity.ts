@@ -5,8 +5,11 @@ import { Users } from "./users.entity";
 
 @Entity()
 export class MessagesEntity{
-  constructor (body:string){
-    this.body = body
+  constructor (body:string, user:Users, toUser:Users, chat?:ChatEntity){
+    this.body = body,
+    this.user = user
+    this.toUser = toUser
+    this.chat = chat
   }
   @PrimaryGeneratedColumn('uuid')
   id:string;

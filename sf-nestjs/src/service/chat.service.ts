@@ -26,7 +26,7 @@ export class ChatService {
     return await this.chatRepository.findeAllUserChat(userid)
   }
 
-  async create(user:any,createMessageDto:CreateMessageDto, ){   
+  async create(userId:any,createMessageDto:CreateMessageDto, ){   
     const toUser = await this.userRepository.FindOneByID( createMessageDto.toUserId);
     if (!toUser) {
       throw new HttpException(
@@ -35,21 +35,22 @@ export class ChatService {
       );
     }  
     try {
-      const newMessage = new MessagesEntity(createMessageDto.body)
-      newMessage.user = user 
-      newMessage.toUser = toUser      
-      const chat = await this.chatRepository.findeAllChats(toUser.id)
-      if(!chat){
-        console.log(toUser.id)
-        const newChat =  new ChatEntity()
-            newChat.user =  user 
-            newChat.toUser = toUser 
-            newMessage.chat = newChat
-            await this.chatRepository.SaveChat(newChat)
-            await this.chatRepository.SaveMessage(newMessage)
-            return await this.chatRepository.SaveMessage(newMessage);
-      }else{   
-        newMessage.chat = chat
+      const newMessage = new MessagesEntity(createMessageDto.body, userId, toUser)     
+      const UserChats = await this.chatRepository.findeAllChats(userId, toUser.id)
+      const ChatToUser = await this.chatRepository.findeChatToUser(userId, toUser.id)
+      if(!UserChats){                                        //проверяем есть ли чат у обоих пользователей, если нет создаем чаты
+        const newChatUser =  new ChatEntity(userId, toUser) 
+        const newChatToUser = new ChatEntity(toUser, userId)
+        await this.chatRepository.SaveChat(newChatUser)        
+        await this.chatRepository.SaveChat(newChatToUser)       
+        newMessage.chat = newChatUser 
+        return await this.chatRepository.SaveMessage(newMessage);
+      }else if(!ChatToUser){                                        //проверяем есть ли чат у оппонента (допустим если он удалил свой чат), если нет создаем чат
+        const newChatToUser = new ChatEntity(toUser, userId)
+        await this.chatRepository.SaveChat(newChatToUser)  
+        return await this.chatRepository.SaveMessage(newMessage) 
+      }else{    
+        newMessage.chat = UserChats
         return await this.chatRepository.SaveMessage(newMessage);
       }
     } catch (error) {

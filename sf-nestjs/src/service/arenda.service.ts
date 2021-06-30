@@ -32,23 +32,21 @@ export class ArendaService {
           );
         const auto = await this.autoRepository.FindOneByID(addArenda.newAuto);
         const user = await this.userRepository.FindOneByID(addArenda.user)  
-        const chat = await this.chatRepository.findeAllChats(auto.user.id) 
-        const message = new MessagesEntity(addArenda.coment)     
+        const usersChats = await this.chatRepository.findeAllChats(user.id, auto.user.id)     
+        const message = new MessagesEntity(addArenda.coment, user, auto.user)     
         arenda.user = user
-        arenda.auto = auto;     
-        if(!chat){ 
-            const newChat =  new ChatEntity()
-            newChat.user = user
-            newChat.toUser = auto.user
-            message.chat = newChat
-            await this.chatRepository.SaveChat(newChat)
+        arenda.auto = auto; 
+        if(!usersChats){ 
+            const newUserChat =  new ChatEntity(user, auto.user) 
+            const newTOUserChat =  new ChatEntity(auto.user, user)          
+            message.chat = newUserChat
+            await this.chatRepository.SaveChat(newUserChat)
+            await this.chatRepository.SaveChat(newTOUserChat)
             await this.chatRepository.SaveMessage(message)   
-        } else {
-            message.toUser = auto.user
-            message.user = user    
-            message.chat = chat
+        } else {           
+            message.chat = usersChats
             await this.chatRepository.SaveMessage(message)  
-            await this.chatRepository.SaveChat(chat)  
+            await this.chatRepository.SaveChat(usersChats)  
 
         } 
         return {message, arenda}

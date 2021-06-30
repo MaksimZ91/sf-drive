@@ -18,12 +18,34 @@ export class ChatRepository{
     return await repository.save(chat);
   }
 
-  async findeAllChats (id:number){
-    return await getRepository(ChatEntity)
-    .createQueryBuilder('chat')
-    .leftJoinAndSelect( 'chat.toUser', 'user')
-    .where('user.id = :id' ,{id : id})
-    .getOne()
+  async findeAllChats (user:number, selectUser:number){
+    const repository = getRepository(ChatEntity) 
+    return await repository.findOne({
+      relations: ['user', 'toUser'],
+      where: [
+       {
+          ['user']: selectUser,
+          ['toUser']: user,
+        },
+        {
+          ['user']: user,
+          ['toUser']: selectUser,
+        }
+      ]
+    })
+  }
+
+  async findeChatToUser(user:number, selectUser:number){
+    const repository = getRepository(ChatEntity) 
+    return await repository.findOne({
+      relations: ['user', 'toUser'],
+      where: [
+       {
+          ['user']: selectUser,
+          ['toUser']: user,
+        }       
+      ]
+    })
   }
 
  async findeAllUserChat (userId:string){

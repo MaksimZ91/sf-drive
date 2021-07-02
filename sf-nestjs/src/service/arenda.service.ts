@@ -29,11 +29,18 @@ export class ArendaService {
           addArenda.deliveryAuto,
           addArenda.close,
           addArenda.fullTank
-          );
+          );    
         const auto = await this.autoRepository.FindOneByID(addArenda.newAuto);
         const user = await this.userRepository.FindOneByID(addArenda.user)  
-        const usersChats = await this.chatRepository.findeAllChats(user.id, auto.user.id)     
-        const message = new MessagesEntity(addArenda.coment, user, auto.user)     
+        arenda.status = 'created'
+        arenda.user = user
+        arenda.auto = auto     
+        await this.arendaRepository.SaveArenda(arenda)   
+        const usersChats = await this.chatRepository.findeAllChats(user.id, auto.user.id)        
+        const message = new MessagesEntity(addArenda.coment, user, auto.user)
+        const systemMessage = new MessagesEntity('Бронирование подтверждено', user, auto.user) 
+        systemMessage.system = true
+        systemMessage.arendaID = arenda.id
         arenda.user = user
         arenda.auto = auto; 
         if(!usersChats){ 
@@ -42,12 +49,13 @@ export class ArendaService {
             message.chat = newUserChat
             await this.chatRepository.SaveChat(newUserChat)
             await this.chatRepository.SaveChat(newTOUserChat)
-            await this.chatRepository.SaveMessage(message)   
+            await this.chatRepository.SaveMessage(message) 
+            await this.chatRepository.SaveMessage(systemMessage)  
         } else {           
             message.chat = usersChats
             await this.chatRepository.SaveMessage(message)  
             await this.chatRepository.SaveChat(usersChats)  
-
+            await this.chatRepository.SaveMessage(systemMessage) 
         } 
         return {message, arenda}
       }

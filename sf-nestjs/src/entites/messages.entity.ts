@@ -5,17 +5,25 @@ import { Users } from "./users.entity";
 
 @Entity()
 export class MessagesEntity{
-  constructor (body:string, user:Users, toUser:Users, chat?:ChatEntity){
+  constructor (body:string, user:Users, toUser:Users, chat?:ChatEntity, system?:boolean, arendaID?:number){
     this.body = body,
     this.user = user
     this.toUser = toUser
     this.chat = chat
+    this.system = system
+    this.arendaID = arendaID
   }
-            @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('uuid')
   id:string;
 
   @Column()
   body:string;
+
+  @Column({default:null})
+  arendaID:number;
+
+  @Column({default:false})
+  system:boolean;
 
   @Column({ type:'bigint', update: false })
   createdAt: number = Date.now()

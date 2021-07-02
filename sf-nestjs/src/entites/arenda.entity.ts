@@ -35,6 +35,9 @@ export class Arenda {
   @Column()
   cost: number;
 
+  @Column({default:null})
+  status: string;
+
   @Column()
   coment: string;
 

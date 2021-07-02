@@ -81,8 +81,8 @@ useEffect(  ()=>{
       </div>
       <div className='user_chat_chatWindow'>   
          {messages.map((e, index)=>
-           (index==0)?<Message value={e} date={true} key={e.createdAt}/>:
-           <Message value={e} date={getDate(e.createdAt, messages[index-1].createdAt)} key={e.createdAt}/>
+           (index==0)?<Message value={e} date={true}/>:          
+           <Message value={e} date={getDate(e.createdAt, messages[index-1].createdAt)} />          
         )}              
       </div>
       <form className='user_chat_form' onSubmit={sendMessage} >

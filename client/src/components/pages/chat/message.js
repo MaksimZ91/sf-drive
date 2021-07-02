@@ -1,21 +1,21 @@
-import React from 'react'
-import moment from 'moment'
+import React, { useState, useEffect } from 'react'
+import ServiceMessage from './ServiceMessage'
+import UserMessage from './UserMessage'
 
 
-function Message (props){
-        
-    return(
-        <>
-        {props.date?<div className='user_chat_chatWindow_date'>{moment(+props.value.createdAt).locale('ru').format('LL')}</div>:''}    
-        <div className='user_chat_chatWindow_message'>
-            <img className='user_chat_chatWindow_message_img' />
-            <div className='user_chat_chatWindow_message_wrapper'>            
-                <span className='user_chat_chatWindow_message_wrapper_text'>{props.value.body}</span>
-            <div className='user_chat_chatWindow_message_wrapper_date'>{moment(+props.value.createdAt).locale('ru').format('LT')}</div>
-            </div>           
-        </div>
-        </>
-    )
+function Message (props){  
+ 
+
+    
+        return(
+            <>
+             {(props.value.system)?<ServiceMessage value={props.value} date={props.date}/>:<UserMessage value={props.value} date={props.date}/>}          
+            </>
+        )
+
+    
+     
+    
 }
 
 export default Message

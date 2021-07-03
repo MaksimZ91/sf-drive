@@ -31,15 +31,14 @@ function RequestArenda (props){
   if(arendaStaus.status == 'isActive'){
     return(
       <>
-      {props.date?<div className='user_chat_chatWindow_date toUser'>{moment(+props.value.createdAt).locale('ru').format('LL')}</div>:''}    
-            <div className='user_chat_chatWindow_message toUser'>
-                <img className='user_chat_chatWindow_message_img toUser' />
-                <div className='user_chat_chatWindow_message_wrapper toUser'>            
-                    <span className='user_chat_chatWindow_message_wrapper_text toUser'>{
+      {props.date?<div className='user_chat_chatWindow_date'>{moment(+props.value.createdAt).locale('ru').format('LL')}</div>:''}    
+            <div className='user_chat_chatWindow_message requset'>
+                <img className='user_chat_chatWindow_message_img requset' src='../src/img/systemImg.svg'/>
+                <div className='user_chat_chatWindow_message_wrapper requset'>            
+                    <span className='user_chat_chatWindow_message_wrapper_text requset'>{
                 `Вы началу аренду. Автомобиль необходимо вернуть по тому же 
                 адресу ${moment(arendaStaus.endDay).locale('ru').format('LL')}`}</span>
-                <button className='user_chat_chatWindow_message_button toUser' onClick={requestArenda}>Завершить аренду</button>    
-                <div className='user_chat_chatWindow_message_wrapper_date toUser'>{moment(+props.value.createdAt).locale('ru').format('LT')}</div>
+                <button className='user_chat_chatWindow_message_button requset' onClick={requestArenda}>Завершить аренду</button>   
                 </div>                       
             </div>
     </>

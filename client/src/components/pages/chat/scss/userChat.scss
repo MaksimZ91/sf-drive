@@ -41,7 +41,7 @@
   &_chatWindow{    
     width: 688px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;    
     &_date{
       margin:40px auto 30px;
       font-family: Roboto;
@@ -53,7 +53,16 @@
       color: #BDBDBD;
     }    
     &_message{
-      align-self: flex-end;    
+      align-self: flex-end; 
+      display: flex;
+      margin: 20px 0;
+      >img{
+        align-self: flex-end;
+        margin-right: 20px;
+      }
+      &.toUser, &.system, &.requset{
+        align-self: flex-start;
+      } 
       &_wrapper{
         background: #61A199;
         border-top-left-radius:6px;
@@ -71,6 +80,58 @@
           color: #FFFFFF;
           margin: 0;
         }
+        &.toUser, &.system, &.requset{
+          background: #F2F2F2;
+          border-top-left-radius:6px;
+          border-top-right-radius: 6px;
+          border-bottom-right-radius: 6px; 
+          border-bottom-left-radius: 0;  
+          >span{
+            color: #1B1B1B;
+          }
+        }
+        &.system{
+          display: flex;
+          align-items: center;
+          >span{
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 147.3%;
+            color: #61A199;
+          }
+          >img{
+            margin-left: 20px;
+            width: 32px;
+            height: 32px;
+          }                 
+        }
+        &_stars{
+          margin-left: 20px;
+          margin-bottom: 30px;
+          >img{
+          }
+        }
+        &.requset{
+         
+          >button{
+            width: 153px;
+            height: 38px;
+            background-color: inherit;
+            border: 1px solid #61A199;
+            box-sizing: border-box;
+            border-radius: 6px;
+            margin:0 0 20px 21px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 16px;
+            text-align: center;
+            color: #61A199;
+          }  
+        }
         &_date{
           font-family: Roboto;
           font-style: normal;
@@ -80,8 +141,14 @@
           text-align: right;
           color: #B5D7D2;          
           padding: 0 20px 15px;
-        }
+          &.toUser{
+           text-align: left;
+           color: #828282;
+          
+          }
+        }        
       }
+      
 
     }
   }

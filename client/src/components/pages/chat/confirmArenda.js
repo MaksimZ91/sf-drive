@@ -15,6 +15,7 @@ function ConfirmArenda (props){
     return state.arenda.status
   })
 
+
   const body = {
     arendaID:props.value.arendaID,
      status:'isActive',     
@@ -31,13 +32,11 @@ function ConfirmArenda (props){
   if(arendaStaus.status == 'confirm'){
     return(
       <>
-      {props.date?<div className='user_chat_chatWindow_date toUser'>{moment(+props.value.createdAt).locale('ru').format('LL')}</div>:''}    
-            <div className='user_chat_chatWindow_message toUser'>
-                <img className='user_chat_chatWindow_message_img toUser' />
-                <div className='user_chat_chatWindow_message_wrapper toUser'>            
-                    <span className='user_chat_chatWindow_message_wrapper_text toUser'>Подтвердите, когда начнёте аренду</span>
-                <button className='user_chat_chatWindow_message_button toUser' onClick={requestArenda}>Начать аренду</button>    
-                <div className='user_chat_chatWindow_message_wrapper_date toUser'>{moment(+props.value.createdAt).locale('ru').format('LT')}</div>
+            <div className='user_chat_chatWindow_message requset' >
+                <img className='user_chat_chatWindow_message_img requset' src='../src/img/systemImg.svg' />
+                <div className='user_chat_chatWindow_message_wrapper requset'>            
+                    <span className='user_chat_chatWindow_message_wrapper_text requset'>Подтвердите, когда начнёте аренду</span>
+                <button className='user_chat_chatWindow_message_button requset' onClick={requestArenda}>Начать аренду</button> 
                 </div>                       
             </div>
     </>

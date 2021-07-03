@@ -14,12 +14,17 @@ function ArendaIsClose (props){
   const arendaStaus = useSelector((state)=>{
     return state.arenda.status
   })
+  const star = [1, 2, 3, 4, 5]
 
   const body = {
     arendaID:props.value.arendaID,
      status:'Send',     
      user:user.id,
      toUser:toUser.id
+  }
+  const loger = (e) =>{
+    console.log(e.target.dataset.value)
+
   }
 
 
@@ -31,13 +36,15 @@ function ArendaIsClose (props){
   if(arendaStaus.status == 'isClose'){
     return(
       <>
-      {props.date?<div className='user_chat_chatWindow_date toUser'>{moment(+props.value.createdAt).locale('ru').format('LL')}</div>:''}    
-            <div className='user_chat_chatWindow_message toUser'>
-                <img className='user_chat_chatWindow_message_img toUser' />
-                <div className='user_chat_chatWindow_message_wrapper toUser'>            
-                    <span className='user_chat_chatWindow_message_wrapper_text toUser'>Оцените аренду. Всё ли хорошо? Оставьте отзыв автомобилю и владельцу, и вы сможете увидеть отзыв о себе</span>
-                <button className='user_chat_chatWindow_message_button toUser' onClick={requestArenda}>Написать отзыв</button>    
-                <div className='user_chat_chatWindow_message_wrapper_date toUser '>{moment(+props.value.createdAt).locale('ru').format('LT')}</div>
+      {props.date?<div className='user_chat_chatWindow_date'>{moment(+props.value.createdAt).locale('ru').format('LL')}</div>:''}    
+            <div className='user_chat_chatWindow_message requset'>
+                <img className='user_chat_chatWindow_message_img requset' src='../src/img/systemImg.svg' />
+                <div className='user_chat_chatWindow_message_wrapper requset'>            
+                    <span className='user_chat_chatWindow_message_wrapper_text requset'>Оцените аренду. Всё ли хорошо? Оставьте отзыв автомобилю и владельцу, и вы сможете увидеть отзыв о себе</span>
+                    <div className='user_chat_chatWindow_message_wrapper_stars requset'>{star.map(e => 
+                    <img  src='../src/img/chatstar.svg' data-value={e} onClick={loger}/>)}</div>
+                <button className='user_chat_chatWindow_message_button requset' onClick={requestArenda}>Написать отзыв</button>    
+                
                 </div>                       
             </div>
     </>

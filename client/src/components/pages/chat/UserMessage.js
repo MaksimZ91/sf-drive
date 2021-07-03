@@ -10,22 +10,31 @@ function UserMessage (props){
     const { userId } = useContext(FormContex)
     const currentUser = props.value.user.id == userId
     const received = !currentUser
-   
+
 
     return(
         <>
-          {props.date?<div className={classNames('user_chat_chatWindow_date', {
-        'user': currentUser,
-        'toUser': received,
-      })}>{moment(+props.value.createdAt).locale('ru').format('LL')}</div>:''}    
-            <div className={classNames('user_chat_chatWindow_message', {
+          {props.date?<div className='user_chat_chatWindow_date'>{moment(+props.value.createdAt).locale('ru').format('LL')}</div>:''}    
+            <div className={classNames('user_chat_chatWindow_message',{
         'user': currentUser,
         'toUser': received,
       })}>
-                <img className='user_chat_chatWindow_message_img' />
-                <div className='user_chat_chatWindow_message_wrapper'>            
-                    <span className='user_chat_chatWindow_message_wrapper_text'>{props.value.body}</span>
-                <div className='user_chat_chatWindow_message_wrapper_date'>{moment(+props.value.createdAt).locale('ru').format('LT')}</div>
+            {received?<img className={classNames('user_chat_chatWindow_message_img',{
+        'user': currentUser,
+        'toUser': received,
+      })} src='../src/img/chatavatrmock.svg'/>:''}
+                <div className={classNames('user_chat_chatWindow_message_wrapper',{
+        'user': currentUser,
+        'toUser': received,
+      })}>            
+                <span className={classNames('user_chat_chatWindow_message_wrapper_text',{
+        'user': currentUser,
+        'toUser': received,
+      })}>{props.value.body}</span>
+                <div className={classNames('user_chat_chatWindow_message_wrapper_date',{
+        'user': currentUser,
+        'toUser': received,
+      })}>{moment(+props.value.createdAt).locale('ru').format('LT')}</div>
                 </div>           
             </div>
         </>

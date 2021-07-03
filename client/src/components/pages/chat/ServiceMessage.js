@@ -12,7 +12,7 @@ import ArendaIsClose from './ArendaIsClose'
 function ServiceMessage (props){
     const user = props.value.user
     const { userId } = useContext(FormContex)   
-        
+            
         return(
             <>
             {(props.value.body == 'confirm')?<ConfirmedMessage value={props.value} date={props.date}/> :''}

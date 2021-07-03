@@ -25,6 +25,7 @@ const toUserId = useSelector((state)=>{
   return state.chat.toUserId
 })
 
+
 const handelChange = (e ) =>{ 
   setValue(e.target.value)  
 }
@@ -63,6 +64,10 @@ useEffect(  ()=>{
       }
   })
 
+  socket.emit('authenticate', {
+      accessToken,
+    })
+
   socket.on('authenticated', (authStatusResponse) => {
       if(authStatusResponse.success){
         console.log('WS was authenticated')
@@ -71,14 +76,11 @@ useEffect(  ()=>{
       console.error('WS was not authenticated')
     }
   )
-  socket.emit('authenticate', {
-    accessToken,
-  })
 
   return () =>{
     socket.disconnect()
   }
- 
+
 },[accessToken, messages, toUserId ])
  
 const emojiStyle = {

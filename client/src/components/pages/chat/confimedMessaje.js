@@ -30,16 +30,16 @@ function ConfirmedMessage (props){
   
 
 
-//src='../src/img/systemImg.svg'
+// chatconf
   
   return(
     <>
-    {props.date?<div className='user_chat_chatWindow_date toUser'>{moment(+props.value.createdAt).locale('ru').format('LL')}</div>:''}    
-    <div className='user_chat_chatWindow_message toUser'>
-        <img className='user_chat_chatWindow_message_img toUser'  />
-        <div className='user_chat_chatWindow_message_wrapper toUser toUser'>            
-            <span className='user_chat_chatWindow_message_wrapper_text toUser'>{text}</span>
-        <div className='user_chat_chatWindow_message_wrapper_date toUser'>{moment(+props.value.createdAt).locale('ru').format('LT')}</div>
+    {props.date?<div className='user_chat_chatWindow_date'>{moment(+props.value.createdAt).locale('ru').format('LL')}</div>:''}    
+    <div className='user_chat_chatWindow_message system'>
+        <img className='user_chat_chatWindow_message_img system' src='../src/img/systemImg.svg'  />
+        <div className='user_chat_chatWindow_message_wrapper system'>   
+        <img  className='user_chat_chatWindow_message_wrapper-img system' src ='../src/img/chatconf.svg'/>         
+            <span className='user_chat_chatWindow_message_wrapper_text system'>{text}</span>
         </div>           
     </div>
     </>

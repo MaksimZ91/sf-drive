@@ -38,12 +38,12 @@ export class MessagesGateway implements OnGatewayDisconnect {
   }
         
   @SubscribeMessage('authenticate')
-  handleMessage(
+  async handleMessage(
     socket: Socket,
     payload: {accessToken:string},
     ){      
     try {      
-      const { userId, exp } = jwt.verify(
+      const { userId, exp } = await jwt.verify(
         payload?.accessToken,
         'AccessSecret'
       ) as {userId:number; exp:number}  

@@ -2,12 +2,15 @@ import { Controller, Get, Post, Req, UseGuards, Body, Query } from '@nestjs/comm
 import { ChatService } from '../service/chat.service';
 import { JwtAuthGuard } from '../guard/autn.guard';
 import { CreateMessageDto } from 'src/dto/createMessge.dto';
+import { UpdateArendaDto } from 'src/dto/updateArenda.dto';
+import { ArendaService } from 'src/service/arenda.service';
 
 
 
 @Controller('chat')
 export class ChatController {
-  constructor (private readonly chatService:ChatService){}
+  constructor (private readonly chatService:ChatService,
+              private readonly arendaService:ArendaService ){}
 
   @UseGuards(JwtAuthGuard)
   @Post('created')
@@ -18,6 +21,13 @@ export class ChatController {
   this.chatService.push(message)
    //return await this.chatService.create(user, createMessageDto)
    return message 
+  }
+
+  @Post('findeandupdate')
+  async findeAndUpdateArenda(@Body() updateArenda:UpdateArendaDto){ 
+    const message = await this.arendaService.findeAndUpdateArenda(updateArenda)
+    this.chatService.push(message)
+    return message
   }
 
 

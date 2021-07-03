@@ -1,9 +1,10 @@
-import { ADD_ARENDA, ADD_ARENDA_OPTIONS,ADD_ARENDA_ID_USER } from "../type"
+import { ADD_ARENDA, ADD_ARENDA_OPTIONS,ADD_ARENDA_ID_USER, SET_ARENDA_STAUS } from "../type"
 
 const defaultState = { 
     arendaParam:{cost:0, coment:''},
     options:{ babyChair:false, deliveryAuto:false, close:false, fullTank:false },  
-    arendaIDUser:null
+    arendaIDUser:null,
+    status:''
 }
 
 
@@ -15,6 +16,8 @@ export const arendaReducer = (state = defaultState , action) => {
             return {...state, arendaIDUser:action.payload}       
         case ADD_ARENDA_OPTIONS:
            return {...state, options:action.payload}
+        case SET_ARENDA_STAUS:
+           return {...state, status:action.payload}   
         default: return state
     }
 

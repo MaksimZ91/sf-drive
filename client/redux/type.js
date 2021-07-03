@@ -23,4 +23,5 @@ export const ADD_ARENDA_ID_USER = 'ADD_ARENDA_ID_USER'
 export const SHOW_ALERT = 'APP/SHOW_ALERT'
 export const HIDE_ALERT = 'APP/HIDE_ALERT'
 export const ADD_TO_USER_ID = 'ADD_TO_USER_ID'
+export const SET_ARENDA_STAUS = 'SET_ARENDA_STAUS'
 

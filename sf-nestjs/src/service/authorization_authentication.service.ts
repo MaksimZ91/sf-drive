@@ -35,13 +35,13 @@ export class AuthorizationAuthenService {
     }
     
 
-    const accessToken = jwt.sign(
+    const accessToken = await jwt.sign(
       { name: person.fio, userId: person.id },
       this.configService.get('JWT_ACCESS_SECRET'),
       { expiresIn: this.configService.get('ACCESS_TOKEN_LIFE') },
     );
 
-    const refreshToken = jwt.sign(
+    const refreshToken = await jwt.sign(
       {},
       this.configService.get('JWT_REFRESH_SECRET'),
       { expiresIn: this.configService.get('REFRESH_TOKEN_LIFE') },
@@ -49,7 +49,7 @@ export class AuthorizationAuthenService {
 
     
     person.refToken = refreshToken;
-    this.userRepository.SaveUser(person);
+    await this.userRepository.SaveUser(person);
 
     return { accessToken, refreshToken, userId: person.id, message: 'Ok' };
   }
@@ -68,7 +68,7 @@ export class AuthorizationAuthenService {
 
     if (password == newPassword) {
       person.password = await bcrypt.hash(password, 10);
-      this.userRepository.SaveUser(person);
+      await this.userRepository.SaveUser(person);
       return { message: 'Ok' };
     } else {
       throw new HttpException(
@@ -80,7 +80,7 @@ export class AuthorizationAuthenService {
 
   async Refresh(refreshTokenUser: RefreshTokenUserDto) {
     const { refToken } = refreshTokenUser;
-    const data = jwt.verify(refToken, 'RefreshSecret');
+    const data = await jwt.verify(refToken, 'RefreshSecret');
 
     if (!data) {
       throw new HttpException('Токин не валиден!', HttpStatus.BAD_REQUEST);
@@ -88,13 +88,13 @@ export class AuthorizationAuthenService {
 
     const person = await this.userRepository.FindOneByRefToken(refToken);
 
-    const accessToken = jwt.sign(
+    const accessToken = await jwt.sign(
       { name: person.fio, userId: person.id },
       'AccessSecret',
       { expiresIn: 1200 },
     );
 
-    const refreshToken = jwt.sign({}, 'RefreshSecret', { expiresIn: 86400 });
+    const refreshToken = await jwt.sign({}, 'RefreshSecret', { expiresIn: 86400 });
 
     person.refToken = refreshToken;
     await this.userRepository.SaveUser(person);

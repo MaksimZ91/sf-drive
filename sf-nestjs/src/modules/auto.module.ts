@@ -11,6 +11,7 @@ import { AutosResolver } from 'src/autos/autos.resolver';
 import { ArendaResolver } from 'src/user/arenda.resolver';
 import { ArendaService } from 'src/service/arenda.service';
 import { ChatRepository } from 'src/repo/chat.repositoy';
+import { ChatService } from 'src/service/chat.service';
 
 
 @Module({
@@ -27,7 +28,8 @@ import { ChatRepository } from 'src/repo/chat.repositoy';
     AutosResolver,
     ArendaResolver,
     ArendaService,
-    ChatRepository
+    ChatRepository,
+    ChatService
   ],
 })
 export class AutoModule {}

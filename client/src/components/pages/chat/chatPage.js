@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { addToUserID } from '../../../../redux/actions/actions'
 import { useHttp } from '../../../hooks/http.hook'
@@ -16,7 +16,6 @@ function Chat (){
       dispatch(addToUserID(''))
       const result = await request('http://localhost:5000/chat/findeChat')
       setChats(result)
-      console.log(chats) 
   },[])
 
 

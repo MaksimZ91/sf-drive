@@ -95,6 +95,7 @@
     box-sizing: border-box;
     border-radius: 6px;
     margin:30px 0;
+    position: relative;
     &_file{
       margin-left: 12px;
     }
@@ -114,6 +115,8 @@
       background-color: inherit;
       border: none;
     }
+  
+  
 
   }
 }

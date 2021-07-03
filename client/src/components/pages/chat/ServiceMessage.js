@@ -1,50 +1,29 @@
 import React, { useState, useEffect, useContext }  from 'react'
-import moment from 'moment'
 import { FormContex } from '../../contextApp'
 import { useHttp } from '../../../hooks/http.hook'
+import ConfirmedMessage from './confimedMessaje'
+import ConfirmArenda from './confirmArenda'
+import ArendaIsActive from './ArendaIsActive'
+import ArendaIsClose from './ArendaIsClose'
+
+
 
 
 function ServiceMessage (props){
     const user = props.value.user
     const { userId } = useContext(FormContex)   
-    const [ arenda, setArenda ] = useState(null)
-    const { request } = useHttp()
-    console.log(user.id, userId)
-
-    useEffect(async ()=>{
-        if(props.value.arendaID){
-        try {
-            
-            const result = await request(`http://localhost:5000/arenda/findearenda?arendaID=${props.value.arendaID}`)
-            setArenda(result)
-          
-      
-            
-        } catch (error) {
-            
-        } 
-    }  
-
-    },[])
-
-  
         
         return(
-            <>            
-            {!(userId == user.id) && (props.value.body == 'created')?<div>запро подтв</div>:''}
-            {(props.value.body == 'conf')?<div>подтв</div>:''}
-            {(userId == user.id) && (props.value.body == 'conf')?<div>запрос на стар аренды</div>:''}
-            {(props.value.body == 'confStart')?<div>подтв</div>:''}
-            {(userId == user.id) && (props.value.body == 'confStart')?<div>запрос на стар аренды</div>:''}
-            {(props.value.body == 'close')?<div>подтв</div>:''}
+            <>
+            {(props.value.body == 'confirm')?<ConfirmedMessage value={props.value} date={props.date}/> :''}
+            {(userId == user.id) && (props.value.body == 'confirm')?<ConfirmArenda value={props.value}  date={props.date}/>:''}
+            {(props.value.body == 'isActive')?<ConfirmedMessage value={props.value}  date={props.date}/>:''}
+            {(userId == user.id) && (props.value.body == 'isActive')?<ArendaIsActive value={props.value}   date={props.date}/>:''}
+            {(props.value.body == 'isClose')?<ConfirmedMessage value={props.value}  date={props.date}/>:''}
+            {(userId == user.id) && (props.value.body == 'isClose')?<ArendaIsClose  value={props.value}   date={props.date}/>:''}
+            {(props.value.body == 'Send')?<ConfirmedMessage value={props.value}  date={props.date}/>:''}
             </>
         )
-
-    
-    
-
-
-   
 }
 
 export default ServiceMessage

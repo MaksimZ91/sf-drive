@@ -6,6 +6,7 @@ import { ArendaController } from 'src/controller/arenda.controller';
 import { UserRepository } from 'src/repo/user.repository';
 import { AutoRepository } from 'src/repo/auto.repository';
 import { ChatRepository } from 'src/repo/chat.repositoy';
+import { ChatService } from 'src/service/chat.service';
 
 
 @Module({
@@ -17,7 +18,8 @@ import { ChatRepository } from 'src/repo/chat.repositoy';
     ArendaService,
     UserRepository,
     AutoRepository,
-    ChatRepository
+    ChatRepository,
+    ChatService
   ],
 })
 export class ArendaModule {}

@@ -1,4 +1,6 @@
 import { Injectable } from '@nestjs/common';
+import { stringify } from 'querystring';
+import { UpdateArendaDto } from 'src/dto/updateArenda.dto';
 import { Arenda } from 'src/entites/arenda.entity';
 import { getRepository } from 'typeorm';
 
@@ -35,5 +37,17 @@ export class ArendaRepository {
     .from(Arenda)
     .where('arenda.id =:id', { id: id })
     .execute()
-  }  
+  } 
+  
+  
+  async findeAndUpdate (updateArenda:UpdateArendaDto){ 
+    return await getRepository(Arenda)
+    .createQueryBuilder('arenda')
+    .update(Arenda)
+    .set({ 
+      status :  updateArenda.status
+  })
+    .where('arenda.id =:id', { id: updateArenda.arendaID })  
+    .execute()
+    }
 }

@@ -37,7 +37,7 @@ export class ArendaService {
         const filterArendaAuto = await this.autoRepository.filterAuto(addArenda.startDay,  addArenda.endDay , auto.type)
         if(filterArendaAuto.length > 0){
             console.log(filterArendaAuto)
-            throw new Error('Auto on arenda in dae range!')
+            throw new Error('The car is busy during this period')
         }
         const user = await this.userRepository.FindOneByID(addArenda.user)  
         arenda.status = 'confirm'

@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable, NotFoundException } from "@nestjs/common";
 import { ArendaDtO } from "src/dto/arenda.dto";
 import { UpdateArendaDto } from "src/dto/updateArenda.dto";
 import { Arenda } from "src/entites/arenda.entity";
@@ -36,7 +36,7 @@ export class ArendaService {
         const auto = await this.autoRepository.FindOneByID(addArenda.newAuto);
         const filterArendaAuto = await this.autoRepository.filterAuto(addArenda.startDay,  addArenda.endDay , auto.type)
         if(filterArendaAuto.length > 0){
-            throw new Error('The car is busy during this period')
+            throw new HttpException('The car was already booked at that time!', HttpStatus.BAD_REQUEST)
         }
         const user = await this.userRepository.FindOneByID(addArenda.user)  
         arenda.status = 'confirm'

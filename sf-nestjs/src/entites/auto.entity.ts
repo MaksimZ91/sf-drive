@@ -141,7 +141,7 @@ export class Autos {
   photoDocumentName: AutoPhotoDocumentName[];
 
   @OneToMany(() => Arenda, (arenda) => arenda.auto)
-  arenda: Arenda;
+  arenda: Arenda[];
 
   
 }

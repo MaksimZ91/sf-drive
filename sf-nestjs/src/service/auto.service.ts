@@ -144,14 +144,17 @@ export class AutoService {
  
 
   async filterAuto(startDate: Date, endDate: Date, type: string) {
+    const date = new Date()
+    const arendaStatus = 'created'
     const allAuto = await this.autoRepository.FindeAllByType(type);
-    const filterAuto = await this.autoRepository.filterAuto(
-      startDate,
-      endDate,
-      type,
-          );
-    for (let i = 0; i <= allAuto.length - 1; i++) {
-      filterAuto.forEach((e) => {
+    const filterAuto = await this.autoRepository.filterAuto(startDate,endDate); 
+    filterAuto.forEach((e, index)=>{
+      if(e.arenda[0].bookingTime < date && e.arenda[0].status == arendaStatus ){
+        filterAuto.splice(index,1)
+      }
+    })
+    for (let i = 0; i <= allAuto.length - 1; i++) {     
+      filterAuto.forEach((e) => {     
         if (allAuto[i].id == e.id) {
           allAuto.splice(i, 1);
         }

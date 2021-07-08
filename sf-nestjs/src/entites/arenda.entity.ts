@@ -54,7 +54,7 @@ export class Arenda {
   fullTank: boolean;
 
   @Column()  
-  bookingTime: string;
+  bookingTime: Date;
 
   @ManyToOne(() => Autos, (auto) => auto.arenda)
   auto: Autos;

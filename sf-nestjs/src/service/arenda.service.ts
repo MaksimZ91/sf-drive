@@ -23,6 +23,8 @@ export class ArendaService {
         ){}
 
     async createArenda(addArenda: ArendaDtO) {
+        const bookingStatus = 'created'
+        const date = new Date
         const arenda = new Arenda(
           addArenda.startDay,
           addArenda.endDay,
@@ -34,18 +36,26 @@ export class ArendaService {
           addArenda.fullTank
           );    
         const auto = await this.autoRepository.FindOneByID(addArenda.newAuto);
-        const filterArendaAuto = await this.autoRepository.filterAuto(addArenda.startDay,  addArenda.endDay , auto.type)
-        if(filterArendaAuto.length > 0){
-            throw new HttpException('The car was already booked at that time!', HttpStatus.BAD_REQUEST)
+        if(auto.arenda.length > 0){
+            auto.arenda.forEach( (e) => {                
+                if(e.bookingTime < date && e.status == bookingStatus ){               
+                  this.arendaRepository.findeAndDeleteArenda(e.id.toString())
+                  }else{
+                    throw new HttpException('The car was already booked at that time!', HttpStatus.BAD_REQUEST)
+                  }
+            })            
         }
+        const blockMinuts = 30
+        date.setMinutes(date.getMinutes() + blockMinuts);
+        arenda.bookingTime = date
         const user = await this.userRepository.FindOneByID(addArenda.user)  
-        arenda.status = 'confirm'
+        arenda.status = bookingStatus
         arenda.user = user
         arenda.auto = auto     
         await this.arendaRepository.SaveArenda(arenda)   
         const usersChats = await this.chatRepository.findeAllChats(user.id, auto.user.id)        
         const message = new MessagesEntity(addArenda.coment, user, auto.user)
-        const systemMessage = new MessagesEntity('confirm', user, auto.user) 
+        const systemMessage = new MessagesEntity(bookingStatus, user, auto.user) 
         systemMessage.system = true
         systemMessage.arendaID = arenda.id
         arenda.user = user

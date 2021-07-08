@@ -28,6 +28,16 @@ export class ArendaRepository {
     .where('arenda.id =:id', { id: id })
     .getOne()
   } 
+
+  async findeBookingArenda(id:number , status:string, date:Date){
+    return await getRepository(Arenda)
+    .createQueryBuilder('arenda')
+    .leftJoinAndSelect('arenda.user', 'user')
+    .leftJoinAndSelect('arenda.auto', 'auto')
+    .where('auto.id =:id', { id: id })
+    .andWhere('arenda.status =:status', { status: status })
+    .getMany()
+  }
   
   
   async findeAndDeleteArenda (id:string){

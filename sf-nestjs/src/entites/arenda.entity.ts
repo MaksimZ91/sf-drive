@@ -53,6 +53,9 @@ export class Arenda {
   @Column()
   fullTank: boolean;
 
+  @Column()  
+  bookingTime: string;
+
   @ManyToOne(() => Autos, (auto) => auto.arenda)
   auto: Autos;
 

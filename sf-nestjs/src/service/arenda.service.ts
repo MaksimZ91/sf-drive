@@ -36,7 +36,6 @@ export class ArendaService {
         const auto = await this.autoRepository.FindOneByID(addArenda.newAuto);
         const filterArendaAuto = await this.autoRepository.filterAuto(addArenda.startDay,  addArenda.endDay , auto.type)
         if(filterArendaAuto.length > 0){
-            console.log(filterArendaAuto)
             throw new Error('The car is busy during this period')
         }
         const user = await this.userRepository.FindOneByID(addArenda.user)  

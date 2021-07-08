@@ -8,7 +8,7 @@ export class AutosResolver {
 
   @Query()
   filterAuto(@Args('arendaInput') arendaInput: ArendaInput) {
-    const { startDate, endDate, type } = arendaInput;    
-    return this.autoService.filterAuto(startDate, endDate, type);
+    const { startDate, endDate, type } = arendaInput;   
+        return this.autoService.filterAuto(startDate, endDate, type);
   }
 }

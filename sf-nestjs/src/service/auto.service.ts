@@ -143,7 +143,7 @@ export class AutoService {
 
  
 
-  async filterAuto(startDate: string, endDate: string, type: string) {
+  async filterAuto(startDate: Date, endDate: Date, type: string) {
     const allAuto = await this.autoRepository.FindeAllByType(type);
     const filterAuto = await this.autoRepository.filterAuto(
       startDate,

@@ -67,8 +67,8 @@ input FindeArendaInput{
 }
 
 input ArendaInput{ 
-  startDate: String
-  endDate: String
+  startDate: Date
+  endDate: Date
   type:String
 }
 

@@ -46,7 +46,7 @@ export class AutoRepository {
       .getMany();
       }
 
-  async filterAuto(startDate: string, endDate: string, type: string) {
+  async filterAuto(startDate: Date, endDate: Date, type: string) {
     return await getRepository(Autos)
       .createQueryBuilder('auto')
       .leftJoinAndSelect('auto.arenda', 'arenda')

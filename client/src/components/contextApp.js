@@ -4,7 +4,6 @@ import { useAuth } from '../hooks/autn.hook'
 
 export const FormContex = React.createContext()
 
-
 export const FormProvider = ({ children }) => {
   const [openAuthor, setOpenAuthor]=useState(false)
   const [recovery, setRecovery]=useState(false)

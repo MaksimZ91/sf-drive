@@ -34,6 +34,11 @@ export class ArendaService {
           addArenda.fullTank
           );    
         const auto = await this.autoRepository.FindOneByID(addArenda.newAuto);
+        const filterArendaAuto = await this.autoRepository.filterAuto(addArenda.startDay,  addArenda.endDay , auto.type)
+        if(filterArendaAuto.length > 0){
+            console.log(filterArendaAuto)
+            throw new Error('Auto on arenda in dae range!')
+        }
         const user = await this.userRepository.FindOneByID(addArenda.user)  
         arenda.status = 'confirm'
         arenda.user = user
@@ -62,7 +67,7 @@ export class ArendaService {
         } 
         return {message, arenda}
       }
-                
+
     async userArendaHistory (id:string){  
         const history = await this.arendaRepository.findeHistoryArendaByID(id)
         if(history){

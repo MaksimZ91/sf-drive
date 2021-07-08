@@ -12,8 +12,8 @@ export interface FindeArendaInput {
 }
 
 export interface ArendaInput {
-    startDate?: string;
-    endDate?: string;
+    startDate?: Date;
+    endDate?: Date;
     type?: string;
 }
 

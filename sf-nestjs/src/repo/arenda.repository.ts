@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { stringify } from 'querystring';
 import { UpdateArendaDto } from 'src/dto/updateArenda.dto';
 import { Arenda } from 'src/entites/arenda.entity';
 import { getRepository } from 'typeorm';
@@ -10,6 +9,33 @@ export class ArendaRepository {
     const repository = getRepository(Arenda);
     return await repository.save(arenda);
   }
+
+ async findeAllArendaRande (startDay:Date, endDay:Date, id:number, bookingTime:Date){
+   return await getRepository(Arenda)
+   .createQueryBuilder('arenda')
+   .leftJoinAndSelect('arenda.auto', 'auto')   
+   .where('auto.id =:id AND arenda.startDay  BETWEEN :begin AND :end', {
+    begin: new Date(startDay),
+    end: new Date(endDay),
+    id:id
+  })
+  .orWhere('auto.id =:id AND arenda.endDay  BETWEEN :begin AND :end', {
+    begin: new Date(startDay),
+    end: new Date(endDay),
+    id:id
+  })
+  .orWhere('auto.id =:id AND :begin  BETWEEN arenda.startDay AND arenda.endDay', {
+    begin: new Date(startDay),
+    end: new Date(endDay),
+    id:id
+  })
+  .orWhere('auto.id =:id AND :end BETWEEN arenda.startDay AND arenda.endDay', {
+    begin: new Date(startDay),
+    end: new Date(endDay),
+    id:id
+  })  
+  .getMany();
+ }
 
   async findeHistoryArendaByID(id: string) {
     return await getRepository(Arenda)

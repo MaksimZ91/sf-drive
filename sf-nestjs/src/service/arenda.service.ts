@@ -25,6 +25,8 @@ export class ArendaService {
     async createArenda(addArenda: ArendaDtO) {
         const bookingStatus = 'created'
         const date = new Date
+        const blockMinuts = 30
+        date.setMinutes(date.getMinutes() + blockMinuts) 
         const arenda = new Arenda(
           addArenda.startDay,
           addArenda.endDay,
@@ -33,26 +35,26 @@ export class ArendaService {
           addArenda.babyChair,
           addArenda.deliveryAuto,
           addArenda.close,
-          addArenda.fullTank
-          );    
+          addArenda.fullTank);
+        arenda.status =  bookingStatus
+        arenda.bookingTime = date  
         const auto = await this.autoRepository.FindOneByID(addArenda.newAuto);
-        if(auto.arenda.length > 0){
-            auto.arenda.forEach( (e) => {                
-                if(e.bookingTime < date && e.status == bookingStatus ){               
-                  this.arendaRepository.findeAndDeleteArenda(e.id.toString())
-                  }else{
-                    throw new HttpException('The car was already booked at that time!', HttpStatus.BAD_REQUEST)
-                  }
+        const user = await this.userRepository.FindOneByID(addArenda.user) 
+        arenda.user = user
+        arenda.auto = auto   
+        const booking = await this.arendaRepository.findeAllArendaRande(addArenda.startDay, addArenda.endDay, auto.id, date )       
+        if(booking.length > 0){            
+            const currentTime = new Date
+            booking.forEach((e) => {
+             if(!(e.status == bookingStatus)){                 
+                throw new HttpException('The car was already booked at that time!', HttpStatus.BAD_REQUEST) 
+             }else if(e.status == bookingStatus && e.bookingTime > currentTime){               
+                throw new HttpException('The car was already booked at that time!', HttpStatus.BAD_REQUEST) 
+             }                 
+            this.arendaRepository.findeAndDeleteArenda(e.id.toString())
             })            
         }
-        const blockMinuts = 30
-        date.setMinutes(date.getMinutes() + blockMinuts);
-        arenda.bookingTime = date
-        const user = await this.userRepository.FindOneByID(addArenda.user)  
-        arenda.status = bookingStatus
-        arenda.user = user
-        arenda.auto = auto     
-        await this.arendaRepository.SaveArenda(arenda)   
+        await this.arendaRepository.SaveArenda(arenda)
         const usersChats = await this.chatRepository.findeAllChats(user.id, auto.user.id)        
         const message = new MessagesEntity(addArenda.coment, user, auto.user)
         const systemMessage = new MessagesEntity(bookingStatus, user, auto.user) 
@@ -113,7 +115,6 @@ export class ArendaService {
         const systemMessage = new MessagesEntity(updateArenda.status, user, toUser) 
         systemMessage.system = true
         systemMessage.arendaID = arenda.id           
-        return await this.chatRepository.SaveMessage(systemMessage)     
-
+        return await this.chatRepository.SaveMessage(systemMessage) 
     }
 }

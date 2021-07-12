@@ -1,0 +1,151 @@
+.payment{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top:150px;
+    >h1{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 48px;
+        line-height: 120%;
+        text-align: center;
+        color: #1B1B1B;
+        margin: 0;
+    }
+    &_form{
+        position: relative;
+        width: 522px;
+        height: 392px;  
+        margin-top: 52px;   
+        &_wrapper{    
+            position: absolute; 
+            top:0;
+            left: 0;     
+            width: 472px;
+            height: 292px;
+            background: #F2F3F4;
+            border-radius: 14px;
+            z-index: 1;
+            &_content{
+                display: flex;
+                justify-content: center;
+                margin-top: 78px;
+                &_cartNumber, &_dateRange{
+                    display: flex;
+                    flex-direction: column;
+                    margin: 0;
+                    font-family: Roboto;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 14px;
+                    line-height: 16px;
+                    color: #1B1B1B;
+                    >input{
+                        margin-top: 12px;
+                        background: #FFFFFF;
+                        border: 1px solid #E0E0E0;
+                        box-sizing: border-box;
+                        border-radius: 6px;
+                        height: 44px;
+                    }
+                }
+                &_cartNumber{
+                    >input{
+                        width: 268px;
+                        margin-right: 10px;
+                    }
+                }
+                &_dateRange{
+                    >input{
+                        width: 146px;
+                    }
+                }
+
+            }
+            &_user{
+                display: flex;
+                flex-direction: column;
+                margin:30px 0 12px 24px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 16px;
+                color: #1B1B1B;
+                >input{
+                    background: #FFFFFF;
+                    border: 1px solid #E0E0E0;
+                    box-sizing: border-box;
+                    border-radius: 6px;
+                    height: 44px;
+                    margin-top: 12px;
+                }              
+            }         
+            &_user{
+                >input{
+                    width: 424px;
+                }                   
+            }    
+        }
+        &_avers{           
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 472px;
+            height: 292px;
+            background: #E9EBED;
+            border-radius: 14px;
+            margin-top: 100px;
+            margin-left: 50px;
+            margin:0;
+            &_cvv{
+                margin-top: 219px;
+                margin-left: 24px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 16px;
+                color: #1B1B1B;
+                >input{
+                    width: 146px;
+                    height: 44px;
+                    background: #FFFFFF;
+                    border: 1px solid #E0E0E0;
+                    box-sizing: border-box;
+                    border-radius: 6px;
+                    margin-left: 14px;
+                }
+            }   
+        }
+    }    
+    }
+
+    .payment_continue{
+        height: 84px;
+        margin-top: 164px;
+        border-top: 1px solid #DEE2E4; 
+            >button{
+                display: block;
+                margin:17px auto;
+                width: 171px;
+                height: 51px;
+                background: #61A199;
+                border-radius: 6px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 19px;
+                text-align: center;
+                color: #FFFFFF;
+                border-style: none;
+                cursor: pointer;
+            }
+            >button:disabled{
+                background: #E6E6E6;
+                color: #B4B5BD;
+              }
+        }

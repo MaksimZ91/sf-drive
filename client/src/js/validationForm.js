@@ -7,7 +7,7 @@ export const validation =(value)=>{
       return true
       break;
     }
-  }return false
+  } return false
 }
   
 

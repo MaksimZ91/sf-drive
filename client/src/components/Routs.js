@@ -18,7 +18,7 @@ import BookingPage from "./pages/bookingPage/BookingPage";
 import BookingCart from "./pages/bookingPage/bookingCart";
 import Chat from "./pages/chat/chatPage";
 import UserChat from "./pages/chat/userChat";
-
+import PaymentPage from "./pages/payment/paymentPage";
 
 
 
@@ -37,7 +37,7 @@ function Routs (){
     }else{      
         return(
         <>           
-        <Route path="/" component={ Newpage } exact/>
+        <Route path="/" component={ PaymentPage } exact/>
         <Route path="/auto" component= { DetailAutoPage } exact/>
         <Route path="/myAuto" component={ Autopage } exact/>
         <Route path="/addauto" component={ Addautopage } exact/>

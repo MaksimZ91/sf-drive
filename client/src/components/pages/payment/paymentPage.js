@@ -1,13 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Continuestep from '../../continueStep/continuestep'
 import { validation } from '../../../js/validationForm'
+import { useHttp } from '../../../hooks/http.hook'
+import { useSelector } from 'react-redux'
 import './scss/payment.scss'
+import { FormContex } from '../../contextApp'
 
 
-function PaymentPage () {
-    const [ form, setForm ] = useState({cartNumber:'', dateRange:'', user:'', CVV:''})
+function PaymentPage (props) {
+    const { userId } = useContext(FormContex)
+    const [ form, setForm ] = useState({cardNumber:'', cardExpiry:'', cardName:'', cardCvc:''})
     const [ valid, setValid ] = useState(true)
-    
+    const { request } = useHttp()
+    const auto = useSelector((state)=>{
+        return state.auto.currentAuto
+    })
+    const arenda = useSelector((state)=>{
+        return state.arenda.arendaParam
+    })
 
     const handelChange = (e) => {
         setForm({...form, [e.target.name]:e.target.value})
@@ -16,11 +26,11 @@ function PaymentPage () {
     const nameClass = 'payment_continue'
    
     const authorRequest = async () => { 
-        try { 
-           console.log('1')
-        } catch (e) {
+     
+            const result =await request('http://localhost:5000/transfer','POST', {...form, toUserAuto:auto.id, userID:userId, amount:arenda.cost })
+            console.log(result)
+           
          
-        }     
     } 
 
     useEffect(()=>{
@@ -34,13 +44,13 @@ function PaymentPage () {
             <form className='payment_form'>
                 <div className='payment_form_wrapper'>
                     <div className='payment_form_wrapper_content'>
-                        <p className='payment_form_wrapper_content_cartNumber'>Номер карты<input type='text' name='cartNumber' onChange={handelChange} value={form.cartNumber}/></p>
-                        <p className='payment_form_wrapper_content_dateRange'>Срок действия<input type='text' name='dateRange' onChange={handelChange} value={form.dateRange} /></p>
+                        <p className='payment_form_wrapper_content_cartNumber'>Номер карты<input type='text' name='cardNumber' onChange={handelChange} value={form.cardNumber}/></p>
+                        <p className='payment_form_wrapper_content_dateRange'>Срок действия<input type='text' name='cardExpiry' onChange={handelChange} value={form.cardExpiry} /></p>
                     </div>                
-                <p className='payment_form_wrapper_user'>Держатель карты<input type='text' name='user' onChange={handelChange} value={form.user}/></p>
+                <p className='payment_form_wrapper_user'>Держатель карты<input type='text' name='cardName' onChange={handelChange} value={form.cardName}/></p>
                 </div>
                 <div className='payment_form_avers'>
-                    <p className='payment_form_avers_cvv'>CVV<input type='text' name='CVV' onChange={handelChange} value={form.CVV}/></p>
+                    <p className='payment_form_avers_cvv'>CVV<input type='text' name='cardCvc' onChange={handelChange} value={form.cardCvc}/></p>
                 </div>
             </form>
         </section>

@@ -37,7 +37,7 @@ function Routs (){
     }else{      
         return(
         <>           
-        <Route path="/" component={ PaymentPage } exact/>
+        <Route path="/" component={ Newpage } exact/>
         <Route path="/auto" component= { DetailAutoPage } exact/>
         <Route path="/myAuto" component={ Autopage } exact/>
         <Route path="/addauto" component={ Addautopage } exact/>
@@ -50,6 +50,7 @@ function Routs (){
         <Route path="/cart" component = { BookingCart } />
         <Route path='/chat' component = { Chat } /> 
         <Route path='/user/chat' component = { UserChat } /> 
+        <Route path='/payment' component = { PaymentPage } /> 
         </>
         )
     }

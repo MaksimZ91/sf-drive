@@ -10,6 +10,7 @@ import { join } from 'path';
 import { DateScalar } from './DateScalar';
 import { ArendaModule } from './modules/arenda.module';
 import { ChatModule } from './modules/chat.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -45,6 +46,7 @@ import { ChatModule } from './modules/chat.module';
       },
     }),
     ChatModule,
+    PaymentModule,
   ],
   controllers: [],
   providers: [DateScalar],

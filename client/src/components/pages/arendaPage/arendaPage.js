@@ -7,6 +7,7 @@ import ArendaCheck from './arendaCheck'
 import { useHttp } from '../../../hooks/http.hook'
 import { useSelector } from 'react-redux'
 import Continuestep from '../../continueStep/continuestep'
+import { Redirect } from 'react-router-dom'
 const TOKENS_KYES='tokens'
 
 
@@ -66,6 +67,7 @@ function ArendaPage(){
                          priceFiveDays = { auto.priceFiveDays }/>
         </main>:''}    
         <Continuestep titel={continueTitel} validation={false} nextStep={authorRequest} nameClass={nameClass}/>
+        {data?<Redirect to='/payment'/>:''}
         </>
     )
 }

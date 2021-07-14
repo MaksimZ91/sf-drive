@@ -11,6 +11,7 @@ function PaymentPage (props) {
     const { userId } = useContext(FormContex)
     const [ form, setForm ] = useState({cardNumber:'', cardExpiry:'', cardName:'', cardCvc:''})
     const [ valid, setValid ] = useState(true)
+    const [ paymontSessionKey, setPaymontSessionKey  ] = useState(null)
     const { request } = useHttp()
     const auto = useSelector((state)=>{
         return state.auto.currentAuto
@@ -18,7 +19,6 @@ function PaymentPage (props) {
     const arenda = useSelector((state)=>{
         return state.arenda.arendaParam
     })
-
     const handelChange = (e) => {
         setForm({...form, [e.target.name]:e.target.value})
     }
@@ -26,12 +26,25 @@ function PaymentPage (props) {
     const nameClass = 'payment_continue'
    
     const authorRequest = async () => { 
-     
+        try {
             const result =await request('http://localhost:5000/transfer','POST', {...form, toUserAuto:auto.id, userID:userId, amount:arenda.cost })
-            console.log(result)
-           
+            setPaymontSessionKey(result.paymentSessionKey)
+            
+                       
+        } catch (error) {
+            
+        }
          
     } 
+    
+    useEffect(()=>{
+
+        console.log(paymontSessionKey)
+        if(paymontSessionKey){
+          
+            window.PMNTS.loadPinForm(paymontSessionKey) 
+        }
+    },[paymontSessionKey])
 
     useEffect(()=>{
         setValid(validation(form))

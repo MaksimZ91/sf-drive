@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { HttpModule, HttpService, Module } from '@nestjs/common';
 import { AutoRepository } from 'src/repo/auto.repository';
 import { OptionsRepository } from 'src/repo/options.repository';
 import { PhotoRepository } from 'src/repo/photo.repository';
@@ -9,7 +9,7 @@ import { UserSevice } from 'src/service/user.service';
 import { TransferController } from './transfer/transfer.controller';
 
 @Module({
-  imports:[UserMo],
+  imports:[HttpModule],
   controllers: [TransferController],  
   providers: [
     UserSevice,
@@ -17,7 +17,8 @@ import { TransferController } from './transfer/transfer.controller';
     AutoService,
     AutoRepository,
     OptionsRepository,
-    PhotoRepository
+    PhotoRepository,
+    PhotoDocumentRepository,
 
   ],
 })

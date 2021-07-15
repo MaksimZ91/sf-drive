@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import Continuestep from '../../continueStep/continuestep'
+import Error from '../../error/error'
 import { validation } from '../../../js/validationForm'
 import { useHttp } from '../../../hooks/http.hook'
 import { useSelector, useDispatch } from 'react-redux'

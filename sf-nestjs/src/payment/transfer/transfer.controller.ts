@@ -1,4 +1,4 @@
-import { Body, Controller, HttpException, HttpService, HttpStatus, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpService, HttpStatus, Post, Query, Req, UseGuards } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
 import { CreateTransferDto } from 'src/dto/payment.dto';
 import { JwtAuthGuard } from 'src/guard/autn.guard';
@@ -41,10 +41,37 @@ export class TransferController {
           )
         })
         const paymentData = paymentGatewayRawResponse?.data
-        console.log(process.env.BANK_SECRET_KEY)
 
-        return {paymentSessionKey:paymentData?.paymentSessionKey}
-      
-       
+        return {paymentSessionKey:paymentData?.paymentSessionKey} 
         }  
+
+        @UseGuards(JwtAuthGuard)
+        @Get()
+        async chekPayment(@Query('paymentSessionKey') paymentSessionKey:string){
+          if(!paymentSessionKey){
+            throw new  HttpException(
+              'paymentSessionKey not present',
+              HttpStatus.NOT_ACCEPTABLE
+            )
+          }
+          const checkPaymentStatusResponse: AxiosResponse = await this.httpService
+          .get(`http://localhost:4000/transfers/check-status`,{
+            headers:{
+              Authorization:`Bearer ${process.env.BANK_SECRET_KEY}`
+            },
+            params:{
+              paymentSessionKey
+            } 
+          })
+          .toPromise()
+          .catch(error =>{
+            console.error(error.messge)
+            throw error
+          })
+          const chekPaymentStatusData = checkPaymentStatusResponse.data 
+           
+
+          return { paymentStatus: chekPaymentStatusData.transferStatus }
+        }
 }
+

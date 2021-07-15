@@ -3,6 +3,7 @@ import Continuestep from '../../continueStep/continuestep'
 import { validation } from '../../../js/validationForm'
 import { useHttp } from '../../../hooks/http.hook'
 import { useSelector } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import './scss/payment.scss'
 import { FormContex } from '../../contextApp'
 
@@ -11,7 +12,8 @@ function PaymentPage (props) {
     const { userId } = useContext(FormContex)
     const [ form, setForm ] = useState({cardNumber:'', cardExpiry:'', cardName:'', cardCvc:''})
     const [ valid, setValid ] = useState(true)
-    const [ paymontSessionKey, setPaymontSessionKey  ] = useState(null)
+    const [ payStatus, setPayStatus ] = useState('')    
+    const [ sessionKey, setPaymontSessionKey  ] = useState(null)
     const { request } = useHttp()
     const auto = useSelector((state)=>{
         return state.auto.currentAuto
@@ -29,6 +31,7 @@ function PaymentPage (props) {
         try {
             const result =await request('http://localhost:5000/transfer','POST', {...form, toUserAuto:auto.id, userID:userId, amount:arenda.cost })
             setPaymontSessionKey(result.paymentSessionKey)
+            setPayStatus('pending')
             
                        
         } catch (error) {
@@ -37,14 +40,26 @@ function PaymentPage (props) {
          
     } 
     
-    useEffect(()=>{
-
-        console.log(paymontSessionKey)
-        if(paymontSessionKey){
-          
-            window.PMNTS.loadPinForm(paymontSessionKey) 
+    
+    useEffect(async ()=>{        
+        if(sessionKey){          
+            window.PMNTS.loadPinForm(sessionKey)
         }
-    },[paymontSessionKey])
+        while(true)
+        { const queryParam = new URLSearchParams({
+             paymentSessionKey:sessionKey
+         }).toString()
+         const payStatusResp = await request(`http://localhost:5000/transfer?${queryParam}`)
+         setPayStatus(payStatusResp.paymentStatus)
+         if( payStatusResp.paymentStatus !== 'pending'){
+             break
+         }
+         await (async ()=>{
+             await new Promise((resolve)=>setTimeout(resolve, 2500))
+         })()
+     }
+
+    },[ sessionKey ])
 
     useEffect(()=>{
         setValid(validation(form))
@@ -68,6 +83,7 @@ function PaymentPage (props) {
             </form>
         </section>
         <Continuestep titel={continueTitel} validation={valid} nextStep={authorRequest} nameClass={nameClass} />
+        {payStatus == 'success'?<Redirect to='/'/>:''}
         </>
     )
 }

@@ -2,8 +2,9 @@ import React, { useState, useEffect, useContext } from 'react'
 import Continuestep from '../../continueStep/continuestep'
 import { validation } from '../../../js/validationForm'
 import { useHttp } from '../../../hooks/http.hook'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { showAlert } from '../../../../redux/actions/actions'
 import './scss/payment.scss'
 import { FormContex } from '../../contextApp'
 
@@ -15,11 +16,18 @@ function PaymentPage (props) {
     const [ payStatus, setPayStatus ] = useState('')    
     const [ sessionKey, setPaymontSessionKey  ] = useState(null)
     const { request } = useHttp()
+    const dispatch = useDispatch()
+    const alert = useSelector((state)=>{
+        return state.app.alert
+      })
     const auto = useSelector((state)=>{
         return state.auto.currentAuto
     })
     const arenda = useSelector((state)=>{
         return state.arenda.arendaParam
+    })
+    const arendID = useSelector((state)=>{
+        return state.arenda.id
     })
     const handelChange = (e) => {
         setForm({...form, [e.target.name]:e.target.value})
@@ -52,6 +60,11 @@ function PaymentPage (props) {
          const payStatusResp = await request(`http://localhost:5000/transfer?${queryParam}`)
          setPayStatus(payStatusResp.paymentStatus)
          if( payStatusResp.paymentStatus !== 'pending'){
+             if (payStatusResp.paymentStatus == 'failed'){ 
+                 dispatch(showAlert('Оплата не прошла, попробуйте еще раз!'))
+             }
+             const body = { autoID: auto.id, arendaID:arendID }
+             await request(`http://localhost:5000/transfer/updatearenda`, 'POST', body)
              break
          }
          await (async ()=>{
@@ -67,6 +80,7 @@ function PaymentPage (props) {
 
     return(
         <>
+        {alert?<Error text={alert}/>:''} 
         <section className='payment'>
             <h1 className='payment_titel'>Оплата картой</h1>
             <form className='payment_form'>
@@ -83,9 +97,9 @@ function PaymentPage (props) {
             </form>
         </section>
         <Continuestep titel={continueTitel} validation={valid} nextStep={authorRequest} nameClass={nameClass} />
-        {payStatus == 'success'?<Redirect to='/'/>:''}
+      
         </>
     )
 }
-
+//  {payStatus == 'success'?<Redirect to='/sucsess'/>:''}
 export default PaymentPage

@@ -1,7 +1,10 @@
 import { Body, Controller, Get, HttpException, HttpService, HttpStatus, Post, Query, Req, UseGuards } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
 import { CreateTransferDto } from 'src/dto/payment.dto';
+import { StatusDto } from 'src/dto/statusDto';
+import { UpdateArendaDto } from 'src/dto/updateArenda.dto';
 import { JwtAuthGuard } from 'src/guard/autn.guard';
+import { ArendaService } from 'src/service/arenda.service';
 import { AutoService } from 'src/service/auto.service';
 import { UserSevice } from 'src/service/user.service';
 
@@ -10,6 +13,7 @@ export class TransferController {
     constructor (private readonly userService:UserSevice,
                  private readonly autoService:AutoService,
                  private readonly httpService:HttpService,
+                 private readonly arendaService:ArendaService
                  ){}
     
     @UseGuards(JwtAuthGuard)
@@ -42,12 +46,31 @@ export class TransferController {
         })
         const paymentData = paymentGatewayRawResponse?.data
 
-        return {paymentSessionKey:paymentData?.paymentSessionKey} 
+        return {paymentSessionKey:paymentData?.paymentSessionKey}
+       
         }  
+
+        @UseGuards(JwtAuthGuard)
+        @Post('updatearenda')
+          public async updateStatusArenda(@Req() req: any, @Body() statusDto: StatusDto){
+            const user = req.user
+            const toUser = await this.autoService.getOne(statusDto.autoID)
+            const status = 'confirm'
+            const updateArenda : UpdateArendaDto ={ 
+              user:user.id,
+              toUser:toUser.user.id.toString(),
+              status:status,
+              arendaID:statusDto.arendaID
+            }
+            await this.arendaService.findeAndUpdateArenda(updateArenda)
+            return { message : 'confirm'}
+
+          }
 
         @UseGuards(JwtAuthGuard)
         @Get()
         async chekPayment(@Query('paymentSessionKey') paymentSessionKey:string){
+          console.log(paymentSessionKey)
           if(!paymentSessionKey){
             throw new  HttpException(
               'paymentSessionKey not present',
@@ -73,5 +96,6 @@ export class TransferController {
 
           return { paymentStatus: chekPaymentStatusData.transferStatus }
         }
-}
 
+        
+}

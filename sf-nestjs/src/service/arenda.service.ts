@@ -107,7 +107,7 @@ export class ArendaService {
     }
 
 
-    async findeAndUpdateArenda( updateArenda:UpdateArendaDto){
+    async findeAndUpdateArenda( updateArenda:UpdateArendaDto){        
         await this.arendaRepository.findeAndUpdate(updateArenda)
         const user = await this.userRepository.FindOneByID(updateArenda.user)  
         const toUser = await this.userRepository.FindOneByID(updateArenda.toUser) 

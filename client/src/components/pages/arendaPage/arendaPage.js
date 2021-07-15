@@ -5,14 +5,16 @@ import Arendainfo from './arendaInfo'
 import Arendaoptions from './arendaOptions'
 import ArendaCheck from './arendaCheck'
 import { useHttp } from '../../../hooks/http.hook'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Continuestep from '../../continueStep/continuestep'
 import { Redirect } from 'react-router-dom'
+import { addArendaID } from '../../../../redux/actions/actions'
 const TOKENS_KYES='tokens'
 
 
 
 function ArendaPage(){    
+    const dispatch = useDispatch()
     const backlink = '/auto'
     const back = 'arenda_back'
     const [error, setError]=useState(null)
@@ -46,6 +48,7 @@ function ArendaPage(){
             }     
             const result = await request('http://localhost:5000/arenda/created','POST', {...body , ...option})  
             setData(result)
+            dispatch(addArendaID(result.arenda.id))
         } catch (e) {
           setError(e)
         }     

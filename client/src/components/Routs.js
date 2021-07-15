@@ -19,6 +19,7 @@ import BookingCart from "./pages/bookingPage/bookingCart";
 import Chat from "./pages/chat/chatPage";
 import UserChat from "./pages/chat/userChat";
 import PaymentPage from "./pages/payment/paymentPage";
+import SucsessPay from "./pages/payment/sucsessPay";
 
 
 
@@ -51,6 +52,7 @@ function Routs (){
         <Route path='/chat' component = { Chat } /> 
         <Route path='/user/chat' component = { UserChat } /> 
         <Route path='/payment' component = { PaymentPage } /> 
+        <Route path='/sucsess' component = { SucsessPay } />
         </>
         )
     }

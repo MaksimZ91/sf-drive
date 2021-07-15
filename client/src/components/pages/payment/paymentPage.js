@@ -97,9 +97,10 @@ function PaymentPage (props) {
             </form>
         </section>
         <Continuestep titel={continueTitel} validation={valid} nextStep={authorRequest} nameClass={nameClass} />
+        {payStatus == 'success'?<Redirect to='/sucsess'/>:''}
       
         </>
     )
 }
-//  {payStatus == 'success'?<Redirect to='/sucsess'/>:''}
+//  
 export default PaymentPage

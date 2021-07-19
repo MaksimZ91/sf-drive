@@ -11,6 +11,8 @@ import { DateScalar } from './DateScalar';
 import { ArendaModule } from './modules/arenda.module';
 import { ChatModule } from './modules/chat.module';
 import { PaymentModule } from './payment/payment.module';
+import { UserController } from './controller/user.controller';
+import { UserModul } from './modules/user.module';
 
 @Module({
   imports: [
@@ -22,6 +24,7 @@ import { PaymentModule } from './payment/payment.module';
     RegistrModul,
     AutoModule,
     ChatModule,
+    UserModul,
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
         name: 'default',

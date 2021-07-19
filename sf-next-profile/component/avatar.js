@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import style from '../styles/profile.module.scss'
 
-export default function UserAvatart () {
+export default function UserAvatart ( {user} ) {
+
   return(
     <>
     <section className={style.user_avatar}>
@@ -12,7 +13,7 @@ export default function UserAvatart () {
       height={200}
       />
       <div className={style.user_avatar_wrapper}>
-        <h2>Константин К.</h2>
+        <h2>{user.name}</h2>
         <Image
         src='/img/edit.svg'
         alt='edit_image'

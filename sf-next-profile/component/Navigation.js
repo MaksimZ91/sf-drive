@@ -7,6 +7,9 @@ export  default function  Navigation ({children}){
     return(
     <>
     <Head>
+      <meta name='keywords' content='drive, carshering, delivery'/>
+      <meta name='discription' content='Thsi profile user on site carsherin sf_Drive'/>
+      <meta charSet='utf-8'/>
       <title>SF-Drive | UserProfile</title>
     </Head>
     <header className={style.header_profile}>

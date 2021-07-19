@@ -3,14 +3,14 @@ import Link from 'next/link'
 import style from '../styles/profile.module.scss'
 
 
-export default function UserInfo () {
+function UserInfo ({user}) {
   return(
     <>
     <section className={style.user_info}>
       <div className={style.user_info_date}>
         <p>Дата рождения</p>
         <div className={style.user_info_date_wrapper}>
-          <p>02.05.1977</p>
+          <p>{user.date}</p>
           <Image 
             src='/img/edit.svg'
             alt='edit_image'
@@ -26,7 +26,7 @@ export default function UserInfo () {
       <div className={style.user_info_phone}>
         <p>Телефон</p>
         <div className={style.user_info_phone_wrapper}>
-          <p>+7 999 123-45-67</p>
+          <p>{user.phone}</p>
           <Image 
             src='/img/edit.svg'
             alt='edit_image'
@@ -38,7 +38,7 @@ export default function UserInfo () {
       <div className={style.user_info_email}>
         <p>Эл. почта</p>
         <div className={style.user_info_email_wrapper}>
-          <p>konstantin@mail.ru</p>
+          <p>{user.email}</p>
           <Image 
             src='/img/edit.svg'
             alt='edit_image'
@@ -57,3 +57,6 @@ export default function UserInfo () {
     </>
   )
 }
+
+export default UserInfo
+

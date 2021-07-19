@@ -10,7 +10,8 @@ export class UserController {
   public async findeAllMessges(  
     @Query('id') id:string ){
         const user =  await this.userService.findByPayload({userId:id})
-        const name = user.fio.substr(0,6) + '.'     
+        const newName = user.fio.split(' ')  
+        const name = newName[0] + ' ' + newName[1][0].toUpperCase() + '.'
     return {...user, name}
   }
 

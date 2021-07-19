@@ -1,12 +1,16 @@
-import Navigation from '../component/Navigation'
+import UserAvatart from '../component/avatar'
+import Navigation from '../component/navigation'
+import UserInfo from '../component/userInfo'
+import Coment from '../component/coment'
 
 
 export default function UserProfile() {
   return (
     <>
     <Navigation>  
-      <section></section>
-      <section>4</section>
+      <UserAvatart/>
+      <UserInfo/>
+      <Coment/>
     </Navigation>
     </>    
   )

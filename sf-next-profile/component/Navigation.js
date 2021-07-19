@@ -5,17 +5,19 @@ import style from '../styles/profile.module.scss'
 import Footer from './footer'
 export  default function  Navigation ({children}){
     return(
-        <>
-        <Head>
+    <>
+    <Head>
       <title>SF-Drive | UserProfile</title>
     </Head>
     <header className={style.header_profile}>
-      <Image
-       src='/img/Logo.svg'
-       alt='logo Image'
-       width={115}
-       height={28}
-      />
+      <div className={style.header_profile_logoImg}>
+        <Image
+        src='/img/Logo.svg'        
+        alt='logo Image'
+        width={115}
+        height={28}
+        />
+      </div>
       <div className={style.header_profile_wrapper}>
       <nav>
         <Link href="http://localhost:8080/booking"><a>Бронирования</a></Link>

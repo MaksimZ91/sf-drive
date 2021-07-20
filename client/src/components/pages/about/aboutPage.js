@@ -11,7 +11,7 @@ function Aboutpage (){
   const {openAuthor, setOpenAuthor, recovery, setRecovery} = useContext(FormContex)
 
   
-  return(
+  return(    
     <>
     <main className={(recovery||openAuthor)?'activeMain':''}>
     {openAuthor?<Authorpage value={{recov:setRecovery,closeAuthor:setOpenAuthor}}/>:""}

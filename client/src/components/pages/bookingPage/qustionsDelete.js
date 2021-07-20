@@ -15,7 +15,6 @@ function QustionsDelete (props){
         }
     })
 
-
     const onSubmit = async () =>{
         try {
             await deleteArenda()

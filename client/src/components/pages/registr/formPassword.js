@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { FormContex } from './formContex'
+import {RegistContext } from './formContex'
 
 
 
@@ -8,9 +8,7 @@ function Password (){
   const [confirmHide, setConfirmHide]=useState(false)
   const [password, setPassword]=useState({pass:'',secondPassword:''})
   const [warning, setWarning]=useState (false)
-  const {form} = useContext(FormContex)
-  const {setForm} =useContext(FormContex)
-
+  const { form, setForm } = useContext(RegistContext)
 const confirmPassHandler = () =>{
   if (password.pass==password.secondPassword){
     setForm({...form, password:password.pass})

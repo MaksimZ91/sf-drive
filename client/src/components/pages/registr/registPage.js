@@ -4,7 +4,7 @@ import Continue from './continue'
 import Authorpage from '../autn/authorPgae'
 import Recovery from "../autn/recoveryPage";
 import { FormContex } from '../../contextApp'
-import {FormProvider} from './formContex'
+import { FormRefisrtProvider } from './formContex'
 
 
 
@@ -13,7 +13,7 @@ function Registpage (){
   const {openAuthor, setOpenAuthor, recovery, setRevocery} = useContext(FormContex)
   
   return(
-    <FormProvider>
+    <FormRefisrtProvider>
     <main className={(recovery||openAuthor)?'registr_main activeMain':'registr_main'}>
     {message?<div className="registr_main_servermessage"><p>Не удалось продолжить регистрацию. Попробуйте ещё раз</p></div>:''}
     {openAuthor?<Authorpage value={{recov:setRevocery,closeAuthor:setOpenAuthor}}/>:""}
@@ -21,7 +21,7 @@ function Registpage (){
      <Registabout />
      <Continue value={{message:setMessage, recovery:recovery, openAuthor:openAuthor}}/>       
     </main>
-     </FormProvider>
+     </FormRefisrtProvider>
    
   )
 }

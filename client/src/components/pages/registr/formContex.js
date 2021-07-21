@@ -2,10 +2,10 @@ import React, { useState, useEffect }  from 'react'
 import {validation} from '../../../js/validationForm'
 
 
-export const  FormContex = React.createContext()
+export const  RegistContext = React.createContext()
 
 
-export const FormProvider = ({ children }) => {
+export const FormRefisrtProvider = ({ children }) => {
   const [form, setForm]=useState({ fio:'', email:'', password:'', phone:'', date:'', number:'', passDate:'', about:'', cod:'',numberLicense:'', dateLicense:'' })
   const [formValidation, setFormValidation]=useState(true)
 
@@ -32,8 +32,8 @@ export const FormProvider = ({ children }) => {
 
 
 return (
-  <FormContex.Provider value={{form, onChangeInput,fixDate,formValidation, setForm }}>
+  <RegistContext.Provider value={{form, onChangeInput,fixDate ,formValidation, setForm }}>
     {children}
-  </FormContex.Provider>
+  </RegistContext.Provider>
   )
 }

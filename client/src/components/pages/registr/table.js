@@ -1,6 +1,6 @@
 import React, {useContext} from "react"
 import { monthDay, areEqual } from '../../../js/calc'
-import { FormContex } from './formContex'
+import { RegistContext } from './formContex'
 
 
 
@@ -8,7 +8,7 @@ import { FormContex } from './formContex'
 
 function Table (props) {
   const curentDay= new Date()
-  const {fixDate} =useContext(FormContex)
+  const {fixDate} =useContext(RegistContext)
   const calen = monthDay(props.value.year, props.value.month)
   const name = props.value.name
   

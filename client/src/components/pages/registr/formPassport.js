@@ -1,14 +1,14 @@
 import React, { useContext, useState } from "react"
-import { FormContex } from './formContex'
+import { RegistContext } from './formContex'
 import Calendarb from './calendar'
 
 
 
 function Passport (){
-  const {form} = useContext(FormContex)
+  const {form} = useContext(RegistContext)
   const name = "passDate"
   const calendName='registr_about_data_calendarb'
-  const {onChangeInput} =useContext(FormContex)
+  const {onChangeInput} =useContext(RegistContext)
   const [hide, setHied]=useState(false)
   const handelCalen = () =>{
     setHied(!hide)

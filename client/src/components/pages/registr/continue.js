@@ -1,18 +1,17 @@
 import React, { useContext} from "react"
-import { FormContex } from './formContex'
+import { RegistContext } from './formContex'
 import {useHttp} from '../../../hooks/http.hook'
 import {useAuth} from '../../../hooks/autn.hook'
 
 function Continue (props){
-  const {form, formValidation} = useContext(FormContex)
+  const {form, formValidation} = useContext(RegistContext)
   const {login}=useAuth()
   const {request} = useHttp()
-
+ console.log(form)
 
   const authorRequest = async () => {
     try {
-        const data = await request('http://localhost:5000/registr','POST',{...form})
-        console.log(data) 
+        const data = await request('http://localhost:5000/registr','POST',{...form})     
         props.value.message(false)        
     } catch (e) {
       console.log(e)

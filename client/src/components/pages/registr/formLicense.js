@@ -1,13 +1,13 @@
 import React, {useState, useContext} from 'react'
-import { FormContex } from './formContex'
+import { RegistContext } from './formContex'
 import Calendarb from './calendar'
 
 
 function License () {
   const name = 'dateLicense' 
   const calendName='registr_about_info_calendarb'
-  const {form} = useContext(FormContex)
-  const {onChangeInput,useValidation} =useContext(FormContex)
+  const {form} = useContext(RegistContext)
+  const {onChangeInput,useValidation} =useContext(RegistContext)
   const [hide, setHied]=useState(false)
   const handelCalen = () =>{
     setHied(!hide)

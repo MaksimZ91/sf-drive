@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import Calendarb from './calendar'
-import { FormContex } from './formContex'
+import { RegistContext} from './formContex'
 
 
 
@@ -9,8 +9,8 @@ import { FormContex } from './formContex'
 function Formfio (props){
   const name = "date"
   const calendName='registr_about_form_calendarb'
-  const {form} = useContext(FormContex)
-  const {onChangeInput} =useContext(FormContex)
+  const { form } = useContext(RegistContext)
+  const {onChangeInput} =useContext(RegistContext)
   const [valid, setValid]=useState(false)
   const [hide, setHied]=useState(false)
   const [empty, setEmpty]=useState(false)

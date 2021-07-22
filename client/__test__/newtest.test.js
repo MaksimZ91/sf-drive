@@ -1,4 +1,5 @@
-import React from 'react'
+import React  from 'react'
+import userEvent from '@testing-library/user-event'
 import { render, screen } from '@testing-library/react'
 import { shallow, mount } from 'enzyme'
 import { FormProvider } from '../src/components/contextApp'
@@ -7,7 +8,7 @@ import App from '../src/components/App'
 import Header from '../src/components/header/header'
 import Navbar from '../src/components/header/navbar'
 import Password from '../src/components/pages/registr/formPassword'
-import { FormRefisrtProvider } from '../src/components/pages/registr/formContex'
+import { FormRegisrtProvider } from '../src/components/pages/registr/formContex'
 
 
 
@@ -48,12 +49,20 @@ describe('App test', () => {
   })
 
   describe('Registr form testing', () => {
-    it('Changer value form testing', () => {    
-      const wrapper = mount(<FormRefisrtProvider><Password/></FormRefisrtProvider>) 
-      wrapper.setState({ pass: 'bar' })
-      wrapper.find('.registr_about_password_curr').simulate('change', event)   
-      expect(state.pass).toEqual('password')
-
+    let component 
+    const setPassword = jest.fn();
+    const useStateSpy = jest.spyOn(React, "useState")
+      beforeEach(() => {
+        component = mount(<FormRegisrtProvider><Password/></FormRegisrtProvider>)
+    });
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+    it('Changer value form testing', () => { 
+      const input = component.find('.registr_about_password_curr')
+      input.instance().value = "Test"
+      input.simulate("change");
+      expect(input.props().value).toBe("Test")
     })
   })
 

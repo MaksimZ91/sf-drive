@@ -5,7 +5,7 @@ import {validation} from '../../../js/validationForm'
 export const  RegistContext = React.createContext()
 
 
-export const FormRefisrtProvider = ({ children }) => {
+export const FormRegisrtProvider = ({ children }) => {
   const [form, setForm]=useState({ fio:'', email:'', password:'', phone:'', date:'', number:'', passDate:'', about:'', cod:'',numberLicense:'', dateLicense:'' })
   const [formValidation, setFormValidation]=useState(true)
 

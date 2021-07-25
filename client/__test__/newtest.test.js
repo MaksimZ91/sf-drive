@@ -117,23 +117,6 @@ describe('App test', () => {
       component.unmount()
     })
   })
-
-  describe('Reducer test', () => {         
-    it('Auto reducer test', () => {
-      const defaultState = {
-        newAutoId:null
-      }      
-      const action = { 
-        type:types.ADD_AUTO_NEW_AUTO_ID, 
-        payload:1
-      }
-      const expectedState = {        
-        newAutoId:1
-      }
-      expect(AddAutoReducer(defaultState.newAutoId, action)).toEqual(expectedState)
-    })
-  })
-
   
 })
 

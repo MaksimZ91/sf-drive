@@ -1,15 +1,10 @@
 import React  from 'react'
-import { request } from '../src/hooks/http.hook.js'
-import { act } from "react-dom/test-utils"
-import axios from 'axios';
 import * as types from '../redux/type'
-import Autos from '../src/components/pages/autoList/Autos'
-import { MockedProvider } from '@apollo/client/testing' 
-import { render, screen, waitForElement } from '@testing-library/react'
+import * as router from 'react-router'
+import { render, screen } from '@testing-library/react'
 import { shallow, mount } from 'enzyme'
 import { FormProvider } from '../src/components/contextApp'
 import {Provider} from 'react-redux'
-import { AddAutoReducer } from '../redux/reducer/addAuto.Reducer'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk';
 import { BrowserRouter } from 'react-router-dom'

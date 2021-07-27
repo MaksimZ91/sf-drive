@@ -26,7 +26,8 @@ export class AutoRepository {
 
   async FindAll() {
     const repository = getRepository(Autos);
-    return await repository.find();
+    const autos =  await repository.find();
+    return autos
   }
 
   async FindePhotoByID(id: string) {

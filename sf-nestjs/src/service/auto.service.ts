@@ -1,18 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { unlink } from 'fs/promises';
 import { AddAutoDto } from '../dto/add-auto.dto';
-import { AutoRepository } from 'src/repo/auto.repository';
-import { UserRepository } from 'src/repo/user.repository';
-import { OptionsRepository } from 'src/repo/options.repository';
+import { AutoRepository } from '../repo/auto.repository';
+import { UserRepository } from '../repo/user.repository';
+import { OptionsRepository } from '../repo/options.repository';
 import { Autos } from '../entites/auto.entity';
 import { AddAutoOptionsDto } from 'src/dto/addAutoOptions.dto';
-import { OptionsAuto } from 'src/entites/options.entity';
+import { OptionsAuto } from '../entites/options.entity';
 import { AddAutoPhotoNameDto } from 'src/dto/addAutoPhotoName';
-import { AutoPhotoName } from 'src/entites/autoPhotoName.entity';
-import { PhotoRepository } from 'src/repo/photo.repository';
-import { AddAutoDocumentPhotoNameDto } from 'src/dto/addAutoPhotoDocumentName.dto';
-import { AutoPhotoDocumentName } from 'src/entites/autoPhotoDocument.entity';
-import { PhotoDocumentRepository } from 'src/repo/photoDocument.repository';
+import { AutoPhotoName } from '../entites/autoPhotoName.entity';
+import { PhotoRepository } from '../repo/photo.repository';
+import { AddAutoDocumentPhotoNameDto } from '../dto/addAutoPhotoDocumentName.dto';
+import { AutoPhotoDocumentName } from '../entites/autoPhotoDocument.entity';
+import { PhotoDocumentRepository } from '../repo/photoDocument.repository';
 
 
 @Injectable()

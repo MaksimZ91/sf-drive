@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { AutoPhotoName } from 'src/entites/autoPhotoName.entity';
+import { AutoPhotoName } from '../entites/autoPhotoName.entity';
 import { getRepository } from 'typeorm';
 
 @Injectable()

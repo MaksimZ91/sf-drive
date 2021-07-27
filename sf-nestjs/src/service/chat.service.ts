@@ -1,8 +1,8 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { CreateMessageDto } from 'src/dto/createMessge.dto';
-import { ChatEntity } from 'src/entites/chat.entity';
-import { MessagesEntity } from 'src/entites/messages.entity';
-import { UserRepository } from 'src/repo/user.repository';
+import { CreateMessageDto } from '../dto/createMessge.dto';
+import { ChatEntity } from '../entites/chat.entity';
+import { MessagesEntity } from '../entites/messages.entity';
+import { UserRepository } from '../repo/user.repository';
 import { ChatRepository } from '../repo/chat.repositoy';
 
 

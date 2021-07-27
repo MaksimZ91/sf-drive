@@ -1,5 +1,6 @@
 import React  from 'react'
 import * as types from '../redux/type'
+import * as actions from '../redux/actions/actions'
 import { render, screen, act } from '@testing-library/react'
 import { shallow, mount } from 'enzyme'
 import { FormProvider } from '../src/components/contextApp'
@@ -13,6 +14,7 @@ import Navbar from '../src/components/header/navbar'
 import Password from '../src/components/pages/registr/formPassword'
 import { FormRegisrtProvider } from '../src/components/pages/registr/formContex'
 import Options from '../src/components/pages/addAuto/options'
+import Option from '../src/components/options/option'
 import NotBookingPage from '../src/components/pages/bookingPage/notBokingpage'
 import Error from '../src/components/error/error'
 
@@ -103,7 +105,7 @@ describe('App test', () => {
           }
         }              
       const component = mount(<FormProvider><BrowserRouter><Provider store={store}><Options/></Provider></BrowserRouter></FormProvider>)
-      const input = component.find('.options_auto_form_wrapper_switch_checkbox').at(0)           
+           const input = component.find('.options_auto_form_wrapper_switch_checkbox').at(0)           
       input.simulate('change', event)
       const actions = store.getActions()    
       const expectedPayload = {
@@ -116,6 +118,32 @@ describe('App test', () => {
       component.unmount()
     })
   })
+
+  describe('Options test', () =>{
+    const store = mockStore({
+      newAuto: { dopOptions:{ isofix:false } }
+    });
+    const addAutoOptions = store    
+    const props={
+      settings:{
+        cost:1000,
+        titel:'Полный бак',
+        text:'Заправьте полный бак перед сдачей в аренду',
+        name:'fullTank',
+        state:addAutoOptions,
+        addOptions:jest.fn(),
+        className: 'MockName',
+        checked:true
+      }   
+    }
+    const component = mount(<FormProvider><BrowserRouter><Provider store={store}><Option {...props}/></Provider></BrowserRouter></FormProvider>)
+    it('Option render test', ()=>{      
+      const node = component.find('p').at(0)
+      expect(node.text()).toEqual('Полный бак')
+    })
+   
+  })
+  
 
   
   

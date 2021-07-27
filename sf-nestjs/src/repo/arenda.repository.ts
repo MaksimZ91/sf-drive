@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { UpdateArendaDto } from 'src/dto/updateArenda.dto';
-import { Arenda } from 'src/entites/arenda.entity';
+import { UpdateArendaDto } from '../dto/updateArenda.dto';
+import { Arenda } from '../entites/arenda.entity';
 import { getRepository } from 'typeorm';
 
 Injectable();

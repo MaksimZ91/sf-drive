@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common"
 import { MessagesEntity } from "../entites/messages.entity";
 import { getRepository } from "typeorm"
-import { ChatEntity } from "src/entites/chat.entity";
+import { ChatEntity } from "../entites/chat.entity";
 
 
 

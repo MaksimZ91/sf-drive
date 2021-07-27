@@ -1,13 +1,13 @@
 import { HttpException, HttpStatus, Injectable, NotFoundException } from "@nestjs/common";
-import { ArendaDtO } from "src/dto/arenda.dto";
-import { UpdateArendaDto } from "src/dto/updateArenda.dto";
-import { Arenda } from "src/entites/arenda.entity";
-import { ChatEntity } from "src/entites/chat.entity";
-import { MessagesEntity } from "src/entites/messages.entity";
-import { ArendaRepository } from "src/repo/arenda.repository";
-import { AutoRepository } from "src/repo/auto.repository";
-import { ChatRepository } from "src/repo/chat.repositoy";
-import { UserRepository } from "src/repo/user.repository";
+import { ArendaDtO } from "../dto/arenda.dto";
+import { UpdateArendaDto } from "../dto/updateArenda.dto";
+import { Arenda } from "../entites/arenda.entity";
+import { ChatEntity } from "../entites/chat.entity";
+import { MessagesEntity } from "../entites/messages.entity";
+import { ArendaRepository } from "../repo/arenda.repository";
+import { AutoRepository } from "../repo/auto.repository";
+import { ChatRepository } from "../repo/chat.repositoy";
+import { UserRepository } from "../repo/user.repository";
 import { ChatService } from "./chat.service";
 
 

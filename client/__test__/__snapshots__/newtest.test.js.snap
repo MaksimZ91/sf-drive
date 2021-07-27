@@ -1,0 +1,493 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App test App error test 1`] = `
+<Fragment>
+  <div
+    className="error"
+  >
+    <p>
+      error
+    </p>
+  </div>
+</Fragment>
+`;
+
+exports[`App test App success test 1`] = `
+<FormProvider>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <Provider
+        store={
+          Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          }
+        }
+      >
+        <NotBookingPage>
+          <Sucses
+            text="Test"
+          >
+            <div
+              className="sucses"
+            >
+              <p>
+                Test
+              </p>
+            </div>
+          </Sucses>
+          <main
+            className="booking"
+          >
+            <div
+              className="booking_wrapper"
+            >
+              <img
+                alt="road"
+                className="booking_wrapper_img"
+                src="./src/img/road.svg"
+              />
+              <p
+                className="booking_wrapper_text"
+              >
+                Здесь будут ваши бронирования
+              </p>
+            </div>
+          </main>
+        </NotBookingPage>
+      </Provider>
+    </Router>
+  </BrowserRouter>
+</FormProvider>
+`;
+
+exports[`App test Form testing Registr changer value form testing 1`] = `
+<FormRegisrtProvider>
+  <Password>
+    <form
+      className="registr_about_password"
+    >
+      <p>
+        Пароль
+      </p>
+      <p>
+        Придумайте пароль
+        <input
+          className="registr_about_password_curr"
+          name="pass"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          placeholder="•••••••••••••••••••"
+          type="text"
+          value="Hello"
+        />
+      </p>
+      <p>
+        Повторите пароль
+        <input
+          className="registr_about_password_conf"
+          name="secondPassword"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          placeholder="•••••••••••••••••••"
+          type="text"
+          value=""
+        />
+      </p>
+    </form>
+  </Password>
+</FormRegisrtProvider>
+`;
+
+exports[`App test Header tests Click button login 1`] = `
+<FormProvider>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <Navbar
+        value={
+          Object {
+            "diss": false,
+            "openAuth": [MockFunction] {
+              "calls": Array [
+                Array [
+                  true,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            },
+            "rec": false,
+          }
+        }
+      >
+        <div
+          className="nav_wrapper"
+        >
+          <nav
+            className="header__nav"
+          >
+            <ul
+              className="header__list"
+            >
+              <button
+                onClick={[Function]}
+              >
+                Тест
+              </button>
+              <li
+                className="header__link"
+              >
+                <NavLink
+                  to="/about"
+                >
+                  <Link
+                    aria-current={null}
+                    to={
+                      Object {
+                        "hash": "",
+                        "pathname": "/about",
+                        "search": "",
+                        "state": null,
+                      }
+                    }
+                  >
+                    <LinkAnchor
+                      aria-current={null}
+                      href="/about"
+                      navigate={[Function]}
+                    >
+                      <a
+                        aria-current={null}
+                        href="/about"
+                        onClick={[Function]}
+                      >
+                        О нас
+                      </a>
+                    </LinkAnchor>
+                  </Link>
+                </NavLink>
+              </li>
+              <li
+                className="header__link"
+              >
+                <NavLink
+                  to="/recovery"
+                >
+                  <Link
+                    aria-current={null}
+                    to={
+                      Object {
+                        "hash": "",
+                        "pathname": "/recovery",
+                        "search": "",
+                        "state": null,
+                      }
+                    }
+                  >
+                    <LinkAnchor
+                      aria-current={null}
+                      href="/recovery"
+                      navigate={[Function]}
+                    >
+                      <a
+                        aria-current={null}
+                        href="/recovery"
+                        onClick={[Function]}
+                      >
+                        Условия
+                      </a>
+                    </LinkAnchor>
+                  </Link>
+                </NavLink>
+              </li>
+              <li
+                className="header__link"
+              >
+                <NavLink
+                  to="/faq"
+                >
+                  <Link
+                    aria-current={null}
+                    to={
+                      Object {
+                        "hash": "",
+                        "pathname": "/faq",
+                        "search": "",
+                        "state": null,
+                      }
+                    }
+                  >
+                    <LinkAnchor
+                      aria-current={null}
+                      href="/faq"
+                      navigate={[Function]}
+                    >
+                      <a
+                        aria-current={null}
+                        href="/faq"
+                        onClick={[Function]}
+                      >
+                        Частые вопросы
+                      </a>
+                    </LinkAnchor>
+                  </Link>
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+          <button
+            className="header__button"
+            disabled={false}
+            onClick={[Function]}
+          >
+            Войти
+          </button>
+        </div>
+      </Navbar>
+    </Router>
+  </BrowserRouter>
+</FormProvider>
+`;
+
+exports[`App test Header tests Header to be defined 1`] = `
+<FormProvider>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <Header>
+        <header
+          className="header"
+        >
+          <Logo>
+            <div
+              className="header__logo"
+            >
+              <a
+                aria-label="Вы сфокусированы на ссылки которая ведет на страницу SkillDrive"
+                href="/"
+              >
+                <img
+                  alt="logo SkillDrive"
+                  src="../src/img/Logo.svg"
+                />
+              </a>
+            </div>
+          </Logo>
+          <Navbar
+            value={
+              Object {
+                "diss": false,
+                "openAuth": [Function],
+                "openMobileMenu": false,
+                "rec": false,
+              }
+            }
+          >
+            <div
+              className="nav_wrapper"
+            >
+              <nav
+                className="header__nav"
+              >
+                <ul
+                  className="header__list"
+                >
+                  <button
+                    onClick={[Function]}
+                  >
+                    Тест
+                  </button>
+                  <li
+                    className="header__link"
+                  >
+                    <NavLink
+                      to="/about"
+                    >
+                      <Link
+                        aria-current={null}
+                        to={
+                          Object {
+                            "hash": "",
+                            "pathname": "/about",
+                            "search": "",
+                            "state": null,
+                          }
+                        }
+                      >
+                        <LinkAnchor
+                          aria-current={null}
+                          href="/about"
+                          navigate={[Function]}
+                        >
+                          <a
+                            aria-current={null}
+                            href="/about"
+                            onClick={[Function]}
+                          >
+                            О нас
+                          </a>
+                        </LinkAnchor>
+                      </Link>
+                    </NavLink>
+                  </li>
+                  <li
+                    className="header__link"
+                  >
+                    <NavLink
+                      to="/recovery"
+                    >
+                      <Link
+                        aria-current={null}
+                        to={
+                          Object {
+                            "hash": "",
+                            "pathname": "/recovery",
+                            "search": "",
+                            "state": null,
+                          }
+                        }
+                      >
+                        <LinkAnchor
+                          aria-current={null}
+                          href="/recovery"
+                          navigate={[Function]}
+                        >
+                          <a
+                            aria-current={null}
+                            href="/recovery"
+                            onClick={[Function]}
+                          >
+                            Условия
+                          </a>
+                        </LinkAnchor>
+                      </Link>
+                    </NavLink>
+                  </li>
+                  <li
+                    className="header__link"
+                  >
+                    <NavLink
+                      to="/faq"
+                    >
+                      <Link
+                        aria-current={null}
+                        to={
+                          Object {
+                            "hash": "",
+                            "pathname": "/faq",
+                            "search": "",
+                            "state": null,
+                          }
+                        }
+                      >
+                        <LinkAnchor
+                          aria-current={null}
+                          href="/faq"
+                          navigate={[Function]}
+                        >
+                          <a
+                            aria-current={null}
+                            href="/faq"
+                            onClick={[Function]}
+                          >
+                            Частые вопросы
+                          </a>
+                        </LinkAnchor>
+                      </Link>
+                    </NavLink>
+                  </li>
+                </ul>
+              </nav>
+              <button
+                className="header__button"
+                disabled={false}
+                onClick={[Function]}
+              >
+                Войти
+              </button>
+            </div>
+          </Navbar>
+          <img
+            alt="mobile_menu"
+            className="header_mobile_menu"
+            onClick={[Function]}
+            src="../src/img/mobile_menu.svg"
+          />
+        </header>
+      </Header>
+    </Router>
+  </BrowserRouter>
+</FormProvider>
+`;

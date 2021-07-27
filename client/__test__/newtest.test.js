@@ -1,7 +1,6 @@
 import React  from 'react'
 import * as types from '../redux/type'
-import * as router from 'react-router'
-import { render, screen } from '@testing-library/react'
+import { render, screen, act } from '@testing-library/react'
 import { shallow, mount } from 'enzyme'
 import { FormProvider } from '../src/components/contextApp'
 import {Provider} from 'react-redux'
@@ -35,6 +34,7 @@ describe('App test', () => {
   it('App error test', ()=>{   
     const component = shallow(<Error text={'error'}/>)
     const node = component.find('p')
+    expect(component).toMatchSnapshot()
     expect(node.text()).toBe('error')
   })
 
@@ -44,12 +44,14 @@ describe('App test', () => {
     });
     const component = mount(<FormProvider><BrowserRouter><Provider store={store}><NotBookingPage/></Provider></BrowserRouter></FormProvider>)
     const node = component.find('p').at(0)
+    expect(component).toMatchSnapshot()
     expect(node.text()).toBe('Test')
   })
 
   describe('Header tests', ()=>{
     it('Header to be defined', () => {
       const component = mount(<FormProvider><BrowserRouter><Header/></BrowserRouter></FormProvider>)
+      expect(component).toMatchSnapshot()
       expect(component).toBeDefined()     
       })
   
@@ -67,6 +69,7 @@ describe('App test', () => {
       element.find('.header__button').instance().handelClick()
       element.find('.header__button').simulate('click')
       expect(mockClick).toHaveBeenCalled()
+      expect(element).toMatchSnapshot()
       expect(props.value.openAuth).toHaveBeenCalled()    
     })
   })
@@ -87,6 +90,7 @@ describe('App test', () => {
       expect(input.instance().value).toEqual("")       
       input.simulate('change', event )
       expect(input.instance().value).toEqual("Hello")
+      expect(component).toMatchSnapshot()
       component.unmount()
     })
 
@@ -112,6 +116,8 @@ describe('App test', () => {
       component.unmount()
     })
   })
+
+  
   
 })
 

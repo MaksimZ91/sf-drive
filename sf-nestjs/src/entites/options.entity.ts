@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Autos } from './auto.entity';
 
@@ -42,61 +43,61 @@ export class OptionsAuto {
     this.close = close;
     this.fullTank = fullTank;
   }
-
+  @ApiProperty()
   @PrimaryGeneratedColumn()
   id: number;
-
+  @ApiProperty()
   @Column()
   isofix: boolean;
-
+  @ApiProperty()
   @Column()
   srs: boolean;
-
+  @ApiProperty()
   @Column()
   heater: boolean;
-
+  @ApiProperty()
   @Column()
   aux: boolean;
-
+  @ApiProperty()
   @Column()
   bluetooth: boolean;
-
+  @ApiProperty()
   @Column()
   cruizControl: boolean;
-
+  @ApiProperty()
   @Column()
   conditioning: boolean;
-
+  @ApiProperty()
   @Column()
   multimedia: boolean;
-
+  @ApiProperty()
   @Column()
   navigation: boolean;
-
+  @ApiProperty()
   @Column()
   seatCondi: boolean;
-
+  @ApiProperty()
   @Column()
   seatHeater: boolean;
-
+  @ApiProperty()
   @Column()
   trunk: boolean;
-
+  @ApiProperty()
   @Column()
   park: boolean;
-
+  @ApiProperty()
   @Column()
   camera: boolean;
-
+  @ApiProperty()
   @Column()
   babyChair: boolean;
-
+  @ApiProperty()
   @Column()
   deliveryAuto: boolean;
-
+  @ApiProperty()
   @Column()
   close: boolean;
-
+  @ApiProperty()
   @Column()
   fullTank: boolean;
 

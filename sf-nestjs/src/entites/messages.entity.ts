@@ -1,3 +1,4 @@
+import { ApiProperty } from "@nestjs/swagger";
 import { Column, Entity,  ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { ChatEntity } from "./chat.entity";
 import { Users } from "./users.entity";
@@ -13,15 +14,16 @@ export class MessagesEntity{
     this.system = system
     this.arendaID = arendaID
   }
-  @PrimaryGeneratedColumn('uuid')
+  @ApiProperty()
+  @PrimaryGeneratedColumn()
   id:string;
-
+  @ApiProperty()
   @Column()
   body:string;
-
+  @ApiProperty()
   @Column({default:null})
   arendaID:number;
-
+  @ApiProperty()
   @Column({default:false})
   system:boolean;
 

@@ -1,3 +1,4 @@
+import { ApiProperty } from "@nestjs/swagger";
 import { Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { MessagesEntity } from "./messages.entity";
 import { Users } from "./users.entity";
@@ -9,10 +10,10 @@ export class ChatEntity{
     this.toUser = toUser
     this.messages = message
   }
-
-  @PrimaryGeneratedColumn('uuid')
+  @ApiProperty()
+  @PrimaryGeneratedColumn()
   id:number; 
-
+  @ApiProperty()
   @ManyToOne(()=>Users)
   toUser:Users
 

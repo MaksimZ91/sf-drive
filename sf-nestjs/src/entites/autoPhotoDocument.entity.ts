@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Autos } from './auto.entity';
 
@@ -6,9 +7,10 @@ export class AutoPhotoDocumentName {
   constructor(photoName: string) {
     this.photoName = photoName;
   }
+  @ApiProperty()
   @PrimaryGeneratedColumn()
   id: number;
-  
+  @ApiProperty()
   @Column()
   photoName: string;
 

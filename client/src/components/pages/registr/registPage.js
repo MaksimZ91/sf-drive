@@ -4,13 +4,13 @@ import Continue from './continue'
 import Authorpage from '../autn/authorPgae'
 import Recovery from "../autn/recoveryPage";
 import { FormContex } from '../../contextApp'
-import { FormRefisrtProvider } from './formContex'
+import { FormRegisrtProvider } from './formContex'
 
 
 
 function Registpage (){
-  const [message, setMessage]=useState(false)
-  const {openAuthor, setOpenAuthor, recovery, setRevocery} = useContext(FormContex)
+  const [ message, setMessage ]=useState(false)
+  const { openAuthor, setOpenAuthor, recovery, setRevocery } = useContext(FormContex)
   
   return(
     <FormRegisrtProvider>

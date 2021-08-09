@@ -7,7 +7,7 @@ export const FormContex = React.createContext()
 export const FormProvider = ({ children }) => {
   const [openAuthor, setOpenAuthor]=useState(false)
   const [recovery, setRecovery]=useState(false)
-  const {login,accessToken, refreshToken, userId, setAccessToken}=useAuth()
+  const { login, accessToken, refreshToken, userId, setAccessToken }=useAuth()
   const isAuthen = !!accessToken
    
 return (

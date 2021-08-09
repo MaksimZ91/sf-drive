@@ -25,7 +25,7 @@ import SucsessPay from "./pages/payment/sucsessPay";
 
 
 function Routs (){
-    const {isAuthen} = useContext(FormContex)
+    const { isAuthen } = useContext(FormContex)
     if (!isAuthen){ 
         return(
         <>
@@ -38,7 +38,8 @@ function Routs (){
     }else{      
         return(
         <>           
-        <Route path="/" component={ Newpage } exact/>
+        <Route path="/" component={ Newpage } exact/> 
+        <Route path="/registr" component={ Registpage }/>      
         <Route path="/auto" component= { DetailAutoPage } exact/>
         <Route path="/myAuto" component={ Autopage } exact/>
         <Route path="/addauto" component={ Addautopage } exact/>

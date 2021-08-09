@@ -11,12 +11,16 @@ function Auto (props){
     useEffect( async () => {  
         setHidden(props.hidden)     
         const data = await request(`http://localhost:5000/auto/photo/${props.value.id}`)
-        setAutoPhoto(data.photoName[0].photoName)
+        if( data.photoName.length > 0 ){
+            return setAutoPhoto(data.photoName[0].photoName)
+        }
+       setAutoPhoto(null) 
     },[])
 
     return(
        <div className='myAuto_auto'>
-           <img className='myAuto_img' src={`http://localhost:5000/auto/auto-image/${autoPhoto}`}/>
+           <img className='myAuto_img'
+           src={autoPhoto?`http://localhost:5000/auto/auto-image/${autoPhoto}`:'./src/img/unnamed.jpg'}/>
            <div className='myAuto_auto_wrapper'>
                <div className='myAuto_auto_wrapper_status'>
                    <img src='../src/img/golden_star.svg'/>

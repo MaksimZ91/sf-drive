@@ -5,6 +5,7 @@ import { AddAutoReducer } from './reducer/addAuto.Reducer'
 import { appReducer } from "./reducer/app.Reducer";
 import { arendaReducer } from "./reducer/arenda.Reducer";
 import { chatReducer } from "./reducer/chat.Reducer";
+import { userReducer } from "./reducer/user.Reducer";
 
 export const rootReducer =  combineReducers({
     auto:autoReducer,
@@ -12,5 +13,6 @@ export const rootReducer =  combineReducers({
     calen:calenReducer,
     app:appReducer,
     arenda:arendaReducer,
-    chat:chatReducer
+    chat:chatReducer,
+    user:userReducer
 })

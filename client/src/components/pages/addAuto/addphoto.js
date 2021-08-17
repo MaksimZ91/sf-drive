@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 
 function Addphoto (props){
     
-    const dispatch = useDispatch()  
+const dispatch = useDispatch()  
 
 const onDropHandler = e =>{
    e.preventDefault()

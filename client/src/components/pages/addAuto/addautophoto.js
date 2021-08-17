@@ -59,17 +59,17 @@ useEffect(()=>{
         <>
         <main>
         {error?<Error/>:''}
-        <section className="add_photo">
-        <Backarrow value={backlink} name={backName}/>       
-        <div className="add_photo_titel">
-            <p >Шаг 3 из 4</p>
-            <p>Фото автомобиля</p>
-            <p>Чем больше качественных фотографий вы загрузите, тем выше шанс того, что выберут ваш автомобиль.</p> 
-            {!addAutoPhoto.length==0?<Autophoto value={autoPhoto} photoName={addAutoPhotoName} deletePhoto={deletePhoto} url={{delete:urlDelete, upload:urlUpload}} addPhoto={addAutoPhotos}/>:<Addphoto value={addAutoPhotos}/>}
-            <Continuestep nextStep={authorRequest} validation={valid} titel={continueTitel} nameClass={nameClass}/> 
-            {!error&&data?<Redirect to='/addauto/documentphoto'/>:''}            
-        </div>        
-        </section>  
+          <section className="add_photo">
+          <Backarrow value={backlink} name={backName}/>       
+            <div className="add_photo_titel">
+                <p >Шаг 3 из 4</p>
+                <p>Фото автомобиля</p>
+                <p>Чем больше качественных фотографий вы загрузите, тем выше шанс того, что выберут ваш автомобиль.</p> 
+                {!addAutoPhoto.length==0?<Autophoto value={autoPhoto} photoName={addAutoPhotoName} deletePhoto={deletePhoto} url={{delete:urlDelete, upload:urlUpload}} addPhoto={addAutoPhotos}/>:<Addphoto value={addAutoPhotos}/>}
+                <Continuestep nextStep={authorRequest} validation={valid} titel={continueTitel} nameClass={nameClass}/> 
+                {!error&&data?<Redirect to='/addauto/documentphoto'/>:''}            
+            </div>        
+          </section>  
         </main>
         </>
         

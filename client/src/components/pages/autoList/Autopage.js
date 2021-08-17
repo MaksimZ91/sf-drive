@@ -5,26 +5,23 @@ import { useDispatch , useSelector} from 'react-redux'
 import { fetchAutoList } from '../../../../redux/actions/actions'
 
 
-function  Autopage  ()  {
-
+function  Autopage  () {
     const dispatch = useDispatch()
-
     const auto = useSelector((state)=>{
         return state.auto.userAuto
     })
-   
-
     useEffect(  ()=>{
          dispatch(fetchAutoList())
-      },[])
-  
-
-        
+      },[])        
         return(
             <>
-        <main>
-        {(!Object.keys(auto).length==0)?<Autolist/>:<Autoinfo/>}
-        </main>
+            <main>
+                {
+                    (!Object.keys(auto).length==0)?
+                    <Autolist/>:
+                    <Autoinfo/>
+                }
+            </main>
         </>
         )
   

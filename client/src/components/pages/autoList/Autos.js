@@ -25,7 +25,9 @@ function Auto (props){
             <img className='list_wrapper_auto_imgauto'
             src={autoPhoto?`http://localhost:5000/auto/auto-image/${autoPhoto}`:'./src/img/unnamed.jpg'}/>
             <div className='list_wrapper_auto_info'>                
-                <p className='list_wrapper_auto_info_name'>{props.value.mark} {props.value.model}, {props.value.year}</p>
+                <p className='list_wrapper_auto_info_name'>
+                    {props.value.mark}
+                    {props.value.model}, {props.value.year}</p>
                 <p className='list_wrapper_auto_info_price'>от {props.value.price} ₽/сутки</p>
             </div>
         </div>

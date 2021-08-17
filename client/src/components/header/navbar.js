@@ -20,15 +20,13 @@ function Navbar (props){
     setAccessToken(null)                 //временно для теста
   }
 
-  const requ = async () => {const data =  await request('http://localhost:5000/author/test')
-                        console.log(data)}
+
                      
 
   return (
     <div className="nav_wrapper">
       <nav className="header__nav">
-        <ul className="header__list">
-        <button onClick={requ}>Тест</button>
+        <ul className="header__list">       
         <li className="header__link" >{(isAuthen)?<NavLink  to="/booking" >Бронирования</NavLink>:<NavLink to="/about">О нас</NavLink>}</li>
         <li className="header__link" >{(isAuthen)?<NavLink to="/myAuto" >Мои автомобили</NavLink>:<NavLink to="/recovery"  >Условия</NavLink>}</li>
         <li className="header__link">{(isAuthen)?<NavLink to="/chat">Сообщения</NavLink>:<NavLink to="/faq">Частые вопросы</NavLink>}</li>

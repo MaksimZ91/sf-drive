@@ -58,9 +58,6 @@ function Newpage (){
     setHide(false)    
     setType(event.target.value)
   }
- 
-
-
 
   const handelHide = () =>{  
     setHide(!hide) 
@@ -103,7 +100,7 @@ useEffect(()=>{
         {!filter?<h2 className='filter_titel' >Арендуйте автомобиль</h2 >:''}
         <div className='filter_wrapper'>
           <div className='filter_wrapper_city'>
-          <input className='filter_wrapper_city_input' type='text'   value={value.city} onChange={callApi}  required />          
+          <input className='filter_wrapper_city_input' type='text' value={value.city} onChange={callApi}  required />          
           <label className='filter_wrapper_city_input'>Местоположение</label>     
           {(adress&&dataHide)?<div className='filter_wrapper_city_options'>
            {adress.map(el=><p className='filter_wrapper_city_options_element' name='city' key={el.value} onClick={handleCity} value={el.value} >{el.value}</p>)}

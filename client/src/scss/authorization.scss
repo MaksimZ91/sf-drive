@@ -18,7 +18,7 @@
     width: 504px;    
     background: #FFFFFF;
     border-radius: 10px;
-    z-index: 1;
+    z-index: 999;
     top:50%;
     left: 50%;
     position: fixed;  
@@ -38,6 +38,7 @@
         align-self: flex-end;
         margin-top: 2.7vh;
         margin-right: 25px;
+        cursor: pointer;
     }
     &_img{
         margin: 2.4vh 101px 4.2vh 101px;

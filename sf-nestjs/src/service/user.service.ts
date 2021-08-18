@@ -8,4 +8,8 @@ export class UserSevice {
   async findByPayload({ userId }: any) {
   return await this.userRepositiry.FindOneByID(userId)
   }
+
+  async uploadFile(file) {
+    return file.filename;
+  }
 }

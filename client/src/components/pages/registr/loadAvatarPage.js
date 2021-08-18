@@ -27,7 +27,7 @@ function LoadAvatarPage () {
                     <p>Смотрите прямо в камеру, без солнцезащитных очков и головных уборов.</p>
                 </div>
                 <AddAvatarPhoto
-                value={ addAvatar }               
+                value={addAvatar}  
                 />              
             </section>
         </main>

@@ -3,21 +3,19 @@ import axios, { CancelToken } from 'axios'
 import { useHttp } from '../../../hooks/http.hook'
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import { useDispatch, useSelector } from 'react-redux'
-import {  hideLoading, showLoading } from '../../../../redux/actions/actions';
-import {  deleteAvatarPhoto } from '../../../../redux/actions/userAction';
+import { showAlert } from '../../../../redux/actions/actions';
+import { deleteAvatarPhoto } from '../../../../redux/actions/userAction';
 
 
 
 function AddAvatarPhoto (props){
-    const {request} = useHttp()   
-    const dispath = useDispatch() 
+    const { request } = useHttp()   
+    const dispatch = useDispatch() 
     const [photoUrl, setPhotoUrl] = useState(null)
-    const [procentUpload, setProcentUpload]= useState(0)   
-    const [error, setError]=useState(false)
-    const cancelFileUpload = useRef(null)
-    const loading = useSelector((state)=>{
-        return state.app.loading
-    })    
+    const [procentUpload, setProcentUpload] = useState(0)   
+    const [error, setError] = useState(false)
+    const [ loading, setLoading ] = useState(false)  
+    const cancelFileUpload = useRef(null)   
     const userAvatar = useSelector((state)=>{
         return { avatar:state.user.userAvatar, avatarName:state.user.avatarPhotoName }
     })
@@ -25,10 +23,10 @@ function AddAvatarPhoto (props){
     const urlDelete = 'http://localhost:5000/user/delete-image/'
 
 
-    const dispatch = useDispatch()
+   
 
-    const onDropHandler = e =>{
-        e.preventDefault()
+    const onDropHandler = e =>{        
+        e.preventDefault()       
         let files = [...e.dataTransfer.files]     
         files.forEach(foto => dispatch(props.value(foto)))
      }
@@ -49,7 +47,7 @@ function AddAvatarPhoto (props){
 
 
     const uploadPhoto = async () => { 
-        dispath(showLoading())  
+        setLoading(true)
         setError(false)    
         const formData = new FormData()
         formData.append( 'file', userAvatar.avatar)   
@@ -67,10 +65,14 @@ function AddAvatarPhoto (props){
 
         await axios.post(urlUpload, formData, config)      
        .then(response => {           
-            dispath(props.avatarName(response.data))
+        dispatch(props.avatarName(response.data))
         })
-        .catch(function (e) {setError(e)})
-        dispath(hideLoading())
+        .catch(function (e) {
+            console.log(e)
+            setError(true)
+            dispatch(showAlert('Не удалось загрузить фото'))
+        })
+        setLoading(false)
     } 
 
 
@@ -87,12 +89,13 @@ function AddAvatarPhoto (props){
 
      const cancelUpload = () => {
         if (cancelFileUpload.current)
-        setError(true)        
+        dispatch(showAlert('Не удалось загрузить фото'))
+        setError(true)       
         cancelFileUpload.current('User has canceled the file upload')
     }
 
     const onDeletePhoto = async () =>{
-        dispath(deleteAvatarPhoto(null))     
+        dispatch(deleteAvatarPhoto(null))     
         await request(urlDelete + userAvatar.avatar.name,'DELETE')  
         setPhotoUrl(null) 
     }    
@@ -105,8 +108,7 @@ function AddAvatarPhoto (props){
             onDrop={onDropHandler}
             onDragStart={onDragStartHandler}
             onDragLeave={onDragLeveHandler}
-            onDragOver={onDragStartHandler}
-         >
+            onDragOver={onDragStartHandler}>
              <label>
              <img className={!photoUrl?'add_avatar_avatarbox_img':'add_avatar_avatarbox_img active'}src={photoUrl?photoUrl:'../src/img/cameraPhoto.svg'} alt='camera_image'/>
              <input type='file' hidden={true} onChange={handleFileInput}/>

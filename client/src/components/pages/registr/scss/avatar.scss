@@ -7,8 +7,38 @@
     align-items: center;
     flex-direction: column;
     margin-top: 150px;  
+    &_back{
+      cursor: pointer; 
+      width: 71.3vw;  
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      &_arrow{
+          margin-right: 14px;        
+      }
+      &_text{
+          margin:0;
+          padding: 0;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 147.3%;
+          color: #508E87;
+      }
+  }
     &_titel{ 
         align-self:center;
+        >p:first-child{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 147.3%;
+        text-align: center;
+        color: #828282;
+        margin:0;
+        }
         >p{
             font-family: Roboto;
             font-style: normal;
@@ -31,41 +61,7 @@
         color: #1B1B1B;
         margin-top: 14px;
         margin-bottom: 30px;
-      }
-      &_wrapper{
-        display: flex;
-        width: 100vw; 
-        &_back{
-            cursor: pointer; 
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            margin-left: 14.3vw;
-            &_arrow{
-                margin-right: 14px;
-            }
-            &_text{
-                margin:0;
-                padding: 0;
-                font-family: Roboto;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 14px;
-                line-height: 147.3%;
-                color: #508E87;
-            }
-        }
-        &_step{
-            margin-left: 26.7vw;
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 20px;
-            line-height: 147.3%;
-            text-align: center;
-            color: #828282;
-          }
-        }       
+      }  
     }
     &_avatarbox{
         width: 431px;
@@ -96,8 +92,9 @@
         height: 48px;
         border-radius: 50%;
         position: absolute;     
-       }              
-    }
+       }  
+      
+}
 }
 
 

@@ -1,0 +1,104 @@
+
+
+.add_avatar{
+    display: flex;
+    justify-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 150px;  
+    &_titel{ 
+        align-self:center;
+        >p{
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 147.3%;
+            text-align: center;
+            color: #1B1B1B;
+            width: 753px;
+            height: 70px;
+            margin:0 auto 51px auto;     
+      }     
+      >h1{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 64px;
+        line-height: 120%;
+        text-align: center;
+        color: #1B1B1B;
+        margin-top: 14px;
+        margin-bottom: 30px;
+      }
+      &_wrapper{
+        display: flex;
+        width: 100vw; 
+        &_back{
+            cursor: pointer; 
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-left: 14.3vw;
+            &_arrow{
+                margin-right: 14px;
+            }
+            &_text{
+                margin:0;
+                padding: 0;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 147.3%;
+                color: #508E87;
+            }
+        }
+        &_step{
+            margin-left: 27vw;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 20px;
+            line-height: 147.3%;
+            text-align: center;
+            color: #828282;
+          }
+        }       
+    }
+    &_avatarbox{
+        width: 431px;
+        height: 321px;
+        background: #F7F7F8;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       &_img{
+         &.active{
+            width: 431px;
+            height: 321px;
+            border-radius: 10px;
+            object-fit: cover;
+         }  
+       }
+       &_uploader{
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        position: absolute;
+        opacity: 0.5;
+        background-color: #000000;
+       }  
+       &_uploader_wrapper{
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        position: absolute;     
+       }              
+    }
+}
+
+
+

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Query, UseInterceptors, UploadedFile } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Query, UseInterceptors, UploadedFile, Param } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { UserSevice } from 'src/service/user.service';
@@ -31,6 +31,11 @@ export class UserController {
   @UseInterceptors(FileInterceptor('file', configAvatar))
   uploadFile(@UploadedFile() file) {
     return this.userService.uploadFile(file);
+  }
+
+  @Delete('delete-image/:imagename')
+  deleteFile(@Param('imagename') imagename) {
+    return this.userService.deleteFile(imagename);
   }
 
 }

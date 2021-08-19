@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { UserRepository } from '../repo/user.repository';
+import { unlink } from 'fs/promises';
 
 @Injectable()
 export class UserSevice {
@@ -11,5 +12,10 @@ export class UserSevice {
 
   async uploadFile(file) {
     return file.filename;
+  }
+
+  async deleteFile(imagename: string) {
+    unlink('files/AvatarUser/' + imagename);
+    return { message: 'Delete' };
   }
 }

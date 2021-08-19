@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import axios, { CancelToken } from 'axios'
 import { useHttp } from '../../../hooks/http.hook'
-import { CircularProgressbarWithChildren, buildStyles} from 'react-circular-progressbar';
+import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import { useDispatch, useSelector } from 'react-redux'
 import {  hideLoading, showLoading } from '../../../../redux/actions/actions';
-const TOKENS_KYES='tokens'
+import {  deleteAvatarPhoto } from '../../../../redux/actions/userAction';
+
 
 
 function AddAvatarPhoto (props){
@@ -18,18 +19,25 @@ function AddAvatarPhoto (props){
         return state.app.loading
     })    
     const userAvatar = useSelector((state)=>{
-        return state.user.userAvatar
+        return { avatar:state.user.userAvatar, avatarName:state.user.avatarPhotoName }
     })
     const urlUpload ='http://localhost:5000/user/upload'
+    const urlDelete = 'http://localhost:5000/user/delete-image/'
 
 
     const dispatch = useDispatch()
 
     const onDropHandler = e =>{
         e.preventDefault()
-        let files = [...e.dataTransfer.files]
+        let files = [...e.dataTransfer.files]     
         files.forEach(foto => dispatch(props.value(foto)))
      }
+
+     const handleFileInput = e =>{
+        e.preventDefault()
+        let files =[...e.target.files]
+        files.forEach(foto => dispatch(props.value(foto)))
+    }
 
      const onDragStartHandler = e =>{
          e.preventDefault()
@@ -44,7 +52,7 @@ function AddAvatarPhoto (props){
         dispath(showLoading())  
         setError(false)    
         const formData = new FormData()
-        formData.append( 'file', userAvatar)   
+        formData.append( 'file', userAvatar.avatar)   
         const config ={       
             method:'POST', 
             onUploadProgress: progressEvent => {
@@ -57,10 +65,9 @@ function AddAvatarPhoto (props){
             cancelToken: new CancelToken( cancel => cancelFileUpload.current = cancel)
         } 
 
-        await axios.post(urlUpload, formData, config)
-        console.log('1')
+        await axios.post(urlUpload, formData, config)      
        .then(response => {           
-            dispath(props.photoName(response.data))
+            dispath(props.avatarName(response.data))
         })
         .catch(function (e) {setError(e)})
         dispath(hideLoading())
@@ -68,37 +75,44 @@ function AddAvatarPhoto (props){
 
 
      useEffect(()=>{
-         if(userAvatar){
+         if(userAvatar.avatar){
          let reader = new FileReader()
-         reader.readAsDataURL(userAvatar)
+         reader.readAsDataURL(userAvatar.avatar)
          reader.onloadend = function () {
              setPhotoUrl(reader.result);
            }
            uploadPhoto()
         }
-     },[userAvatar])
+     },[userAvatar.avatar])
 
      const cancelUpload = () => {
         if (cancelFileUpload.current)
-            cancelFileUpload.current('User has canceled the file upload')
+        setError(true)        
+        cancelFileUpload.current('User has canceled the file upload')
     }
-     
+
+    const onDeletePhoto = async () =>{
+        dispath(deleteAvatarPhoto(null))     
+        await request(urlDelete + userAvatar.avatar.name,'DELETE')  
+        setPhotoUrl(null) 
+    }    
 
 
 
     return(
         <>
-        <div onDrop={onDropHandler}
+        <div className='add_avatar_avatarbox'
+            onDrop={onDropHandler}
             onDragStart={onDragStartHandler}
             onDragLeave={onDragLeveHandler}
             onDragOver={onDragStartHandler}
          >
-            <img
-            src={photoUrl?photoUrl:'../src/img/cameraPhoto.svg'}
-            alt='camera_image'
-            />
-                {procentUpload<100?<div className='uploader'></div>:''}
-                {procentUpload<100?<div className='uploader_wrapper'>                                        
+             <label>
+             <img className={!photoUrl?'add_avatar_avatarbox_img':'add_avatar_avatarbox_img active'}src={photoUrl?photoUrl:'../src/img/cameraPhoto.svg'} alt='camera_image'/>
+             <input type='file' hidden={true} onChange={handleFileInput}/>
+             </label>           
+                {(procentUpload<=100 && userAvatar.avatar)?<div className='add_avatar_avatarbox_uploader'></div>:''}
+                {(procentUpload<=100 && userAvatar.avatar)?<div className='add_avatar_avatarbox_uploader_wrapper'>                                        
                         <CircularProgressbarWithChildren
                         value={procentUpload}
                         strokeWidth={5}
@@ -107,7 +121,8 @@ function AddAvatarPhoto (props){
                             trailColor: "transparent"
                             })}>  
                         {(!error&&loading)?<img src='../src/img/cancel_fetch.svg' onClick={()=>cancelUpload()}/>:''} 
-                        {error?<img src='../src/img/upload_arrow.svg' onClick={uploadPhoto}/>:''}              
+                        {error?<img src='../src/img/upload_arrow.svg' onClick={uploadPhoto}/>:''}
+                        {userAvatar.avatarName?<img src='../src/img/delete_avatar.svg' onClick={onDeletePhoto}/>:''}              
                         </CircularProgressbarWithChildren>                   
                 </div>:''}
         </div>

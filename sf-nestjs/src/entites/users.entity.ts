@@ -4,6 +4,7 @@ import { Arenda } from './arenda.entity';
 import { Autos } from './auto.entity';
 import { ChatEntity } from './chat.entity';
 import { MessagesEntity } from './messages.entity';
+import { UserPhotoDocumentName } from './userPhotoDocument.entity';
 
 
 @Entity()
@@ -70,7 +71,9 @@ export class Users {
   @ApiProperty()
   @Column({ select: false })
   refToken: string;
-
+  @ApiProperty()
+  @Column({ default:'defaultavatar.png '})
+  avatar: string;
   @OneToMany(() => Autos, (autos) => autos.user, {
     cascade: true,
   })
@@ -84,5 +87,11 @@ export class Users {
 
   @OneToMany(() => Arenda, (arenda) => arenda.user)
   arenda: Arenda[];
+
+  @OneToMany(
+    () => UserPhotoDocumentName,
+    (photoDocumentName) => photoDocumentName.user,
+  )
+  photoDocumentName: UserPhotoDocumentName[];
  
 }

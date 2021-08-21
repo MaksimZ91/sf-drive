@@ -1,30 +1,34 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { RegistContext } from './formContex'
 import {useHttp} from '../../../hooks/http.hook'
 import { FormContex } from '../../contextApp'
 import { Redirect } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { addNewUserID } from "../../../../redux/actions/userAction"
 
 function Continue (props){
-   const {form, formValidation} = useContext(RegistContext)
+  const dispatch = useDispatch()
+  const [ data, setData ] = useState(null)
+  const {form, formValidation} = useContext(RegistContext)
   const {login, accessToken } = useContext(FormContex)
   const {request} = useHttp()
 
 
   const authorRequest = async () => {
     try {
-        const data = await request('http://localhost:5000/registr','POST',{...form})   
-        await login(data.accessToken,data.refreshToken, data.userId)         
+        const result = await request('http://localhost:5000/registr','POST',{...form})
+        dispatch(addNewUserID(result.userId))              
         props.value.message(false)  
-        
+        setData(result)        
     } catch (e) {
       console.log(e)
       props.value.message(true)                 
     }    
 }
-if(accessToken){
+if(data){
   return(
     <>
-   <Redirect to='/'/>
+   <Redirect to='/secondstep'/>
     </>
   )
 }else{

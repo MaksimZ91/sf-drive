@@ -8,6 +8,7 @@ import { JwtAuthGuard } from '../guard/autn.guard';
 import { AuthService } from 'src/service/auth.service';
 import { UserSevice } from 'src/service/user.service';
 import { ChatRepository } from 'src/repo/chat.repositoy';
+import { PhotoDocumentRepository } from 'src/repo/photoDocument.repository';
 
 
 
@@ -22,7 +23,8 @@ import { ChatRepository } from 'src/repo/chat.repositoy';
     UserRepository,
     AuthService,
     UserSevice,
-    ChatRepository    
+    ChatRepository,
+    PhotoDocumentRepository    
   ],
 })
 export class AuthorizationModul {}

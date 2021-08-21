@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import axios, { CancelToken } from 'axios'
-import { useHttp } from '../../../hooks/http.hook'
+import { useHttp } from '../../../src/hooks/http.hook'
 import { CircularProgressbarWithChildren, buildStyles} from 'react-circular-progressbar';
 import { useSelector, useDispatch } from 'react-redux'
-import {  hideLoading, showLoading } from '../../../../redux/actions/actions';
+import {  hideLoading, showLoading } from '../../../redux/actions/actions';
 const TOKENS_KYES='tokens'
 
 
@@ -33,7 +33,10 @@ function Photo (props){
         const formData = new FormData()
         formData.append( 'file', props.value) 
         let tokens = JSON.parse(localStorage.getItem(TOKENS_KYES))
-        let access = tokens.accessToken  
+        let access
+        if(tokens){
+            access = tokens.accessToken 
+        }
         const config ={       
             method:'POST',              
             headers:{ Authorization: `Bearer ${access}`},            

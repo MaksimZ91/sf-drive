@@ -4,10 +4,10 @@ import Newphoto from '../../photo/newPhoto'
 import { useSelector} from 'react-redux'
 
 
-function Autophoto (props){    
+function AddUserDocument (props){    
    
     const addAutoPhoto = useSelector((state)=>{
-        return state.newAuto[props.value]
+        return state.user[props.value]
     })
     
     return(
@@ -21,4 +21,4 @@ function Autophoto (props){
     )
 }
 
-export default Autophoto
+export default AddUserDocument

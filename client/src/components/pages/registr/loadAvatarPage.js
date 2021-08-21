@@ -8,18 +8,21 @@ import './scss/avatar.scss'
 import Continuestep from '../../continueStep/continuestep'
 import { useHttp } from '../../../hooks/http.hook'
 import Error from '../../error/error'
+import { Redirect } from 'react-router-dom'
 
 
 function LoadAvatarPage () {
     const { request } = useHttp()
     const [ valid, setValid ] = useState(true)
-    const dispatch = useDispatch()
+    const [ error, setError ]= useState(false)
+    const [ data, setData ] = useState(null)
+    const dispatch = useDispatch()    
     const backlink = "/registr"
     const backName = 'add_avatar_back'
     const continueTitel ='Продолжить'
     const nameClass = "new_auto_continue"
-    const userAvatar = useSelector((state)=>{
-        return state.user.avatarPhotoName
+    const form = useSelector((state)=>{
+        return { userAvatar:state.user.avatarPhotoName, userID:state.user.newUserID }
     })
     const alert = useSelector((state)=>{
         return state.app.alert
@@ -27,17 +30,19 @@ function LoadAvatarPage () {
     const authorRequest = async () => { 
         try { 
           dispatch(showLoading())
-            await request('http://localhost:5000/user/avatar','POST', { userAvatar })
-            dispatch(hideLoading())     
+           const result =  await request('http://localhost:5000/user/avatar','POST', form)
+            dispatch(hideLoading())   
+            setData(result)  
         } catch (e) {           
             dispatch(showAlert('Не удалось продолжить регистрацию. Попробуйте ещё раз'))
+            setError(true)
         }     
     } 
     useEffect(()=>{
-        if(userAvatar){
+        if(form.userAvatar){
             setValid(false)
         }
-    },[userAvatar])
+    },[form.userAvatar])
 
 
     return(
@@ -57,6 +62,7 @@ function LoadAvatarPage () {
                 />              
             </section>
             <Continuestep nextStep={authorRequest} validation={valid} titel={continueTitel} nameClass={nameClass}/>
+            {!error&&data?<Redirect to='/finelstep'/>:''}    
         </main>
         </>
     )

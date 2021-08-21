@@ -21,6 +21,8 @@ import UserChat from "./pages/chat/userChat";
 import PaymentPage from "./pages/payment/paymentPage";
 import SucsessPay from "./pages/payment/sucsessPay";
 import LoadAvatarPage from "./pages/registr/loadAvatarPage";
+import UserDocumentPhoto from "./pages/registr/userDocumentPhoto"
+import RegistartionSuccess from "./pages/registr/ristrationSuccessPage";
 
 
 
@@ -30,10 +32,13 @@ function Routs (){
     if (!isAuthen){ 
         return(
         <>
-        <Route path="/" component={ LoadAvatarPage } exact/>
+        <Route path="/" component={ Mainpage } exact/>
         <Route path="/about" component={ Aboutpage } exact/>
         <Route path="/registr" component={ Registpage }/>
         <Route path="/faq" component={ Faq }/>  
+        <Route path='/secondstep' component={ LoadAvatarPage } exact />
+        <Route path='/finelstep' component={ UserDocumentPhoto } exact />
+        <Route path='/registrsuccess' component = { RegistartionSuccess } />
         </>
         )
     }else{      

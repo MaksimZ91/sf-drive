@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Addphoto from './addphoto'
+import Addphoto from '../../photo/addphoto'
 import Continuestep from '../../continueStep/continuestep'
 import Autophoto from './autophoto'
 import Error from '../../error/error'
